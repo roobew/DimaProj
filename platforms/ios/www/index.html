@@ -8,181 +8,123 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <script type="text/javascript" src="../plugins/phonegap-facebook-plugin/facebookConnectPlugin.js"></script>
+
         <title>Hello World</title>
     </head>
     <body>
-        <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-            <button onclick="login();">CLICKME</button>
+        <br>        <br>        <br>        <br>        <br>        <br>        <br>
+
+        <div align= 'center'>
+            RENTME APP Loading....
         </div>
+
+        <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
         <script src="js/index.js"></script>
-
-        <script type="text/javascript">app.initialize();
-            //openFB.init();
-        </script>
+        <script src="js/openFB.js"></script>
+        <script>app.initialize();</script>
 
         <script>
-     // Defaults to sessionStorage for storing the Facebook token
-     openFB.init({appId: 'YOUR_FB_APP_ID'});
-    //  Uncomment the line below to store the Facebook token in localStorage instead of sessionStorage
-      openFB.init({appId: '867006893383189', tokenStore: window.localStorage});
-    function login() {
-        openFB.login(
-                function(response) {
-                    if(response.status === 'connected') {
-                        alert('Facebook login succeeded, got access token: ' + response.authResponse.accessToken);
-                    } else {
-                        alert('Facebook login failed: ' + response.error);
+            openFB.init({appId: '867006893383189', tokenStore: window.localStorage});
+            next();
+            function next(){
+                setTimeout(
+                openFB.api({
+                    path: '/me',
+                    success: function(data) {
+                        window.location.href="home.html";
+                    },
+                    error: function(data) {
+                        console.log("login.html:" + data);
+                        window.location.href="login.html";
                     }
-                }, {scope: 'email,read_stream,publish_actions'});
-    }
-    function getInfo() {
-        openFB.api({
-            path: '/me',
-            success: function(data) {
-                console.log(JSON.stringify(data));
-                document.getElementById("userName").innerHTML = data.name;
-                document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
-            },
-            error: errorHandler});
-    }
-    function share() {
-        openFB.api({
-            method: 'POST',
-            path: '/me/feed',
-            params: {
-                message: document.getElementById('Message').value || 'Testing Facebook APIs'
-            },
-            success: function() {
-                alert('the item was posted on Facebook');
-            },
-            error: errorHandler});
-    }
-    function readPermissions() {
-        openFB.api({
-            method: 'GET',
-            path: '/me/permissions',
-            success: function(result) {
-                alert(JSON.stringify(result.data));
-            },
-            error: errorHandler
-        });
-    }
-    function revoke() {
-        openFB.revokePermissions(
-                function() {
-                    alert('Permissions revoked');
-                },
-                errorHandler);
-    }
-    function logout() {
-        openFB.logout(
-                function() {
-                    alert('Logout successful');
-                },
-                errorHandler);
-    }
-    function errorHandler(error) {
-        alert(error.message);
-    }
-</script>
-    </body>
-</html>
-<!---->
-<!--
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-            <div class="event listening button" onclick="login();">Login with Facebook</div>
-            <div class="event listening button" onclick="showDialog();">Show Dialog with Facebook</div>
-            <div class="event listening button" onclick="apiTest();">Test API with Facebook</div>
-            <div class="event listening button" onclick="getAccessToken();">Get access token with Facebook</div>
-            <div class="event listening button" onclick="logPurchase();">Log Purchase Event</div>
-            <div class="event listening button" onclick="logEvent();">Log Regular Event</div>
-            <div class="event listening button" onclick="getStatus();">Get login status with Facebook</div>
-            <div class="event listening button" onclick="logout();">Logout with Facebook</div>
-        </div>
-        <div id="fb-root"></div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="../plugins/phonegap-facebook-plugin/facebookConnectPlugin.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            var login = function () {
-                if (!window.cordova) {
-                    var appId = prompt("Enter FB Application ID", "");
-                    facebookConnectPlugin.browserInit(appId);
-                }
-                facebookConnectPlugin.login( ["email"],
-                    function (response) { alert(JSON.stringify(response)) },
-                    function (response) { alert(JSON.stringify(response)) });
+                }),500000);
             }
+           /*
+            function getStatus(){
+                openFB.api({
+                    path: '/me',
+                    success: function(data) {
+                        document.getElementById("login").hidden=true;
+                         document.getElementById("infos").hidden=false;
+                         document.getElementById("logout").hidden=false;
+                         document.getElementById("revoke").hidden=false;
+                    },
+                    error: function(data) {
+                        document.getElementById("login").hidden=false;
+                         document.getElementById("infos").hidden=true;
+                         document.getElementById("logout").hidden=true;
+                         document.getElementById("revoke").hidden=true;
+                    }
+                });
+            }
+            function login() {
+                openFB.login(
+                    function(response) {
+                        if(response.status === 'connected') {
+                            window.location.href="home.html";
+                            //alert('Facebook login succeeded, got access token: ' + response.authResponse.accessToken);
+                           // openFB.tokenStore =  response.authResponse;
+                            //console.log(openFB.tokenStore.fbAccessToken);
+                        } else {
+                            alert('Facebook login failed: ' + response.error);
+                        }
+                    }, {scope: 'email'});
+            }
+            function getInfo() {
+                openFB.api({
+                    path: '/me',
+                    success: function(data) {
+                        console.log("DATI:" + JSON.stringify(data));
+                        document.getElementById("userName").innerHTML = data.first_name +" " + data.last_name;
+                        document.getElementById("email").innerHTML = data.email;
+                        //document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
+                    },
+                    error: errorHandler});
+            }
+            /*function share() {
+                openFB.api({
+                    method: 'POST',
+                    path: '/me/feed',
+                    params: {
+                        message: document.getElementById('Message').value || 'Testing Facebook APIs'
+                    },
+                    success: function() {
+                        alert('the item was posted on Facebook');
+                    },
+                    error: errorHandler});
+            }*/
 
-            var showDialog = function () {
-                facebookConnectPlugin.showDialog( { method: "feed" },
-                    function (response) { alert(JSON.stringify(response)) },
-                    function (response) { alert(JSON.stringify(response)) });
+            /*
+            function readPermissions() {
+                openFB.api({
+                    method: 'GET',
+                    path: '/me/permissions',
+                    success: function(result) {
+                        alert(JSON.stringify(result.data));
+                    },
+                    error: errorHandler
+                });
             }
-
-            var apiTest = function () {
-                facebookConnectPlugin.api( "me/?fields=id,email", ["user_birthday"],
-                    function (response) { alert(JSON.stringify(response)) },
-                    function (response) { alert(JSON.stringify(response)) });
+            function revoke() {
+                openFB.revokePermissions(
+                        function() {
+                            alert('Permissions revoked');
+                        },
+                        errorHandler);
             }
-            var logPurchase = function () {
-                facebookConnectPlugin.logPurchase(1.99, "USD",
-                    function (response) { alert(JSON.stringify(response)) },
-                    function (response) { alert(JSON.stringify(response)) });
+            function logout() {
+                openFB.logout(
+                        function() {
+                            alert('Logout successful');
+                        },
+                        errorHandler);
             }
-            var logEvent = function () {
-                // For more information on AppEvent param structure see
-                // https://developers.facebook.com/docs/ios/app-events
-                // https://developers.facebook.com/docs/android/app-events
-                facebookConnectPlugin.logEvent("Purchased",
-                    {
-                        NumItems: 1,
-                        Currency: "USD",
-                        ContentType: "shoes",
-                        ContentID: "HDFU-8452"
-                    }, null,
-                    function (response) { alert(JSON.stringify(response)) },
-                    function (response) { alert(JSON.stringify(response)) });
-            }
-            var getAccessToken = function () {
-                facebookConnectPlugin.getAccessToken(
-                    function (response) { alert(JSON.stringify(response)) },
-                    function (response) { alert(JSON.stringify(response)) });
-            }
-
-            var getStatus = function () {
-                facebookConnectPlugin.getLoginStatus(
-                    function (response) { alert(JSON.stringify(response)) },
-                    function (response) { alert(JSON.stringify(response)) });
-            }
-            var logout = function () {
-                facebookConnectPlugin.logout(
-                    function (response) { alert(JSON.stringify(response)) },
-                    function (response) { alert(JSON.stringify(response)) });
-            }
-            app.initialize();
+            function errorHandler(error) {
+                console.log(error.message);
+    }
+            //*/
         </script>
+
     </body>
 </html>
--->

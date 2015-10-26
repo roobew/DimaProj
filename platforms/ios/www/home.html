@@ -7,51 +7,47 @@
         <meta name="msapplication-tap-highlight" content="no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <script type="text/javascript" src="../plugins/phonegap-facebook-plugin/facebookConnectPlugin.js"></script>
 
-        <title>Hello World</title>
+        <title>sampleAPP </title>
     </head>
-    <body>
+    <body >
         <br>        <br>        <br>        <br>        <br>        <br>        <br>
-
         <div align= 'center'>
-            RENTME APP Loading....
+            HOME
+            <br>
+            <button id="infos" onclick="getInfo();">INFOS</button>
+            <br>
+            <button id="status" onclick="openFB.loginStatus;" >STATUS</button>
+            <br>
+            <button id="logout" onclick="logout();" >LOGOUT</button>
+            <br>
+            <button id="revoke" onclick="revoke();">REVOKE</button>
+            <br><br>
+            <div id= userName>nome</div>
+            <div id=email>mail</div>
         </div>
-
         <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
-        <script src="js/index.js"></script>
         <script src="js/openFB.js"></script>
-        <script>app.initialize();</script>
-
+        <script type="text/javascript"></script>
         <script>
+                //Defaults to sessionStorage for storing the Facebook token
+            //openFB.init({appId: '867006893383189'});
+                //Uncomment the line below to store the Facebook token in localStorage instead of sessionStorage
             openFB.init({appId: '867006893383189', tokenStore: window.localStorage});
-            next();
-            function next(){
-                setTimeout(
-                    openFB.api({
-                        path: '/me',
-                        success: function(data) {
-                            window.location.href="home.html";
-                        },
-                        error: function(data) {
-                            console.log("login.html:" + data);
-                            window.location.href="login.html";
-                        }
-                    }),1500);
-            }
-           /*
+            getStatus();
+            getInfo();
             function getStatus(){
                 openFB.api({
                     path: '/me',
                     success: function(data) {
-                        document.getElementById("login").hidden=true;
+                       // document.getElementById("login").hidden=true;
                          document.getElementById("infos").hidden=false;
                          document.getElementById("logout").hidden=false;
                          document.getElementById("revoke").hidden=false;
                     },
                     error: function(data) {
-                        document.getElementById("login").hidden=false;
+                       // document.getElementById("login").hidden=false;
                          document.getElementById("infos").hidden=true;
                          document.getElementById("logout").hidden=true;
                          document.getElementById("revoke").hidden=true;
@@ -94,8 +90,6 @@
                     },
                     error: errorHandler});
             }*/
-
-            /*
             function readPermissions() {
                 openFB.api({
                     method: 'GET',
@@ -109,21 +103,21 @@
             function revoke() {
                 openFB.revokePermissions(
                         function() {
-                            alert('Permissions revoked');
+                            console.log("Permission Revoked");
+                             window.location.href="index.html"
                         },
                         errorHandler);
             }
             function logout() {
                 openFB.logout(
-                        function() {
-                            alert('Logout successful');
+                        function() {console.log("Logout Successfull");
+                            window.location.href="index.html"
                         },
                         errorHandler);
             }
             function errorHandler(error) {
                 console.log(error.message);
     }
-            //*/
         </script>
 
     </body>
