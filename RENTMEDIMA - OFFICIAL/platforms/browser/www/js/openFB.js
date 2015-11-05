@@ -92,7 +92,6 @@ var openFB = (function () {
 
     function loginStatus() {
         var token = tokenStore.fbAccessToken;
-        console.log("TOKEN:" + token);
         if (token) {
             return true;
         } else {
@@ -110,7 +109,6 @@ var openFB = (function () {
      * @returns {*}
      */
     function login(callback, options) {
-        console.log("login");
         var loginWindow,
             startTime,
             scope = '',
@@ -123,7 +121,6 @@ var openFB = (function () {
         // Inappbrowser load start handler: Used when running in Cordova only
         function loginWindow_loadStartHandler(event) {
             var url = event.url;
-            console.log(event.url);
             if (url.indexOf("access_token=") > 0 || url.indexOf("error=") > 0) {
                 // When we get the access token fast, the login window (inappbrowser) is still opening with animation
                 // in the Cordova app, and trying to close it while it's animating generates an exception. Wait a little...
@@ -137,13 +134,11 @@ var openFB = (function () {
 
         // Inappbrowser exit handler: Used when running in Cordova only
         function loginWindow_stopHandler() {
-            console.log('exit and remove listeners');
             // Handle the situation where the user closes the login window manually before completing the login process
             if (loginCallback && !loginProcessed) loginCallback({status: 'user_cancelled'});
             loginWindow.removeEventListener('loadstop', loginWindow_loadStopHandler);
             loginWindow.removeEventListener('exit', loginWindow_exitHandler);
             loginWindow = null;
-            console.log('done removing listeners');
         }
 
         if (options && options.scope) {
@@ -232,16 +227,12 @@ var openFB = (function () {
     function api(obj) {
 
         var method = obj.method || 'GET',
-            params = obj.params || {'fields':'email,first_name,last_name'},
+            params = obj.params || {'fields':'id,email,first_name,last_name,picture'},
             xhr = new XMLHttpRequest(),
             url;
-
-
-        console.log("FB TOKEN: " + tokenStore.fbAccessToken);
         params['access_token'] = tokenStore.fbAccessToken;
-
         url = 'https://graph.facebook.com' + obj.path + '?' + toQueryString(params);
-        console.log("URL: " + url);
+        console.log(url);
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
