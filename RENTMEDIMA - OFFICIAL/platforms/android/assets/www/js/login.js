@@ -51,6 +51,10 @@ function facebookLogin() {
                         
 }
 
-function rentMeLogin(){
+function login(){
     
 }
+
+function SignUp(){
+    
+} 
