@@ -819,6 +819,18 @@
           <string>fb867006893383189</string>
         </array>
       </dict>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>fb867006893383189</string>
+        </array>
+      </dict>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>fb867006893383189</string>
+        </array>
+      </dict>
     </array>
   </dict>
 </plist>

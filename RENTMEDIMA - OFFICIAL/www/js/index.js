@@ -4,19 +4,24 @@ $(document).on('deviceready', function() {
     next();
 });
 
-function next(){   
-    setTimeout(openFB.api({
+function next(){ 
+   setTimeout(openFB.api({
                         path: '/me',
                         success: function(user) {
-                            var jUser= {id : user.id, 
-                                        name : user.first_name,
-                                        surname : user.last_name,
-                                        email : user.email,
-                                        loginType : 'Facebook',
-                                        token : localStorage.fbAccessToken,
-                                        picture : user.picture.data.url,
-                                        };                                
-                            localStorage.setItem("userData",JSON.stringify(jUser));
+                            myUrl=  "http://rentme.altervista.org/login.php?"       +
+                                    "id="           +   user.id                     +
+                                    "&name="        +   user.first_name             +
+                                    "&surname="     +   user.last_name              +
+                                    "&email="       +   user.email                  +
+                                    "&loginType="   +   'Facebook'                  +
+                                    "&token="       +   localStorage.fbAccessToken  +
+                                    "&picture="     +   String(user.picture.data.url).replace(/&/gi,'%26')      ; 
+
+                            xhttp = new XMLHttpRequest;
+                            xhttp.open("GET", myUrl, false);
+                            xhttp.send();                    
+                            jUser=xhttp.response;                     
+                            localStorage.setItem("userData",jUser);                        
                             window.location.href="home.html";
                         },
                         error: function(data) {                           
@@ -27,16 +32,21 @@ function next(){
                                 //Pass the token to the API call and return a new promise object
                                 return googleapi.userInfo({ access_token: data.access_token });
                             }).done(function(user) { 
-                                var jUser= {id : user.id, 
-                                        name : user.given_name,
-                                        surname : user.family_name,
-                                        email : user.email,
-                                        loginType : 'Google',
-                                        token : localStorage.access_token,
-                                        picture : user.picture,
-                                        };     
-                                localStorage.setItem("userData",JSON.stringify(jUser));
-                                document.location.href="home.html";                                   
+                               myUrl=  "http://rentme.altervista.org/login.php?"       +
+                                        "id="           +   user.id                     +
+                                        "&name="        +   user.given_name             +
+                                        "&surname="     +   user.family_name            +
+                                        "&email="       +   user.email                  +
+                                        "&loginType="   +   'Google'                    +
+                                        "&token="       +   localStorage.access_token   +
+                                        "&picture="     +   String(user.picture).replace(/&/gi,'%26')                      ;                        
+                                xhttp = new XMLHttpRequest;
+                                xhttp.open("GET", myUrl, false);
+                                xhttp.send();
+                                jUser=xhttp.response;
+                                localStorage.setItem("userData",jUser);
+
+                                window.location.href="home.html";                               
                             }).fail(function() {
                                 //handle rentMe Login else
                                 window.location.href="login.html";

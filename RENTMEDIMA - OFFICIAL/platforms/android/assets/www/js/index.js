@@ -4,8 +4,8 @@ $(document).on('deviceready', function() {
     next();
 });
 
-function next(){   
-    setTimeout(openFB.api({
+function next(){ 
+   setTimeout(openFB.api({
                         path: '/me',
                         success: function(user) {
                             var jUser= {id : user.id, 

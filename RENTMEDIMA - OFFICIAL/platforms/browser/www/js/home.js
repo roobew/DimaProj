@@ -1,6 +1,6 @@
 $(document).ready(getInfo);
 
-function getInfo(){    
+function getInfo(){  
     myUser= JSON.parse(localStorage.getItem("userData"));
     $("#uloginType").html(myUser.loginType);   
     $("#uId").html(myUser.id);   

@@ -299,38 +299,3 @@ var openFB = (function () {
 
 }());
 
-function facebookLogin() {
-    openFB.login(
-        function(response) {
-            if(response.status === 'connected') {               
-                openFB.api({
-                    path: '/me',
-                    success: function(user) {                                    
-                        myUrl=  "http://rentme.altervista.org/login.php?"       +
-                                "id="           +   user.id                     +
-                                "&name="        +   user.first_name             +
-                                "&surname="     +   user.last_name              +
-                                "&email="       +   user.email                  +
-                                "&loginType="   +   'Facebook'                  +
-                                "&token="       +   localStorage.fbAccessToken  +
-                                "&picture="     +   user.picture.data.url       ;                        
-                        
-                        xhttp = new XMLHttpRequest;
-                        xhttp.open("GET", myUrl, false);
-                        xhttp.send();                    
-                        jUser=xhttp.response;
-                        localStorage.setItem("userData",jUser);
-
-                        window.location.href="home.html";
-                        
-                    },
-                    error:function(result){  
-                        console.log(result);
-                    }                                
-                });
-            } else {
-                alert('Facebook login failed: ' + response.error);
-            }
-        }, {scope: 'email'});
-                        
-}
