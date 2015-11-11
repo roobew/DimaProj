@@ -293,7 +293,8 @@ var openFB = (function () {
         revokePermissions: revokePermissions,
         api: api,
         oauthCallback: oauthCallback,
-        loginStatus: loginStatus
+        loginStatus: loginStatus,
+        getToken : tokenStore.fbAccessToken
     }
 
 }());

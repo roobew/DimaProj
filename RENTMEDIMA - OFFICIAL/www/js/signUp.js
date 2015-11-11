@@ -28,14 +28,14 @@ function googleLogin(){
                 localStorage.setItem("userData",JSON.stringify(jUser));
                
                 //console.log("salvo nel db");                    
-                myUrl=  "http://rentme.altervista.org/login.php?" +
-                            "id="       +   jUser.id           +
-                            "&name="    +   jUser.name         +
-                            "&surname=" +   jUser.surname      +
-                            "&email="   +   jUser.email        +
-                            "&type="    +   jUser.loginType    +
-                            "&token="   +   jUser.token        +
-                            "&picture=" +   jUser.picture      ;                        
+                myUrl=  "http://rentme.altervista.org/login.php?"   +
+                        "id="           +   jUser.id                +
+                        "&name="        +   jUser.name              +
+                        "&surname="     +   jUser.surname           +
+                        "&email="       +   jUser.email             +
+                        "&loginType="   +   jUser.loginType         +
+                        "&token="       +   jUser.token             +
+                        "&picture="     +   jUser.picture           ;                        
                 xhttp = new XMLHttpRequest;
                 xhttp.open("GET", myUrl, false);
                 xhttp.send();
@@ -69,14 +69,14 @@ function facebookLogin() {
                         localStorage.setItem("userData",JSON.stringify(jUser));    
                                                              
                         //console.log("salvo nel db");                    
-                        myUrl=  "http://rentme.altervista.org/login.php?" +
-                                    "id="       +   jUser.id           +
-                                    "&name="    +   jUser.name         +
-                                    "&surname=" +   jUser.surname      +
-                                    "&email="   +   jUser.email        +
-                                    "&type="    +   jUser.loginType    +
-                                    "&token="   +   jUser.token        +
-                                    "&picture=" +   jUser.picture      ;                        
+                        myUrl=  "http://rentme.altervista.org/login.php?"   +
+                                "id="           +   jUser.id                +
+                                "&name="        +   jUser.name              +
+                                "&surname="     +   jUser.surname           +
+                                "&email="       +   jUser.email             +
+                                "&loginType="   +   jUser.loginType         +
+                                "&token="       +   jUser.token             +
+                                "&picture="     +   jUser.picture           ;                        
                         xhttp = new XMLHttpRequest;
                         xhttp.open("GET", myUrl, false);
                         xhttp.send();
@@ -96,16 +96,19 @@ function facebookLogin() {
                         
 }
 
-function login(){
-    //richiesta a server esterno
+function register(){  
+    myUrl=  "http://rentme.altervista.org/login.php?" +                
+            "&name="        +   document.getElementById('name').value       +
+            "&surname="     +   document.getElementById('surname').value    +
+            "&email="       +   document.getElementById('email').value      +
+            "&loginType="   +   'rentMe'                                    +
+            "&password="    +   document.getElementById('password').value   ;                        
     xhttp = new XMLHttpRequest;
-    xhttp.open("GET", "http://rentme.altervista.org/prova.php?email=ciaoihdd", false);
+    xhttp.open("GET", myUrl, false);
     xhttp.send();
-    console.log(xhttp.responseText);
+    jUser=xhttp.response;
+    localStorage.setItem("userData",jUser);
+    window.location.href="home.html";
+    
 }
 
-
-function signUp(){
-    console.log("signup");
-    window.location.href="signUp.html";    
-} 

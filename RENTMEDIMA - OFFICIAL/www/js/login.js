@@ -17,8 +17,23 @@ function googleLogin(){
                 return googleapi.userInfo({ access_token: data.access_token });
             }).done(function(user) {
                 //salvare nel DB su rentMe.altervista anche il token 
-                localStorage.setItem('loginType','Google');
-                localStorage.setItem("userData",JSON.stringify(user));  
+            
+               
+                //console.log("salvo nel db");                    
+                myUrl=  "http://rentme.altervista.org/login.php?"       +
+                        "id="           +   user.id                     +
+                        "&name="        +   user.given_name             +
+                        "&surname="     +   user.family_name            +
+                        "&email="       +   user.email                  +
+                        "&loginType="   +   'Google'                    +
+                        "&token="       +   localStorage.access_token   +
+                        "&picture="     +   user.picture                ;                        
+                xhttp = new XMLHttpRequest;
+                xhttp.open("GET", myUrl, false);
+                xhttp.send();
+                jUser=xhttp.response;
+                localStorage.setItem("userData",jUser);
+                   
                 window.location.href="home.html";
             }).fail(function() {
                 //handle error
@@ -34,11 +49,24 @@ function facebookLogin() {
             if(response.status === 'connected') {               
                 openFB.api({
                     path: '/me',
-                    success: function(user) {
-                        //salvare nel DB su rentMe.altervista anche il token    
-                        localStorage.setItem('loginType','Facebook');
-                        localStorage.setItem("userData",JSON.stringify(user));
+                    success: function(user) {                                    
+                        myUrl=  "http://rentme.altervista.org/login.php?"       +
+                                "id="           +   user.id                     +
+                                "&name="        +   user.first_name             +
+                                "&surname="     +   user.last_name              +
+                                "&email="       +   user.email                  +
+                                "&loginType="   +   'Facebook'                  +
+                                "&token="       +   localStorage.fbAccessToken  +
+                                "&picture="     +   user.picture.data.url       ;                        
+                        
+                        xhttp = new XMLHttpRequest;
+                        xhttp.open("GET", myUrl, false);
+                        xhttp.send();                    
+                        jUser=xhttp.response;
+                        localStorage.setItem("userData",jUser);
+
                         window.location.href="home.html";
+                        
                     },
                     error:function(result){  
                         console.log(result);
@@ -52,9 +80,15 @@ function facebookLogin() {
 }
 
 function login(){
-    
+    //richiesta a server esterno
+    xhttp = new XMLHttpRequest;
+    xhttp.open("GET", "http://rentme.altervista.org/prova.php?email=ciaoihdd", false);
+    xhttp.send();
+    console.log(xhttp.responseText);
 }
 
-function SignUp(){
-    
+
+function signUp(){
+    console.log("signup");
+    window.location.href="signUp.html";    
 } 

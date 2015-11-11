@@ -96,16 +96,22 @@ function facebookLogin() {
                         
 }
 
-function login(){
-    //richiesta a server esterno
+function register(){  
+    myUrl=  "http://rentme.altervista.org/login.php?" +                
+                "&name="    +   document.getElementById('name').value       +
+                "&surname=" +   document.getElementById('surname').value    +
+                "&email="   +   document.getElementById('email').value      +
+                "&type="    +   'rentMe'                                    +
+                "&password" +   document.getElementById('password').value   ;                        
     xhttp = new XMLHttpRequest;
-    xhttp.open("GET", "http://rentme.altervista.org/prova.php?email=ciaoihdd", false);
+    xhttp.open("GET", myUrl, false);
     xhttp.send();
-    console.log(xhttp.responseText);
+    jUser=xhttp.response;
+    console.log(jUser);
+
+    localStorage.setItem("userData",JSON.stringify(jUser));
+
+    window.location.href="home.html";
+    
 }
 
-
-function signUp(){
-    console.log("signup");
-    window.location.href="signUp.html";    
-} 

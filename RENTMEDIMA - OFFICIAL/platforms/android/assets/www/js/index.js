@@ -8,8 +8,15 @@ function next(){
     setTimeout(openFB.api({
                         path: '/me',
                         success: function(user) {
-                            localStorage.setItem('loginType','Facebook');
-                            localStorage.setItem("userData",JSON.stringify(user));
+                            var jUser= {id : user.id, 
+                                        name : user.first_name,
+                                        surname : user.last_name,
+                                        email : user.email,
+                                        loginType : 'Facebook',
+                                        token : localStorage.fbAccessToken,
+                                        picture : user.picture.data.url,
+                                        };                                
+                            localStorage.setItem("userData",JSON.stringify(jUser));
                             window.location.href="home.html";
                         },
                         error: function(data) {                           
@@ -20,8 +27,15 @@ function next(){
                                 //Pass the token to the API call and return a new promise object
                                 return googleapi.userInfo({ access_token: data.access_token });
                             }).done(function(user) { 
-                                localStorage.setItem('loginType','Google');
-                                localStorage.setItem("userData",JSON.stringify(user));                                    
+                                var jUser= {id : user.id, 
+                                        name : user.given_name,
+                                        surname : user.family_name,
+                                        email : user.email,
+                                        loginType : 'Google',
+                                        token : localStorage.access_token,
+                                        picture : user.picture,
+                                        };     
+                                localStorage.setItem("userData",JSON.stringify(jUser));
                                 document.location.href="home.html";                                   
                             }).fail(function() {
                                 //handle rentMe Login else

@@ -2,16 +2,19 @@ $(document).ready(getInfo);
 
 function getInfo(){    
     myUser= JSON.parse(localStorage.getItem("userData"));
+    $("#uloginType").html(myUser.loginType);   
     $("#uId").html(myUser.id);   
-    $("#uName").html(myUser.first_name||myUser.given_name);   
-    $("#uSurname").html(myUser.last_name||myUser.family_name);   
+    $("#uName").html(myUser.name);   
+    $("#uSurname").html(myUser.surname);   
     $("#uMail").html(myUser.email);
-    $("#uImg").attr('src',myUser.picture.data.url||myUser.picture);
+    $("#uToken").html(myUser.token);
+    $("#uImg").attr('src',myUser.picture);
 }
 
 function logout() {
     console.log("logout");
-    if(localStorage.getItem('loginType')=='Google'){
+    myUser= JSON.parse(localStorage.getItem("userData"));
+    if(myUser.loginType=='Google'){
         $.post('https://accounts.google.com/o/oauth2/revoke', {
                     token: localStorage.access_token
             })
@@ -20,15 +23,14 @@ function logout() {
                     //localStorage.removeItem('access_token');
                     localStorage.clear();
                     //var link="../index.html";
-                    var link="index.html";
-            
+                    var link="index.html";            
                     window.location.href=link;
             })
             .fail(function(response) {
                     console.log("token error");
             });
     }else
-        if(localStorage.getItem('loginType')=='Facebook'){    
+        if(myUser.loginType=='Facebook'){    
             openFB.init({appId: '867006893383189', tokenStore: window.localStorage});
             openFB.logout(
                 function() {
@@ -36,6 +38,7 @@ function logout() {
                     window.location.href="index.html"
                 });
         }else{
+            //handle rentme logout
             
         }
         
