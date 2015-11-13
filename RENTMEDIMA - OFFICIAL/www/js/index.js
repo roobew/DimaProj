@@ -39,11 +39,12 @@ function next(){
                                         "&email="       +   user.email                  +
                                         "&loginType="   +   'Google'                    +
                                         "&token="       +   localStorage.access_token   +
-                                        "&picture="     +   String(user.picture).replace(/&/gi,'%26')                      ;                        
+                                        "&picture="     +   String(user.picture).replace(/&/gi,'%26')                      ;                                                     console.log(myUrl);
                                 xhttp = new XMLHttpRequest;
                                 xhttp.open("GET", myUrl, false);
                                 xhttp.send();
                                 jUser=xhttp.response;
+                                console.log(jUser);
                                 localStorage.setItem("userData",jUser);
 
                                 window.location.href="home.html";                               

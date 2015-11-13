@@ -85,10 +85,11 @@ function login(){
     jUser=xhttp.response;
     localStorage.setItem("userData",jUser);
     console.log(jUser);
-    window.location.href="home.html";
+    //window.location.href="home.html";
 }
 
 function signUp(){
     console.log("signup");
+    //$.mobile.changePage("signUp.html");
     window.location.href="signUp.html";    
 } 

@@ -1,6 +1,9 @@
 $(document).ready(function(){
     console.log("LOGIN");
     openFB.init({appId: '867006893383189', tokenStore: window.localStorage}); 
+    document.getElementById("email").value = 'ciao';
+    
+    
 });
 
 function facebookLogin() {
@@ -80,8 +83,8 @@ function googleLogin(){
 }
 
 function register(){  
-    myUrl=  "http://rentme.altervista.org/login.php?" +                
-            "&name="        +   document.getElementById('name').value       +
+    myUrl=  "http://rentme.altervista.org/registration.php?" +                
+            "name="        +   document.getElementById('name').value       +
             "&surname="     +   document.getElementById('surname').value    +
             "&email="       +   document.getElementById('email').value      +
             "&loginType="   +   'rentMe'                                    +
@@ -90,8 +93,32 @@ function register(){
     xhttp.open("GET", myUrl, false);
     xhttp.send();
     jUser=xhttp.response;
-    localStorage.setItem("userData",jUser);
-    window.location.href="home.html";
+    console.log(jUser);
+    if(JSON.parse(jUser).id!=null){
+        console.log("dentro");
+        localStorage.setItem("userData",jUser);
+        //$.mobile.loadPage("home.html"); 
+        //$.mobile.changePage('home.html');
+        setTimeout(function(){
+                    window.location="home.html";
+            
+        },50);
+        //window.open("home.html","_self");
+    
+    }else{         
+        console.log("error");
+       //$.mobile.changePage("#");
+        //$.mobile.changePage('signUp.html',{reload : true});
+        setTimeout(function(){
+            window.location="signUp.html";
+            
+        },100);    
+
+        //loadPage("signUp.html");
+        //window.open("signUp.html","_self");
+        console.log("error");
+    }
     
 }
+
 
