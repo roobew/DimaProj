@@ -1,6 +1,9 @@
 $(document).ready(function(){
     console.log("LOGIN");
     openFB.init({appId: '867006893383189', tokenStore: window.localStorage}); 
+    document.getElementById("email").value = 'ciao';
+    
+    
 });
 
 function facebookLogin() {
@@ -17,7 +20,7 @@ function facebookLogin() {
                                 "&email="       +   user.email                  +
                                 "&loginType="   +   'Facebook'                  +
                                 "&token="       +   localStorage.fbAccessToken  +
-                                "&picture="     +   user.picture.data.url       ;                        
+                                "&picture="     +   String(user.picture.data.url).replace(/&/gi,'%26')      ;                        
                         
                         xhttp = new XMLHttpRequest;
                         xhttp.open("GET", myUrl, false);
@@ -63,7 +66,7 @@ function googleLogin(){
                         "&email="       +   user.email                  +
                         "&loginType="   +   'Google'                    +
                         "&token="       +   localStorage.access_token   +
-                        "&picture="     +   user.picture                ;                        
+                        "&picture="     +   String(user.picture).replace(/&/gi,'%26')      ;                        
                 xhttp = new XMLHttpRequest;
                 xhttp.open("GET", myUrl, false);
                 xhttp.send();
@@ -80,8 +83,8 @@ function googleLogin(){
 }
 
 function register(){  
-    myUrl=  "http://rentme.altervista.org/login.php?" +                
-            "&name="        +   document.getElementById('name').value       +
+    myUrl=  "http://rentme.altervista.org/registration.php?" +                
+            "name="        +   document.getElementById('name').value       +
             "&surname="     +   document.getElementById('surname').value    +
             "&email="       +   document.getElementById('email').value      +
             "&loginType="   +   'rentMe'                                    +
@@ -90,8 +93,26 @@ function register(){
     xhttp.open("GET", myUrl, false);
     xhttp.send();
     jUser=xhttp.response;
-    localStorage.setItem("userData",jUser);
-    window.location.href="home.html";
+    console.log(jUser);
+    if(JSON.parse(jUser).id!=null){
+        console.log("dentro");
+        localStorage.setItem("userData",jUser);
+        //$.mobile.loadPage("home.html"); 
+        $.mobile.changePage('home.html');
+        //window.location="home.html";
+        //window.open("home.html","_self");
+    
+    }else{         
+        console.log("error");
+       //$.mobile.changePage("#");
+        $.mobile.changePage('signUp.html',{reload : true});
+                console.log("error");
+
+        //document.location="signUp.html";
+        //loadPage("signUp.html");
+        //window.open("signUp.html","_self");
+    }
     
 }
+
 

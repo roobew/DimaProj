@@ -1,7 +1,9 @@
 $(document).ready(getInfo);
 
-function getInfo(){  
+function getInfo(){ 
+    console.log("home");
     myUser= JSON.parse(localStorage.getItem("userData"));
+    console.log(myUser);
     $("#uloginType").html(myUser.loginType);   
     $("#uId").html(myUser.id);   
     $("#uName").html(myUser.name);   
@@ -14,6 +16,13 @@ function getInfo(){
 function logout() {
     console.log("logout");
     myUser= JSON.parse(localStorage.getItem("userData"));
+    myUrl=  "http://rentme.altervista.org/logout.php?"       +
+                        "id="           +   myUser.id                     +                
+                        "&email="       +   myUser.email                  ;       
+    console.log(myUser);
+                xhttp = new XMLHttpRequest;
+                xhttp.open("GET", myUrl, false);
+                xhttp.send();                                
     if(myUser.loginType=='Google'){
         $.post('https://accounts.google.com/o/oauth2/revoke', {
                     token: localStorage.access_token
@@ -35,14 +44,15 @@ function logout() {
             openFB.logout(
                 function() {
                     console.log("Logout Successfull");
-                    window.location.href="index.html"
+                    window.location.href="index.html";
                 });
-        }else{
-            //handle rentme logout
-            
-        }
+        }else
+             if(myUser.loginType=='rentMe'){    
+                 localStorage.clear();
+                 window.location.href="index.html";
+             }
         
-}
+} 
 
 /*function getStatus(){
                 openFB.api({

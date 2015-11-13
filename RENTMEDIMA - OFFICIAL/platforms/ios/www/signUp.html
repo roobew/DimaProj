@@ -10,8 +10,7 @@
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 
         <!-- Include the jQuery library -->
-        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>        
         <!-- Include the jQuery Mobile library -->
         <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
         
@@ -35,8 +34,8 @@
                         <input type="text" id="email" placeholder="email" >                                         
                         Password
                         <input type="password" id="password" placeholder="Password">
-                        <button id="Back" data-inline="true" data-theme="b">BACK</button>
-                        <button id="Register" data-inline="true" data-theme="a" onclick="register();">Register</button>
+                        <input type="reset" id="Back" value="BACK" data-inline="true" data-theme="b" onclick="window.history.back();">
+                        <input type=submit value="REGISTER" id="Register" data-inline="true" data-theme="a" onclick="register();">
                 </form>
             </div>     
         </div>

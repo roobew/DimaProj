@@ -17,14 +17,13 @@ function facebookLogin() {
                                 "&email="       +   user.email                  +
                                 "&loginType="   +   'Facebook'                  +
                                 "&token="       +   localStorage.fbAccessToken  +
-                                "&picture="     +   user.picture.data.url       ;                        
+                                "&picture="     +   String(user.picture.data.url).replace(/&/gi,'%26')      ; 
                         
                         xhttp = new XMLHttpRequest;
                         xhttp.open("GET", myUrl, false);
                         xhttp.send();                    
-                        jUser=xhttp.response;
-                        localStorage.setItem("userData",jUser);
-
+                        jUser=xhttp.response;                     
+                        localStorage.setItem("userData",jUser);                        
                         window.location.href="home.html";
                         
                     },
@@ -51,11 +50,7 @@ function googleLogin(){
             }).then(function(data) {
                 //Pass the token to the API call and return a new promise object
                 return googleapi.userInfo({ access_token: data.access_token });
-            }).done(function(user) {
-                //salvare nel DB su rentMe.altervista anche il token 
-            
-               
-                //console.log("salvo nel db");                    
+            }).done(function(user) {                                   
                 myUrl=  "http://rentme.altervista.org/login.php?"       +
                         "id="           +   user.id                     +
                         "&name="        +   user.given_name             +
@@ -63,7 +58,7 @@ function googleLogin(){
                         "&email="       +   user.email                  +
                         "&loginType="   +   'Google'                    +
                         "&token="       +   localStorage.access_token   +
-                        "&picture="     +   user.picture                ;                        
+                        "&picture="     +   String(user.picture).replace(/&/gi,'%26')                      ;                        
                 xhttp = new XMLHttpRequest;
                 xhttp.open("GET", myUrl, false);
                 xhttp.send();
@@ -80,10 +75,21 @@ function googleLogin(){
 }
 
 function login(){
-  //richieta http al server che ritorna il json e un nuovo token
+  myUrl=  "http://rentme.altervista.org/login.php?" +                
+            "email="       +   document.getElementById('email').value      +
+            "&loginType="   +   'rentMe'                                    +
+            "&password="    +   document.getElementById('password').value   ;                        
+    xhttp = new XMLHttpRequest;
+    xhttp.open("GET", myUrl, false);
+    xhttp.send();
+    jUser=xhttp.response;
+    localStorage.setItem("userData",jUser);
+    console.log(jUser);
+    //window.location.href="home.html";
 }
 
 function signUp(){
     console.log("signup");
-    window.location.href="signUp.html";    
+    $.mobile.changePage("signUp.html");
+    //window.location.href="signUp.html";    
 } 
