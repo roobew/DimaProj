@@ -16,13 +16,20 @@ function next(){
                                     "&loginType="   +   'Facebook'                  +
                                     "&token="       +   localStorage.fbAccessToken  +
                                     "&picture="     +   String(user.picture.data.url).replace(/&/gi,'%26')      ; 
-
                             xhttp = new XMLHttpRequest;
                             xhttp.open("GET", myUrl, false);
                             xhttp.send();                    
                             jUser=xhttp.response;                     
-                            localStorage.setItem("userData",jUser);                        
-                            window.location.href="home.html";
+                            if(JSON.parse(jUser).id!=null){                                
+                                localStorage.setItem("userData",jUser);
+                                setTimeout(function(){
+                                            window.location.href="home.html";
+                                },50);                          
+                            }else{                                                                 
+                                setTimeout(function(){
+                                    window.location="login.html";
+                                },100);    
+                            }                        
                         },
                         error: function(data) {                           
                             googleapi.getToken({
@@ -39,15 +46,21 @@ function next(){
                                         "&email="       +   user.email                  +
                                         "&loginType="   +   'Google'                    +
                                         "&token="       +   localStorage.access_token   +
-                                        "&picture="     +   String(user.picture).replace(/&/gi,'%26')                      ;                                                     console.log(myUrl);
+                                        "&picture="     +   String(user.picture).replace(/&/gi,'%26')                      ;                                                     
                                 xhttp = new XMLHttpRequest;
                                 xhttp.open("GET", myUrl, false);
                                 xhttp.send();
                                 jUser=xhttp.response;
-                                console.log(jUser);
-                                localStorage.setItem("userData",jUser);
-
-                                window.location.href="home.html";                               
+                                if(JSON.parse(jUser).id!=null){
+                                    localStorage.setItem("userData",jUser);
+                                    setTimeout(function(){
+                                                window.location.href="home.html";
+                                    },50);                          
+                                }else{                                                              
+                                    setTimeout(function(){
+                                        window.location="login.html";
+                                    },100);                                      
+                                }                             
                             }).fail(function() {
                                 //handle rentMe Login else
                                 window.location.href="login.html";
