@@ -20,16 +20,31 @@ function facebookLogin() {
                                 "&email="       +   user.email                  +
                                 "&loginType="   +   'Facebook'                  +
                                 "&token="       +   localStorage.fbAccessToken  +
-                                "&picture="     +   String(user.picture.data.url).replace(/&/gi,'%26')      ;                        
+                                "&picture="     +   String(user.picture.data.url).replace(/&/gi,'%26')      ; 
                         
                         xhttp = new XMLHttpRequest;
                         xhttp.open("GET", myUrl, false);
                         xhttp.send();                    
-                        jUser=xhttp.response;
-                        localStorage.setItem("userData",jUser);
+                        jUser=xhttp.response;  
+                        if(JSON.parse(jUser).id!=null){
+                            console.log("dentro");
+                            localStorage.setItem("userData",jUser);
+                            setTimeout(function(){
+                                        window.location.href="home.html";
+                            },50);                          
+                        }else{         
+                            console.log("error");  
+                            window.alert("The email already Exist!");
+                            setTimeout(function(){
+                                window.location="login.html";
+                            },100);    
+                            console.log("error");
+                        }
 
+                        /*
+                        localStorage.setItem("userData",jUser);                        
                         window.location.href="home.html";
-                        
+                        */
                     },
                     error:function(result){  
                         console.log(result);
@@ -54,11 +69,7 @@ function googleLogin(){
             }).then(function(data) {
                 //Pass the token to the API call and return a new promise object
                 return googleapi.userInfo({ access_token: data.access_token });
-            }).done(function(user) {
-                //salvare nel DB su rentMe.altervista anche il token 
-            
-               
-                //console.log("salvo nel db");                    
+            }).done(function(user) {                                   
                 myUrl=  "http://rentme.altervista.org/login.php?"       +
                         "id="           +   user.id                     +
                         "&name="        +   user.given_name             +
@@ -66,14 +77,30 @@ function googleLogin(){
                         "&email="       +   user.email                  +
                         "&loginType="   +   'Google'                    +
                         "&token="       +   localStorage.access_token   +
-                        "&picture="     +   String(user.picture).replace(/&/gi,'%26')      ;                        
+                        "&picture="     +   String(user.picture).replace(/&/gi,'%26')                      ;                        
                 xhttp = new XMLHttpRequest;
                 xhttp.open("GET", myUrl, false);
                 xhttp.send();
                 jUser=xhttp.response;
-                localStorage.setItem("userData",jUser);
-                   
+                if(JSON.parse(jUser).id!=null){
+                    console.log("dentro");
+                    localStorage.setItem("userData",jUser);
+                    setTimeout(function(){
+                                window.location.href="home.html";
+                    },50);                          
+                }else{         
+                    console.log("error");    
+                    window.alert("The email already Exist!");
+                    setTimeout(function(){
+                        window.location="login.html";
+                    },100);    
+                    console.log("error");
+                }
+                /*
+                console.log(jUser);
+                localStorage.setItem("userData",jUser);                   
                 window.location.href="home.html";
+                */
             }).fail(function() {
                 //handle error
             });
@@ -93,30 +120,16 @@ function register(){
     xhttp.open("GET", myUrl, false);
     xhttp.send();
     jUser=xhttp.response;
-    console.log(jUser);
-    if(JSON.parse(jUser).id!=null){
-        console.log("dentro");
-        localStorage.setItem("userData",jUser);
-        //$.mobile.loadPage("home.html"); 
-        //$.mobile.changePage('home.html');
+    if(JSON.parse(jUser).id!=null){        
+        localStorage.setItem("userData",jUser);  
         setTimeout(function(){
-                    window.location="home.html";
-            
-        },50);
-        //window.open("home.html","_self");
-    
+                    window.location.href="home.html";            
+        },50);    
     }else{         
-        console.log("error");
-       //$.mobile.changePage("#");
-        //$.mobile.changePage('signUp.html',{reload : true});
         setTimeout(function(){
             window.location="signUp.html";
             
-        },100);    
-
-        //loadPage("signUp.html");
-        //window.open("signUp.html","_self");
-        console.log("error");
+        },100);
     }
     
 }

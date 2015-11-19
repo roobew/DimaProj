@@ -22,10 +22,26 @@ function facebookLogin() {
                         xhttp = new XMLHttpRequest;
                         xhttp.open("GET", myUrl, false);
                         xhttp.send();                    
-                        jUser=xhttp.response;                     
+                        jUser=xhttp.response;  
+                        if(JSON.parse(jUser).id!=null){
+                            console.log("dentro");
+                            localStorage.setItem("userData",jUser);
+                            setTimeout(function(){
+                                        window.location.href="home.html";
+                            },50);                          
+                        }else{         
+                            console.log("error");  
+                         alert("The email already Exist!",'ERROR');
+                            setTimeout(function(){
+                                window.location="login.html";
+                            },100);    
+                            console.log("error");
+                        }
+
+                        /*
                         localStorage.setItem("userData",jUser);                        
                         window.location.href="home.html";
-                        
+                        */
                     },
                     error:function(result){  
                         console.log(result);
@@ -63,9 +79,25 @@ function googleLogin(){
                 xhttp.open("GET", myUrl, false);
                 xhttp.send();
                 jUser=xhttp.response;
-                localStorage.setItem("userData",jUser);
-                   
+                if(JSON.parse(jUser).id!=null){
+                    console.log("dentro");
+                    localStorage.setItem("userData",jUser);
+                    setTimeout(function(){
+                                window.location.href="home.html";
+                    },50);                          
+                }else{         
+                    console.log("error");    
+                    window.alert("The email already Exist!");
+                    setTimeout(function(){
+                        window.location="login.html";
+                    },100);    
+                    console.log("error");
+                }
+                /*
+                console.log(jUser);
+                localStorage.setItem("userData",jUser);                   
                 window.location.href="home.html";
+                */
             }).fail(function() {
                 //handle error
             });
@@ -83,9 +115,24 @@ function login(){
     xhttp.open("GET", myUrl, false);
     xhttp.send();
     jUser=xhttp.response;
+    if(JSON.parse(jUser).id!=null){
+        console.log("dentro");
+        localStorage.setItem("userData",jUser);
+        setTimeout(function(){
+                    window.location.href="home.html";
+        },50);                          
+    }else{                   
+        window.alert("The email already Exist!");
+        setTimeout(function(){
+            window.location="login.html";
+        },100);    
+        console.log("error");
+    }
+    /*
     localStorage.setItem("userData",jUser);
     console.log(jUser);
     //window.location.href="home.html";
+    */
 }
 
 function signUp(){
