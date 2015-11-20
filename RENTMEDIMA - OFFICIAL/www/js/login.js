@@ -138,7 +138,7 @@ function register(){
 
 function reload(){
     console.log("RELOAD");
-     setTimeout(function(){
+     setTimeout(function(){         
             window.location.reload(true);
         },50);
 }
