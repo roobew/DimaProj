@@ -29,26 +29,16 @@ function facebookLogin() {
                             setTimeout(function(){
                                         window.location.href="home.html";
                             },50);                          
-                        }else{         
-                            console.log("error");  
-                            alert("Something Wrong!!");
-                            setTimeout(function(){
-                                window.location="login.html";
-                            },100);    
-                            console.log("error");
+                        }else{                                   
+                            navigator.notification.alert(JSON.parse(jUser).message, reload, JSON.parse(jUser).title);      
                         }
-
-                        /*
-                        localStorage.setItem("userData",jUser);                        
-                        window.location.href="home.html";
-                        */
                     },
                     error:function(result){  
                         console.log(result);
                     }                                
                 });
             } else {
-                alert('Facebook login failed: ' + response.error);
+                //alert('Facebook login failed: ' + response.error);
             }
         }, {scope: 'email'});
                         
@@ -86,18 +76,8 @@ function googleLogin(){
                                 window.location.href="home.html";
                     },50);                          
                 }else{         
-                    console.log("error");    
-                    alert("Something Wrong!!");
-                    setTimeout(function(){
-                        window.location="login.html";
-                    },100);    
-                    console.log("error");
-                }
-                /*
-                console.log(jUser);
-                localStorage.setItem("userData",jUser);                   
-                window.location.href="home.html";
-                */
+                    navigator.notification.alert(JSON.parse(jUser).message, reload, JSON.parse(jUser).title);       
+                }                
             }).fail(function() {
                 //handle error
             });
@@ -122,17 +102,8 @@ function login(){
                     window.location.href="home.html";
         },50);                          
     }else{                   
-        window.alert("The email already Exist!");
-        setTimeout(function(){
-            window.location="login.html";
-        },100);    
-        console.log("error");
+        navigator.notification.alert(JSON.parse(jUser).message, reload, JSON.parse(jUser).title);    
     }
-    /*
-    localStorage.setItem("userData",jUser);
-    console.log(jUser);
-    //window.location.href="home.html";
-    */
 }
 
 function signUp(){
@@ -140,3 +111,34 @@ function signUp(){
     //$.mobile.changePage("signUp.html");
     window.location.href="signUp.html";    
 } 
+
+function register(){  
+    myUrl=  "http://rentme.altervista.org/registration.php?" +                
+            "name="        +   document.getElementById('name').value       +
+            "&surname="     +   document.getElementById('surname').value    +
+            "&email="       +   document.getElementById('email').value      +
+            "&loginType="   +   'rentMe'                                    +
+            "&password="    +   document.getElementById('password').value   ;                        
+    xhttp = new XMLHttpRequest;
+    xhttp.open("GET", myUrl, false);
+    xhttp.send();
+    jUser=xhttp.response;
+    if(JSON.parse(jUser).id!=null){        
+        localStorage.setItem("userData",jUser);  
+        setTimeout(function(){
+                    window.location.href="home.html";            
+        },50);    
+    }else{     
+        console.log("ERROR");
+        console.log(jUser);  
+        navigator.notification.alert(JSON.parse(jUser).message, reload, JSON.parse(jUser).title);    
+    }
+    
+}
+
+function reload(){
+    console.log("RELOAD");
+     setTimeout(function(){
+            window.location.reload(true);
+        },50);
+}
