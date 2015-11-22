@@ -23,11 +23,11 @@ function next(){
                             if(JSON.parse(jUser).id!=null){                                
                                 localStorage.setItem("userData",jUser);
                                 setTimeout(function(){
-                                            window.location.href="home.html";
+                                            window.location.href="html/new_home.html";
                                 },50);                          
                             }else{                                                                 
                                 setTimeout(function(){
-                                    window.location="login.html";
+                                    window.location="html/startPage.html";
                                 },100);    
                             }                        
                         },
@@ -54,16 +54,20 @@ function next(){
                                 if(JSON.parse(jUser).id!=null){
                                     localStorage.setItem("userData",jUser);
                                     setTimeout(function(){
-                                                window.location.href="home.html";
+                                                window.location.href="html/new_home.html";
                                     },50);                          
                                 }else{                                                              
                                     setTimeout(function(){
-                                        window.location="login.html";
+                                        //window.location="login.html";
+                                        window.location="html/startPage.html";
                                     },100);                                      
                                 }                             
-                            }).fail(function() {
+                            })
+                                 
+                              .fail(function() {
                                 //handle rentMe Login else
-                                window.location.href="login.html";
+                                //window.location.href="login.html";
+                                window.location.href="html/startPage.html";
                             });                                           
                         }
                     }),1500);
