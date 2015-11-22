@@ -1,0 +1,84 @@
+#topFixedDiv{
+    display: block;
+    height: 2em;
+    width: 100%;
+    top: 0;
+    position: fixed;
+    z-index: 2;
+    background-color: #1a8cff;
+}
+
+#contentDiv{
+    height: 200%;
+    width: 100%;
+    margin-top: 2.5em; 
+    overflow-y: scroll;
+    z-index: 1;
+}
+ 
+/* BARRA BLU IN ALTO  */
+#fixedBottomDiv{
+    display: block;
+    height: 3em;
+    width: 100%;
+    bottom: 0;
+    position: fixed;
+    z-index:2;
+    background-color: #cccccc;
+}
+
+/* BARRA HOME IN ALTO, SOTTO QUELLA BLU */
+#appTopRow{
+    height: 1.5em;
+    width: 100%;
+}
+
+#userImage{
+    height: 100%;
+    width: 100%;
+    border: 1px solid black;
+}
+
+.elementTop{
+    line-height: 2.5em;
+}
+
+/* BARRA NAVIGAZIONE IN BASSO   */
+#rowBottomBar{
+    height: 100%;
+    border-top: 2px solid black;   
+    :border-bottom: 2px solid black;   
+}
+
+.myColumn{
+    display: inline-block;
+    height: 100%;
+    width: 20%;
+    :border-left: 1px solid black;
+    :border-right: 1px solid black;
+}
+
+.rowIcon{
+    height: 1.8em;
+}
+
+.icon{
+    padding-top: 5%;
+    font-size: 1.4em; 
+}
+
+.textIcon{
+    width:100%;
+    margin-top: 0.2em;
+    height: 1.2em;
+    line-height: 0.7em;
+    font-size: 0.8em;
+}
+
+.tooLongText{
+    margin-left: -0.5em;
+}
+
+.selectedTab{
+    color: #1a8cff;   
+}
