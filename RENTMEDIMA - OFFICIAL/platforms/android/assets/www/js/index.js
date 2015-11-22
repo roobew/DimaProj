@@ -27,7 +27,7 @@ function next(){
                                 },50);                          
                             }else{                                                                 
                                 setTimeout(function(){
-                                    window.location="login.html";
+                                    window.location="startPage.html";
                                 },100);    
                             }                        
                         },
@@ -59,11 +59,15 @@ function next(){
                                 }else{                                                              
                                     setTimeout(function(){
                                         window.location="login.html";
+                                        //window.location="startPage.html";
                                     },100);                                      
                                 }                             
-                            }).fail(function() {
+                            })
+                                 
+                              .fail(function() {
                                 //handle rentMe Login else
-                                window.location.href="login.html";
+                                //window.location.href="login.html";
+                                window.location.href="startPage.html";
                             });                                           
                         }
                     }),1500);

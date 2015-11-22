@@ -1,6 +1,22 @@
-$(document).ready(function(){
-    console.log("LOGIN");
+$(function() {
+    console.log("START PAGE");
     openFB.init({appId: '867006893383189', tokenStore: window.localStorage}); 
+    
+    $('#login-form-link').click(function(e) {
+		$("#login-form").delay(100).fadeIn(100);
+ 		$("#register-form").fadeOut(100);
+		$('#register-form-link').removeClass('active');
+		$(this).addClass('active');
+		e.preventDefault();
+	});
+	$('#register-form-link').click(function(e) {
+		$("#register-form").delay(100).fadeIn(100);
+ 		$("#login-form").fadeOut(100);
+		$('#login-form-link').removeClass('active');
+		$(this).addClass('active');
+		e.preventDefault();
+	});
+
 });
 
 function facebookLogin() {
@@ -86,11 +102,13 @@ function googleLogin(){
         });   
 }
 
+// Funziona, a parte il messaggio di errore che si intravede
 function login(){
+    //console.log("Dentro login function");
   myUrl=  "http://rentme.altervista.org/login.php?" +                
-            "email="       +   document.getElementById('email').value      +
+            "email="       +   document.getElementById('emailLogin').value      +
             "&loginType="   +   'rentMe'                                    +
-            "&password="    +   document.getElementById('password').value   ;                        
+            "&password="    +   document.getElementById('passwordLogin').value   ;                        
     xhttp = new XMLHttpRequest;
     xhttp.open("GET", myUrl, false);
     xhttp.send();
@@ -99,26 +117,23 @@ function login(){
         console.log("dentro");
         localStorage.setItem("userData",jUser);
         setTimeout(function(){
-                    window.location.href="home.html";
+                    window.location.href="html/new_home.html";
         },50);                          
     }else{                   
         navigator.notification.alert(JSON.parse(jUser).message, reload, JSON.parse(jUser).title);    
     }
 }
 
-function signUp(){
-    console.log("signup");
-    //$.mobile.changePage("signUp.html");
-    window.location.href="signUp.html";    
-} 
-
-function register(){  
+function register(){   
+    console.log("dentro register");
     myUrl=  "http://rentme.altervista.org/registration.php?" +                
-            "name="        +   document.getElementById('name').value       +
-            "&surname="     +   document.getElementById('surname').value    +
-            "&email="       +   document.getElementById('email').value      +
+            "name="        +   document.getElementById('nameReg').value       +
+            "&surname="     +   document.getElementById('surnameReg').value    +
+            "&email="       +   document.getElementById('emailReg').value      +
             "&loginType="   +   'rentMe'                                    +
-            "&password="    +   document.getElementById('password').value   ;                        
+            "&password="    +   document.getElementById('passwordReg').value   ;                       
+    console.log("ciaaaaaooo!!11!!");
+
     xhttp = new XMLHttpRequest;
     xhttp.open("GET", myUrl, false);
     xhttp.send();
@@ -126,7 +141,7 @@ function register(){
     if(JSON.parse(jUser).id!=null){        
         localStorage.setItem("userData",jUser);  
         setTimeout(function(){
-                    window.location.href="home.html";            
+                    window.location.href="html/new_home.html";            
         },50);    
     }else{     
         console.log("ERROR");
