@@ -36,31 +36,50 @@
 #homeTopRow{
     height: 3em;
     width: 100%;
-    margin-left: 1%;
+    margin-left: 0.05em;
     :border-bottom: 1em solid black;
 }
 
+
+/*
 #imageProfileDiv, #scrittaRentMeDiv, #navbarImageDiv{
     height: 3em;
     text-align: center;
 }
+*/
 
-#uImg, #scrittaRentMe{
-    display:inline-block;
-    height:100%;
-    vertical-align: middle;
+#imageProfileDiv{
+    display: inline-block;
+    height: 3.3em;
+    width: 15%;
+    text-align: center;
+    border: 0;
 }
 
-#navbarImage{
+#scrittaRentMeDiv{
+    display: inline-block;
+    height: 3em;
+    width: 70%;
+    text-align: center;   
+}
+
+#navbarImageDiv{
+    display: inline-block;
+    height: 2.6em;
+    width: 15%;
+    text-align: center;  
+    border: 0;
+}
+
+#uImg, #scrittaRentMe, #navbarImage{
     display:inline-block;
-    height: 80%;
-    width: 80%;
+    height:100%;
+    width: 100%;
     vertical-align: middle;
-    padding-top: 12%;
 }
 
 #uImg{
-    border-radius: 0.8em;   
+    border-radius: 0.4em;   
 }
 
 #spaceDiv{
