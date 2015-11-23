@@ -35,17 +35,25 @@
         
         <div id="contentDiv">
             <div class="header">
-                <div class="container">
-                    <div class="header-top">
+                <div class="myContainer">
+                    <div class="row" id="homeTopRow">
                         
-                        <div class="logo">
-                            <a href="index.html">RENT ME</a>
+                        <div class="col-xs-2 thumbnail" id="imageProfileDiv">
+                            <img class="img-responsive" src="../img/profile.jpg" id="uImg"/>
                         </div>
-
-                        <div class="clearfix"></div>
-
+                        
+                        <div class="col-xs-8 thumbnail" id="scrittaRentMeDiv">
+<!--                            <p class="text-center"> RENT ME</p>-->
+                           <img class="img-responsive" src="../img/prova.png" id="scrittaRentMe"/>
+                        </div>
+                        
+                        <div class="col-xs-2 thumbnail" id="navbarImageDiv">
+                            <img class="img-responsive" src="../img/navbar.png" id="navbarImage"/>
+                        </div>
+                        
                     </div>
-                    <h id="uloginType">Login Type</h> 
+                    
+                    <!--<h id="uloginType">Login Type</h> 
                     <br>
                     <h id= uName>nome</h>
                     <br>
@@ -58,51 +66,9 @@
                     <br>
                     <h id=uToken>token</h>
                     <br>
-                    <button id="logout" onclick="logout();" >LOGOUT</button>
-<!--
-                    <div class="row">
-                            
-                        <div class="col-xs-2 text-center">
-                            <h id="uloginType">ID</h>
-                        </div>
-
-                        <div class="col-xs-2 text-center">
-                            <h id= uName>nome</h>
-                        </div>
-
-                        <div class="col-xs-2 text-center">
-                            <h id= uSurname>Cognome</h>
-                        </div>
-
-                        <div class="col-xs-2 text-center">
-                            <h id=uMail>mail</h>
-                        </div>
-
-
-                        <div class="col-xs-2 text-center">
-                            <img id="uImg" width="50px" height="50px" ></img>
-                        </div>
-                    </div>            
-
-                    <div class="row" style="margin-top:0.4em;">
-                        <div class="col-xs-12 text-center">
-                            <h id= uId>ID</h>
-                        </div>
-                    </div>
+                    <button id="logout" onclick="logout();" >LOGOUT</button>-->
                     
-                    <div class="row" style="margin-top:0.4em;">
-                        <div class="col-xs-12 text-center">
-                            <h id=uToken>token</h>
-                        </div>
-                    </div>
-
-                    <button id="logout" onclick="logout();" >LOGOUT</button>
-                        
-                    <div class="clearfix"></div>
--->
-                    
-<!-- 
-                    <div class="header-botom">
+                    <!-- <div class="header-botom">
                         <div class="content white">
                         <nav class="navbar navbar-default nav-menu" role="navigation">
                             <div class="navbar-header">
@@ -191,7 +157,7 @@
                                 </ul>
                                 <div class="clearfix"></div>
                             </div>
-                            <!--/.navbar-collapse
+                            </.navbar-collapse
                             <div class="clearfix"></div>
                         </nav>
                             <div class="clearfix"></div> 
@@ -202,6 +168,8 @@
                         
                 </div>
             </div>
+            <div id="spaceDiv"></div>
+            
             <div class="header-end">
                 <div class="container">
                     <div id="myCarousel" class="carousel slide" data-ride="carousel">

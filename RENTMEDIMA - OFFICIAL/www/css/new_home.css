@@ -11,7 +11,7 @@
 #contentDiv{
     height: 200%;
     width: 100%;
-    margin-top: 2.5em; 
+    margin-top: 2.2em; 
     overflow-y: scroll;
     z-index: 1;
 }
@@ -28,22 +28,46 @@
 }
 
 /* BARRA HOME IN ALTO, SOTTO QUELLA BLU */
-#appTopRow{
-    height: 1.5em;
+
+.myContainer{
+    width: 100%;   
+}
+
+#homeTopRow{
+    height: 3em;
     width: 100%;
+    margin-left: 1%;
+    :border-bottom: 1em solid black;
 }
 
-#userImage{
-    height: 100%;
-    width: 100%;
-    border: 1px solid black;
+#imageProfileDiv, #scrittaRentMeDiv, #navbarImageDiv{
+    height: 3em;
+    text-align: center;
 }
 
-.elementTop{
-    line-height: 2.5em;
+#uImg, #scrittaRentMe{
+    display:inline-block;
+    height:100%;
+    vertical-align: middle;
 }
 
-/* BARRA NAVIGAZIONE IN BASSO   */
+#navbarImage{
+    display:inline-block;
+    height: 80%;
+    width: 80%;
+    vertical-align: middle;
+    padding-top: 12%;
+}
+
+#uImg{
+    border-radius: 0.8em;   
+}
+
+#spaceDiv{
+    height: 2em;   
+}
+
+/**** BARRA NAVIGAZIONE IN BASSO   ****/
 #rowBottomBar{
     height: 100%;
     border-top: 2px solid black;   
