@@ -1,5 +1,5 @@
 $(document).on('deviceready', function() {
-    //console.log("Device ready");
+    console.log("INDEX");
     openFB.init({appId: '867006893383189', tokenStore: window.localStorage});
     next();
 });
@@ -23,11 +23,11 @@ function next(){
                             if(JSON.parse(jUser).id!=null){                                
                                 localStorage.setItem("userData",jUser);
                                 setTimeout(function(){
-                                            window.location.href="home.html";
+                                            window.location.href="html/new_home.html";
                                 },50);                          
                             }else{                                                                 
                                 setTimeout(function(){
-                                    window.location="startPage.html";
+                                    window.location="html/startPage.html";
                                 },100);    
                             }                        
                         },
@@ -54,12 +54,12 @@ function next(){
                                 if(JSON.parse(jUser).id!=null){
                                     localStorage.setItem("userData",jUser);
                                     setTimeout(function(){
-                                                window.location.href="home.html";
+                                                window.location.href="html/new_home.html";
                                     },50);                          
                                 }else{                                                              
                                     setTimeout(function(){
-                                        window.location="login.html";
-                                        //window.location="startPage.html";
+                                        //window.location="login.html";
+                                        window.location="html/startPage.html";
                                     },100);                                      
                                 }                             
                             })
@@ -67,7 +67,7 @@ function next(){
                               .fail(function() {
                                 //handle rentMe Login else
                                 //window.location.href="login.html";
-                                window.location.href="startPage.html";
+                                window.location.href="html/startPage.html";
                             });                                           
                         }
                     }),1500);

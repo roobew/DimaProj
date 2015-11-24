@@ -32,7 +32,7 @@ function logout() {
                     //localStorage.removeItem('access_token');
                     localStorage.clear();
                     //var link="../index.html";
-                    var link="index.html";            
+                    var link="../index.html";            
                     window.location.href=link;
             })
             .fail(function(response) {
@@ -44,12 +44,12 @@ function logout() {
             openFB.logout(
                 function() {
                     console.log("Logout Successfull");
-                    window.location.href="index.html";
+                    window.location.href="../index.html";
                 });
         }else
              if(myUser.loginType=='rentMe'){    
                  localStorage.clear();
-                 window.location.href="index.html";
+                 window.location.href="../index.html";
              }
         
 } 

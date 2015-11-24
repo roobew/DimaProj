@@ -43,7 +43,7 @@ function facebookLogin() {
                             console.log("dentro");
                             localStorage.setItem("userData",jUser);
                             setTimeout(function(){
-                                        window.location.href="home.html";
+                                        window.location.href="new_home.html";
                             },50);                          
                         }else{                                   
                             navigator.notification.alert(JSON.parse(jUser).message, reload, JSON.parse(jUser).title);      
@@ -89,7 +89,7 @@ function googleLogin(){
                     console.log("dentro");
                     localStorage.setItem("userData",jUser);
                     setTimeout(function(){
-                                window.location.href="home.html";
+                                window.location.href="new_home.html";
                     },50);                          
                 }else{         
                     navigator.notification.alert(JSON.parse(jUser).message, reload, JSON.parse(jUser).title);       
@@ -117,7 +117,7 @@ function login(){
         console.log("dentro");
         localStorage.setItem("userData",jUser);
         setTimeout(function(){
-                    window.location.href="html/new_home.html";
+                    window.location.href="new_home.html";
         },50);                          
     }else{                   
         navigator.notification.alert(JSON.parse(jUser).message, reload, JSON.parse(jUser).title);    
@@ -141,7 +141,7 @@ function register(){
     if(JSON.parse(jUser).id!=null){        
         localStorage.setItem("userData",jUser);  
         setTimeout(function(){
-                    window.location.href="html/new_home.html";            
+                    window.location.href="new_home.html";            
         },50);    
     }else{     
         console.log("ERROR");

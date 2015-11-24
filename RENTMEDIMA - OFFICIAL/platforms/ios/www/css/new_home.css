@@ -11,12 +11,12 @@
 #contentDiv{
     height: 200%;
     width: 100%;
-    margin-top: 2.5em; 
+    margin-top: 2.2em; 
     overflow-y: scroll;
     z-index: 1;
 }
  
-/* BARRA BLU IN ALTO  */
+/**** BARRA NAVIGAZIONE IN BASSO  ****/
 #fixedBottomDiv{
     display: block;
     height: 3em;
@@ -24,29 +24,64 @@
     bottom: 0;
     position: fixed;
     z-index:2;
-    background-color: #cccccc;
+    background-color: #e0e0e0;
 }
 
-/* BARRA HOME IN ALTO, SOTTO QUELLA BLU */
-#appTopRow{
-    height: 1.5em;
+/**** BARRA HOME IN ALTO, SOTTO QUELLA BLU ****/
+
+.myContainer{
+    width: 100%;   
+}
+
+#homeTopRow{
+    height: 3em;
     width: 100%;
+    margin-left: 0.05em;
+    :border-bottom: 1em solid black;
 }
 
-#userImage{
-    height: 100%;
+#imageProfileDiv{
+    display: inline-block;
+    height: 3.3em;
+    width: 15%;
+    text-align: center;
+    border: 0;
+}
+
+#scrittaRentMeDiv{
+    display: inline-block;
+    height: 3em;
+    width: 70%;
+    text-align: center;   
+}
+
+#navbarImageDiv{
+    display: inline-block;
+    height: 2.6em;
+    width: 15%;
+    text-align: center;  
+    border: 0;
+}
+
+#uImg, #scrittaRentMe, #navbarImage{
+    display:inline-block;
+    height:100%;
     width: 100%;
-    border: 1px solid black;
+    vertical-align: middle;
 }
 
-.elementTop{
-    line-height: 2.5em;
+#uImg{
+    border-radius: 0.4em;   
 }
 
-/* BARRA NAVIGAZIONE IN BASSO   */
+#spaceDiv{
+    height: 1em;   
+}
+
+/**** BARRA NAVIGAZIONE IN BASSO   ****/
 #rowBottomBar{
     height: 100%;
-    border-top: 2px solid black;   
+    border-top: 1px solid black;   
     :border-bottom: 2px solid black;   
 }
 
@@ -82,3 +117,10 @@
 .selectedTab{
     color: #1a8cff;   
 }
+
+/**** CONTENUTO PAGINA ****/
+#recentNotice{
+    margin-bottom: 0.5em;   
+}
+
+
