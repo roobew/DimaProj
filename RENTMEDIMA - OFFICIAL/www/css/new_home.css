@@ -14,6 +14,7 @@
     margin-top: 2.2em; 
     overflow-y: scroll;
     z-index: 1;
+    background-color: burlywood;
 }
  
 /**** BARRA NAVIGAZIONE IN BASSO  ****/
@@ -30,8 +31,9 @@
 /**** BARRA HOME IN ALTO, SOTTO QUELLA BLU ****/
 
 .myContainer{
-    width: 100%;   
+    width: 100%;
 }
+
 
 #homeTopRow{
     height: 3em;
@@ -46,6 +48,7 @@
     width: 15%;
     text-align: center;
     border: 0;
+    padding: 0;
 }
 
 #scrittaRentMeDiv{
@@ -57,10 +60,12 @@
 
 #navbarImageDiv{
     display: inline-block;
-    height: 2.6em;
-    width: 15%;
+    height: 2.2em;
+    width: 12%;
     text-align: center;  
     border: 0;
+    padding: 0;
+    margin-top: 0.2em;
 }
 
 #uImg, #scrittaRentMe, #navbarImage{
@@ -107,7 +112,7 @@
     margin-top: 0.2em;
     height: 1.2em;
     line-height: 0.7em;
-    font-size: 0.8em;
+    font-size: 0.7em;
 }
 
 .tooLongText{
