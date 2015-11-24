@@ -1,5 +1,5 @@
 $(document).on('deviceready', function() {
-    //console.log("Device ready");
+    console.log("INDEX");
     openFB.init({appId: '867006893383189', tokenStore: window.localStorage});
     next();
 });

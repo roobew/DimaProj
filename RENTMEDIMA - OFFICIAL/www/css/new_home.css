@@ -16,7 +16,7 @@
     z-index: 1;
 }
  
-/* BARRA BLU IN ALTO  */
+/**** BARRA NAVIGAZIONE IN BASSO  ****/
 #fixedBottomDiv{
     display: block;
     height: 3em;
@@ -24,10 +24,10 @@
     bottom: 0;
     position: fixed;
     z-index:2;
-    background-color: #cccccc;
+    background-color: #e0e0e0;
 }
 
-/* BARRA HOME IN ALTO, SOTTO QUELLA BLU */
+/**** BARRA HOME IN ALTO, SOTTO QUELLA BLU ****/
 
 .myContainer{
     width: 100%;   
@@ -39,14 +39,6 @@
     margin-left: 0.05em;
     :border-bottom: 1em solid black;
 }
-
-
-/*
-#imageProfileDiv, #scrittaRentMeDiv, #navbarImageDiv{
-    height: 3em;
-    text-align: center;
-}
-*/
 
 #imageProfileDiv{
     display: inline-block;
@@ -83,13 +75,13 @@
 }
 
 #spaceDiv{
-    height: 2em;   
+    height: 1em;   
 }
 
 /**** BARRA NAVIGAZIONE IN BASSO   ****/
 #rowBottomBar{
     height: 100%;
-    border-top: 2px solid black;   
+    border-top: 1px solid black;   
     :border-bottom: 2px solid black;   
 }
 
@@ -125,3 +117,10 @@
 .selectedTab{
     color: #1a8cff;   
 }
+
+/**** CONTENUTO PAGINA ****/
+#recentNotice{
+    margin-bottom: 0.5em;   
+}
+
+
