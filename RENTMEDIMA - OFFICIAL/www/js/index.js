@@ -65,11 +65,7 @@ function next(){
                             })
                                  
                               .fail(function() {
-<<<<<<< HEAD
-                                //handle rentMe Login else
-                                //window.location.href="login.html";
-                                window.location.href="startPage.html";
-=======
+
                                 console.log("renteme check login");
                                  myUser= JSON.parse(localStorage.getItem("userData"));
                                 console.log(myUser);
@@ -90,15 +86,14 @@ function next(){
                                 if(JSON.parse(jUser).id!=null){
                                     localStorage.setItem("userData",jUser);
                                     setTimeout(function(){
-                                                window.location.href="html/new_home.html";
+                                                window.location.href="new_home.html";
                                     },50);                          
                                 }else{                                                              
                                     setTimeout(function(){
                                         //window.location="login.html";
-                                        window.location="html/startPage.html";
+                                        window.location="startPage.html";
                                     },100); 
                                 }
->>>>>>> origin/master
                             });                                           
                         }
                     }),1500);
