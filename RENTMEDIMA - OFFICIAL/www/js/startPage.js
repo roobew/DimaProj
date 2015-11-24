@@ -49,7 +49,8 @@ function facebookLogin() {
                             navigator.notification.alert(JSON.parse(jUser).message, reload, JSON.parse(jUser).title);      
                         }
                     },
-                    error:function(result){  
+                    error:function(result){ 
+                        console.log("errore trovato!!!");
                         console.log(result);
                     }                                
                 });
