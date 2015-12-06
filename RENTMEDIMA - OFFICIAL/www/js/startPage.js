@@ -162,12 +162,13 @@ function reload(){
 function recoverPassword(){
     console.log("recupero password");
     var miaEmail = document.getElementById('emailForgotten').value ;
-    //console.log(miaEmail);
+    console.log(miaEmail);
     
-    if(emailToRetrieveField==""){
+    if(miaEmail==""){
         alert("campo vuoto");
     }
     else{
+        /*
         myUrl=  "http://rentme.altervista.org/recoverPassword.php?emailToRetrieve="+miaEmail; 
     
         xhttp = new XMLHttpRequest;
@@ -177,7 +178,29 @@ function recoverPassword(){
 
         alert("Ti abbiamo inviato una mail per recupero della password.");
 
-        window.location.href="startPage.html";
+        window.location.href="startPage.html";*/
+        
+        $.ajax({
+           
+            method: "POST",
+            //dataType: "json", //type of data
+            crossDomain: true,
+            url: "http://rentme.altervista.org/recoverPassword.php", //Relative or absolute path to file.php file
+            data: {emailToRetrieve:miaEmail},
+
+            success: function(response) {
+                
+                alert("Ti abbiamo inviato una mail per recupero della password.");
+
+                window.location.href="startPage.html";
+            },
+
+            error: function(request,error)
+            {
+                console.log(request+":"+error);
+            }
+        });
+   // */
     }
     
     /*

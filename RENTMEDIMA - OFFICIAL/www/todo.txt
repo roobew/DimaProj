@@ -1,6 +1,6 @@
 DA FARE:
 •   start page: 
-            -   password dimenticata
+            -   password dimenticata 
             -   img fb + gp da sistemare dimensioni
 •   index page:
             -   sistemare logo con Ps

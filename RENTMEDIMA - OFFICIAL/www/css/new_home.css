@@ -1,11 +1,21 @@
 #topFixedDiv{
     display: block;
-    height: 2em;
+    height: 4em;
     width: 100%;
     top: 0;
     position: fixed;
     z-index: 2;
     background-color: #1a8cff;
+}
+
+.header{
+    display: block;
+    height: 2em;
+    width: 100%;
+    :background-color: red;
+    position: fixed;
+    top: 1.5em;
+    z-index: 3;   
 }
 
 #contentDiv{
@@ -14,8 +24,10 @@
     margin-top: 2.2em; 
     overflow-y: scroll;
     z-index: 1;
-    background-color: burlywood;
+    ::background-color: burlywood;
 }
+
+
  
 /**** BARRA NAVIGAZIONE IN BASSO  ****/
 #fixedBottomDiv{
@@ -25,7 +37,7 @@
     bottom: 0;
     position: fixed;
     z-index:2;
-    background-color: #e0e0e0;
+    background-color: #e9e9e9;
 }
 
 /**** BARRA HOME IN ALTO, SOTTO QUELLA BLU ****/
@@ -53,19 +65,18 @@
 
 #scrittaRentMeDiv{
     display: inline-block;
-    height: 3em;
-    width: 70%;
-    text-align: center;   
+    height: auto;
+    width: auto;
 }
 
 #navbarImageDiv{
     display: inline-block;
-    height: 2.2em;
-    width: 12%;
-    text-align: center;  
+    height: 1.8em;
+    width: 2.3em;
     border: 0;
     padding: 0;
-    margin-top: 0.2em;
+    :margin-top: 0.2em;
+    margin-left: 0.5em;
 }
 
 #uImg, #scrittaRentMe, #navbarImage{
@@ -86,7 +97,7 @@
 /**** BARRA NAVIGAZIONE IN BASSO   ****/
 #rowBottomBar{
     height: 100%;
-    border-top: 1px solid black;   
+    :border-top: 1px solid black;   
     :border-bottom: 2px solid black;   
 }
 
