@@ -1,0 +1,167 @@
+
+h4, h5, h6,
+h1, h2, h3 {margin: 0;}
+ul, ol, li{margin: 0; padding: 0;}
+p {margin: 0;padding: 0;}
+body{
+	margin:0;
+	padding:0;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Didact Gothic';
+    font-weight: 400;
+}
+
+
+/****  STRUTTURA GENERALE PAGINA  ****/
+#topFixedDiv{
+    display: block;
+    height: 4.5em;
+    width: 100%;
+    top: 0;
+    position: fixed;
+    z-index: 2;
+    background-color: #1a8cff;
+}
+
+.header{
+    display: block;
+    height: 2em;
+    width: 100%;
+    :background-color: red;
+    position: fixed;
+    top: 1.5em;
+    z-index: 3;   
+}
+
+#contentDiv{
+    height: 200%;
+    width: 100%;
+    margin-top: 4em; 
+    overflow-y: scroll;
+    z-index: 1;
+    :background-color: burlywood;
+}
+
+/**** BARRA NAVIGAZIONE IN BASSO  ****/
+#fixedBottomDiv{
+    display: block;
+    height: 3em;
+    width: 100%;
+    bottom: 0;
+    position: fixed;
+    z-index:2;
+    background-color: #e9e9e9;
+}
+
+/**** INTESTAZIONE APP: NAVBAR + NOME APP ****/
+
+#homeTopRow{
+    height: 3em;
+    width: 100%;
+    margin-left: 0.05em;
+    :border-bottom: 1em solid black;
+}
+
+#scrittaRentMeDiv{
+    display: inline-block;
+    height: auto;
+    width: auto;
+    margin-top: 0.6em;
+}
+
+#navbarImageDiv{
+    display: inline-block;
+    height: 1.5em;
+    width: 1.7em;
+    border: 0;
+    padding: 0;
+    margin-top: 0.8em;
+    margin-left: 0.5em;
+}
+
+#uImg, #scrittaRentMe, #navbarImage{
+    display:inline-block;
+    height:100%;
+    width: 100%;
+    vertical-align: middle;
+}
+
+
+/**** BARRA NAVIGAZIONE IN BASSO   ****/
+#rowBottomBar{
+    height: 100%;
+    :border-top: 1px solid black;   
+    :border-bottom: 2px solid black;   
+}
+
+.myColumn{
+    display: inline-block;
+    height: 100%;
+    width: 20%;
+    padding: 0;
+}
+
+.rowIcon{
+    height: 1.8em;
+}
+
+.icon{
+    :padding-top: 5%;
+    font-size: 1.6em;
+    margin-top: 0.1em;
+    color: #545454;
+}
+
+.textIcon{
+    width: 100%;
+    height: 100%;
+    :line-height: 0.7em;
+    font-size: 0.7em;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    margin-top: 0.2em;
+    color: #4c4c4c;
+}
+
+
+.selectedTab{
+    color: #1a8cff;   
+}
+
+ body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color:#000;
+        margin: 0;
+        padding: 0;
+}
+.swiper-container {
+    width: 500px;
+    height: 300px;
+    margin: 20px auto;
+}
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
