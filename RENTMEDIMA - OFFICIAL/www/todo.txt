@@ -5,9 +5,9 @@ DA FARE:
 •   index page:
             -   sistemare logo con Ps
 •   new_home page:
-            -   barra blu alta da sistemare (menù a sx, e banner)
-            -   togliere img profilo e aggiungerla nel menu con i dati utente e le impostazioni(cambio dati)
-            -   menu a comparsa da sx:
+            -   barra blu alta da sistemare (menù a sx, e banner) (FATTO)
+            -   togliere img profilo e aggiungerla nel menu con i dati utente e le                  impostazioni(cambio dati)  (FATTO)
+            -   menu a comparsa da sx: (FATTO)
                                     *   foto profilo user
                                     *   dati personali
                                     *   modifica dati

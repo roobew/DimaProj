@@ -14,7 +14,7 @@ function getInfo(){
 }
 
 function logout() {
-    console.log("logout");
+    console.log("Logout function");
     myUser= JSON.parse(localStorage.getItem("userData"));
     /*myUrl=  "http://rentme.altervista.org/logout.php?"       +
                         "id="           +   myUser.id                     +                
@@ -24,11 +24,12 @@ function logout() {
                 xhttp.open("GET", myUrl, false);
                 xhttp.send();*/                                
     if(myUser.loginType=='Google'){
+        console.log("GOOGLE LOGOUT");
         $.post('https://accounts.google.com/o/oauth2/revoke', {
                     token: localStorage.access_token
             })
             .done(function(data) {
-                    console.log("token rimosso");
+                    console.log("Token rimosso, LocalStorage pulito, Redirect a Index");
                     //localStorage.removeItem('access_token');
                     localStorage.clear();
                     //var link="../index.html";
@@ -39,16 +40,20 @@ function logout() {
                     console.log("token error");
             });
     }else
-        if(myUser.loginType=='Facebook'){    
+        if(myUser.loginType=='Facebook'){ 
+            console.log("FACEBOOK LOGOUT");
             openFB.init({appId: '867006893383189', tokenStore: window.localStorage});
             openFB.logout(
                 function() {
-                    console.log("Logout Successfull");
+                    localStorage.clear();
+                    console.log("OpenFb Logout, LocalStorage pulito, Redirect a Index");
                     window.location.href="index.html";
                 });
         }else
-             if(myUser.loginType=='rentMe'){    
+             if(myUser.loginType=='rentMe'){ 
+                 console.log("RentMe Logout");
                  localStorage.clear();
+                 console.log("LocalStorage pulito, Redirect a Index");
                  window.location.href="index.html";
              }
         

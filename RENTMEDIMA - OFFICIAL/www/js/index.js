@@ -1,6 +1,7 @@
 $(document).on('deviceready', function() {
     console.log("INDEX");
     openFB.init({appId: '867006893383189', tokenStore: window.localStorage});
+    //localStorage.clear();
     next();
 });
 
@@ -8,6 +9,7 @@ function next(){
    setTimeout(openFB.api({
                         path: '/me',
                         success: function(user) {
+                            console.log("FB REQUEST");
                             myUrl=  "http://rentme.altervista.org/login.php?"       +
                                     "id="           +   user.id                     +
                                     "&name="        +   user.first_name             +
@@ -31,7 +33,8 @@ function next(){
                                 },100);    
                             }                        
                         },
-                        error: function(data) {                           
+                        error: function(data) { 
+                            console.log("FB: nessun login trovato");
                             googleapi.getToken({
                                     client_id: app_google.client_id,
                                     client_secret: app_google.client_secret
@@ -65,11 +68,13 @@ function next(){
                             })
                                  
                               .fail(function() {
-
-                                console.log("renteme check login");
-                                 myUser= JSON.parse(localStorage.getItem("userData"));
+                                console.log("GOOGLE: nessun login trovato");
+                                //console.log("renteme check login");
+                                var myUser= JSON.parse(localStorage.getItem("userData"));
                                 console.log(myUser);
-                               myUrl=  "http://rentme.altervista.org/login.php?"       +
+                               
+                                if(myUser!=null){
+                                myUrl=  "http://rentme.altervista.org/login.php?"       +
                                         "id="           +   myUser.id                     +
                                         "&name="        +   myUser.name             +
                                         "&surname="     +   myUser.surname            +
@@ -93,6 +98,9 @@ function next(){
                                         //window.location="login.html";
                                         window.location="startPage.html";
                                     },100); 
+                                 }
+                                }else{
+                                    window.location="startPage.html";   
                                 }
                             });                                           
                         }
