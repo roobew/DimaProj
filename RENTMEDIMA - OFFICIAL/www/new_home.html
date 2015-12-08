@@ -11,12 +11,13 @@
 			 <link href="bootstrap_all/css/bootstrap.css" rel="stylesheet" type="text/css">
 		<!--custom css-->
             <link href="css/commonLayout.css" rel="stylesheet" type="text/css"/>
+            <link href="css/new_home.css" rel="stylesheet" type="text/css"/>
         
 		<!-- Include jQuery Mobile stylesheets -->
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 
         <!-- Include the jQuery library -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>>           </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
         <!-- Include the jQuery Mobile library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js">         </script>
@@ -27,6 +28,8 @@
         
         <!-- Link Swiper's CSS -->
         <link rel="stylesheet" href="swiper/dist/css/swiper.min.css">
+    
+    <script src="js/new_home.js"></script>
     </head>
     
    <body> 
@@ -119,48 +122,82 @@
 
             <!-- CONTENUTO PAGINA  -->
             <div id="contentDiv">
-                <!--<div data-role="page" id="article1">
-                    
-                    <div data-role="content">
-                      <p>CERCA</p>
+                
+                <div class="contentPageDiv" id="cercaContent">
+                    Cerca
+                </div>
+                
+                <div class="contentPageDiv" id="affittaContent">
+                    Affitta
+                </div>
+                
+               <div class="contentPageDiv" id="homeContent">
+                <!--  Swiper  -->
+                <div class="swiper-container" id="mySwipeContainer">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" style="background-color:blue;">ITEM 1</div>
+                        <div class="swiper-slide">ITEM 2</div>
+                        <div class="swiper-slide">ITEM 3</div>
+                        <div class="swiper-slide">ITEM 4</div>
+                        <div class="swiper-slide">ITEM 5</div>
                     </div>
                 </div>
-
-              <div data-role="page" id="article2">
-                    
-                    <div data-role="content">
-                      <p>AFFITTA</p>
-                    </div>
-              </div>
-
-              <div data-role="page" id="article3">
-                    
-                    <div data-role="content">
-                      <p>HOME</p>
-                    </div>
-              </div>
-                
-              <div data-role="page" id="article3">
-                    
-                    <div data-role="content">
-                      <p>PREFERITI</p>
-                    </div>
-              </div>
-              <div data-role="page" id="article3">
-                    
-                    <div data-role="content">
-                      <p>MESSAGGI</p>
-                    </div>
-              </div>-->
-                <!-- Swiper -->
-                <div class="swiper-container">
+                   
+                <!--  Swiper  
+                <div class="swiper-container" id="mySwipeContainer2">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">CERCA</div>
-                        <div class="swiper-slide">AFFITTA</div>
-                        <div class="swiper-slide">HOME</div>
-                        <div class="swiper-slide">PREFERITI</div>
-                        <div class="swiper-slide">MESSAGGI</div>
+                        <div class="swiper-slide" style="background-color:green;">ITEM 1</div>
+                        <div class="swiper-slide">ITEM 2</div>
+                        <div class="swiper-slide">ITEM 3</div>
+                        <div class="swiper-slide">ITEM 4</div>
+                        <div class="swiper-slide">ITEM 5</div>
                     </div>
+                </div>
+                   
+                <!--  Swiper 
+                <div class="swiper-container" id="mySwipeContainer3">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" style="background-color:red;">ITEM 1</div>
+                        <div class="swiper-slide">ITEM 2</div>
+                        <div class="swiper-slide">ITEM 3</div>
+                        <div class="swiper-slide">ITEM 4</div>
+                        <div class="swiper-slide">ITEM 5</div>
+                    </div>
+                </div>-->
+                   
+               </div>
+                
+                <div class="contentPageDiv" id="preferitiContent">
+                    <ul data-role="listview" data-split-icon="gear" data-split-theme="a" data-inset="true">
+                        <li><a href="#">
+                            <img src="img/appartamento1.jpg">
+                            <h2>Broken Bells</h2>
+                            <p>Broken Bells</p></a>
+                            <a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+                        </li>
+                        <li><a href="#">
+                            <img src="img/profile.jpg">
+                        <h2>Warning</h2>
+                        <p>Hot Chip</p></a>
+                            <a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+                        </li>
+                        <li><a href="#">
+                            <img src="img/scritta_rentMe.png">
+                        <h2>Wolfgang Amadeus Phoenix</h2>
+                        <p>Phoenix</p></a>
+                            <a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+                        </li>
+                    </ul>
+                    <div data-role="popup" id="purchase" data-theme="a" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
+                        <h3>Rimuovi elemento?</h3>
+                    <p>Your download will begin immediately on your mobile device when you purchase.</p>
+                        <a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-b ui-icon-check ui-btn-icon-left ui-btn-inline ui-mini">Elimina</a>
+                        <a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini">Annulla</a>
+                    </div>
+                </div>
+                
+                <div class="contentPageDiv" id="messaggiContent">
+                    Messaggi
                 </div>
             </div>
 
@@ -168,53 +205,53 @@
             <div class="container" id="fixedBottomDiv">
             <div class="row" id="rowBottomBar">
                 
-                <div class="col-xs-2 myColumn">
+                <div class="col-xs-2 myColumn" id="cercaTab">
                     <div class="row rowIcon">
-                        <p class="icon text-center"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span></p>
+                        <p class="icon text-center" id="cercaIcon"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span></p>
                     
                     </div>
                     
-                    <p class="textIcon text-center">Cerca</p>
+                    <p class="textIcon text-center" id="cercaText">Cerca</p>
 
                 </div>
                 
-                <div class="col-xs-2 myColumn">
+                <div class="col-xs-2 myColumn" id="affittaTab">
                     <div class="row rowIcon">
-                        <p class="icon text-center"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> </p>
+                        <p class="icon text-center" id="affittaIcon"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> </p>
                     
                     </div>
                     
-                    <p class="textIcon text-center">Affitta</p>
+                    <p class="textIcon text-center" id="affittaText">Affitta</p>
 
                 </div>
                 
-                <div class="col-xs-2 myColumn">
+                <div class="col-xs-2 myColumn" id="homeTab">
                     <div class="row rowIcon">
-                        <p class="icon text-center selectedTab"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> </p>
+                        <p class="icon text-center" id="homeIcon"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> </p>
                     
                     </div>
                      
-                    <p class="textIcon text-center selectedTab">Home</p>
+                    <p class="textIcon text-center" id="homeText">Home</p>
 
                 </div>
                 
-                <div class="col-xs-2 myColumn">
+                <div class="col-xs-2 myColumn" id="preferitiTab">
                     <div class="row rowIcon">
-                        <p class="icon text-center"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></p>
+                        <p class="icon text-center" id="preferitiIcon"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></p>
                     
                     </div>
                     
-                    <p class="textIcon">Preferiti</p>
+                    <p class="textIcon" id="preferitiText">Preferiti</p>
 
                 </div>
                 
-                <div class="col-xs-2 myColumn">
+                <div class="col-xs-2 myColumn" id="messaggiTab">
                     <div class="row rowIcon">
-                        <p class="icon text-center"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></p>
+                        <p class="icon text-center" id="messaggiIcon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></p>
                     
                     </div>
                     
-                    <p class="textIcon">Messaggi</p>
+                    <p class="textIcon" id="messaggiText">Messaggi</p>
 
                 </div>
                 
@@ -230,13 +267,14 @@
         <script src="js/openGoogle.js"></script>
         
         <script src="js/commonJavascript.js"></script>
+        
        
-         <!-- Swiper JS -->
+         <!-- Swiper JS  -->
             <script src="swiper/dist/js/swiper.min.js"></script>
 
-        <!-- Initialize Swiper -->
+        <!-- Initialize Swiper  -->
             <script>
                 var swiper = new Swiper('.swiper-container');
-            </script>
+            </script> 
     </body>
 </html>

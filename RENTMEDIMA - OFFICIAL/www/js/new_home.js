@@ -1,142 +1,56 @@
-$(document).ready(getInfo);
+$(document).ready(setField);
 
-function getInfo(){ 
-    console.log("home");
-    myUser= JSON.parse(localStorage.getItem("userData"));
-    console.log(myUser);
-    $("#uloginType").html(myUser.loginType);   
-    $("#uId").html(myUser.id);   
-    $("#uName").html(myUser.name);   
-    $("#uSurname").html(myUser.surname);   
-    $("#uMail").html(myUser.email);
-    $("#uToken").html(myUser.token);
-    $("#uImg").attr('src',myUser.picture);
+function setField(){
+    // ICONE HOME SELEZIONATE
+    $("#homeIcon").addClass("selectedTab");
+    $("#homeText").addClass("selectedTab");
+    
+    // CONTENTPAGEDIV NASCOSTI, TRANNE HOME 
+    $(".contentPageDiv").hide();
+    $("#homeContent").show();
+    
+    $(".myColumn").click(function(){
+        // RIMUOVI TUTTI I TAB SELEZIONATI
+        $(".myColumn").find("p").removeClass("selectedTab");
+    
+        var pressedId=$(this).attr("id");
+        
+        // NASCONDI TUTTI I CONTENTPAGEDIV
+        $(".contentPageDiv").hide();
+        
+        if(pressedId=="cercaTab"){
+            $("#cercaContent").show();
+            console.log("Premuto cerca");   
+        }
+        else if(pressedId=="affittaTab"){
+            $("#affittaContent").show();
+            console.log("Premuto affitta"); 
+        }
+        else if(pressedId=="homeTab"){
+            $("#homeContent").show();
+            console.log("Premuto home"); 
+        }
+        else if(pressedId=="preferitiTab"){
+            $("#preferitiContent").show();
+            console.log("Premuto preferiti"); 
+        }
+        else if(pressedId=="messaggiTab"){
+            $("#messaggiContent").show();
+            console.log("Premuto messaggi"); 
+        }
+        else{
+            console.log("error");   
+        }
+        $(this).find("p").addClass("selectedTab");
+    });
+
+    
 }
 
-function logout() {
-    console.log("Logout function");
-    myUser= JSON.parse(localStorage.getItem("userData"));
-    /*myUrl=  "http://rentme.altervista.org/logout.php?"       +
-                        "id="           +   myUser.id                     +                
-                        "&email="       +   myUser.email                  ;       
-    console.log(myUser);
-                xhttp = new XMLHttpRequest;
-                xhttp.open("GET", myUrl, false);
-                xhttp.send();*/                                
-    if(myUser.loginType=='Google'){
-        console.log("GOOGLE LOGOUT");
-        $.post('https://accounts.google.com/o/oauth2/revoke', {
-                    token: localStorage.access_token
-            })
-            .done(function(data) {
-                    console.log("Token rimosso, LocalStorage pulito, Redirect a Index");
-                    //localStorage.removeItem('access_token');
-                    localStorage.clear();
-                    //var link="../index.html";
-                    var link="index.html";            
-                    window.location.href=link;
-            })
-            .fail(function(response) {
-                    console.log("token error");
-            });
-    }else
-        if(myUser.loginType=='Facebook'){ 
-            console.log("FACEBOOK LOGOUT");
-            openFB.init({appId: '867006893383189', tokenStore: window.localStorage});
-            openFB.logout(
-                function() {
-                    localStorage.clear();
-                    console.log("OpenFb Logout, LocalStorage pulito, Redirect a Index");
-                    window.location.href="index.html";
-                });
-        }else
-             if(myUser.loginType=='rentMe'){ 
-                 console.log("RentMe Logout");
-                 localStorage.clear();
-                 console.log("LocalStorage pulito, Redirect a Index");
-                 window.location.href="index.html";
-             }
-        
-} 
+function removeSelectedTab(){
+       
+}
 
-/*function getStatus(){
-                openFB.api({
-                    path: '/me',
-                    success: function(data) {
-                       // document.getElementById("login").hidden=true;
-                         document.getElementById("infos").hidden=false;
-                         document.getElementById("logout").hidden=false;
-                         document.getElementById("revoke").hidden=false;
-                    },
-                    error: function(data) {
-                       // document.getElementById("login").hidden=false;
-                         document.getElementById("infos").hidden=true;
-                         document.getElementById("logout").hidden=true;
-                         document.getElementById("revoke").hidden=true;
-                    }
-                });
-            }
-            function login() {
-                openFB.login(
-                    function(response) {
-                        if(response.status === 'connected') {
-                            window.location.href="home.html";
-                            //alert('Facebook login succeeded, got access token: ' + response.authResponse.accessToken);
-                           // openFB.tokenStore =  response.authResponse;
-                            //console.log(openFB.tokenStore.fbAccessToken);
-                        } else {
-                            alert('Facebook login failed: ' + response.error);
-                        }
-                    }, {scope: 'email'});
-            }
-            function getInfo() {
-                openFB.api({
-                    path: '/me',
-                    success: function(data) {
-                        console.log("DATI:" + JSON.stringify(data));
-                        document.getElementById("userName").innerHTML = data.first_name +" " + data.last_name;
-                        document.getElementById("email").innerHTML = data.email;
-                        //document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
-                    },
-                    error: errorHandler});
-            }
-            function share() {
-                openFB.api({
-                    method: 'POST',
-                    path: '/me/feed',
-                    params: {
-                        message: document.getElementById('Message').value || 'Testing Facebook APIs'
-                    },
-                    success: function() {
-                        alert('the item was posted on Facebook');
-                    },
-                    error: errorHandler});
-            }
-            function readPermissions() {
-                openFB.api({
-                    method: 'GET',
-                    path: '/me/permissions',
-                    success: function(result) {
-                        alert(JSON.stringify(result.data));
-                    },
-                    error: errorHandler
-                });
-            }
-            function revoke() {
-                openFB.revokePermissions(
-                        function() {
-                            console.log("Permission Revoked");
-                             window.location.href="index.html"
-                        },
-                        errorHandler);
-            }
-            function logout() {
-                openFB.logout(
-                        function() {console.log("Logout Successfull");
-                            window.location.href="index.html"
-                        },
-                        errorHandler);
-            }
-            function errorHandler(error) {
-                console.log(error.message);
-    }*/
+function hideContentPageDiv(){
+       
+}
