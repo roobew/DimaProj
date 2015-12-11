@@ -29,6 +29,7 @@ body{
     margin: 20px auto;
 }
 .swiper-slide {
+    display: block;
     text-align: center;
     font-size: 18px;
     background: #fff;
