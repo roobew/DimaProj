@@ -37,7 +37,8 @@
        <!--  SCRIPT PER MENU LATERALE  -->
        <script type="text/javascript">
        $(document).ready(function() {
-          $("#my-menu").mmenu({
+          
+           $("#my-menu").mmenu({
             slidingSubmenus: false
           }, {
              // configuration
@@ -46,6 +47,35 @@
                 selected: "active"
              }
           });
+           
+       var swiperUno = new Swiper ('#swiperContainer1', {
+            // Optional parameters
+            direction: 'horizontal',
+            loop: true,
+            autoplay:2500,
+            //autoplayDisableOnInteraction:false,
+            
+
+            // If we need pagination
+            pagination: '#pag1',
+
+          });
+           
+       var swiperDue = new Swiper ('#swiperContainer2', {
+            // Optional parameters
+            direction: 'horizontal',
+            loop: true,
+            autoplay:3000,            
+
+           // If we need pagination
+            pagination: '#pag2',
+
+            // Navigation arrows
+            nextButton: '#next',
+            prevButton: '#prev',
+
+          });
+           
        });
        </script>
         
@@ -113,92 +143,61 @@
                         </a>
                     </div>
 
-                    <div class="col-xs-8 col-xs-offset-2 thumbnail" id="scrittaRentMeDiv">
+                    <!--<div class="col-xs-8 col-xs-offset-2 thumbnail" id="scrittaRentMeDiv">
                         <p class="text-center">RENT ME DIMA PROJECT</p>
-                    </div>
+                    </div>-->
                 </div>
 
             </div>
 
             <!-- CONTENUTO PAGINA  -->
             <div id="contentDiv">
-                
-                <div class="contentPageDiv" id="cercaContent">
-                    Cerca
-                </div>
-                
-                <div class="contentPageDiv" id="affittaContent">
-                    Affitta
-                </div>
-                
-               <div class="contentPageDiv" id="homeContent">
-                <!--  Swiper  -->
-                <div class="swiper-container" id="mySwipeContainer">
+                <div class="panel panel-default text-center" style="width:98%; margin-left:auto; margin-right:auto;">
+                  <div class="panel-heading">I più visti</div>
+                  <div class="panel-body">
+                    <!--  Swiper  -->
+                    <!-- Slider main container -->
+                    <div class="swiper-container" id="swiperContainer1">
+                    <!-- Additional required wrapper -->
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" style="background-color:blue;">ITEM 1</div>
-                        <div class="swiper-slide">ITEM 2</div>
-                        <div class="swiper-slide">ITEM 3</div>
-                        <div class="swiper-slide">ITEM 4</div>
-                        <div class="swiper-slide">ITEM 5</div>
+                        <!-- Slides -->
+                        <div class="swiper-slide">
+                            <img class="img-responsive" src="img/appartamento1.jpg"/>
+                        </div>
+                        <div class="swiper-slide">Slide 2</div>
+                        <div class="swiper-slide">Slide 3</div>
                     </div>
-                </div>
-                   
-                <!--  Swiper  
-                <div class="swiper-container" id="mySwipeContainer2">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide" style="background-color:green;">ITEM 1</div>
-                        <div class="swiper-slide">ITEM 2</div>
-                        <div class="swiper-slide">ITEM 3</div>
-                        <div class="swiper-slide">ITEM 4</div>
-                        <div class="swiper-slide">ITEM 5</div>
-                    </div>
-                </div>
-                   
-                <!--  Swiper 
-                <div class="swiper-container" id="mySwipeContainer3">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide" style="background-color:red;">ITEM 1</div>
-                        <div class="swiper-slide">ITEM 2</div>
-                        <div class="swiper-slide">ITEM 3</div>
-                        <div class="swiper-slide">ITEM 4</div>
-                        <div class="swiper-slide">ITEM 5</div>
-                    </div>
-                </div>-->
-                   
-               </div>
-                
-                <div class="contentPageDiv" id="preferitiContent">
-                    <ul data-role="listview" data-split-icon="gear" data-split-theme="a" data-inset="true">
-                        <li><a href="#">
-                            <img src="img/appartamento1.jpg">
-                            <h2>Broken Bells</h2>
-                            <p>Broken Bells</p></a>
-                            <a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
-                        </li>
-                        <li><a href="#">
-                            <img src="img/profile.jpg">
-                        <h2>Warning</h2>
-                        <p>Hot Chip</p></a>
-                            <a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
-                        </li>
-                        <li><a href="#">
-                            <img src="img/scritta_rentMe.png">
-                        <h2>Wolfgang Amadeus Phoenix</h2>
-                        <p>Phoenix</p></a>
-                            <a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
-                        </li>
-                    </ul>
-                    <div data-role="popup" id="purchase" data-theme="a" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
-                        <h3>Rimuovi elemento?</h3>
-                    <p>Your download will begin immediately on your mobile device when you purchase.</p>
-                        <a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-b ui-icon-check ui-btn-icon-left ui-btn-inline ui-mini">Elimina</a>
-                        <a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini">Annulla</a>
-                    </div>
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination" id="pag1"></div>                    
+
+                    </div> 
+                  
+                  </div>
                 </div>
                 
-                <div class="contentPageDiv" id="messaggiContent">
-                    Messaggi
-                </div>
+                <div class="panel panel-default" style="width:98%; margin-left:auto; margin-right:auto;">
+                  <div class="panel-heading text-center">Consigliati per te</div>
+                  <div class="panel-body">
+                         <div class="swiper-container" id="swiperContainer2">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            <!-- Slides -->
+                            <div class="swiper-slide">Slide 1</div>
+                            <div class="swiper-slide">
+                                <img class="img-responsive" src="img/appartamento1.jpg"/>
+                            </div>
+                            <div class="swiper-slide">Slide 3</div>
+                        </div>
+
+                        <!-- If we need pagination -->
+                        <div class="swiper-pagination" id="pag2"></div>
+
+                    </div>  
+                  </div>
+                </div>                    
+                                    
+                
+               
             </div>
 
             <!-- BARRA NAVIGAZIONE IN BASSO  -->
@@ -272,9 +271,5 @@
          <!-- Swiper JS  -->
             <script src="swiper/dist/js/swiper.min.js"></script>
 
-        <!-- Initialize Swiper  -->
-            <script>
-                var swiper = new Swiper('.swiper-container');
-            </script> 
     </body>
 </html>

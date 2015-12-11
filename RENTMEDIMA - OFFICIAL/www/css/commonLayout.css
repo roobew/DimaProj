@@ -24,8 +24,8 @@ body{
         padding: 0;
 }
 .swiper-container {
-    width: 500px;
-    height: 300px;
+    height: 10em;
+    width: 100%;
     margin: 20px auto;
 }
 .swiper-slide {
@@ -175,17 +175,4 @@ body{
     overflow-y: scroll;
 }
 
-#mySwipeContainer{
-    height: 10em;
-    width: 100%;
-}
 
-#mySwipeContainer2{
-    height: 10em;
-    width: 100%;
-}
-
-#mySwipeContainer3{
-    height: 10em;
-    width: 100%;
-}

@@ -9,6 +9,53 @@ function setField(){
     $(".contentPageDiv").hide();
     $("#homeContent").show();
     
+    
+            /*var swiperUno = $('#swiperContainer1').swiper({
+                mode: 'horizontal',
+                watchActiveIndex: true,
+                loop: true,
+                onSlideChangeStart: function (swiper) {
+                    console.log('slide change start - before');
+                    console.log(swiper);
+                    console.log(swiper.activeIndex);
+                    //before Event use it for your purpose
+                },
+                onSlideChangeEnd: function (swiper) {
+                    console.log('slide change end - after');
+                    console.log(swiper);
+                    console.log(swiper.activeIndex);
+                    //after Event use it for your purpose
+                    if (swiper.activeIndex == 1) {
+                        //First Slide is active
+                        console.log('First slide active')
+                    }
+                }
+            });*/
+        
+           /* var swiperDue = $('#swiperContainer2').swiper({
+                mode: 'horizontal',
+                watchActiveIndex: true,
+                loop: true,
+                onSlideChangeStart: function (swiper) {
+                    console.log('slide change start - before');
+                    console.log(swiper);
+                    console.log(swiper.activeIndex);
+                    //before Event use it for your purpose
+                },
+                onSlideChangeEnd: function (swiper) {
+                    console.log('slide change end - after');
+                    console.log(swiper);
+                    console.log(swiper.activeIndex);
+                    //after Event use it for your purpose
+                    if (swiper.activeIndex == 1) {
+                        //First Slide is active
+                        console.log('First slide active')
+                    }
+                }
+            });
+    */
+         
+    
     $(".myColumn").click(function(){
         // RIMUOVI TUTTI I TAB SELEZIONATI
         $(".myColumn").find("p").removeClass("selectedTab");
@@ -45,12 +92,4 @@ function setField(){
     });
 
     
-}
-
-function removeSelectedTab(){
-       
-}
-
-function hideContentPageDiv(){
-       
 }
