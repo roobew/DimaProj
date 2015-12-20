@@ -23,11 +23,13 @@ body{
         margin: 0;
         padding: 0;
 }
-.swiper-container {
+
+#swiperHome1, #swiperHome2 {
     height: 10em;
     width: 100%;
     margin: 20px auto;
 }
+
 .swiper-slide {
     display: block;
     text-align: center;
@@ -48,6 +50,20 @@ body{
     -webkit-align-items: center;
     align-items: center;
 }
+
+#swiperAffitta {
+    height: 20em;
+    width: 100%;
+    margin: 20px auto;  
+}
+
+.slideAffitta{
+    display:block; 
+    width:100%;  
+    overflow-y: scroll;
+}
+
+
 
 /****  STRUTTURA GENERALE PAGINA  ****/
 #topFixedDiv{
@@ -72,12 +88,13 @@ body{
 
 #contentDiv{
     display: block;
-    height: 50em;
+    :height: 50em;
+    height: auto;
     width: 100%;
     margin-top: 5em; 
-    overflow-y: scroll;
+    :overflow-y: scroll;
     z-index: 1;
-    :overflow-x:hidden;
+    overflow-x: hidden;
 }
 
 /**** BARRA NAVIGAZIONE IN BASSO  ****/

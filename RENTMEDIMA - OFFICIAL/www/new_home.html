@@ -33,47 +33,11 @@
     </head>
     
    <body> 
-    
-       <!--  SCRIPT PER MENU LATERALE  -->
-       <script type="text/javascript">
-       $(document).ready(function() {
-          
-           $("#my-menu").mmenu({
-            slidingSubmenus: false
-          }, {
-             // configuration
-             classNames: {
-                vertical: "expand",
-                selected: "active"
-             }
-          });
-           
-       var swiperUno = new Swiper ('#swiperContainer1', {
-            // Optional parameters
-            direction: 'horizontal',
-            loop: true,
-            autoplay:2500,
-            //autoplayDisableOnInteraction:false,
-            
 
-            // If we need pagination
-            //pagination: '#pag1',
-
-          });
-           
-       var swiperDue = new Swiper ('#swiperContainer2', {
-            // Optional parameters
-            direction: 'horizontal',
-            loop: true,
-            autoplay:3000,            
-          });
-           
-       });
-       </script>
         
        
        
-        <div> <!-- the wrapper -->
+       <div> <!-- the wrapper -->
          
             <!-- MENU LATERALE  -->
             <nav id="my-menu">
@@ -101,17 +65,10 @@
                     </li>
                     <br>
                     <li>
-                        <a>
+                        <a href="#">
                             <span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="font-size:1.1em"> Recensioni</span>
                         </a>
-                        <ul class="Vertical">
-                            <li>
-                            <span class="glyphicon glyphicon-import" aria-hidden="true" style="font-size:1em"> Ricevute</span>
-                            </li>
-                            <li>
-                                <span class="glyphicon glyphicon-export" aria-hidden="true" style="font-size:1em"> Lasciate</span>
-                            </li>
-                        </ul>
+                        
                     </li>
                     <br>
                     <li>
@@ -143,133 +100,248 @@
             </div>
 
             <!-- CONTENUTO PAGINA  -->
-            <div id="contentDiv">
-                <div class="panel panel-default text-center" style="width:98%; margin-left:auto; margin-right:auto;">
-                  <div class="panel-heading">I più visti</div>
-                  <div class="panel-body">
-                    <!--  Swiper  -->
-                    <!-- Slider main container -->
-                    <div class="swiper-container" id="swiperContainer1">
-                    <!-- Additional required wrapper -->
-                    <div class="swiper-wrapper">
-                        <!-- Slides -->
-                        <div class="swiper-slide">
-                            <img class="img-responsive" src="img/appartamento1.jpg" style=" position: relative; width: 11em;"/>
-                            <p style="display:block; height:auto; width:100%; color:red;">Appartamento restaurato zona navigli</p>
-                                
-                        </div>
-                        <div class="swiper-slide">Slide 2</div>
-                        <div class="swiper-slide">Slide 3</div>
-                    </div>
-                    <!-- If we need pagination -->
-                    <!--<div class="swiper-pagination" id="pag1"></div>                    
-
-                    </div>--> 
-                  
-                  </div>
-                </div>
-                
-                <div class="panel panel-default" style="width:98%; margin-left:auto; margin-right:auto;">
-                  <div class="panel-heading text-center">Consigliati per te</div>
-                  <div class="panel-body">
-                         <div class="swiper-container" id="swiperContainer2">
-                        <!-- Additional required wrapper -->
+            <div id="contentDiv"> 
+                <div class="contentPageDiv" id="homeContent">
+                    
+                    <div class="panel panel-default text-center" style="width:100%; margin-left:auto; margin-right:auto;">
+                      <div class="panel-heading">I più visti</div>
+                      <div class="panel-body">
+                        <div class="swiper-container" id="swiperHome1">
                         <div class="swiper-wrapper">
-                            <!-- Slides -->
+                            
+                            <div class="swiper-slide">
+                                <img class="img-responsive" src="img/appartamento1.jpg" style=" position: relative; width: 11em;"/>
+                                <p style="display:block; height:auto; width:100%; color:red;">Appartamento restaurato zona navigli</p>
+
+                            </div>
                             <div class="swiper-slide">
                                 <div class="container">
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <img class="img-responsive" src="img/appartamento1.jpg" style=" position: relative; width: 100%;"/>
-                                        <p style="display:block;position: absolute; bottom: 1.2em;left: 0; width: 100%;  color: black; font: bold 1em Helvetica, Sans-Serif; 
-   letter-spacing: -1px; background: rgba(255, 255, 255, 0.9); padding: 10px; ">Appartamento restaurato zona navigli</p>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <img class="img-responsive" src="img/appartamento1.jpg" style=" position: relative; width: 100%;"/>
+                                            <p style="display:block;position: absolute; bottom:0;left: 0; width: 100%;  color: black; font: bold 1em Helvetica, Sans-Serif; 
+       letter-spacing: -1px; background: rgba(255, 255, 255, 0.4); padding: 10px; opacity:0.9; ">Appartamento restaurato zona navigli</p>
+                                        </div>
                                     </div>
-                                </div>
-                                
+
                                 </div>
                             </div>
-                            <div class="swiper-slide">Slide 2</div>
                             <div class="swiper-slide">Slide 3</div>
+                            </div>
+
+                        </div>
+                      </div>
+                    </div> 
+                    
+                    <div class="panel panel-default" style="width:100%; margin-left:auto; margin-right:auto;">
+                      <div class="panel-heading text-center">Consigliati per te</div>
+                      <div class="panel-body">
+                        <div class="swiper-container" id="swiperHome2">
+                            
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="container">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <img class="img-responsive" src="img/appartamento1.jpg" style=" position: relative; width: 100%;"/>
+                                            <p style="display:block;position: absolute; bottom:0;left: 0; width: 100%;  color: black; font: bold 1em Helvetica, Sans-Serif; 
+       letter-spacing: -1px; background: rgba(255, 255, 255, 0.4); padding: 10px; opacity:0.9; ">Appartamento restaurato zona navigli</p>
+                                        </div>
+                                    </div>
+
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">Slide 2</div>
+                                <div class="swiper-slide">Slide 3</div>
+                            </div>
+
+                        </div>  
+                      </div>
+                    </div>  
+                    
+                    
+                </div>
+                
+                <div class="contentPageDiv" id="affittaContent">
+                  <div class="panel panel-default">
+                        <div class="panel-heading text-center">INSERISCI UN ANNUNCIO</div>
+                        
+                        <div class="panel-body">
+                            <!--  Swiper  -->
+                        
+                            <div class="swiper-container" id="swiperAffitta">
+                                <!-- Additional required wrapper -->
+                                <div class="swiper-wrapper">
+                                    <!-- Slides -->
+                                    <div class="swiper-slide slideAffitta">
+                                         
+                                        <form style="width:90%; margin-left:auto; margin-right:auto; margin-top:1em; margin-bottom:2em;">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="nomeAnnuncio" placeholder="Nome annuncio" maxlength="20">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" id="prezzo" placeholder="Prezzo mensile/persona" max="10000">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <textarea class="form-control" rows="5" id="descrizione" placeholder="Descrizione annuncio" maxlength="60"></textarea>
+                                            </div>
+
+                                            <button class="btn btn-default" id="nextStepButton">Prosegui</button>
+
+                                        </form>
+                                      
+                                    </div>
+                                    <div class="swiper-slide slideAffitta">
+                                        
+                                        <form style="width:90%; margin-left:auto; margin-right:auto; margin-top:1em; margin-bottom:3em;">
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                  <label for="sel1">Numero Locali:</label>
+                                                  <select class="form-control" id="numLocali">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                    <option>6</option>
+                                                    <option>7</option>
+                                                    <option>8</option>
+                                                    <option>9</option>
+                                                    <option>10</option>
+                                                    
+                                                  </select>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                              <label for="usr">Superficie:</label>
+                                              <input type="text" class="form-control" id="superficie" maxlength="3">
+                                            </div>
+                                            
+                                            <label class="radio-inline"><input type="radio" name="optradio" id="stanzaPrivataRadioButton">Stanza privata</label>
+                                            <label class="radio-inline"><input type="radio" name="optradio" id="stanzaCondivisaRadioButton">Stanza condivisa</label>
+                                            
+                                            <div class="form-group">
+                                              <label for="usr">Posti Letto:</label>
+                                              <input type="text" class="form-control" id="postiLetto" maxlength="2">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                  <label for="sel1">Piano:</label>
+                                                  <select class="form-control" id="numLocali">
+                                                    <option>Seminterrato</option>
+                                                    <option>0</option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                    <option>6</option>
+                                                    <option>>6</option>
+                                                    
+                                                    
+                                                  </select>
+                                                </div>
+                                            </div>
+
+                                            <button id="affittaBackButton">Back</button>
+                                            <button class="btn btn-default" id="nextStepButton">Prosegui</button>
+
+                                        </form>
+                                        
+                                        
+                                    
+                                    </div>
+                                    <div class="swiper-slide slideAffitta">Slide 3</div>
+                                </div>
+                                <!-- If we need pagination -->
+                                <div class="swiper-pagination"></div>
+            
+                            </div>
+                        
+                        </div>
+                    </div>
+
+                </div>
+                
+                
+                <div class="contentPageDiv" id="preferitiContent">
+                   PREFERITI
+                </div>
+                                
+                <!-- BARRA NAVIGAZIONE IN BASSO  -->
+                <div class="container" id="fixedBottomDiv">
+                    <div class="row" id="rowBottomBar">
+
+                    <div class="col-xs-2 myColumn" id="cercaTab">
+                        <div class="row rowIcon">
+                            <p class="icon text-center" id="cercaIcon"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span></p>
+
                         </div>
 
-                    </div>  
-                  </div>
-                </div>                    
-                                    
-                
-               
-            </div>
+                        <p class="textIcon text-center" id="cercaText">Cerca</p>
 
-            <!-- BARRA NAVIGAZIONE IN BASSO  -->
-            <div class="container" id="fixedBottomDiv">
-            <div class="row" id="rowBottomBar">
-                
-                <div class="col-xs-2 myColumn" id="cercaTab">
-                    <div class="row rowIcon">
-                        <p class="icon text-center" id="cercaIcon"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span></p>
-                    
                     </div>
-                    
-                    <p class="textIcon text-center" id="cercaText">Cerca</p>
 
-                </div>
-                
-                <div class="col-xs-2 myColumn" id="affittaTab">
-                    <div class="row rowIcon">
-                        <p class="icon text-center" id="affittaIcon"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> </p>
-                    
+                    <div class="col-xs-2 myColumn" id="affittaTab">
+                        <div class="row rowIcon">
+                            <p class="icon text-center" id="affittaIcon"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> </p>
+
+                        </div>
+
+                        <p class="textIcon text-center" id="affittaText">Affitta</p>
+
                     </div>
-                    
-                    <p class="textIcon text-center" id="affittaText">Affitta</p>
 
-                </div>
-                
-                <div class="col-xs-2 myColumn" id="homeTab">
-                    <div class="row rowIcon">
-                        <p class="icon text-center" id="homeIcon"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> </p>
-                    
+                    <div class="col-xs-2 myColumn" id="homeTab">
+                        <div class="row rowIcon">
+                            <p class="icon text-center" id="homeIcon"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> </p>
+
+                        </div>
+
+                        <p class="textIcon text-center" id="homeText">Home</p>
+
                     </div>
-                     
-                    <p class="textIcon text-center" id="homeText">Home</p>
 
-                </div>
-                
-                <div class="col-xs-2 myColumn" id="preferitiTab">
-                    <div class="row rowIcon">
-                        <p class="icon text-center" id="preferitiIcon"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></p>
-                    
+                    <div class="col-xs-2 myColumn" id="preferitiTab">
+                        <div class="row rowIcon">
+                            <p class="icon text-center" id="preferitiIcon"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></p>
+
+                        </div>
+
+                        <p class="textIcon" id="preferitiText">Preferiti</p>
+
                     </div>
-                    
-                    <p class="textIcon" id="preferitiText">Preferiti</p>
 
-                </div>
-                
-                <div class="col-xs-2 myColumn" id="messaggiTab">
-                    <div class="row rowIcon">
-                        <p class="icon text-center" id="messaggiIcon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></p>
-                    
+                    <div class="col-xs-2 myColumn" id="messaggiTab">
+                        <div class="row rowIcon">
+                            <p class="icon text-center" id="messaggiIcon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></p>
+
+                        </div>
+
+                        <p class="textIcon" id="messaggiText">Messaggi</p>
+
                     </div>
-                    
-                    <p class="textIcon" id="messaggiText">Messaggi</p>
 
-                </div>
-                
-            </div>
-        </div>  
+</div>
+                </div>  
             
-    </div>
-        
+            </div>
+       </div>
     
-        <script type="text/javascript" src="cordova.js"></script>
+       <script type="text/javascript" src="cordova.js"></script>
         
-        <script src="js/openFB.js"></script>
-        <script src="js/openGoogle.js"></script>
+       <script src="js/openFB.js"></script>
+       <script src="js/openGoogle.js"></script>
         
-        <script src="js/commonJavascript.js"></script>
+       <script src="js/commonJavascript.js"></script>
         
        
-         <!-- Swiper JS  -->
-            <script src="swiper/dist/js/swiper.min.js"></script>
+       <!-- Swiper JS  -->
+       <script src="swiper/dist/js/swiper.min.js"></script>
 
     </body>
 </html>

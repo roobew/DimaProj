@@ -9,6 +9,17 @@ function setField(){
     $(".contentPageDiv").hide();
     $("#homeContent").show();
     
+    $("#my-menu").mmenu({
+            slidingSubmenus: false
+          }, {
+             // configuration
+             classNames: {
+                vertical: "expand",
+                selected: "active"
+             }
+          });
+    
+    enableSwiperHome();
     
             /*var swiperUno = $('#swiperContainer1').swiper({
                 mode: 'horizontal',
@@ -72,10 +83,12 @@ function setField(){
         else if(pressedId=="affittaTab"){
             $("#affittaContent").show();
             console.log("Premuto affitta"); 
+            enableSwiperAffitta();
         }
         else if(pressedId=="homeTab"){
             $("#homeContent").show();
             console.log("Premuto home"); 
+            enableSwiperHome();
         }
         else if(pressedId=="preferitiTab"){
             $("#preferitiContent").show();
@@ -92,4 +105,37 @@ function setField(){
     });
 
     
+}
+
+function enableSwiperAffitta(){
+    var swiperTre = new Swiper ('#swiperAffitta', {
+            // Optional parameters
+            direction: 'horizontal',
+            loop: true,
+            
+            // If we need pagination
+            pagination: '.swiper-pagination',
+
+            // Navigation arrows
+            nextButton: '#nextStepButton',
+            prevButton: '#affittaBackButton',
+        });   
+}
+
+function enableSwiperHome(){
+    var swiperUno = new Swiper ('#swiperHome1', {
+            // Optional parameters
+            direction: 'horizontal',
+            loop: true,
+            autoplay:2500,
+            autoplayDisableOnInteraction:false,
+          });
+          
+    var swiperDue = new Swiper ('#swiperHome2', {
+            // Optional parameters
+            direction: 'horizontal',
+            loop: true,
+            autoplay:3000, 
+            autoplayDisableOnInteraction:false,
+          });   
 }
