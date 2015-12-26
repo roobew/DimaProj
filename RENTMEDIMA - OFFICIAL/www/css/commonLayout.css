@@ -3,25 +3,10 @@ h4, h5, h6,
 h1, h2, h3 {margin: 0;}
 ul, ol, li{margin: 0; padding: 0;}
 p {margin: 0;padding: 0;}
-body{
-	margin:0;
-	padding:0;
-}
-
-*{
-    margin: 0;
-    padding: 0;
-    font-family: 'Didact Gothic';
-    font-weight: 400;
-}
 
  body {
-        background: #eee;
-        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-        font-size: 14px;
-        color:#000;
-        margin: 0;
-        padding: 0;
+     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+     
 }
 
 #swiperHome1, #swiperHome2 {
@@ -68,12 +53,14 @@ body{
 /****  STRUTTURA GENERALE PAGINA  ****/
 #topFixedDiv{
     display: block;
-    height: 4.5em;
+    height: 4em;
     width: 100%;
     top: 0;
     position: fixed;
     z-index: 2;
-    background-color: #1a8cff;
+    background-color: #125688;  /* Linkedin blue*/
+    :background-color: #007ee5;  /* Dropbox blue*/
+    :background-color: #0072b1;  /* Other blue*/
 }
 
 .header{
@@ -88,16 +75,16 @@ body{
 
 #contentDiv{
     display: block;
-    :height: 50em;
-    height: auto;
+    height: 40em;
     width: 100%;
-    margin-top: 5em; 
-    :overflow-y: scroll;
+    margin-top: 4.5em; 
+    overflow-y: hidden;
     z-index: 1;
     overflow-x: hidden;
+    
+    background-image: url(../img/background.png);
 }
 
-/**** BARRA NAVIGAZIONE IN BASSO  ****/
 #fixedBottomDiv{
     display: block;
     height: 3em;
@@ -126,11 +113,11 @@ body{
 
 #navbarImageDiv{
     display: inline-block;
-    height: 1.5em;
-    width: 1.7em;
+    height: 1.6em;
+    width: 1.8em;
     border: 0;
     padding: 0;
-    margin-top: 0.8em;
+    margin-top: 0.5em;
     margin-left: 0.5em;
 }
 
@@ -190,7 +177,17 @@ body{
     display: block;
     height: 100%;
     width: 100%;
-    overflow-y: scroll;
+    overflow-y: hidden;
 }
 
+/*.ui-mobile-viewport{
+    background: url("../img/background.png");
+    background-size: 100% 100% !important;
+}
+.ui-page{
+    background:none;
+}
+.ui-overlay-a{
+    background:#222 !important;
+}*/
 

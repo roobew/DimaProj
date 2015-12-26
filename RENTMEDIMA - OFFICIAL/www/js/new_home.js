@@ -75,12 +75,13 @@ function setField(){
         
         // NASCONDI TUTTI I CONTENTPAGEDIV
         $(".contentPageDiv").hide();
-        
+        window.scrollTo(0,0);
         if(pressedId=="cercaTab"){
             $("#cercaContent").show();
             console.log("Premuto cerca");   
         }
         else if(pressedId=="affittaTab"){
+            
             $("#affittaContent").show();
             console.log("Premuto affitta"); 
             enableSwiperAffitta();
@@ -139,3 +140,4 @@ function enableSwiperHome(){
             autoplayDisableOnInteraction:false,
           });   
 }
+

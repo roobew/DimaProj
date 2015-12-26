@@ -1,6 +1,7 @@
 $(document).ready(getInfo);
 
 function getInfo(){ 
+        
     console.log("home");
     myUser= JSON.parse(localStorage.getItem("userData"));
     console.log(myUser);

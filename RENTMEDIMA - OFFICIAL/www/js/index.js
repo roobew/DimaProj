@@ -89,11 +89,13 @@ function next(){
                                 console.log("result:");
                                 console.log(jUser);
                                 if(JSON.parse(jUser).id!=null){
+                                    console.log("VADO a Home");
                                     localStorage.setItem("userData",jUser);
                                     setTimeout(function(){
                                                 window.location.href="new_home.html";
                                     },50);                          
-                                }else{                                                              
+                                }else{    
+                                    console.log("VADO a STart Page");
                                     setTimeout(function(){
                                         //window.location="login.html";
                                         window.location="startPage.html";
