@@ -70,7 +70,7 @@ function setField(){
     $(".myColumn").click(function(){
         // RIMUOVI TUTTI I TAB SELEZIONATI
         $(".myColumn").find("p").removeClass("selectedTab");
-    
+        
         var pressedId=$(this).attr("id");
         
         // NASCONDI TUTTI I CONTENTPAGEDIV

@@ -1,18 +1,18 @@
 $(document).ready(function (){
-    /*$("#homeTopRow").click(function (){
-    console.log("dentro cazzo");
-        $(".wrapper").css({
-            transform: "translateX(0)"
-        });   
-
-    });*/
     
-    $("*:not(.del)").click(function (){
+    /*$("*:not(.del)").click(function (){
         $(".wrapper").css({
             transform: "translateX(0)"
         });
-    });
+    });*/
     
+    $(".del").click(function() {
+        console.log("cancello");
+        var elementToDelete=$(this).closest("li").attr("id");
+        $("#"+elementToDelete).fadeOut("slow",function(){
+            $("#"+elementToDelete).remove();   
+        });
+    });
    
 });
 
@@ -46,8 +46,6 @@ $.fn.extend({
             })  
                         );
 
-            //$('.del').attr('data-toggle', 'modal');
-            //$('.del').attr('data-target', '#myModal');
        
         });
     },
@@ -82,10 +80,12 @@ $.fn.extend({
     },
     
     open: function (e, x, dir) {
+        //console.log("opening");
         var posX = dir == "left" ? x : "-" + x;
         $(this).css({
             transform: "translateX(" + posX + ")"
         });
+        //console.log("end opening");
     },
     
     check: function (x) {
@@ -96,9 +96,5 @@ $.fn.extend({
         return isNaN(posY) ? "closed" : posY >= btnW ? "left" : posY <= "-" + btnW ? "right" : "closed";
     }
 });
-
-
-
-
 
 
