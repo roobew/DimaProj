@@ -49,7 +49,8 @@ function facebookLogin() {
                             navigator.notification.alert(JSON.parse(jUser).message, reload, JSON.parse(jUser).title);      
                         }
                     },
-                    error:function(result){  
+                    error:function(result){ 
+                        console.log("errore trovato!!!");
                         console.log(result);
                     }                                
                 });
@@ -156,4 +157,86 @@ function reload(){
      setTimeout(function(){         
             window.location.reload(true);
         },50);
+}
+
+function passwordDimenticata(){
+    console.log("recupero password");
+    var miaEmail = document.getElementById('emailForgotten').value ;
+    //console.log(miaEmail);
+    
+    
+    myUrl=  "http://rentme.altervista.org/recuperoPassword.php?emailToRetrieve="+miaEmail; 
+    
+    xhttp = new XMLHttpRequest;
+    xhttp.open("GET", myUrl, false);
+    xhttp.send();                    
+    var responseResult=xhttp.response;       
+    
+    if(JSON.parse(responseResult)!=null){
+        var myResult=JSON.parse(responseResult);
+        
+        if(myResult[0]==true){
+            console.log("Email inviata");   
+            window.location.href="startPage.html";
+        }
+        else{
+                console.log("Email non valida");   
+        }
+
+        
+    }else{
+        console.log("ERRORE RICHIESTA");   
+    }
+    
+    
+    /*
+    if(JSON.parse(jUser).id!=null){                                
+        localStorage.setItem("userData",jUser);
+        setTimeout(function(){
+                    window.location.href="new_home.html";
+        },50);                          
+    }else{                                                                 
+        setTimeout(function(){
+            window.location="startPage.html";
+        },100);    
+    }          */              
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*$.ajax({
+            method: "POST",
+            //dataType: "json", //type of data
+            crossDomain: true,
+            url: "http://rentme.altervista.org/recuperoPassword.php",
+
+            data: {emailToRetrieve:miaEmail},
+        
+            success: function(response) {
+                console.log("ESITO RISPOSTA: success");
+                //console.log(JSON.parse(response));
+                var requestResult=JSON.parse(response);
+                if(requestResult[0]==true){
+                    console.log("email inviata");   
+                }
+                else{
+                    console.log("errore");   
+                }
+                
+                //window.location.href="startPage.html";
+            },
+            error: function(request,error) 
+            {
+                console.log("ESITO RISPOSTA: error");
+                console.log(request+":"+error);
+            }
+        });*/
+   
 }

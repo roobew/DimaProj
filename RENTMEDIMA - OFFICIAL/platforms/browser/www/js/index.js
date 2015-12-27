@@ -23,11 +23,11 @@ function next(){
                             if(JSON.parse(jUser).id!=null){                                
                                 localStorage.setItem("userData",jUser);
                                 setTimeout(function(){
-                                            window.location.href="html/new_home.html";
+                                            window.location.href="new_home.html";
                                 },50);                          
                             }else{                                                                 
                                 setTimeout(function(){
-                                    window.location="html/startPage.html";
+                                    window.location="startPage.html";
                                 },100);    
                             }                        
                         },
@@ -54,20 +54,46 @@ function next(){
                                 if(JSON.parse(jUser).id!=null){
                                     localStorage.setItem("userData",jUser);
                                     setTimeout(function(){
-                                                window.location.href="html/new_home.html";
+                                                window.location.href="new_home.html";
                                     },50);                          
                                 }else{                                                              
                                     setTimeout(function(){
                                         //window.location="login.html";
-                                        window.location="html/startPage.html";
+                                        window.location="startPage.html";
                                     },100);                                      
                                 }                             
                             })
                                  
                               .fail(function() {
-                                //handle rentMe Login else
-                                //window.location.href="login.html";
-                                window.location.href="html/startPage.html";
+
+                                console.log("renteme check login");
+                                 myUser= JSON.parse(localStorage.getItem("userData"));
+                                console.log(myUser);
+                               myUrl=  "http://rentme.altervista.org/login.php?"       +
+                                        "id="           +   myUser.id                     +
+                                        "&name="        +   myUser.name             +
+                                        "&surname="     +   myUser.surname            +
+                                        "&email="       +   myUser.email                  +
+                                        "&loginType="   +   'rentMe'                    +
+                                        "&token="       +   myUser.token   +
+                                        "&picture="     +   String(myUser.picture).replace(/&/gi,'%26')      ;
+                                xhttp = new XMLHttpRequest;
+                                xhttp.open("GET", myUrl, false);
+                                xhttp.send();
+                                jUser=xhttp.response;
+                                console.log("result:");
+                                console.log(jUser);
+                                if(JSON.parse(jUser).id!=null){
+                                    localStorage.setItem("userData",jUser);
+                                    setTimeout(function(){
+                                                window.location.href="new_home.html";
+                                    },50);                          
+                                }else{                                                              
+                                    setTimeout(function(){
+                                        //window.location="login.html";
+                                        window.location="startPage.html";
+                                    },100); 
+                                }
                             });                                           
                         }
                     }),1500);

@@ -1,3 +1,25 @@
+DA FARE:
+•   start page: 
+            -   password dimenticata
+            -   img fb + gp da sistemare dimensioni
+•   index page:
+            -   sistemare logo con Ps
+•   new_home page:
+            -   barra blu alta da sistemare (menù a sx, e banner)
+            -   togliere img profilo e aggiungerla nel menu con i dati utente e le impostazioni(cambio dati)
+            -   menu a comparsa da sx:
+                                    *   foto profilo user
+                                    *   dati personali
+                                    *   modifica dati
+                                    *   logout
+                                    *   recensioni ricevute (pagina personale)
+                                    *   recensioni lasciate
+            -   come fare l'impaginazione, contenuti da mostrare
+•   pagine mancanti                                    
+            
+
+
+FATTO:
 •   unito i files signUp.js e login.js
 •   aggiunto controllo sulle mail giá registrate con relativi messaggi di errore
 •   su altervista il file registration.php registra l'utente per rentMe, mentre per login.php registro fb e google mentre eseguo il login per tutti
