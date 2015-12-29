@@ -17,6 +17,9 @@ $(function() {
 		e.preventDefault();
 	});
 
+    $("#recoverButton").click(function(e) {
+        e.preventDefault();
+    });
 });
 
 function facebookLogin() {
@@ -159,35 +162,50 @@ function reload(){
         },50);
 }
 
-function passwordDimenticata(){
+function recoverPassword(){
     console.log("recupero password");
     var miaEmail = document.getElementById('emailForgotten').value ;
     //console.log(miaEmail);
     
-    
-    myUrl=  "http://rentme.altervista.org/recuperoPassword.php?emailToRetrieve="+miaEmail; 
-    
-    xhttp = new XMLHttpRequest;
-    xhttp.open("GET", myUrl, false);
-    xhttp.send();                    
-    var responseResult=xhttp.response;       
-    
-    if(JSON.parse(responseResult)!=null){
-        var myResult=JSON.parse(responseResult);
-        
-        if(myResult[0]==true){
-            console.log("Email inviata");   
-            window.location.href="startPage.html";
-        }
-        else{
-                console.log("Email non valida");   
-        }
-
-        
-    }else{
-        console.log("ERRORE RICHIESTA");   
+    if(miaEmail==""){
+        alert("campo vuoto");
     }
+    else{
+        
+        myUrl=  "http://rentme.altervista.org/recoverPassword.php?emailToRetrieve="+miaEmail; 
     
+        var myRequest = new XMLHttpRequest();
+        myRequest.addEventListener("load", transferComplete);
+        myRequest.addEventListener("error", transferFailed);
+        myRequest.open("GET", myUrl);
+        myRequest.send();                    
+        
+
+        //window.location.href="startPage.html";
+        
+        /*
+        $.ajax({
+           
+            method: "POST",
+            //dataType: "json", //type of data
+            crossDomain: true,
+            url: "http://rentme.altervista.org/recoverPassword.php", //Relative or absolute path to file.php file
+            data: {emailToRetrieve:miaEmail},
+
+            success: function(response) {
+                
+                alert("Ti abbiamo inviato una mail per recupero della password.");
+
+                window.location.href="startPage.html";
+            },
+
+            error: function(request,error)
+            {
+                console.log(request+":"+error);
+            }
+        });*/
+  
+    }
     
     /*
     if(JSON.parse(jUser).id!=null){                                
@@ -201,42 +219,23 @@ function passwordDimenticata(){
         },100);    
     }          */              
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    /*$.ajax({
-            method: "POST",
-            //dataType: "json", //type of data
-            crossDomain: true,
-            url: "http://rentme.altervista.org/recuperoPassword.php",
-
-            data: {emailToRetrieve:miaEmail},
-        
-            success: function(response) {
-                console.log("ESITO RISPOSTA: success");
-                //console.log(JSON.parse(response));
-                var requestResult=JSON.parse(response);
-                if(requestResult[0]==true){
-                    console.log("email inviata");   
-                }
-                else{
-                    console.log("errore");   
-                }
-                
-                //window.location.href="startPage.html";
-            },
-            error: function(request,error) 
-            {
-                console.log("ESITO RISPOSTA: error");
-                console.log(request+":"+error);
-            }
-        });*/
    
+}
+
+function transferFailed(evt) {
+    console.log("Si è verificato un errore. Riprova per favore.");
+    window.location="startPage.html";
+}
+
+function transferComplete () {
+    var myResult=this.responseText;       
+    console.log(myResult);
+    
+    alert("Ti abbiamo inviato una mail per recupero della password. \n Controlla la tua casella di posta.");
+    //window.location="startPage.html";
+    setTimeout(function(){
+           window.location="startPage.html";
+        },100); 
+    
+    //window.location="new_home.html";
 }
