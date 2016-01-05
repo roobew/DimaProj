@@ -70,7 +70,7 @@ function setField(){
     $(".myColumn").click(function(){
         // RIMUOVI TUTTI I TAB SELEZIONATI
         $(".myColumn").find("p").removeClass("selectedTab");
-    
+        
         var pressedId=$(this).attr("id");
         
         // NASCONDI TUTTI I CONTENTPAGEDIV
@@ -94,6 +94,8 @@ function setField(){
         else if(pressedId=="preferitiTab"){
             $("#preferitiContent").show();
             console.log("Premuto preferiti"); 
+
+            //swipeDetection();
         }
         else if(pressedId=="messaggiTab"){
             $("#messaggiContent").show();
@@ -140,4 +142,20 @@ function enableSwiperHome(){
             autoplayDisableOnInteraction:false,
           });   
 }
+
+function swipeDetection(){
+    $("li").append("<button class='draggable ui-widget-content'>Button</button>");
+    
+     $("#ciao").draggable({ revert: "valid" });
+    
+    $("li").on("swipeleft",function(){
+        console.log("SWIPE DETECTED");
+        
+       
+    });
+    //$(".ciao").click(function (){console.log("ciao");});
+
+}
+
+
 
