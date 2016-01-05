@@ -1,24 +1,6 @@
 
 var actualDraggedDiv;
 
-$(document).ready(function (){
-    
-    /*$("*:not(.del)").click(function (){
-        $(".wrapper").css({
-            transform: "translateX(0)"
-        });
-    });*/
-    
-    $(".del").click(function() {
-        console.log("cancello");
-        var elementToDelete=$(this).closest("li").attr("id");
-        $("#"+elementToDelete).fadeOut("slow",function(){
-            $("#"+elementToDelete).remove();   
-        });
-    });
-   
-});
-
 var elementDragged = false;
 
 var elementDraggedCounter=0;
@@ -33,36 +15,9 @@ $(document).ready(function (){
         $(parent).fadeOut("fast", function (){
             console.log("remove");
             $(parent).remove();    
-
-
-$.fn.extend({
-    createBtn: function () {
-        //console.log("A1");
-        var elmWidth = $("li", $(this)).width(),
-            listType = $(this).listview("option", "inset") ? true : false,
-            btnWidth = elmWidth < 300 && listType ? "35%" : elmWidth > 300 && !listType ? "25%" : "20%";
-        $("li", $(this)).each(function () {
-            var text = $(this).html();
-            $(this).html($("<div/>", {
-                class: "wrapper"
-            }).append($("<div/>", {
-                class: "go"
-            }).text("Save").width(btnWidth)).append($("<div/>", {
-                class: "item"
-            }).text(text)).append($("<div/>", {
-                class: "del"
-            }).text("Delete").width(btnWidth)).css({
-                left: "-" + btnWidth
-            }).on("swipeleft swiperight vclick tap", function (e) {
-
-                $(this).revealBtn(e, btnWidth);
-            })  
-                        );
-
-       
         });
-});
-
+    });
+    
     $("#preferitiContent").click(function(event) {
         if(elementDragged==true){
             if(event.target.className != "secondDiv"){
@@ -83,9 +38,6 @@ $.fn.extend({
             closeDraggableElement();   
         }
     });
-    
-    
-        
 });
 
 function closeDraggableElement(){
@@ -104,16 +56,6 @@ $(function() {
     var minX=-200;
     var maxX=0;
     var yPosition=0;
-
-    open: function (e, x, dir) {
-        //console.log("opening");
-        var posX = dir == "left" ? x : "-" + x;
-        $(this).css({
-            transform: "translateX(" + posX + ")"
-        });
-        //console.log("end opening");
-    },
-    
     
     $(".firstDiv").draggable({
         // Can't use revert, as we animate the original object
@@ -239,5 +181,4 @@ function init() {
     document.addEventListener("touchend", touchHandler, true);
     document.addEventListener("touchcancel", touchHandler, true);
 }*/
-=======
->>>>>>> origin/master
+

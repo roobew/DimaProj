@@ -20,7 +20,10 @@ $(function() {
     $("#recoverButton").click(function(e) {
         e.preventDefault();
     });
+<<<<<<< HEAD
     
+=======
+>>>>>>> origin/master
 });
 
 function facebookLogin() {
