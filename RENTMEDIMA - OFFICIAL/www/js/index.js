@@ -1,7 +1,7 @@
 $(document).on('deviceready', function() {
     console.log("INDEX");
     openFB.init({appId: '867006893383189', tokenStore: window.localStorage});
-    //localStorage.clear();
+    //clearLocalStorage();
     next();
 });
 
@@ -73,7 +73,9 @@ function next(){
                                 var myUser= JSON.parse(localStorage.getItem("userData"));
                                 console.log(myUser);
                                
-                                if(myUser!=null){
+                                window.location="new_home.html";
+                                /*if(myUser!=null){
+                                    console.log("MyUser notNull!!!");
                                 myUrl=  "http://rentme.altervista.org/login.php?"       +
                                         "id="           +   myUser.id                     +
                                         "&name="        +   myUser.name             +
@@ -92,7 +94,7 @@ function next(){
                                     console.log("VADO a Home");
                                     localStorage.setItem("userData",jUser);
                                     setTimeout(function(){
-                                                window.location.href="new_home.html";
+                                                window.location="new_home.html";
                                     },50);                          
                                 }else{    
                                     console.log("VADO a STart Page");
@@ -103,8 +105,15 @@ function next(){
                                  }
                                 }else{
                                     window.location="startPage.html";   
-                                }
+                                }*/
                             });                                           
                         }
                     }),1500);
+}
+
+function clearLocalStorage(){
+    console.log("Start Cleaning . . . .");
+    localStorage.clear();
+    
+    console.log("End Cleaning ");
 }

@@ -20,6 +20,7 @@ $(function() {
     $("#recoverButton").click(function(e) {
         e.preventDefault();
     });
+    
 });
 
 function facebookLogin() {
