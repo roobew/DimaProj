@@ -17,6 +17,10 @@ $(function() {
 		e.preventDefault();
 	});
 
+    $("#recoverButton").click(function(e) {
+        e.preventDefault();
+    });
+    
 });
 
 function facebookLogin() {
@@ -49,7 +53,8 @@ function facebookLogin() {
                             navigator.notification.alert(JSON.parse(jUser).message, reload, JSON.parse(jUser).title);      
                         }
                     },
-                    error:function(result){  
+                    error:function(result){ 
+                        console.log("errore trovato!!!");
                         console.log(result);
                     }                                
                 });
@@ -156,4 +161,82 @@ function reload(){
      setTimeout(function(){         
             window.location.reload(true);
         },50);
+}
+
+function recoverPassword(){
+    console.log("recupero password");
+    var miaEmail = document.getElementById('emailForgotten').value ;
+    //console.log(miaEmail);
+    
+    if(miaEmail==""){
+        alert("campo vuoto");
+    }
+    else{
+        
+        myUrl=  "http://rentme.altervista.org/recoverPassword.php?emailToRetrieve="+miaEmail; 
+    
+        var myRequest = new XMLHttpRequest();
+        myRequest.addEventListener("load", transferComplete);
+        myRequest.addEventListener("error", transferFailed);
+        myRequest.open("GET", myUrl);
+        myRequest.send();                    
+        
+
+        //window.location.href="startPage.html";
+        
+        /*
+        $.ajax({
+           
+            method: "POST",
+            //dataType: "json", //type of data
+            crossDomain: true,
+            url: "http://rentme.altervista.org/recoverPassword.php", //Relative or absolute path to file.php file
+            data: {emailToRetrieve:miaEmail},
+
+            success: function(response) {
+                
+                alert("Ti abbiamo inviato una mail per recupero della password.");
+
+                window.location.href="startPage.html";
+            },
+
+            error: function(request,error)
+            {
+                console.log(request+":"+error);
+            }
+        });*/
+  
+    }
+    
+    /*
+    if(JSON.parse(jUser).id!=null){                                
+        localStorage.setItem("userData",jUser);
+        setTimeout(function(){
+                    window.location.href="new_home.html";
+        },50);                          
+    }else{                                                                 
+        setTimeout(function(){
+            window.location="startPage.html";
+        },100);    
+    }          */              
+    
+   
+}
+
+function transferFailed(evt) {
+    console.log("Si è verificato un errore. Riprova per favore.");
+    window.location="startPage.html";
+}
+
+function transferComplete () {
+    var myResult=this.responseText;       
+    console.log(myResult);
+    
+    alert("Ti abbiamo inviato una mail per recupero della password. \n Controlla la tua casella di posta.");
+    //window.location="startPage.html";
+    setTimeout(function(){
+           window.location="startPage.html";
+        },100); 
+    
+    //window.location="new_home.html";
 }

@@ -110,22 +110,28 @@ body {
     display: none;
 }
 
+
 #topFixedDiv{
     display: block;
-    height: 2em;
+    height: 4em;
     width: 100%;
     top: 0;
     position: fixed;
     z-index: 2;
-    background-color: #1a8cff;
+    background-color: #125688;
 }
 
-#clearLine{
-    height: 1.4em;   
-}
 
 #contentDiv{
+    display: block;
+    height: 100%;
+    width:100%;
     margin-top: 3em; 
     overflow-y: scroll;
     z-index: 1;
+    background-image: url(../img/background.png);   
+}
+
+.panel{
+    :background-color: transparent;
 }

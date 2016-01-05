@@ -1,6 +1,7 @@
 $(document).on('deviceready', function() {
     console.log("INDEX");
     openFB.init({appId: '867006893383189', tokenStore: window.localStorage});
+    //clearLocalStorage();
     next();
 });
 
@@ -8,6 +9,7 @@ function next(){
    setTimeout(openFB.api({
                         path: '/me',
                         success: function(user) {
+                            console.log("FB REQUEST");
                             myUrl=  "http://rentme.altervista.org/login.php?"       +
                                     "id="           +   user.id                     +
                                     "&name="        +   user.first_name             +
@@ -23,15 +25,16 @@ function next(){
                             if(JSON.parse(jUser).id!=null){                                
                                 localStorage.setItem("userData",jUser);
                                 setTimeout(function(){
-                                            window.location.href="html/new_home.html";
+                                            window.location.href="new_home.html";
                                 },50);                          
                             }else{                                                                 
                                 setTimeout(function(){
-                                    window.location="html/startPage.html";
+                                    window.location="startPage.html";
                                 },100);    
                             }                        
                         },
-                        error: function(data) {                           
+                        error: function(data) { 
+                            console.log("FB: nessun login trovato");
                             googleapi.getToken({
                                     client_id: app_google.client_id,
                                     client_secret: app_google.client_secret
@@ -54,21 +57,63 @@ function next(){
                                 if(JSON.parse(jUser).id!=null){
                                     localStorage.setItem("userData",jUser);
                                     setTimeout(function(){
-                                                window.location.href="html/new_home.html";
+                                                window.location.href="new_home.html";
                                     },50);                          
                                 }else{                                                              
                                     setTimeout(function(){
                                         //window.location="login.html";
-                                        window.location="html/startPage.html";
+                                        window.location="startPage.html";
                                     },100);                                      
                                 }                             
                             })
                                  
                               .fail(function() {
-                                //handle rentMe Login else
-                                //window.location.href="login.html";
-                                window.location.href="html/startPage.html";
+                                console.log("GOOGLE: nessun login trovato");
+                                //console.log("renteme check login");
+                                var myUser= JSON.parse(localStorage.getItem("userData"));
+                                console.log(myUser);
+                               
+                                window.location="new_home.html";
+                                /*if(myUser!=null){
+                                    console.log("MyUser notNull!!!");
+                                myUrl=  "http://rentme.altervista.org/login.php?"       +
+                                        "id="           +   myUser.id                     +
+                                        "&name="        +   myUser.name             +
+                                        "&surname="     +   myUser.surname            +
+                                        "&email="       +   myUser.email                  +
+                                        "&loginType="   +   'rentMe'                    +
+                                        "&token="       +   myUser.token   +
+                                        "&picture="     +   String(myUser.picture).replace(/&/gi,'%26')      ;
+                                xhttp = new XMLHttpRequest;
+                                xhttp.open("GET", myUrl, false);
+                                xhttp.send();
+                                jUser=xhttp.response;
+                                console.log("result:");
+                                console.log(jUser);
+                                if(JSON.parse(jUser).id!=null){
+                                    console.log("VADO a Home");
+                                    localStorage.setItem("userData",jUser);
+                                    setTimeout(function(){
+                                                window.location="new_home.html";
+                                    },50);                          
+                                }else{    
+                                    console.log("VADO a STart Page");
+                                    setTimeout(function(){
+                                        //window.location="login.html";
+                                        window.location="startPage.html";
+                                    },100); 
+                                 }
+                                }else{
+                                    window.location="startPage.html";   
+                                }*/
                             });                                           
                         }
                     }),1500);
+}
+
+function clearLocalStorage(){
+    console.log("Start Cleaning . . . .");
+    localStorage.clear();
+    
+    console.log("End Cleaning ");
 }

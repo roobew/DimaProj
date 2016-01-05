@@ -1,21 +1,77 @@
-<html>
-  <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
-      <link rel="stylesheet" type="text/css" href="css/new_home.css"/>
-<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
-      <script src="js/prova.js"></script>
-  </head>
-  <body>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery UI Draggable - Default functionality</title>
     
-        <ul data-role="listview">
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-            <li>Item 4</li>
-            <li>Item 5</li>
-        </ul>
+        <!-- Include jQuery Mobile stylesheets -->
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
     
-    </body>
-  </html>
+         <!-- Include the jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+        <!-- Include the jQuery Mobile library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+        
+    
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    
+    
+        <script src="js/prova.js"></script>
+        <script src="js/touch_punch_min.js"></script>
+
+
+          <!--<script>
+          $(function() {
+            $( "#sortable" ).sortable();
+            $( "#sortable" ).disableSelection();
+          });
+          </script> -->
+    
+</head>
+<body style="overflow-x:hidden">
+   
+    <!-- <div class="divParent" style="display:block; height:2em; width: 130%; position:relative;">
+            <div class="firstDiv" style="display:inline-block; float:left; height:100%; width:100%; border:2px solid black; z-index:1">Item 1</div>
+            <div class="secondDiv" style="display:inline-block; float:right; height:100%; width:20%; background-color:red; border:2px solid black; position:absolute; z-index:1;"> Elimina </div>
+        </div>
+    
+    <div class="divParent" style="display:block; height:2em; width: 130%; position:relative;">
+            <div class="firstDiv" style="display:inline-block; float:left; height:100%; width:100%; border:2px solid black; z-index:1">Item 1</div>
+            <div class="secondDiv" style="display:inline-block; float:right; height:100%; width:20%; background-color:red; border:2px solid black; position:absolute; z-index:1;"> Elimina </div>
+        </div>
+     
+    <ul style="margin:0; padding:0">
+        <li class="divParent" style="display:block; height:2em; width: 130%; position:relative;">
+            <div class="firstDiv" style="display:inline-block; float:left; height:100%; width:100%; border:2px solid black; z-index:1">List element 1</div>
+            <div class="secondDiv" style="display:inline-block; float:right; height:100%; width:20%; background-color:red; border:2px solid black; position:absolute; z-index:1;"> Elimina </div>
+        </li>
+        
+    </ul>
+    
+    
+    <br>
+    <button id="btn">button</button>-->
+    
+    <!-- 
+    <div id="sortable">
+        <div> ciao </div>
+        <div> sono </div>
+        <div> pippo </div>
+        <div> pasticcio </div>
+    
+    </div>-->
+    
+     
+<p>Click anywhere to shake the box.</p>
+<div id="toggle" style="height:100px;width:100px;background:gray"></div>
+ 
+<script>
+$( document ).click(function() {
+  $( "#toggle" ).effect( "shake",{direction:top}, {times:7}, 900  );
+});
+</script>
+    
+</body>
+</html>
