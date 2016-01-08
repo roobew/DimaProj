@@ -1,5 +1,44 @@
 $(document).ready(setField);
 
+function GoogleMap(){
+ 
+    this.initialize = function(Lat,Lng){
+        console.log("maps");
+        var map = showMap(Lat,Lng);
+        addMarkersToMap(map,Lat,Lng);
+    }
+    
+    var addMarkersToMap = function(map,Lat,Lng){
+        var latitudeAndLongitudeOne = new google.maps.LatLng(Lat,Lng);
+
+        var markerOne = new google.maps.Marker({
+        position: latitudeAndLongitudeOne,
+        map: map
+        });
+
+       /* var latitudeAndLongitudeTwo = new google.maps.LatLng('57.77828', '14.17200');
+
+        var markerOne = new google.maps.Marker({
+        position: latitudeAndLongitudeTwo,
+        map: map
+        });*/
+    }
+
+ 
+    var showMap = function(Lat,Lng){
+        console.log("showmap");
+        var mapOptions = {
+        zoom: 16,
+        center: new google.maps.LatLng(Lat, Lng),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+
+        var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+        return map;
+    }
+}
+
 function setField(){
     // ICONE HOME SELEZIONATE
     $("#homeIcon").addClass("selectedTab");
@@ -78,7 +117,31 @@ function setField(){
         window.scrollTo(0,0);
         if(pressedId=="cercaTab"){
             $("#cercaContent").show();
-            console.log("Premuto cerca");   
+            console.log("Premuto cerca"); 
+            // onSuccess Callback
+            // This method accepts a Position object, which contains the
+            // current GPS coordinates
+            //
+            var onSuccess = function(position) {
+               /* navigator.notification.alert(                    
+                    'Latitude: ' + position.coords.latitude          + '\n' +
+                      'Longitude: '         + position.coords.longitude         + '\n',null,"GEOLOCATION");*/
+                console.log("prima");
+            
+                var map = new GoogleMap();
+                map.initialize(position.coords.latitude,position.coords.longitude);
+                console.log("dopo");
+            };
+            
+
+            // onError Callback receives a PositionError object
+            //
+            function onError(error) {
+                alert('code: '    + error.code    + '\n' +
+                      'message: ' + error.message + '\n');
+            }
+
+            navigator.geolocation.getCurrentPosition(onSuccess, onError);
         }
         else if(pressedId=="affittaTab"){
             
@@ -109,6 +172,8 @@ function setField(){
 
     
 }
+
+
 
 function enableSwiperAffitta(){
     var swiperTre = new Swiper ('#swiperAffitta', {

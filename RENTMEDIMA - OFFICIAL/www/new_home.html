@@ -45,6 +45,9 @@
     <!-- ***** END JS  *****-->   
                 
         
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js"></script>
+<link href="http://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css" />
+        
     </head>
     
    <body> 
@@ -360,10 +363,29 @@
                     <div> pasticcio </div>
                     
                 </div>
-                  
                 
+                <div class="contentPageDiv" id="cercaContent"> 
+                    <div class="panel panel-default">                        
+                        <div class="panel-body">
+                                
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="nomeAnnuncio" placeholder="Dove?" maxlength="20">
+                                        <input type="number" class="form-control" id="prezzo" placeholder="Prezzo cad." max="10000">        
+                                        <button class="btn btn-default" id="nextStepButton">Cerca</button>
+                                        <div id="map_canvas">
+                                             
+                                        </div>
+                                    </div>
+                                
+                                      
+                        </div>
+                                    
+                    </div>
+                </div>
+                        
             </div>
-           
+        </div>                    
+              
             <!-- BARRA NAVIGAZIONE IN BASSO  -->
             <div class="container" id="fixedBottomDiv">
                     <div class="row" id="rowBottomBar">
@@ -424,12 +446,12 @@
     
        <script type="text/javascript" src="cordova.js"></script>
         
-       <script src="js/openFB.js"></script>
-       <script src="js/openGoogle.js"></script>
+        <script src="js/openFB.js"></script>
+        <script src="js/openGoogle.js"></script>
         
-       <script src="js/commonJavascript.js"></script>
-        
-       
+        <script src="js/commonJavascript.js"></script>
+               
+    <script type="text/javascript" src="googlemap.js"></script>
        <!-- Swiper JS  -->
        <script src="swiper/dist/js/swiper.min.js"></script>
        
