@@ -16,21 +16,21 @@ function GoogleMap(){
         map: map
         });
 
-       /* var latitudeAndLongitudeTwo = new google.maps.LatLng('57.77828', '14.17200');
+        var latitudeAndLongitudeTwo = new google.maps.LatLng(Lat+1, Lng+1);
 
-        var markerOne = new google.maps.Marker({
+        var markerTwo = new google.maps.Marker({
         position: latitudeAndLongitudeTwo,
         map: map
-        });/*
+        });
     }
 
- 
     var showMap = function(Lat,Lng){
         console.log("showmap");
         var mapOptions = {
-        zoom: 12,
+        zoom: 16,
         center: new google.maps.LatLng(Lat, Lng),
         mapTypeId: google.maps.MapTypeId.ROADMAP
+        enableHighAccuracy: true
         }
 
         var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
@@ -118,10 +118,6 @@ function setField(){
         if(pressedId=="cercaTab"){
             $("#cercaContent").show();
             console.log("Premuto cerca"); 
-            // onSuccess Callback
-            // This method accepts a Position object, which contains the
-            // current GPS coordinates
-            //
             var onSuccess = function(position) {
                /* navigator.notification.alert(                    
                     'Latitude: ' + position.coords.latitude          + '\n' +
@@ -131,13 +127,9 @@ function setField(){
                 var map = new GoogleMap();
                 map.initialize(position.coords.latitude,position.coords.longitude);
                 console.log("dopo");
-            };
-            
-
-            // onError Callback receives a PositionError object
-            //
+            };           
             function onError(error) {
-                alert('code: '    + error.code    + '\n' +
+                console.log('code: '    + error.code    + '\n' +
                       'message: ' + error.message + '\n');
             }
 

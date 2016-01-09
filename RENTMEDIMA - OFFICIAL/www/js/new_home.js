@@ -1,40 +1,97 @@
 $(document).ready(setField);
 
 function GoogleMap(){
- 
-    this.initialize = function(Lat,Lng){
+    this.initialize = function(position){
         console.log("maps");
-        var map = showMap(Lat,Lng);
-        addMarkersToMap(map,Lat,Lng);
+        var map = showMap(position);
+        //addMarkersToMap(map,Lat,Lng);
     }
-    
-    var addMarkersToMap = function(map,Lat,Lng){
-        var latitudeAndLongitudeOne = new google.maps.LatLng(Lat,Lng);
+/* 
+   var addMarkersToMap = function(map,position){
+        var latitudeAndLongitudeOne = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
 
-        var markerOne = new google.maps.Marker({
-        position: latitudeAndLongitudeOne,
-        map: map
+        var accuracy = new google.maps.Marker({
+            position: latitudeAndLongitudeOne,
+            map: map,
+            icon: {
+                path: google.maps.SymbolPath.CIRCLE,
+                scale: 20,
+                fillColor: 'lightblue',
+                fillOpacity: 0.8,
+                strokeColor: 'blue',
+                strokeWeight: 1
+            },
+        });
+        var point = new google.maps.Marker({
+            position: latitudeAndLongitudeOne,
+            map: map,
+            icon: {
+                path: google.maps.SymbolPath.CIRCLE,
+                scale: 3,
+                fillColor: 'blue',
+                fillOpacity: 1,
+                strokeColor: 'blue',
+                strokeWeight: 0
+            },
         });
 
-       /* var latitudeAndLongitudeTwo = new google.maps.LatLng('57.77828', '14.17200');
-
-        var markerOne = new google.maps.Marker({
+        var latitudeAndLongitudeTwo = new google.maps.LatLng('45.576622', '9.227743');
+        console.log(latitudeAndLongitudeOne);
+        console.log(latitudeAndLongitudeTwo.lat);
+        var markerTwo = new google.maps.Marker({
         position: latitudeAndLongitudeTwo,
         map: map
-        });*/
+        });
     }
-
- 
-    var showMap = function(Lat,Lng){
+*/
+    var showMap = function(position){
         console.log("showmap");
-        var mapOptions = {
-        zoom: 16,
-        center: new google.maps.LatLng(Lat, Lng),
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+            var mapOptions = {
+            zoom: 16,
+            center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            enableHighAccuracy: true
         }
-
         var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-
+        var accuracy = new google.maps.Marker();
+        var point = new google.maps.Marker();
+        setInterval(function(){
+            var currentPosition = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);        
+            if(map.getZoom()>16){
+                accuracy.setOptions({
+                    position: currentPosition,
+                    map: map,
+                    icon: {
+                        path: google.maps.SymbolPath.CIRCLE,
+                        scale: position.coords.accuracy*2*19/map.getZoom(),
+                        fillColor: 'lightblue',
+                        fillOpacity: 0.15,
+                        strokeColor: 'lightblue',
+                        strokeWeight: 1
+                    },
+                });      
+            }
+            point.setOptions({
+                position: currentPosition,
+                map: map,
+                icon: {
+                    path: google.maps.SymbolPath.CIRCLE,
+                    scale: 5*16/map.getZoom(),
+                    fillColor: 'lightblue',
+                    fillOpacity: 1,
+                    strokeColor: 'blue',
+                    strokeWeight: 5*16/map.getZoom()
+                },
+            });
+            console.log(map.getZoom());
+            console.log(
+                'Latitude: '          + position.coords.latitude          + '\n' +
+                'Longitude: '         + position.coords.longitude         + '\n' +          
+                'Accuracy: '          + position.coords.accuracy          + '\n' +         
+                'Speed: '             + position.coords.speed             + '\n' +
+                'Timestamp: '         + position.timestamp                + '\n'
+            );
+        },1000);
         return map;
     }
 }
@@ -118,29 +175,6 @@ function setField(){
         if(pressedId=="cercaTab"){
             $("#cercaContent").show();
             console.log("Premuto cerca"); 
-            // onSuccess Callback
-            // This method accepts a Position object, which contains the
-            // current GPS coordinates
-            //
-            var onSuccess = function(position) {
-               /* navigator.notification.alert(                    
-                    'Latitude: ' + position.coords.latitude          + '\n' +
-                      'Longitude: '         + position.coords.longitude         + '\n',null,"GEOLOCATION");*/
-                console.log("prima");
-            
-                var map = new GoogleMap();
-                map.initialize(position.coords.latitude,position.coords.longitude);
-                console.log("dopo");
-            };
-            
-
-            // onError Callback receives a PositionError object
-            //
-            function onError(error) {
-                alert('code: '    + error.code    + '\n' +
-                      'message: ' + error.message + '\n');
-            }
-
             navigator.geolocation.getCurrentPosition(onSuccess, onError);
         }
         else if(pressedId=="affittaTab"){
@@ -173,6 +207,17 @@ function setField(){
     
 }
 
+function onSuccess (position) {
+   /* navigator.notification.alert(                    
+        'Latitude: ' + position.coords.latitude          + '\n' +
+          'Longitude: '         + position.coords.longitude         + '\n',null,"GEOLOCATION");*/
+    var map = new GoogleMap();
+    map.initialize(position);                
+}       
+function onError(error) {
+    console.log('code: '    + error.code    + '\n' +
+          'message: ' + error.message + '\n');
+}
 
 
 function enableSwiperAffitta(){
