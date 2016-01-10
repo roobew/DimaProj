@@ -46,7 +46,7 @@ function GoogleMap(){
 */
     var showMap = function(position){
         console.log("showmap");
-            var mapOptions = {
+        var mapOptions = {
             zoom: 16,
             center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
             mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -103,8 +103,7 @@ function setField(){
     
     // CONTENTPAGEDIV NASCOSTI, TRANNE HOME 
     $(".contentPageDiv").hide();
-    $("#homeContent").show();
-    
+    $("#homeContent").show();    
     $("#my-menu").mmenu({
             slidingSubmenus: false
           }, {
@@ -113,10 +112,8 @@ function setField(){
                 vertical: "expand",
                 selected: "active"
              }
-          });
-    
-    enableSwiperHome();
-    
+          });    
+    enableSwiperHome();    
             /*var swiperUno = $('#swiperContainer1').swiper({
                 mode: 'horizontal',
                 watchActiveIndex: true,
@@ -137,8 +134,7 @@ function setField(){
                         console.log('First slide active')
                     }
                 }
-            });*/
-        
+            });*/        
            /* var swiperDue = $('#swiperContainer2').swiper({
                 mode: 'horizontal',
                 watchActiveIndex: true,
@@ -160,21 +156,25 @@ function setField(){
                     }
                 }
             });
-    */
-         
-    
+    */            
     $(".myColumn").click(function(){
         // RIMUOVI TUTTI I TAB SELEZIONATI
-        $(".myColumn").find("p").removeClass("selectedTab");
-        
-        var pressedId=$(this).attr("id");
-        
+        $(".myColumn").find("p").removeClass("selectedTab");        
+        var pressedId=$(this).attr("id");        
         // NASCONDI TUTTI I CONTENTPAGEDIV
         $(".contentPageDiv").hide();
         window.scrollTo(0,0);
         if(pressedId=="cercaTab"){
             $("#cercaContent").show();
-            console.log("Premuto cerca"); 
+            console.log("Premuto cerca");             
+            function onSuccess (position) {
+                var map = new GoogleMap();
+                map.initialize(position);                
+            }       
+            function onError(error) {
+                console.log('code: '    + error.code    + '\n' +
+                      'message: ' + error.message + '\n');
+            }
             navigator.geolocation.getCurrentPosition(onSuccess, onError);
         }
         else if(pressedId=="affittaTab"){
@@ -207,17 +207,7 @@ function setField(){
     
 }
 
-function onSuccess (position) {
-   /* navigator.notification.alert(                    
-        'Latitude: ' + position.coords.latitude          + '\n' +
-          'Longitude: '         + position.coords.longitude         + '\n',null,"GEOLOCATION");*/
-    var map = new GoogleMap();
-    map.initialize(position);                
-}       
-function onError(error) {
-    console.log('code: '    + error.code    + '\n' +
-          'message: ' + error.message + '\n');
-}
+
 
 
 function enableSwiperAffitta(){

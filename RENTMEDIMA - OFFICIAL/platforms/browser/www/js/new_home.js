@@ -57,7 +57,7 @@ function GoogleMap(){
         var point = new google.maps.Marker();
         setInterval(function(){
             var currentPosition = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);        
-            if(map.getZoom()>16){
+            if(map.getZoom()>16 && map.getZoom()<21){
                 accuracy.setOptions({
                     position: currentPosition,
                     map: map,
