@@ -1,9 +1,15 @@
 $(document).ready(setField);
 
 function GoogleMap(){
-    this.initialize = function(position){
+    var mapOptions;
+    var map;
+    var accuracy = new google.maps.Marker();
+    var point = new google.maps.Marker();
+    this.initialize = function(){
         console.log("maps");
-        var map = showMap(position);
+        navigator.geolocation.getCurrentPosition(start, error,{enableHighAccuracy: true});
+        
+        //var map = showMap(position);
         //addMarkersToMap(map,Lat,Lng);
     }
 /* 
@@ -44,21 +50,17 @@ function GoogleMap(){
         });
     }
 */
-    var showMap = function(position){
-        console.log("showmap");
-            var mapOptions = {
+
+    function start(position){
+        console.log("start");
+        mapOptions = {
             zoom: 16,
             center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
             mapTypeId: google.maps.MapTypeId.ROADMAP,
-            enableHighAccuracy: true
-        }
-        var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-        var accuracy = new google.maps.Marker();
-        var point = new google.maps.Marker();
-        setInterval(function(){
-            var currentPosition = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);        
-            if(map.getZoom()>16 && map.getZoom()<21){
-                accuracy.setOptions({
+        };
+        map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+        var currentPosition = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+        accuracy.setOptions({
                     position: currentPosition,
                     map: map,
                     icon: {
@@ -69,9 +71,8 @@ function GoogleMap(){
                         strokeColor: 'lightblue',
                         strokeWeight: 1
                     },
-                });      
-            }
-            point.setOptions({
+                });
+        point.setOptions({
                 position: currentPosition,
                 map: map,
                 icon: {
@@ -83,17 +84,72 @@ function GoogleMap(){
                     strokeWeight: 5*16/map.getZoom()
                 },
             });
-            console.log(map.getZoom());
-            console.log(
+        console.log(
+                map.getZoom() + '\n' +
                 'Latitude: '          + position.coords.latitude          + '\n' +
                 'Longitude: '         + position.coords.longitude         + '\n' +          
                 'Accuracy: '          + position.coords.accuracy          + '\n' +         
                 'Speed: '             + position.coords.speed             + '\n' +
                 'Timestamp: '         + position.timestamp                + '\n'
             );
+        console.log("startend");
+        setInterval(function(){
+            navigator.geolocation.getCurrentPosition(update, error,{enableHighAccuracy: true});   
+        },1000);
+    }
+    function update(position){
+        console.log("update");
+        var currentPosition = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+        accuracy.setOptions({
+                    position: currentPosition,
+                    map: map,
+                    icon: {
+                        path: google.maps.SymbolPath.CIRCLE,
+                        scale: position.coords.accuracy*2*19/map.getZoom(),
+                        fillColor: 'lightblue',
+                        fillOpacity: 0.15,
+                        strokeColor: 'lightblue',
+                        strokeWeight: 1
+                    },
+                });
+        point.setOptions({
+                position: currentPosition,
+                map: map,
+                icon: {
+                    path: google.maps.SymbolPath.CIRCLE,
+                    scale: 5*16/map.getZoom(),
+                    fillColor: 'lightblue',
+                    fillOpacity: 1,
+                    strokeColor: 'blue',
+                    strokeWeight: 5*16/map.getZoom()
+                },
+            });
+        console.log(
+                map.getZoom() + '\n' +
+                'Latitude: '          + position.coords.latitude          + '\n' +
+                'Longitude: '         + position.coords.longitude         + '\n' +          
+                'Accuracy: '          + position.coords.accuracy          + '\n' +         
+                'Speed: '             + position.coords.speed             + '\n' +
+                'Timestamp: '         + position.timestamp                + '\n'
+            );
+        console.log("updateend");
+    }
+    function error(error){
+        console.log(error);
+    }
+    /*   
+    var showMap = function(position){
+        console.log("showmap");
+        
+        setInterval(function(){
+                    
+            
+            
+            
         },1000);
         return map;
     }
+    */
 }
 
 function setField(){
@@ -103,8 +159,7 @@ function setField(){
     
     // CONTENTPAGEDIV NASCOSTI, TRANNE HOME 
     $(".contentPageDiv").hide();
-    $("#homeContent").show();
-    
+    $("#homeContent").show();    
     $("#my-menu").mmenu({
             slidingSubmenus: false
           }, {
@@ -113,10 +168,8 @@ function setField(){
                 vertical: "expand",
                 selected: "active"
              }
-          });
-    
-    enableSwiperHome();
-    
+          });    
+    enableSwiperHome();    
             /*var swiperUno = $('#swiperContainer1').swiper({
                 mode: 'horizontal',
                 watchActiveIndex: true,
@@ -137,8 +190,7 @@ function setField(){
                         console.log('First slide active')
                     }
                 }
-            });*/
-        
+            });*/        
            /* var swiperDue = $('#swiperContainer2').swiper({
                 mode: 'horizontal',
                 watchActiveIndex: true,
@@ -160,22 +212,21 @@ function setField(){
                     }
                 }
             });
-    */
-         
-    
+    */            
     $(".myColumn").click(function(){
         // RIMUOVI TUTTI I TAB SELEZIONATI
-        $(".myColumn").find("p").removeClass("selectedTab");
-        
-        var pressedId=$(this).attr("id");
-        
+        $(".myColumn").find("p").removeClass("selectedTab");        
+        var pressedId=$(this).attr("id");        
         // NASCONDI TUTTI I CONTENTPAGEDIV
         $(".contentPageDiv").hide();
         window.scrollTo(0,0);
         if(pressedId=="cercaTab"){
             $("#cercaContent").show();
-            console.log("Premuto cerca"); 
-            navigator.geolocation.getCurrentPosition(onSuccess, onError);
+            console.log("Premuto cerca");             
+            var map = new GoogleMap();
+            map.initialize();   
+            
+           
         }
         else if(pressedId=="affittaTab"){
             
@@ -207,17 +258,7 @@ function setField(){
     
 }
 
-function onSuccess (position) {
-   /* navigator.notification.alert(                    
-        'Latitude: ' + position.coords.latitude          + '\n' +
-          'Longitude: '         + position.coords.longitude         + '\n',null,"GEOLOCATION");*/
-    var map = new GoogleMap();
-    map.initialize(position);                
-}       
-function onError(error) {
-    console.log('code: '    + error.code    + '\n' +
-          'message: ' + error.message + '\n');
-}
+
 
 
 function enableSwiperAffitta(){
