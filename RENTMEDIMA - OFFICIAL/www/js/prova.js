@@ -1,179 +1,122 @@
-var actualDraggedDiv;
+var imageIndex=[0,1,2];
 
-var elementDragged = false;
-
-var elementDraggedCounter=0;
-
-$(document).ready(function (){
-    //init(); 
-
-    $(".secondDiv").click(function (){
-        console.log("Delete premuto");
-        var parent=$(this).parent();
-        
-        $(parent).fadeOut("fast", function (){
-            console.log("remove");
-            $(parent).remove();    
-            
-        });
-    });
+$(document).ready(function(){
+    console.log("ciao ciao");
     
-    $("body").click(function(event) {
-        if (event.target.className != "secondDiv") {
-            console.log("CHIUDO DRAGGABLE");
-            closeDraggableElement();
-        }
-    });
     
-//    $("body:not(.secondDiv)").click(function (){
-//        console.log("INSIDE");
-//       $(actualDraggedDiv).stop().animate({
-//                             left: '0'
-//                    },1000,'easeOutExpo');
-//
-//                    elementDragged=false; 
-//        console.log("OUTSIDE");
-//    
-//    });
+    
+    $(".btn").click(function(){
+       //$.fn.createPhotoSwiperGallery(1);
+        var indice=$(this).index()-1;
+        console.log("INDICE: "+indice);
+        //$.fn.createPhotoSwiperGallery(indice);
+        $.fn.createPhotoSwiperGallery(indice);
+    });
 });
 
-function closeDraggableElement(){
-    console.log("close draggable element function");
-    $(actualDraggedDiv).stop().animate({
-                             left: '0'
-                    },1000,'easeOutExpo');
 
-                    elementDragged=false; 
-}
+(function( $ ){
+   $.fn.createPhotoSwiperGallery = function(myIndex) {
+      var pswpElement = document.querySelectorAll('.pswp')[0];
 
-$(function() {
-    console.log("Let's start!");
-    
-    var delta = 0;
-    var minX=-200;
-    var maxX=0;
-    var yPosition=0;
-    
-    
-    $(".firstDiv").draggable({
-        // Can't use revert, as we animate the original object
-        
-        appendTo: 'body',
-        axis: "x",  
-        containment: [minX,yPosition,maxX,yPosition],
-        helper: function(){
-            // Create an invisible div as the helper. It will move and
-            // follow the cursor as usual.
-            return $('<div></div>').css('opacity',0);
+    // build items array
+    var items = [
+        {
+            src: 'http://4.bp.blogspot.com/_NHGUPiJ4-BE/TTawjmDYKmI/AAAAAAAAABY/68N6ZN8Uz50/s320/Hyde+Park.JPG',
+            w: 600,
+            h: 400
         },
-        create: function(){
-            console.log("creo");
-            // When the draggable is created, save its starting
-            // position into a data attribute, so we know where we
-            // need to revert to.
-            //var $this = $(this);
-            //$this.data('starttop',$this.position().top);
-        },
-        
-        start: function(event, ui) {
-            start = ui.position.left;
-            console.log("Start Drag");
-            
-            if(elementDragged==true && actualDraggedDiv!=$(this).parent()){
-                console.log("Già uno aperto! Devi chiudere quello, non draggare"); 
-                closeDraggableElement();
-                return false;
-            }
-        },
-        stop: function(event, ui){
-            // When dragging stops, revert the draggable to its
-            // original starting position.
-            
-            actualDraggedDiv=$(this).parent();
-            //console.log("ActualDraggedDiv= "+actualDraggedDiv);
-            
-            stop = ui.position.left;
-            delta=start-stop;
-            console.log(delta);
-            
-            if (elementDragged == false){  //elemento chiuso
-                if(delta>70){
-                    console.log("Trascinato a sufficienza in apertura");   
-
-                    $(this).parent().stop().animate({
-                             left: '-50%'
-                    },1000,'easeOutExpo');
-
-                    elementDragged=true;
-                    elementDraggedCounter++;
-                }
-                else if(delta>0 && delta<=70){
-                    console.log("Trascinato poco in apertura");
-                    $(this).parent().stop().animate({
-                        left:0
-                    },1000,'easeOutExpo');
-
-                    elementDragged=false;
-                }
-            }
-            else{  // elemento aperto
-                if(delta<-1){
-                    console.log("Trascinato a sufficienza in chiusura ")
-                    
-                    $(this).parent().stop().animate({
-                        left:0
-                    },1000,'easeOutExpo');
-
-                    elementDragged=false;
-                    elementDraggedCounter--;
-                }
-                else{
-                    console.log("Trascinato poco in chiusura ")
-                    $(this).parent().stop().animate({
-                             left: '-50%'
-                    },1000,'easeOutExpo');
-
-                    elementDragged=true;   
-                }
-            }
-            //console.log("ELEMENT_DRAGGED= "+elementDragged);
-        },
-        drag: function(event, ui){
-            console.log("Draggo");
-            // During dragging, animate the original object to
-            // follow the invisible helper with custom easing.
-            $(this).parent().stop().animate({
-                
-                left: ui.helper.position().left
-            },1000,'easeOutExpo');
-            
-           
+        {
+            src: 'http://media-cdn.tripadvisor.com/media/photo-s/01/02/fa/dc/the-park-across-the-street.jpg',
+            w: 1200,
+            h: 900
         }
-    });
+    ];
+
+    // define options (if needed)
+    var options = {
+        // optionName: 'option value'
+        // for example:
+        index: myIndex // start at the passed index
+    };
+
+    // Initializes and opens PhotoSwipe
+    var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
+    gallery.init();
+    //galleryCreated=true;
+    
+    //return gallery;
+   }; 
+})( jQuery );
+
+
+    
+/* <!-- Root element of PhotoSwipe. Must have class pswp. -->
+                    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+                    <!-- Background of PhotoSwipe. 
+                         It's a separate element as animating opacity is faster than rgba(). -->
+                    <div class="pswp__bg"></div>
+
+                    <!-- Slides wrapper with overflow:hidden. -->
+                    <div class="pswp__scroll-wrap">
+
+                    <!-- Container that holds slides. 
+                        PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                        Don't modify these 3 pswp__item elements, data is added later on. -->
+                        <div class="pswp__container">
+                            <div class="pswp__item"></div>
+                            <div class="pswp__item"></div>
+                            <div class="pswp__item"></div>
+                        </div>
+
+                        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+                        <div class="pswp__ui pswp__ui--hidden">
+
+                            <div class="pswp__top-bar">
+
+                                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                                <div class="pswp__counter"></div>
+
+                                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                                <!-- element will get class pswp__preloader--active when preloader is running -->
+                                <div class="pswp__preloader">
+                                    <div class="pswp__preloader__icn">
+                                      <div class="pswp__preloader__cut">
+                                        <div class="pswp__preloader__donut"></div>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                                <div class="pswp__share-tooltip"></div> 
+                            </div>
+
+                            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                            </button>
+
+                            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                            </button>
+
+                            <div class="pswp__caption">
+                                <div class="pswp__caption__center"></div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                             </div>
+                             */
+
    
-});
-
-
-/*function touchHandler(event) {
-    var touch = event.changedTouches[0];
-
-    var simulatedEvent = document.createEvent("MouseEvent");
-        simulatedEvent.initMouseEvent({
-        touchstart: "mousedown",
-        touchmove: "mousemove",
-        touchend: "mouseup"
-    }[event.type], true, true, window, 1,
-        touch.screenX, touch.screenY,
-        touch.clientX, touch.clientY, false,
-        false, false, false, 0, null);
-
-    touch.target.dispatchEvent(simulatedEvent);
-    event.preventDefault();
-}
-
-function init() {
-    document.addEventListener("touchstart", touchHandler, true);
-    document.addEventListener("touchmove", touchHandler, true);
-    document.addEventListener("touchend", touchHandler, true);
-    document.addEventListener("touchcancel", touchHandler, true);
-}*/

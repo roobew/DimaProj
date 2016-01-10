@@ -3,26 +3,48 @@ var actualDraggedDiv;
 
 var elementDragged = false;
 
-var elementDraggedCounter=0;
+var sortActive=false;
+var firstSorting=true;
+
+var imgURL1="http://www.ansa.it/webimages/img_457x/2014/2/14/1392379654131_donald.jpg";
+var imgURL2="http://www.cartoni-animati.com/wp-content/uploads/topolino_4.jpg";
 
 $(document).ready(function (){
-    //init(); 
-    
-    $(".secondDiv").click(function (){
-        console.log("Delete premuto");
-        var parent=$(this).parent();
 
-        $(parent).fadeOut("fast", function (){
-            console.log("remove");
-            $(parent).remove();    
-        });
+    setImageURL();
+    
+    $("#accordion").accordion({
+        active: false,
+        heightStyle: "content",
+        collapsible: true});
+    
+    $(".secondDiv").click(function (e){
+        
+        var parent=$(this).parent();
+        var content=$(parent).next();
+        
+        var total= parent.add(content);
+        console.log("Delete premuto");
+        
+        //$(parent).closest("div").css("background-color", "green");
+        //$(parent).next().remove();
+       /*total.animate({width:'0'}, 200, function(){
+            
+            total.remove(); 
+            
+        }); */
+        
+        parent.add(content).fadeOut('slow',function(){$(this).remove();});
+    
+        
+    
     });
     
-    $("#preferitiContent").click(function(event) {
+    $(".firstDiv").click(function(event){
         if(elementDragged==true){
-            if(event.target.className != "secondDiv"){
-                closeDraggableElement();
-            }
+            console.log("AAAABBBBCCCC");
+            event.stopImmediatePropagation();  
+            closeDraggableElement();
         }
     });
 
@@ -34,19 +56,70 @@ $(document).ready(function (){
 
     // PROBLEMA: ELEMENTO DRAGGATO, APRO MENU, CHIUDO MENU E SCOMPARE LA BARRA IN BASSO
     $(".header").click(function (event){
-        if(elementDragged==true){
+       if(elementDragged==true){
             closeDraggableElement();   
         }
+    });
+    
+    $("#ordinaButton").click(function(){
+        $("#accordion").accordion("enable");
+        console.log("CLICCATO BUTTON");
+        if(sortActive==false){    
+            $(this).text("Fine");
+            $(".firstDiv").draggable("disable"); 
+            console.log("DISABLE DRAG - ENABLE SORT");
+            $("#accordion").sortable();
+            $("#accordion").disableSelection();
+                        
+            sortActive=true;
+            
+            if(firstSorting==true){
+                
+                $("#accordion").sortable({
+                    disabled: false,
+                    revert: true,
+                    axis: "y"});
+                firstSorting=false;
+            }
+            else{
+                $("#accordion").sortable("enable");   
+            }
+            
+        }
+        else{
+            $(this).text("Ordina");
+            $(".firstDiv").draggable("enable"); 
+            console.log("ENABLE DRAG - DISABLE SORT");
+            $("#preferitiContent").sortable("disable");
+            sortActive=false;
+        }
+    });
+    
+    $(".previewImage").click(function (){
+        var indiceImage=$(this).index();   
+        console.log("INDICE: "+indiceImage);
+        $.fn.createPhotoSwiperGallery(indiceImage);
+        //$.fn.createPhotoSwiperGallery();
     });
 });
 
 function closeDraggableElement(){
-    console.log("close draggable element function");
+    console.log("Chiudo il dragged element!");
     $(actualDraggedDiv).stop().animate({
                              left: '0'
                     },1000,'easeOutCubic');
 
-                    elementDragged=false; 
+    elementDragged=false; 
+    //$("#accordion").accordion("enable");
+}
+
+function setImageURL(){
+    $(".previewImage:nth-child(1)").attr("src", imgURL1);
+    $(".previewImage:nth-child(2)").attr("src", imgURL2);
+    $(".previewImage:nth-child(3)").attr("src", imgURL1);
+    $(".previewImage:nth-child(4)").attr("src", imgURL2);
+    $(".previewImage:nth-child(5)").attr("src", imgURL1);
+    $(".previewImage:nth-child(6)").attr("src", imgURL2);
 }
 
 $(function() {
@@ -108,7 +181,7 @@ $(function() {
                     },1000,'easeOutExpo');
 
                     elementDragged=true;
-                    elementDraggedCounter++;
+                    //elementDraggedCounter++;
                 }
                 else if(delta>0 && delta<=70){
                     console.log("Trascinato poco in apertura");
@@ -128,7 +201,7 @@ $(function() {
                     },1000,'easeOutExpo');
 
                     elementDragged=false;
-                    elementDraggedCounter--;
+                    //elementDraggedCounter--;
                 }
                 else{
                     console.log("Trascinato poco in chiusura ")
@@ -157,28 +230,57 @@ $(function() {
 });
 
 
+(function( $ ){
+   $.fn.createPhotoSwiperGallery = function(myIndex) {
+       
+    var pswpElement = document.querySelectorAll('.pswp')[0];
 
-/*function touchHandler(event) {
-    var touch = event.changedTouches[0];
+    // build items array
+    var items = [
+        {
+            src: imgURL1,
+            w: 1200,
+            h: 900
+        },
+        {
+            src: imgURL2,
+            w: 1200,
+            h: 900
+        },
+        {
+            src: imgURL1,
+            w: 1200,
+            h: 900
+        },
+        {
+            src: imgURL2,
+            w: 1200,
+            h: 900
+        },
+        {
+            src: imgURL1,
+            w: 1200,
+            h: 900
+        },
+        {
+            src: imgURL2,
+            w: 1200,
+            h: 900
+        }
+    ];
 
-    var simulatedEvent = document.createEvent("MouseEvent");
-        simulatedEvent.initMouseEvent({
-        touchstart: "mousedown",
-        touchmove: "mousemove",
-        touchend: "mouseup"
-    }[event.type], true, true, window, 1,
-        touch.screenX, touch.screenY,
-        touch.clientX, touch.clientY, false,
-        false, false, false, 0, null);
+    // define options (if needed)
+    var options = {
+        // optionName: 'option value'
+        // for example:
+        index: myIndex // start at the passed index
+    };
 
-    touch.target.dispatchEvent(simulatedEvent);
-    event.preventDefault();
-}
+    // Initializes and opens PhotoSwipe
+    var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
+    gallery.init();
+    
+   }; 
+})( jQuery );
 
-function init() {
-    document.addEventListener("touchstart", touchHandler, true);
-    document.addEventListener("touchmove", touchHandler, true);
-    document.addEventListener("touchend", touchHandler, true);
-    document.addEventListener("touchcancel", touchHandler, true);
-}*/
 
