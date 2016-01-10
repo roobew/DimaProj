@@ -5,6 +5,6 @@ $(document).ready(function (){
     $("#btnNuovoAnnuncio").button();
     
     $("#btnNuovoAnnuncio").click(function (){
-        $(this).after("<br><div class='annuncioDiv'> Nome annuncio </div>");   
+        $(this).after("<div class='annuncioDiv'> Nome annuncio </div>");   
     });
 });
