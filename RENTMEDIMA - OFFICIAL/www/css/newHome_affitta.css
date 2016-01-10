@@ -1,0 +1,7 @@
+.annuncioDiv{
+    height:2em; 
+    width:100%;
+    background-color: aqua;
+    border: 1px solid black;
+    margin-top: 0.5em;
+}

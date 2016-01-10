@@ -6,6 +6,7 @@ p {margin: 0;padding: 0;}
 
  body {
      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+     overflow-y: scroll;
 }
 
 #swiperHome1, #swiperHome2 {
@@ -80,7 +81,6 @@ p {margin: 0;padding: 0;}
     overflow-y: hidden;
     z-index: 1;
     overflow-x: hidden;
-    
     background-image: url(../img/background.png);
 }
 
@@ -175,10 +175,11 @@ p {margin: 0;padding: 0;}
 .contentPageDiv{
     display: block;
     min-height: 100%;
-    height: auto;
+    :height: 400em;
     width: 100%;
-    overflow-y: hidden;
-    overflow-x:hidden
+    :overflow-y: scroll;
+    overflow-x:hidden;
+    :background-color: green;
 }
 
 /*.ui-mobile-viewport{
@@ -191,4 +192,3 @@ p {margin: 0;padding: 0;}
 .ui-overlay-a{
     background:#222 !important;
 }*/
-
