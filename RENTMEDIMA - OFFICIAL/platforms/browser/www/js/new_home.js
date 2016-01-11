@@ -65,7 +65,7 @@ function GoogleMap(){
                     map: map,
                     icon: {
                         path: google.maps.SymbolPath.CIRCLE,
-                        scale: position.coords.accuracy*2*19/map.getZoom(),
+                        scale: position.coords.accuracy*30/map.getZoom(),
                         fillColor: 'lightblue',
                         fillOpacity: 0.15,
                         strokeColor: 'lightblue',
@@ -77,62 +77,56 @@ function GoogleMap(){
                 map: map,
                 icon: {
                     path: google.maps.SymbolPath.CIRCLE,
-                    scale: 5*16/map.getZoom(),
+                    scale: 7*16/map.getZoom(),
                     fillColor: 'lightblue',
                     fillOpacity: 1,
-                    strokeColor: 'blue',
-                    strokeWeight: 5*16/map.getZoom()
+                    strokeColor: 'white',
+                    strokeWeight: 3*16/map.getZoom()
                 },
             });
-        console.log(
+        accuracy.visible=false;
+        {console.log(
                 map.getZoom() + '\n' +
                 'Latitude: '          + position.coords.latitude          + '\n' +
                 'Longitude: '         + position.coords.longitude         + '\n' +          
                 'Accuracy: '          + position.coords.accuracy          + '\n' +         
                 'Speed: '             + position.coords.speed             + '\n' +
                 'Timestamp: '         + position.timestamp                + '\n'
-            );
+            );}
         console.log("startend");
         setInterval(function(){
             navigator.geolocation.getCurrentPosition(update, error,{enableHighAccuracy: true});   
         },1000);
     }
     function update(position){
-        console.log("update");
         var currentPosition = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-        accuracy.setOptions({
-                    position: currentPosition,
-                    map: map,
-                    icon: {
-                        path: google.maps.SymbolPath.CIRCLE,
-                        scale: position.coords.accuracy*2*19/map.getZoom(),
-                        fillColor: 'lightblue',
-                        fillOpacity: 0.15,
-                        strokeColor: 'lightblue',
-                        strokeWeight: 1
-                    },
-                });
-        point.setOptions({
-                position: currentPosition,
-                map: map,
-                icon: {
-                    path: google.maps.SymbolPath.CIRCLE,
-                    scale: 5*16/map.getZoom(),
-                    fillColor: 'lightblue',
-                    fillOpacity: 1,
-                    strokeColor: 'blue',
-                    strokeWeight: 5*16/map.getZoom()
-                },
-            });
-        console.log(
+        oldPosition=point.getPosition();
+        if(!currentPosition.equals(oldPosition)){
+            accuracy.setPosition(currentPosition);
+            point.setPosition(currentPosition);
+            console.log(
                 map.getZoom() + '\n' +
                 'Latitude: '          + position.coords.latitude          + '\n' +
                 'Longitude: '         + position.coords.longitude         + '\n' +          
                 'Accuracy: '          + position.coords.accuracy          + '\n' +         
                 'Speed: '             + position.coords.speed             + '\n' +
                 'Timestamp: '         + position.timestamp                + '\n'
-            );
-        console.log("updateend");
+        );
+        }
+        console.log(map.getZoom());
+        if(map.getZoom()<17){
+            console.log("nascondi")
+            accuracy.visible=false;
+        }else 
+            {   console.log('mostra');
+                accuracy.visible=true;
+                //accuracy.getIcon().scale=position.coords.accuracy*30/map.getZoom();
+                
+            }
+        point.getIcon().scale=7*16/map.getZoom();
+        point.getIcon().strokeWeight= 3*16/map.getZoom();
+        
+       
     }
     function error(error){
         console.log(error);

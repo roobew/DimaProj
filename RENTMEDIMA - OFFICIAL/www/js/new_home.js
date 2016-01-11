@@ -99,7 +99,6 @@ function GoogleMap(){
         },1000);
     }
     function update(position){
-        console.log("update Position"); 
         var currentPosition = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
         oldPosition=point.getPosition();
         if(!currentPosition.equals(oldPosition)){
@@ -112,22 +111,39 @@ function GoogleMap(){
                 'Accuracy: '          + position.coords.accuracy          + '\n' +         
                 'Speed: '             + position.coords.speed             + '\n' +
                 'Timestamp: '         + position.timestamp                + '\n'
-            );
+        );
         }
-        console.log(map.getZoom());
         if(map.getZoom()<17){
+            console.log("nascondi");
             accuracy.visible=false;
-            point.getIcon().scale=7*16/map.getZoom();
-            point.getIcon().strokeWeight= 3*16/map.getZoom();
         }else 
-            {
+            {   console.log('mostra');
+             console.log(map.getZoom());
+                console.log(position.coords.accuracy);
+                console.log(accuracy.getIcon().scale);
                 accuracy.visible=true;
-                accuracy.getIcon().scale=position.coords.accuracy*30/map.getZoom();
-                point.getIcon().scale=7*16/map.getZoom();
-                point.getIcon().strokeWeight= 3*16/map.getZoom();
+                var ico = accuracy.getIcon();
+                ico.scale = (position.coords.accuracy*2.5)*(map.getZoom()-16);
+                accuracy.setIcon(ico);
+                /*if(position.coords.accuracy>50){
+                    ico.scale = (position.coords.accuracy*position.coords.accuracy/25)*(map.getZoom()-16);
+                    accuracy.setIcon(ico);
+                }
+                else
+                    if(position.coords.accuracy<20){   
+                        ico.scale = (position.coords.accuracy*position.coords.accuracy/5)*(map.getZoom()-16);
+                        accuracy.setIcon(ico);
+                    }     
+                    else {                        
+                        ico.scale = (position.coords.accuracy*position.coords.accuracy/10)*(map.getZoom()-16);
+                        accuracy.setIcon(ico);
+                    }*/
+                
             }
+        point.getIcon().scale=7*16/map.getZoom();
+        point.getIcon().strokeWeight= 3*16/map.getZoom();
         
-        console.log("updateend");
+       
     }
     function error(error){
         console.log(error);
