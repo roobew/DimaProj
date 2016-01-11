@@ -18,6 +18,7 @@
         <link href="jQuery.mmenu/dist/core/css/jquery.mmenu.all.css" type="text/css" rel="stylesheet"/>
         
         <link href="css/commonLayout.css" rel="stylesheet" type="text/css"/>
+        <link href="css/newHome_cerca.css" rel="stylesheet" type="text/css"/>
         
     <!-- ***** END CSS  *****-->
         
@@ -40,13 +41,15 @@
        
         <script src="js/newHome_preferiti.js"></script>
         
+        <script src="js/newHome_cerca.js"></script>
+        
         <script src="js/newHome_messaggi.js"></script>
         
     <!-- ***** END JS  *****-->   
                 
         
         <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js"></script>
-<link href="http://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css" />
+        <link href="http://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css" />
         
     </head>
     
@@ -372,9 +375,7 @@
                                         <input type="text" class="form-control" id="nomeAnnuncio" placeholder="Dove?" maxlength="20">
                                         <input type="number" class="form-control" id="prezzo" placeholder="Prezzo cad." max="10000">        
                                         <button class="btn btn-default" id="nextStepButton">Cerca</button>
-                                        <div id="map_canvas">
-                                             
-                                        </div>
+                                        <div id="map_canvas"></div>
                                     </div>
                                 
                                       
@@ -450,8 +451,7 @@
         <script src="js/openGoogle.js"></script>
         
         <script src="js/commonJavascript.js"></script>
-               
-    <script type="text/javascript" src="js/googlemap.js"></script>
+    
        <!-- Swiper JS  -->
        <script src="swiper/dist/js/swiper.min.js"></script>
        
