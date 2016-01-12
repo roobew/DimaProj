@@ -3,12 +3,10 @@ $(document).ready(setField);
 function setField(){
     // ICONE HOME SELEZIONATE
     $("#homeIcon").addClass("selectedTab");
-    $("#homeText").addClass("selectedTab");
-    
+    $("#homeText").addClass("selectedTab");    
     // CONTENTPAGEDIV NASCOSTI, TRANNE HOME 
     $(".contentPageDiv").hide();
-    $("#homeContent").show();
-    
+    $("#homeContent").show();    
     $("#my-menu").mmenu({
             slidingSubmenus: false
           }, {
@@ -17,10 +15,8 @@ function setField(){
                 vertical: "expand",
                 selected: "active"
              }
-          });
-    
-    enableSwiperHome();
-    
+          });    
+    enableSwiperHome();    
             /*var swiperUno = $('#swiperContainer1').swiper({
                 mode: 'horizontal',
                 watchActiveIndex: true,
@@ -41,8 +37,7 @@ function setField(){
                         console.log('First slide active')
                     }
                 }
-            });*/
-        
+            });*/        
            /* var swiperDue = $('#swiperContainer2').swiper({
                 mode: 'horizontal',
                 watchActiveIndex: true,
@@ -64,21 +59,19 @@ function setField(){
                     }
                 }
             });
-    */
-         
-    
+    */            
     $(".myColumn").click(function(){
         // RIMUOVI TUTTI I TAB SELEZIONATI
-        $(".myColumn").find("p").removeClass("selectedTab");
-        
-        var pressedId=$(this).attr("id");
-        
+        $(".myColumn").find("p").removeClass("selectedTab");        
+        var pressedId=$(this).attr("id");        
         // NASCONDI TUTTI I CONTENTPAGEDIV
         $(".contentPageDiv").hide();
         window.scrollTo(0,0);
         if(pressedId=="cercaTab"){
             $("#cercaContent").show();
-            console.log("Premuto cerca");   
+            console.log("Premuto cerca");             
+            var map = new GoogleMap();
+            map.initialize();
         }
         else if(pressedId=="affittaTab"){
             
