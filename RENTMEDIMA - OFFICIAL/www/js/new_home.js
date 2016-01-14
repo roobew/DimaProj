@@ -123,7 +123,7 @@ function enableSwiperHome(){
             // Optional parameters
             direction: 'horizontal',
             loop: true,
-            autoplay:2500,
+            //autoplay:3000,
             autoplayDisableOnInteraction:false,
           });
           
@@ -131,7 +131,14 @@ function enableSwiperHome(){
             // Optional parameters
             direction: 'horizontal',
             loop: true,
-            autoplay:3000, 
+            //autoplay:3000, 
+            autoplayDisableOnInteraction:false,
+          });   
+    var swiperDue = new Swiper ('#swiperHome3', {
+            // Optional parameters
+            direction: 'horizontal',
+            loop: true,
+            //autoplay:3000, 
             autoplayDisableOnInteraction:false,
           });   
 }
