@@ -124,7 +124,7 @@ $(function() {
                     console.log("Trascinato a sufficienza in apertura");   
 
                     $(this).parent().stop().animate({
-                             left: '-50%'
+                             left: '-20vw'
                     },1000,'easeOutExpo');
 
                     elementDragged=true;
@@ -153,7 +153,7 @@ $(function() {
                 else{
                     console.log("Trascinato poco in chiusura ")
                     $(this).parent().stop().animate({
-                             left: '-50%'
+                             left: '-20vw'
                     },1000,'easeOutExpo');
 
                     elementDragged=true;   

@@ -127,6 +127,7 @@ p {margin: 0;padding: 0;}
     height: 83vh;
     width: 100vw;
     overflow-x:hidden;
+    overflow-y:hidden;
     :background-color: green;
 }
 .titleHome{
@@ -153,7 +154,7 @@ p {margin: 0;padding: 0;}
     text-align: center;
     font-size: 2vh;
     background: #fff;
-
+    background-color:transparent;
     /* Center slide text vertically */
     display: -webkit-box;
     display: -ms-flexbox;
@@ -167,6 +168,17 @@ p {margin: 0;padding: 0;}
     -ms-flex-align: center;
     -webkit-align-items: center;
     align-items: center;
+}
+.swiper-wrapper{
+    
+}
+.fullImg{
+    width: 100%
+}
+.imgDesc{
+    position: absolute; bottom:0;left: 0; width: 100%;  color: black; font: bold 1em Helvetica, Sans-Serif; 
+    background: rgba(255, 255, 255, 0.7); padding: 10px; opacity:0.9; 
+    
 }
 #swiperAffitta {
     height: 20em;

@@ -1,0 +1,61 @@
+.messageDivParent{
+    display:inline-block; 
+    height: 8vh; 
+    width: 100vw; 
+    position:relative;
+    margin-top: 0.5vh;
+    margin-bottom: 0.5vh
+}
+.messageFirstDiv{
+    display:inline-block; 
+    float:left; 
+    height: 8vh; 
+    width: 100vw;
+}
+.messageSecondDiv{
+    display:inline-block; 
+    height:8vh; 
+    width:20vw; 
+    background-color:red; 
+    border:2px solid black; 
+    position:absolute;
+}
+.messageProfilePicture{
+    display:inline-block; 
+    float:left; 
+    height:8vh; 
+    width:16vw; 
+    margin-left:0.1vw;
+}
+.previewMessage{
+    display:inline-block; 
+    height:8vh; 
+    width:83vw; 
+    margin-left:0.5vw; 
+    border-top:1px solid black; 
+    border-bottom:1px solid black 
+}
+.sender{
+    width: 83vw; 
+    font-size: 5vmin;
+    font-weight: 700; 
+    display: block; 
+    margin: .45vw 0; 
+    text-overflow: ellipsis; 
+    overflow: hidden; 
+    white-space: nowrap; 
+    line-height: 3vh; 
+    text-align:left; 
+}
+.previewText{
+    width: 80vw; 
+    font-size: 2vh; 
+    font-weight: 400; 
+    display: block; 
+    margin: 1vmin; 
+    text-overflow: ellipsis; 
+    overflow: hidden; 
+    white-space: nowrap; 
+    text-align: left; 
+    line-height: 2vh;
+}
