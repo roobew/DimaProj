@@ -12,24 +12,24 @@
     display:inline-block; 
     float:left; 
     height:4vh; 
-    width: 90vw;
+    width: 88vw;
     vertical-align:middle;
     margin:auto;
 }
 .text{
     height:4vh; 
-    width: 100%;
+    width: 88vw;
     vertical-align:middle; 
     line-height:4vh;
     margin: auto;
 }
 .secondDiv{
     display:inline-block; 
-    float:right;
+    :float:right;
     top: 0;
-    height:5.8vh; 
-    width:20vw; 
-    margin-left: 5vw;
+    height: 5.8vh; 
+    width: 20vw; 
+    margin-left: 1.5vw;
     text-align: center;
     line-height: 5.8vh;
     background-color:red; 
