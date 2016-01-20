@@ -25,7 +25,7 @@
 }
 .secondDiv{
     display:inline-block; 
-    :float:right;
+    float:right;
     top: 0;
     height: 5.8vh; 
     width: 20vw; 
@@ -34,7 +34,7 @@
     line-height: 5.8vh;
     background-color:red; 
     font-size: 2.5vh;
-    font-weight: bold;
+    font-weight: 700;
     position:absolute;
 }
 .divChild{
