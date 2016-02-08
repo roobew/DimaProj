@@ -1,9 +1,60 @@
 .annuncioDiv{
+    display: block;
     align-content: center;
     line-height: 5vh;
     height: 5vh; 
     width: 100vw;
-    background-color: aqua;
+    :background-color: aqua;
     border: 1px solid black;
     margin-top: 1vh;
 }
+
+#buttonsDiv{
+    height:4em; 
+    width: 96%;
+    margin-left:2%; 
+    margin-right:2%; 
+    margin-top:0.5em;
+}
+
+#btnNuovoAnnuncio{
+    display:inline-block; 
+    font-size: 0.8em;
+    height: 2em; 
+    width: 5em; 
+    float:left;
+    background-color:transparent;
+    padding: 0;
+}
+
+#btnDeleteAnnuncio{
+    display:inline-block;
+    font-size: 0.8em;
+    height:2em; 
+    width:5em; 
+    float:right; 
+    background-color:transparent;
+    padding: 0;
+}
+
+.annuncioDelDiv{
+    display: none;
+    height: auto;
+    width: 0;
+    background-color: red;
+}
+
+.annuncioContentDiv{
+    display:inline-block;
+    height: auto;
+    width: 100%;
+    background-color: yellow;
+    position:absolute;
+}
+/*
+#affittaContent_creaAnnuncio{
+    position: absolute;
+    right: 0;
+    
+}
+*/
