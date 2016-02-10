@@ -60,7 +60,7 @@ function setField(){
                 }
             });
     */            
-    $(".myColumn").click(function(){
+    $(".myColumn").on("tap", function (){
         // RIMUOVI TUTTI I TAB SELEZIONATI
         $(".myColumn").find("p").removeClass("selectedTab");        
         var pressedId=$(this).attr("id");        
@@ -77,7 +77,6 @@ function setField(){
             
             $("#affittaContent").show();
             console.log("Premuto affitta"); 
-            enableSwiperAffitta();
         }
         else if(pressedId=="homeTab"){
             $("#homeContent").show();
@@ -101,21 +100,6 @@ function setField(){
     });
 
     
-}
-
-function enableSwiperAffitta(){
-    var swiperTre = new Swiper ('#swiperAffitta', {
-            // Optional parameters
-            direction: 'horizontal',
-            loop: true,
-            
-            // If we need pagination
-            pagination: '.swiper-pagination',
-
-            // Navigation arrows
-            nextButton: '#nextStepButton',
-            prevButton: '#affittaBackButton',
-        });   
 }
 
 function enableSwiperHome(){

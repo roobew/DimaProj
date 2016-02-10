@@ -9,51 +9,70 @@ var firstSorting=true;
 
 $(document).ready(function (){
     console.log("Nel JS di MESSAGGI");
+    /*
+    $(".messageSecondDiv").on("tap", function (){
+       console.log("Delete premuto");
+            
+            var parent=$(this).parent();
+       
+            parent.animate({width:'0'}, 200, function(){
+                parent.prev().remove();
+                parent.remove(); 
+            
+            }); 
+        
+
+    });*/
     
-    $("#messaggiContent").click(function (event){
-        if(elementDragged==true){
-            if(event.target.className != "messageSecondDiv"){
-                closeDraggableElement();   
+   $("#messaggiContent").on("tap", function (event){
+        console.log("Hai cliccato "+ event.target.className);
+        
+       if(elementDragged==true){
+            if(event.target.className == "messageSecondDiv" || event.target.className=="glyphicon glyphicon-trash"){
+                console.log("Delete premuto "+$(this));
+                
+                var miaClasse="."+event.target.className;
+                console.log("MiaClasse è: "+miaClasse);
+                var clickedElement= $(miaClasse); 
+                console.log("AAA "+clickedElement);
+                var parent= clickedElement.closest(".messageDivParent");
+
+                parent.animate({width:'0'}, 200, function(){
+                    parent.prev().remove();
+                    parent.remove(); 
+
+                }); 
             }
-        }
+            else{
+                console.log("chiudo tutto");
+                closeDraggableElement();     
+            }
+       }
+       else{
+           
+       }
     });
     
-    $(".messageSecondDiv").click(function (){
-        
-        var parent=$(this).parent();
-       
-        console.log("Delete premuto");
-        
-       
-       parent.animate({width:'0'}, 200, function(){
-            
-            parent.remove(); 
-            
-        }); 
-        
-    
-    
-    });
-    
-    $(".messageFirstDiv").click(function(){
+    /*
+    $(".messageFirstDiv").on("tap", function (){
         if(elementDragged==true){  
             closeDraggableElement();
         }
     });
 
-    $("#fixedBottomDiv").click(function (){
+    $("#fixedBottomDiv").on("tap", function (){
         if(elementDragged==true){
             closeDraggableElement();   
         }
     });
 
     // PROBLEMA: ELEMENTO DRAGGATO, APRO MENU, CHIUDO MENU E SCOMPARE LA BARRA IN BASSO
-    $(".header").click(function (){
+    $(".header").on("tap", function (){
        if(elementDragged==true){
             closeDraggableElement();   
         }
     });
-    
+    */
     
 
 });

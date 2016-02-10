@@ -1,10 +1,10 @@
+
 .annuncioDiv{
     display: block;
     align-content: center;
     line-height: 5vh;
     height: 5vh; 
     width: 100vw;
-    :background-color: aqua;
     border: 1px solid black;
     margin-top: 1vh;
 }
@@ -42,6 +42,7 @@
     height: auto;
     width: 0;
     background-color: red;
+    
 }
 
 .annuncioContentDiv{
@@ -51,10 +52,56 @@
     background-color: yellow;
     position:absolute;
 }
-/*
-#affittaContent_creaAnnuncio{
-    position: absolute;
-    right: 0;
+
+#nuovoAnnuncioPanelBody{
+    height:100vh;
+    background-color:greenyellow; 
+}
+
+#annuncioParteUno{
+    display: block;
+    height: 65vh;
+    width: 90vw;
+    background-color: darkorange;
+    
+    margin-left: 5vw;
+    margin-top: 4vw;
     
 }
-*/
+
+#annuncioParteDue{
+    display: none;
+    height: 65vh;
+    width: 90vw;
+    background-color: brown;
+    
+    margin-left: 5vw;
+    margin-top: 4vw;
+}
+
+#annuncioParteTre{
+    display: none;
+    height: 65vh;
+    width: 90vw;
+    background-color: darkcyan;
+    
+    margin-left: 5vw;
+    margin-top: 4vw;
+}
+
+
+#affittaContent_creaAnnuncio{
+    display: none;
+}
+
+#pillsNavbar{
+    width:75vw; 
+    margin-left:auto; 
+    margin-right:auto; 
+    margin-top:0.5em;  
+}
+
+.myPill{
+    font-size:0.8em;   
+}
+

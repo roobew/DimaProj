@@ -1,143 +1,74 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
+
+    <head>
+    <title>RENT ME</title>
+    <meta charset="utf-8"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>jQuery UI Draggable - Default functionality</title>
-    
-        <!-- Include jQuery Mobile stylesheets -->
-        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-    
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<!--
-        <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
         
+    <!-- ***** IMPORT CSS  *****-->
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+        
+        <link href="jQuery-UI-1.11.4/jquery-ui.min.css" type="text/css" rel="stylesheet"/>
+                
+    <!-- ***** END CSS  *****-->
+
+     
+    <!-- ***** IMPORT JS  *****-->    
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+         
+
+                
+        <script src="jQuery-UI-1.11.4/jquery-ui.min.js"></script>
+        
+        <script src="js/touch_punch_min.js"></script>        
+        
+        <script src="js/prova.js"></script>
+        
+    <!-- ***** END JS  *****-->   
+  <style>
+      .col{
+        text-align: center;
+          border: 1px solid black;
+      }
+      
+      #bottomNav{
+        position: fixed;
+         bottom: 0;
+      }
+      
+      #myFooter{
+        bottom: 0;   
+      }
+
+</style>              
+        
+    </head>  
     
-        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>-->
-
-
-          <!-- Core CSS file -->
-<link rel="stylesheet" href="PhotoSwipe/dist/photoswipe.css"> 
-
-<!-- Skin CSS file (styling of UI - buttons, caption, etc.)
-     In the folder of skin CSS file there are also:
-     - .png and .svg icons sprite, 
-     - preloader.gif (for browsers that do not support CSS animations) -->
-<link rel="stylesheet" href="PhotoSwipe/dist/default-skin/default-skin.css"> 
-
-<!-- Core JS file -->
-<script src="PhotoSwipe/dist/photoswipe.min.js"></script> 
-
-<!-- UI JS file -->
-<script src="PhotoSwipe/dist/photoswipe-ui-default.min.js"></script>
-    
-    <script src="js/prova.js"></script>
-</head>
 <body style="overflow-x:hidden">
-    <!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-
-        <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                <!--  Controls are self-explanatory. Order can be changed. -->
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                      <div class="pswp__preloader__cut">
-                        <div class="pswp__preloader__donut"></div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div> 
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-<button class="btn" id="id1">APRI FOTO 1</button>
-<button class="btn" id="id2">APRI FOTO 2</button>
-<button class="btn" id="id3">APRI FOTO 3</button>
     
-    <!--<script>
-        var pswpElement = document.querySelectorAll('.pswp')[0];
+<div data-role="page" id="foo">
 
-// build items array
-var items = [
-    {
-        src: 'http://www.coldwater.org/images/images/WaterworksPark4.jpg',
-        w: 600,
-        h: 400
-    },
-    {
-        src: 'http://media-cdn.tripadvisor.com/media/photo-s/01/02/fa/dc/the-park-across-the-street.jpg',
-        w: 1200,
-        h: 900
-    }
-];
+	<div data-role="header">
+		<h1>Foo</h1>
+	</div><!-- /header -->
 
-// define options (if needed)
-var options = {
-    // optionName: 'option value'
-    // for example:
-    index: 0 // start at first slide
-};
+	<div data-role="content">	
+		<p>I'm first in the source order so I'm shown as the page.</p>		
+		<p>View internal page called <a href="#bar">bar</a></p>	
+	</div><!-- /content -->
 
-// Initializes and opens PhotoSwipe
-var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
-
-        $("button").click(function(){
-            console.log("ok");
-            gallery.init();
-        });
+	<div data-role="footer" id="myFooter">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
     
-    </script>-->
-    
+   
 </body> 
     
 </html>

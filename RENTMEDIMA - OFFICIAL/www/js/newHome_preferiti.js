@@ -18,7 +18,7 @@ $(document).ready(function (){
         heightStyle: "content",
         collapsible: true});
     
-    $(".secondDiv").click(function (e){
+    $(".secondDiv").on("tap", function(e){
         
         var parent=$(this).parent();
         var content=$(parent).next();
@@ -40,7 +40,7 @@ $(document).ready(function (){
     
     });
     
-    $(".firstDiv").click(function(event){
+    $(".firstDiv").on("tap", function(event){
         if(elementDragged==true){
             console.log("AAAABBBBCCCC");
             event.stopImmediatePropagation();  
@@ -48,20 +48,20 @@ $(document).ready(function (){
         }
     });
 
-    $("#fixedBottomDiv").click(function (){
+    $("#fixedBottomDiv").on("tap", function(){
         if(elementDragged==true){
             closeDraggableElement();   
         }
     });
 
     // PROBLEMA: ELEMENTO DRAGGATO, APRO MENU, CHIUDO MENU E SCOMPARE LA BARRA IN BASSO
-    $(".header").click(function (event){
+    $(".header").on("tap", function(event){
        if(elementDragged==true){
             closeDraggableElement();   
         }
     });
     
-    $("#ordinaButton").click(function(){
+    $("#ordinaButton").on("tap", function(){
         $("#accordion").accordion("enable");
         console.log("CLICCATO BUTTON");
         if(sortActive==false){    
@@ -95,7 +95,7 @@ $(document).ready(function (){
         }
     });
     
-    $(".previewImage").click(function (){
+    $(".previewImage").on("tap", function(){
         var indiceImage=$(this).index();   
         console.log("INDICE: "+indiceImage);
         $.fn.createPhotoSwiperGallery(indiceImage);

@@ -1,0 +1,28 @@
+FONTI: 
+http://www.html5rocks.com/en/tutorials/speed/html5/
+http://www.html5rocks.com/en/mobile/optimization-and-performance/
+https://developers.google.com/speed/articles/reflow
+http://www.tricedesigns.com/2013/03/11/performance-ux-considerations-for-successful-phonegap-apps/
+
+1. DOM: non troppo profondo
+
+2. DOM: non modificarlo spesso perchè ogni modifica comporta il ricalcolo e l'intera ricostruzione dell'albero. Per modifica si intende anche una semplice modifica al testo, al css o qualunque altra cosa. Se ad esempio bisogna dichiarare due var e poi modificare due css, se faccio var1, css1, var2, css2 vado a modificare e ricostruire due volte il DOM. Conviene invece fare var1, var2, css1, css2.
+
+3. L'uso delle % crea delle dipendenze tra i vari elementi e la presenza di % nella ricostruzione del DOM causa dei notevoli rallentamenti. Usare height e width fisse.
+
+4. Pulire il CSS, compattare le regole, eliminare quelle inutili, non usare regole CSS troppo complesse.
+
+5. Per animare un elemento usa la proprietà position:absolute o position:fixed, in modo da non coinvolgere altri elementi nell'animazione e non causarne il ricalcolo della posizione.
+
+6. Hardware acceleration: sconsigliato, perchè può portare benefici come può causare crash improvvisi.
+
+7. Fare il preload delle immagini
+
+8. JQuery: usare gli eventi di jquery mobile (eventi touch) invece del classico evento click. Questo perchè il device deve associare l'evento click con quello touch e questa operazione impiega del tempo.
+
+9. JS: ottimizzare codice, in particolare non scrivere molto nel document.ready() e non usare funzioni anonime. Quest'ultimo intende che invece di scrivere .click(function (){...}); dovrò scrivere .click(function miaFunzione(){...});
+
+10. Utilizzare le animazioni CSS e non quelle JS. Quindi usare CSS Transition e CSS Animation
+
+11. Pulire il codice, non usare troppi framework inutili e non usare framework non compatibili tra loro. Nel nostro caso usiamo Jquery Mobile e Jquery UI.
+

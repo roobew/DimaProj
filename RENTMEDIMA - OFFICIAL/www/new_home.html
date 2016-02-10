@@ -69,9 +69,7 @@
         <script src="js/newHome_messaggi.js"></script>
         
         <script src="js/newHome_affitta.js"></script>
-        
-        
-        
+                
     <!-- ***** END JS  *****-->   
                 
         
@@ -116,15 +114,13 @@
        <div id="header">
             <div id="homeTopRow">
                 <div class="col-xs-2 thumbnail" id="navbarImageDiv">
-                    <a href="#my-menu">
+                    <a href="#my-menu" id="navbarImageLink">
                         <img class="img-responsive" src="img/navbar_color.png" id="navbarImage"/>
                     </a>
                 </div>
-                <!--<div class="col-xs-8 col-xs-offset-2 thumbnail" id="scrittaRentMeDiv">
-                    <p class="text-center">RENT ME DIMA PROJECT</p>
-                </div>-->
             </div>
        </div>
+       
        <!-- CONTENUTO PAGINA  -->
        <div id="contentDiv"> 
             <div class="contentPageDiv" id="homeContent">
@@ -280,19 +276,49 @@
             </div>
            
             <div class="contentPageDiv" id="affittaContent_creaAnnuncio">
-                
-                <div class="panel panel-default" id="nuovoAnnuncioDiv">
-                    <div class="panel-heading">
-                        <button class="pull-left" id="annullaButton" style="height:1.5em; width:5em;padding:0; font-size:0.8em; margin:0;">annulla</button>
-                        <h4 class="text-center" id="titoloAnnuncio">NOME ANNUNCIO </h4>
+                <div id="annuncioPanelContent">
                     
+                     <h3 class="text-center"> Nuovo annuncio </h3>
+                        <!--<h6 class="text-center"> 1/3 </h6> -->
+                    <ul class="nav nav-tabs" id="pillsNavbar">
+                        <li class="active myPill" id="pillUno"><a href="#">Parte 1</a></li>
+                        <li class="myPill" id="pillDue"><a href="#">Parte 2</a></li>
+                        <li class="myPill" id="pillTre"><a href="#">Parte 3</a></li>
+                    </ul>
+                    
+                    <div id="annuncioParteUno"> 
+                        <form>
+
+                            <input type="text" name="fname" id="titoloAnnuncio" placeholder="Titolo" data-clear-btn="true">
+
+                            <input type="number" class="form-control" id="prezzo" placeholder="Prezzo mensile/persona" max="10000" data-mini="true">
+
+                            <textarea name="textarea" id="descrizione" placeholder="Descrizione" maxlength="60"></textarea>
+
+                        </form>
+
+                        <button class="pull-right" type="button" data-icon="arrow-r" data-iconpos="right" data-mini="true" data-shadow="true" id="avantiUno" style="width:auto;">Avanti</button>
                     </div>
-
-                    <div class="panel-body">
-
-                        <div class="swiper-container" id="swiperAffitta">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide slideAffitta">
+                
+                    <div id="annuncioParteDue"> 
+                    <button class="pull-right" id="avantiDue" style="width:auto;">Avanti</button>
+                
+                    <button id="indietroDue">Indietro</button>
+                    
+                </div>
+                
+                    <div id="annuncioParteTre"> 
+                    
+                    <button class="pull-right" id="avantiTre" style="width:auto;">Pubblica</button>
+                
+                    <button id="indietroTre">Indietro</button>
+                    
+                    
+                </div>
+                </div>
+                
+                
+                <!-- 
 
                                     <form style="width:90%; margin-left:auto; margin-right:auto; margin-top:1em; margin-bottom:2em;">
                                         <div class="form-group">
@@ -381,13 +407,39 @@
                                 <div class="swiper-slide slideAffitta">Slide 3</div>
                             </div>
                             <div class="swiper-pagination"></div>
+                        </div>-->
+<!--
+                
+                <div class="panel panel-default" id="nuovoAnnuncioDiv">
+                    <div class="panel-heading" id="nuovoAnnuncioPanelHead" style="background-color:green; margin-top:0.5em;">
+                        <button class="pull-left" id="annullaButton" style="height:1.5em; width:5em;padding:0; font-size:0.8em; margin:0;">annulla</button>
+                        <h4 class="text-center" id="titoloAnnuncio">NOME ANNUNCIO </h4>
+                    
+                    </div>
+
+                    <div class="panel-body" id="nuovoAnnuncioPanelBody">
+                        <div class="annuncioPanelContent" id="annuncioParteUno"> 
+                            parte 1
+                            <button id="avantiUno">Avanti</button>
                         </div>
+                        <div class="annuncioPanelContent" id="annuncioParteDue"> 
+                            parte 2
+                            <button id="avantiDue">Avanti</button>
+                            <button id="indietroDue">Indietro</button>
+                        </div>
+                        <div class="annuncioPanelContent" id="annuncioParteTre"> 
+                            parte 3
+                            <button id="avantiTre">Avanti</button>
+                        </div>
+                        
+                      
 
                     </div>
                 </div>  
+-->
             </div>
 
-            <div class="contentPageDiv" id="preferitiContent">
+            <div class="contentPageDiv" id="preferitiContent" style="overflow-y:scroll;">
                 <button id="ordinaBtn" class="text-center"> Ordina </button>
                 <br>
                 <div id="accordion">
@@ -440,7 +492,6 @@
                             <img class="img-responsive previewImage foto"/>
                         </div>
                     </div>
-                
                     <div class="divParent">
                         <div class="firstDiv">
                             <p class="text">Appartamento restaurato zona navigli</p>
@@ -546,7 +597,9 @@
             </div>
 
             <div class="contentPageDiv" id="messaggiContent">
-
+                <br>
+                <div class="separatoreDiv"></div>
+                
                 <div class="messageDivParent">
                     <div class="messageFirstDiv">
                         <div class="messageProfilePicture">
@@ -554,45 +607,74 @@
                         </div>
                         <div class="previewMessage">
                             <h2 class="sender">Mattia Destro</h2>
+                            <p class="time">15.02</p>
                             <p class="previewText">
                                 ciao, mi hai preso al fantacalcio e faccio cagare
                             </p>
                         </div>
-                    </div>
-                    <div class="messageSecondDiv"> Elimina </div>
-                </div>
+                        
+                        <div class="arrowDiv"> 
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
 
+                        </div>
+                    </div>
+                    <div class="messageSecondDiv">
+                        <span id="eliminaIcon" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    </div>
+                </div>
+                
+                <div class="separatoreDiv"></div>
+                
                 <div class="messageDivParent">
                     <div class="messageFirstDiv">
-                            <div class="messageProfilePicture">
-                                <img class="img-responsive" src="http://www.wakeupnews.eu/wp-content/uploads/2013/06/montolivo-www.tifomilan.it_.jpg" style="height:100%; width:100%; border-radius:50%">
-                            </div>
-                            <div class="previewMessage">
-                                <h2 class="sender">Riccardo Montolivo</h2>
-                                <p class="previewText">
-                                    Buon Ferragosto e tanti auguri di San Valentino !
-                                </p>
-                            </div>
+                        <div class="messageProfilePicture">
+                            <img class="img-responsive" src="http://www.wakeupnews.eu/wp-content/uploads/2013/06/montolivo-www.tifomilan.it_.jpg" style="height:100%; width:100%; border-radius:50%">
+                        </div>
+                        <div class="previewMessage">
+                            <h2 class="sender">Riccardo Montolivo</h2>
+                            <p class="time">15.02</p>
+                            <p class="previewText">
+                                Buon Ferragosto e tanti auguri di San Valentino !
+                            </p>
+                        </div>
+                        
+                        <div class="arrowDiv"> 
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+
+                        </div>
                     </div>
-                    <div class="messageSecondDiv"> Elimina </div>
+                    <div class="messageSecondDiv">
+                        <span id="eliminaIcon" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    </div>
                 </div>    
 
+                <div class="separatoreDiv"></div>
+                
                <div class="messageDivParent">
+                   
                     <div class="messageFirstDiv">
-                            <div class="messageProfilePicture">
-                                <img class="img-responsive" src="https://pbs.twimg.com/profile_images/507504087198216192/P5oRP5sY_400x400.jpeg" style="height:100%; width:100%; border-radius:50%">
-                            </div>
-                            <div class="previewMessage">
-                                <h2 class="sender">Cristian Zaccardo</h2>
-                                <p class="previewText">
-                                    Tu ridi e mi sfotti ma io sono campione del mondo!
-                                </p>
-                            </div>
+                        <div class="messageProfilePicture">
+                            <img class="img-responsive" src="https://pbs.twimg.com/profile_images/507504087198216192/P5oRP5sY_400x400.jpeg" style="height:100%; width:100%; border-radius:50%">
+                        </div>
+                        <div class="previewMessage">
+                            <h2 class="sender">Cristian Zaccardo</h2>
+                            <p class="time">Martedì</p>
+                            <p class="previewText">
+                                Tu ridi e mi sfotti ma io sono campione del mondo!
+                            </p>
+                        </div>
+                        
+                        <div class="arrowDiv"> 
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+
+                        </div>
                     </div>
-                    <div class="messageSecondDiv"> Elimina </div>
+                    <div class="messageSecondDiv">
+                        <span id="eliminaIcon" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    </div>
                 </div>      
 
-
+                <div class="separatoreDiv"></div>
           </div>    
 
             <div class="contentPageDiv" id="cercaContent"> 
