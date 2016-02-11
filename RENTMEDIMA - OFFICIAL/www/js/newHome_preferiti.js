@@ -141,6 +141,10 @@ function drawMyMarker(map){
     marker1.addListener('click', function() {
        $(".accordionTitle").css("color", "red");
     });
+    
+    marker2.addListener('click', function() {
+       $(".accordionTitle").css("color", "black");
+    });
 }
 
 function removeMarker(index){

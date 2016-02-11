@@ -289,12 +289,19 @@
                     
                     <div id="annuncioParteUno"> 
                         <form>
+                            <div class="ui-input-text formSectionDiv">
+                                <input type="text" name="fname" id="titoloAnnuncio" placeholder="Titolo (max 20)" data-clear-btn="true" data-mini="true">
+                            </div>
 
-                            <input type="text" name="fname" id="titoloAnnuncio" placeholder="Titolo" data-clear-btn="true">
-
-                            <input type="number" class="form-control" id="prezzo" placeholder="Prezzo mensile/persona" max="10000" data-mini="true">
-
-                            <textarea name="textarea" id="descrizione" placeholder="Descrizione" maxlength="60"></textarea>
+                            <div  class="ui-input-text formSectionDiv">
+                                <label id="prezzoLabel" for="prezzo">Prezzo Mensile/Persona:</label>
+                                <input type="number" class="form-control" id="prezzo" max="10000" data-mini="true">
+                            </div>
+                                
+                            <div  class="ui-input-text formSectionDiv">
+                                <label id="descrizioneLabel" for="descrizione">Descrizione (max 60):</label>
+                                <textarea name="textarea" id="descrizione" placeholder="...." maxlength="60"></textarea>
+                            </div>
 
                         </form>
 
@@ -470,10 +477,6 @@
                                 <h3>
                                     500€/mese
                                 </h3>
-                                
-                                
-                                    <!--<img src="img/bus.png" style="display:inline-block; height:25px; width:25px; line-height:0.5em;"/>
-                                    <p style="display:inline-block; width: 70&; max-width:100px; background-color:yellowgreen;">1, 2, 4 ,5,6,7,5,4,4,43 </p>-->
                                
                             </div>
                         </div>
@@ -508,21 +511,7 @@
                             </div>
                             
                         </div>
-                        
-                        
-                        
-                        <!--<div class="row mezziDiv" style="height:25px; width: 100%; margin:0; margin-top:0.5em;">
-                            <img src="img/metro.jpg" style="display:inline-block; height:25px; width:25px; line-height:0.5em;"/>
-                            <p style="display:inline-block; max-width:100%; background-color:yellowgreen; font-size:0.7em;"> Metro M1 </p>
-                        
-                        </div>
-                        
-                        <div class="row mezziDiv" style="height:25px; width: 100%; margin:0; margin-top:0.5em;">
-                            <img src="img/treno.png" style="display:inline-block; height:25px; width:25px; line-height:0.5em;"/>
-                            <p style="display:inline-block; max-width:100%; background-color:yellowgreen; font-size:0.7em;">Passante S1,S2,S3 </p>
-                        
-                        </div>-->
-                        
+                    
                         <div class="row" style="margin-top:1em;">
                             <div class="col-xs-12">
                                 <h6 style="line-height:1.3em;"><i>Appartamento di mq. 120  posto al piano secondo, composto da ampio salone con camino, cucina abitabile,  doppi servizi, due  camere da letto, balcone, cantina e posto auto
@@ -545,7 +534,7 @@
                             </div>
                             
                             <div class="col-xs-3 col-xs-offset-4">
-                                <a class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-mini" onclick="provaClick()">contatta</a>
+                                <a class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-mini contattaPreferito" onclick="provaClick()">contatta</a>
                             </div>
                         </div>
                     </div>
@@ -629,7 +618,7 @@
                             </div>
                             
                             <div class="col-xs-3 col-xs-offset-4">
-                                <a class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-mini" onclick="provaClick()">contatta</a>
+                                <a class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-mini contattaPreferito" onclick="provaClick()">contatta</a>
                             </div>
                         </div>
                     </div>

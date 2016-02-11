@@ -79,7 +79,17 @@
     
 }
 
-.rimuoviPreferito{
+
+.rimuoviPreferito, .contattaPreferito{
     background-color: #cc0000;
-    box-shadow: 10px 10px 5px #888888;   
+    box-shadow: 2px 4px 10px #888888;   
+}
+
+.formSectionDiv{
+    width:100%; 
+    border-color:transparent;   
+}
+
+#titoloAnnuncio{
+    font-size:0.9em;   
 }
