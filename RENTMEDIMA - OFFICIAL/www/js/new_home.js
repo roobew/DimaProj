@@ -1,3 +1,5 @@
+var mapInitialized=false;
+
 $(document).ready(setField);
 
 function setField(){
@@ -86,7 +88,10 @@ function setField(){
         else if(pressedId=="preferitiTab"){
             $("#preferitiContent").show();
             console.log("Premuto preferiti"); 
-
+            if(mapInitialized==false){    
+                drawMap();
+                mapInitialized=true;
+            }
             //swipeDetection();
         }
         else if(pressedId=="messaggiTab"){
@@ -107,7 +112,7 @@ function enableSwiperHome(){
             // Optional parameters
             direction: 'horizontal',
             loop: true,
-            //autoplay:3000,
+            autoplay:3000,
             autoplayDisableOnInteraction:false,
           });
           
@@ -138,6 +143,29 @@ function swipeDetection(){
        
     });
     //$(".ciao").click(function (){console.log("ciao");});
+
+}
+/*
+function drawMap(){
+  var mapProp = {
+    center:new google.maps.LatLng(45.46356,9.19419),
+    zoom:13,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  var map=new google.maps.Map(document.getElementById("myMap"),mapProp);
+  
+}*/
+
+
+function drawMap(){
+    var myLatlng;
+    var mapOptions = {
+        zoom: 12,
+        center: new google.maps.LatLng(45.4642200,9.1905600)
+    }
+    var map = new google.maps.Map(document.getElementById('myMap'), mapOptions);
+    drawMyMarker(map);
+    // Funzione in newHome_preferiti.js
 
 }
 
