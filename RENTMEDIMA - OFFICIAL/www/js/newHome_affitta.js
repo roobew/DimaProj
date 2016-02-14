@@ -8,7 +8,6 @@ var actualPill=1;
 $(document).ready(function (){
 
    // $("#affittaContent_creaAnnuncio").hide();
-        
     
     $("#btnNuovoAnnuncio").on("tap", function (){
         
@@ -45,70 +44,104 @@ $(document).ready(function (){
        // $("#affittaContent").fadeIn();
     });
     
-    $("#avantiUno").on("tap", function (){
+    $(".nuovoAnnuncioBox").on("tap", function (){
+        //$(".nuovoAnnuncioBox").hide();
+        //$(this).next().show();
         
-        change_tabs(2);
-         
-    });
-     
-    $("#avantiDue").on("tap", function (){
+        var boxID= $(this).attr("id");
+        console.log("ID è: " + boxID );
         
-        change_tabs(3);
-         
-    });
-    
-    $("#indietroDue").on("tap", function(){
-        change_tabs(1);
+        var myElementID;
+        
+        if(boxID=="titoloBox"){
+            myElementID="Titolo";
           
-    });
-    
-    $("#indietroTre").on("tap", function(){
-       
-        change_tabs(2);
-          
-    });
-    
-    $("#pillUno").on("tap", function(){
-        /*if(actualPill==2){ 
-            animate_due_uno();
         }
-        else if(actualPill==3){
-            animate_tre_uno();   
+        else if(boxID=="prezzoBox"){
+            myElementID="Prezzo";
+           
         }
-        
-        actualPill=1;*/
-        change_tabs(1);
-        
-    });
-    
-    $("#pillDue").on("tap", function(){
-        /*if(actualPill==1){ 
-            animate_uno_due();
+        else if(boxID=="descrizioneBox"){
+            myElementID="Descrizione";
+             
         }
-        else if(actualPill==3){
-            animate_tre_due();   
+        else if(boxID=="numLocaliBox"){
+            myElementID="NumLocali";
+            
+        }
+        else if(boxID=="superficieBox"){
+            myElementID="Superficie";
+            
+        }
+        else if(boxID=="tipologiaBox"){
+            myElementID="Tipologia";
+            
+        }
+        else if(boxID=="postiLettoBox"){
+            myElementID="PostiLetto";
+            
         }
         
-        actualPill=2;*/
-        change_tabs(2);
+        
+        $("#nuovoAnnuncioContent").hide();
+        $("#nuovoAnnuncio"+myElementID+"Detail").show();  
         
     });
     
-   
-    $("#pillTre").on("tap", function(){
-        /*
-        if(actualPill==1){ 
-            animate_uno_tre();
-        }
-        else if(actualPill==2){
-            animate_due_tre();   
-        }
+    
+    $(".backToAnnuncioContent").on("tap", function (){
+        var boxDetailId=$(this).closest(".nuovoAnnuncioDetailContent").attr("id");
+        var newValue;
         
-        actualPill=3;*/
-        
-        change_tabs(3);
+        if(boxDetailId=="nuovoAnnuncioTitoloDetail"){
+            
+            newValue=$("#titoloInput").val();  
+            
+            backToNuovoAnnuncioFunction(newValue, $("#titoloPreview"), $("#titoloCheckedIcon"));
+            
+        }
+        else if(boxDetailId=="nuovoAnnuncioPrezzoDetail"){
+            
+            newValue=$("#prezzoInput").val();  
+            
+            backToNuovoAnnuncioFunction(newValue, $("#prezzoPreview"), $("#prezzoCheckedIcon"));
+            
+        }
+        else if(boxDetailId=="nuovoAnnuncioDescrizioneDetail"){
+            var newValue=$("#descrizioneInput").val();  
+            
+            backToNuovoAnnuncioFunction(newValue, $("#descrizionePreview"), $("#descrizioneCheckedIcon"));
+            
+        }
+        else if(boxDetailId=="nuovoAnnuncioNumLocaliDetail"){
+            var newValue=$("#numLocaliInput").val();  
+            
+            backToNuovoAnnuncioFunction(newValue, $("#numLocaliPreview"), $("#numLocaliCheckedIcon"));
+            
+        }
+        else if(boxDetailId=="nuovoAnnuncioSuperficieDetail"){
+            var newValue=$("#superficieInput").val();  
+            
+            backToNuovoAnnuncioFunction(newValue, $("#superficiePreview"), $("#superficieCheckedIcon"));
+            
+        }
     });
+    
+    
 });
+
+function backToNuovoAnnuncioFunction(value, elementPreview, elementCheckedIcon){
+    //console.log("Il valore ricevuto è: "+value);
+    
+    
+    $(".nuovoAnnuncioDetailContent").hide()
+    elementPreview.text(value);
+    elementCheckedIcon.removeClass("glyphicon-unchecked");
+    elementCheckedIcon.addClass("glyphicon-record");
+            
+    $("#nuovoAnnuncioContent").show();  
+}
+
 
 /*
 jQuery(document).on('click','.annuncioDelDiv', function(event) { 
@@ -121,6 +154,7 @@ jQuery(document).on('click','.annuncioDelDiv', function(event) {
         }
     });
 */
+
 
 
 //Riceve in ingresso il div ".annuncioDiv" e un bool per l'animazione

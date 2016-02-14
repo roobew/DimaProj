@@ -16,7 +16,7 @@ $(document).ready(function (){
     
     setImageURL();
     
-    $("#accordion").accordion({
+    $("#accordionPreferiti").accordion({
         active: false,
         heightStyle: "content",
         collapsible: true});

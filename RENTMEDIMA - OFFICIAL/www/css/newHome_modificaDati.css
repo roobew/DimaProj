@@ -1,0 +1,57 @@
+.modificaBox{
+    height: 2em;
+    width:100vw;
+    :background-color: gray;
+    margin-top: 0.5em;
+
+}
+
+#modificaPasswordBox, #modificaConfermaPasswordBox{
+    height: 4.5em;   
+}
+  
+.userDataText{
+    display: inline-block;
+    height: 100%;
+    width: 70vw;
+    line-height: 1.5em;   
+    :background-color: yellowgreen;
+    padding-left: 1em;
+}
+
+.userDataInputText{
+    display: none;
+    height: 100%;
+    width: 70vw;
+    line-height: 1.5em;   
+    :background-color: darkcyan;
+    padding-left: 1em;
+}
+
+#pwUtenteInput, #confermaPwUtenteInput{
+    height: auto;   
+}
+
+
+#labelPwUtenteInput, #labelConfermaPwUtenteInput{
+    display: block;
+    height: 2em;
+    width:90vw;
+    height: auto;
+    line-height: 1.5em;  
+    padding-left: 1em;
+}
+
+#pwInputField, #confermaPwInputField{
+    height: 1.3em;  
+}
+
+.modificaIconText{
+    display: inline-block;
+    height: 2em;
+    width: 8vw;
+    line-height: 1.7em;
+    :background-color: lightgreen;
+    :margin-left: 2vw;
+    text-align: center;
+}

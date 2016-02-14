@@ -191,13 +191,4 @@ p {margin: 0;padding: 0;}
     overflow-y: scroll;
 }
 /**** FINE ****/
-/*.ui-mobile-viewport{
-    background: url("../img/background.png");
-    background-size: 100% 100% !important;
-}
-.ui-page{
-    background:none;
-}
-.ui-overlay-a{
-    background:#222 !important;
-}*/
+

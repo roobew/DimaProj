@@ -1,3 +1,13 @@
+
+#searchFilterForm{
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+#messaggiContainerDiv{
+    margin-top:1em;   
+}
+
 .messageDivParent{
     display:inline-block; 
     height: 8vh; 

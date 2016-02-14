@@ -24,7 +24,7 @@ $(document).ready(function (){
 
     });*/
     
-   $("#messaggiContent").on("tap", function (event){
+   /*$("#messaggiContent").on("tap", function (event){
         console.log("Hai cliccato "+ event.target.className);
         
        if(elementDragged==true){
@@ -33,7 +33,7 @@ $(document).ready(function (){
                 
                 var miaClasse="."+event.target.className;
                 console.log("MiaClasse è: "+miaClasse);
-                var clickedElement= $(miaClasse); 
+                var clickedElement= $(""+miaClasse); 
                 console.log("AAA "+clickedElement);
                 var parent= clickedElement.closest(".messageDivParent");
 
@@ -51,6 +51,17 @@ $(document).ready(function (){
        else{
            
        }
+    });
+    */
+    
+    $(".messageSecondDiv").on("tap", function (){
+        var parentElement= $(this).parent();
+        
+        parentElement.prev().remove();
+        
+        parentElement.remove();
+        
+        
     });
     
     /*

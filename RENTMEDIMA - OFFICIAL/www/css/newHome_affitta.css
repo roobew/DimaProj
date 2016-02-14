@@ -45,6 +45,18 @@
     
 }
 
+.nuovoAnnuncioIntestazione, .nuovoAnnuncioDetailIntestazioneRow{
+    margin-top: 0.6em;   
+}
+
+.annulla_indietroNuovoAnnuncioButton{
+    padding: 1em;   
+}
+
+.nuovoAnnuncioTestoIntestazione{
+    padding-left: 0;   
+}
+
 .annuncioContentDiv{
     display:inline-block;
     height: auto;
@@ -53,55 +65,95 @@
     position:absolute;
 }
 
-#nuovoAnnuncioPanelBody{
-    height:100vh;
-    background-color:greenyellow; 
+.nuovoAnnuncioDetailContent{
+    display: none;   
+    
 }
 
-#annuncioParteUno{
+#nuovoAnnuncioTextTitle{
+    margin-top: 0.5em;
+    text-shadow: 1px 1px 1px black;      
+}
+
+.nuovoAnnuncioDetailTextTitle{
+    margin-top: 0.5em;
+    font-weight: 600;
+    text-shadow: 1px 1px 1px gray;
+}
+
+.nuovoAnnuncioDetailFirstRow{
+    margin-top: 2em;   
+}
+
+.nuovoAnnuncioDetailSecondRow{
+    margin-top: 1.5em;   
+}
+
+.nuovoAnnuncioBox{
+    :margin-top: 0.5em;
+    margin-left: 0.3em;
+    background-color: whitesmoke;
+    border-top: 1px solid #dbdbdb;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.nuovoAnnuncioIconsBox{
+     line-height: 3.5em;
+}
+
+.nuovoAnnuncioRowOne{
+    margin-top:0.5em; 
+    margin-bottom:0.4em;   
+}
+
+.nuovoAnnuncioRowTwo{
+    padding-top:0.2em; 
+    margin-bottom:0.5em; 
+}
+
+.nuovoAnnuncioRowOneTitle{
+    font-weight:600; 
+    margin-bottom:0.4em;   
+}
+
+.textInputIntroText{
+    line-height: 1.4em;   
+}
+
+#titoloInput{
+    width: 100%;   
+}
+
+#prezzoInput, #numLocaliInput, #superficieInput, #postiLettoInput{
     display: block;
-    height: 65vh;
-    width: 90vw;
-    background-color: darkorange;
-    
-    margin-left: 5vw;
-    margin-top: 4vw;
-    
+    width: 6em;   
+    margin-left: auto;
+    margin-right: auto;
 }
 
-#annuncioParteDue{
-    display: none;
-    height: 65vh;
-    width: 90vw;
-    background-color: brown;
-    
-    margin-left: 5vw;
-    margin-top: 4vw;
+#descrizioneInput{
+    min-height: 8em;
+    height: 8em;
+    max-height: 8em;
 }
 
-#annuncioParteTre{
-    display: none;
-    height: 65vh;
-    width: 90vw;
-    background-color: darkcyan;
-    
-    margin-left: 5vw;
-    margin-top: 4vw;
+.nuovoAnnuncioRowTwoTitle{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;   
+}
+
+a {
+    text-decoration: none;
+}
+a:link, a:visited {
+    color: blue;
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: none;
 }
 
 
-#affittaContent_creaAnnuncio{
-    display: none;
-}
-
-#pillsNavbar{
-    width:75vw; 
-    margin-left:auto; 
-    margin-right:auto; 
-    margin-top:0.5em;  
-}
-
-.myPill{
-    font-size:0.8em;   
-}
 
