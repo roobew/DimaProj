@@ -34,6 +34,7 @@
         <link href="css/newHome_cerca.css" rel=stylesheet type="text/css"/>
         <link href="css/newHome_preferiti.css" rel=stylesheet type="text/css"/>
         <link href="css/newHome_messaggi.css" rel=stylesheet type="text/css"/>
+        <link href="css/newHome_modificaDati.css" rel=stylesheet type="text/css"/>
         
     <!-- ***** END CSS  *****-->
        
@@ -70,6 +71,8 @@
         <script src="js/newHome_messaggi.js"></script>
         
         <script src="js/newHome_affitta.js"></script>
+        
+        <script src="js/newHome_modificaDati.js"></script>
                 
     <!-- ***** END JS  *****-->   
                 
@@ -86,13 +89,13 @@
                     <span id="profileData">
                         <p id="uName">nome</p> 
                         <p id="uSurname">cognome</p> 
-                        <small id="uMail">email</small>
+                        <p id="uMail">email</p>
                         <p id="uloginType">login type </p> 
                     </span>
                 </li>
                 <br><br><br>         
                 <li>
-                    <a href="#">
+                    <a href="#" onclick="showModificaDatiPersonali()">
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true" style="font-size:1.1em"> Modifica</span>
                     </a>
                 </li>
@@ -246,8 +249,7 @@
                     <button id="btnDeleteAnnuncio"> Elimina</button>
                 
                 </div>
-                        
-                
+                    
                 <div class="annuncioDiv"> 
                     <div class="annuncioDelDiv">
                         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
@@ -266,191 +268,408 @@
                     </div>
                     <div class="annuncioContentDiv">Annuncio 3</div>
                 </div>
-                
                 <div class="annuncioDiv"> 
                     <div class="annuncioDelDiv">
                         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                     </div>
                     <div class="annuncioContentDiv">Annuncio 1</div>
                 </div>
+
+                
                                 
             </div>
            
-            <div class="contentPageDiv" id="affittaContent_creaAnnuncio">
-                <div id="annuncioPanelContent">
-                    
-                     <h3 class="text-center"> Nuovo annuncio </h3>
-                        <!--<h6 class="text-center"> 1/3 </h6> -->
-                    <ul class="nav nav-tabs" id="pillsNavbar">
-                        <li class="active myPill" id="pillUno"><a href="#">Parte 1</a></li>
-                        <li class="myPill" id="pillDue"><a href="#">Parte 2</a></li>
-                        <li class="myPill" id="pillTre"><a href="#">Parte 3</a></li>
-                    </ul>
-                    
-                    <div id="annuncioParteUno"> 
-                        <form>
-                            <div class="ui-input-text formSectionDiv">
-                                <input type="text" name="fname" id="titoloAnnuncio" placeholder="Titolo (max 20)" data-clear-btn="true" data-mini="true">
-                            </div>
-
-                            <div  class="ui-input-text formSectionDiv">
-                                <label id="prezzoLabel" for="prezzo">Prezzo Mensile/Persona:</label>
-                                <input type="number" class="form-control" id="prezzo" max="10000" data-mini="true">
-                            </div>
-                                
-                            <div  class="ui-input-text formSectionDiv">
-                                <label id="descrizioneLabel" for="descrizione">Descrizione (max 60):</label>
-                                <textarea name="textarea" id="descrizione" placeholder="...." maxlength="60"></textarea>
-                            </div>
-
-                        </form>
-
-                        <button class="pull-right" type="button" data-icon="arrow-r" data-iconpos="right" data-mini="true" data-shadow="true" id="avantiUno" style="width:auto;">Avanti</button>
-                    </div>
-                
-                    <div id="annuncioParteDue"> 
-                    <button class="pull-right" id="avantiDue" style="width:auto;">Avanti</button>
-                
-                    <button id="indietroDue">Indietro</button>
-                    
-                </div>
-                
-                    <div id="annuncioParteTre"> 
-                    
-                    <button class="pull-right" id="avantiTre" style="width:auto;">Pubblica</button>
-                
-                    <button id="indietroTre">Indietro</button>
-                    
-                    
-                </div>
-                </div>
-                
-                
-                <!-- 
-
-                                    <form style="width:90%; margin-left:auto; margin-right:auto; margin-top:1em; margin-bottom:2em;">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" id="nomeAnnuncio" placeholder="Nome annuncio" maxlength="20">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input type="number" class="form-control" id="prezzo" placeholder="Prezzo mensile/persona" max="10000">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <textarea class="form-control" rows="5" id="descrizione" placeholder="Descrizione annuncio" maxlength="60"></textarea>
-                                        </div>
-
-                                        <button class="btn btn-default" id="nextStepButton">Prosegui</button>
-
-                                    </form>
-
-                                </div>
-                                <div class="swiper-slide slideAffitta">
-
-                                    <form style="width:90%; margin-left:auto; margin-right:auto; margin-top:1em; margin-bottom:3em;">
-                                        <div class="form-group">
-                                            <div class="form-group">
-                                              <label for="sel1">Numero Locali:</label>
-                                              <select class="form-control" id="numLocali">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                                <option>6</option>
-                                                <option>7</option>
-                                                <option>8</option>
-                                                <option>9</option>
-                                                <option>10</option>
-
-                                              </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                          <label for="usr">Superficie:</label>
-                                          <input type="text" class="form-control" id="superficie" maxlength="3">
-                                        </div>
-
-                                        <label class="radio-inline"><input type="radio" name="optradio" id="stanzaPrivataRadioButton">
-                                            Stanza privata
-                                        </label>
-                                        <label class="radio-inline"><input type="radio" name="optradio" id="stanzaCondivisaRadioButton">
-                                            Stanza condivisa
-                                        </label>
-
-                                        <div class="form-group">
-                                          <label for="usr">Posti Letto:</label>
-                                          <input type="text" class="form-control" id="postiLetto" maxlength="2">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="form-group">
-                                              <label for="sel1">Piano:</label>
-                                              <select class="form-control" id="numLocali">
-                                                <option>Seminterrato</option>
-                                                <option>0</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                                <option>6</option>
-                                                <option>>6</option>
-
-
-                                              </select>
-                                            </div>
-                                        </div>
-
-                                        <button id="affittaBackButton">Back</button>
-                                        <button class="btn btn-default" id="nextStepButton">Prosegui</button>
-
-                                    </form>
-
-
-
-                                </div>
-                                <div class="swiper-slide slideAffitta">Slide 3</div>
-                            </div>
-                            <div class="swiper-pagination"></div>
-                        </div>-->
-<!--
-                
-                <div class="panel panel-default" id="nuovoAnnuncioDiv">
-                    <div class="panel-heading" id="nuovoAnnuncioPanelHead" style="background-color:green; margin-top:0.5em;">
-                        <button class="pull-left" id="annullaButton" style="height:1.5em; width:5em;padding:0; font-size:0.8em; margin:0;">annulla</button>
-                        <h4 class="text-center" id="titoloAnnuncio">NOME ANNUNCIO </h4>
-                    
-                    </div>
-
-                    <div class="panel-body" id="nuovoAnnuncioPanelBody">
-                        <div class="annuncioPanelContent" id="annuncioParteUno"> 
-                            parte 1
-                            <button id="avantiUno">Avanti</button>
-                        </div>
-                        <div class="annuncioPanelContent" id="annuncioParteDue"> 
-                            parte 2
-                            <button id="avantiDue">Avanti</button>
-                            <button id="indietroDue">Indietro</button>
-                        </div>
-                        <div class="annuncioPanelContent" id="annuncioParteTre"> 
-                            parte 3
-                            <button id="avantiTre">Avanti</button>
+            <div class="contentPageDiv" id="affittaContent_creaAnnuncio" style="overflow-y:scroll;">
+                <div id="nuovoAnnuncioContent">
+             
+                    <div class="row nuovoAnnuncioIntestazione">
+                        <div class="col-xs-4">
+                            <a class="annulla_indietroNuovoAnnuncioButton">Annulla</a>
                         </div>
                         
-                      
+                        <div class="col-xs-8 nuovoAnnuncioTestoIntestazione">
+                            <h4 id="nuovoAnnuncioTextTitle"> Nuovo annuncio </h4>
+                        </div>
+                    </div>
+                    
+                    <br>
+                    
+                    <div class="row nuovoAnnuncioBox" id="titoloBox">
+
+                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
+                            <span class="glyphicon glyphicon-unchecked" id="titoloCheckedIcon" aria-hidden="true"></span>
+
+                        </div>
+                        
+                        <div class="col-xs-9">
+                            <div class="row nuovoAnnuncioRowOne">
+                                <div class="col-xs-12">
+                                    <h5 class="nuovoAnnuncioRowOneTitle">Titolo - <small> max 20 caratteri </small> </h5>
+                                </div>
+                            </div>
+                            <div class="row nuovoAnnuncioRowTwo">
+                                <div class="col-xs-12">
+                                    <h6 class="nuovoAnnuncioRowTwoTitle" id="titoloPreview"> il titolo inserito</h6>
+                                </div>    
+                            </div>
+                        </div>
+                        
+                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                        </div>
 
                     </div>
-                </div>  
--->
+                
+                    <div class="row nuovoAnnuncioBox" id="prezzoBox">
+
+                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
+                            <span class="glyphicon glyphicon-unchecked" id="prezzoCheckedIcon" aria-hidden="true"></span>
+
+                        </div>
+                        
+                        <div class="col-xs-9">
+                            <div class="row nuovoAnnuncioRowOne">
+                                <div class="col-xs-12">
+                                    <h5 class="nuovoAnnuncioRowOneTitle">Prezzo - <small> mensile, euro/persona </small> </h5>
+                                </div>
+                            </div>
+                            <div class="row nuovoAnnuncioRowTwo">
+                                <div class="col-xs-12">
+                                    <h6 class="nuovoAnnuncioRowTwoTitle" id="prezzoPreview"> il prezzo inserito</h6>
+                                </div>    
+                            </div>
+                        </div>
+                        
+                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                        </div>
+
+                    </div>
+                    
+                    <div class="row nuovoAnnuncioBox" id="descrizioneBox">
+
+                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
+                            <span class="glyphicon glyphicon-unchecked" id="descrizioneCheckedIcon" aria-hidden="true"></span>
+
+                        </div>
+                        
+                        <div class="col-xs-9">
+                            <div class="row nuovoAnnuncioRowOne">
+                                <div class="col-xs-12">
+                                    <h5 class="nuovoAnnuncioRowOneTitle">Descrizione - <small> max 60 caratteri </small> </h5>
+                                </div>
+                            </div>
+                            <div class="row nuovoAnnuncioRowTwo">
+                                <div class="col-xs-12">
+                                    <h6 class="nuovoAnnuncioRowTwoTitle" id="descrizionePreview"> preview della descrione</h6>
+                                </div>    
+                            </div>
+                        </div>
+                        
+                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                        </div>
+
+                    </div>
+                    
+                    <div class="row nuovoAnnuncioBox" id="numLocaliBox">
+
+                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
+                            <span class="glyphicon glyphicon-unchecked" id="numLocaliCheckedIcon" aria-hidden="true"></span>
+
+                        </div>
+                        
+                        <div class="col-xs-9">
+                            <div class="row nuovoAnnuncioRowOne">
+                                <div class="col-xs-12">
+                                    <h5 class="nuovoAnnuncioRowOneTitle">Numero Locali</h5>
+                                </div>
+                            </div>
+                            <div class="row nuovoAnnuncioRowTwo">
+                                <div class="col-xs-12">
+                                    <h6 class="nuovoAnnuncioRowTwoTitle" id="numLocaliPreview"> Numero di locali</h6>
+                                </div>    
+                            </div>
+                        </div>
+                        
+                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                        </div>
+
+                    </div>
+                    
+                    <div class="row nuovoAnnuncioBox" id="superficieBox">
+
+                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
+                            <span class="glyphicon glyphicon-unchecked" id="superficieCheckedIcon" aria-hidden="true"></span>
+
+                        </div>
+                        
+                        <div class="col-xs-9">
+                            <div class="row nuovoAnnuncioRowOne">
+                                <div class="col-xs-12">
+                                    <h5 class="nuovoAnnuncioRowOneTitle">Superficie</h5>
+                                </div>
+                            </div>
+                            <div class="row nuovoAnnuncioRowTwo">
+                                <div class="col-xs-12">
+                                    <h6 class="nuovoAnnuncioRowTwoTitle" id="superficiePreview"> superficie inserita</h6>
+                                </div>    
+                            </div>
+                        </div>
+                        
+                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                        </div>
+
+                    </div>
+                    
+                    <div class="row nuovoAnnuncioBox" id="tipologiaBox">
+
+                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
+                            <span class="glyphicon glyphicon-unchecked" id="tipologiaCheckedIcon" aria-hidden="true"></span>
+
+                        </div>
+                        
+                        <div class="col-xs-9">
+                            <div class="row nuovoAnnuncioRowOne">
+                                <div class="col-xs-12">
+                                    <h5 class="nuovoAnnuncioRowOneTitle">Tipologia di affittoPrezzo - <small> a scelta tra appartamento, stanza privata, stanza condivisa </small> </h5>
+                                </div>
+                            </div>
+                            <div class="row nuovoAnnuncioRowTwo">
+                                <div class="col-xs-12">
+                                    <h6 class="nuovoAnnuncioRowTwoTitle" id="tipologiaPreview"> la tipologia scelta</h6>
+                                </div>    
+                            </div>
+                        </div>
+                        
+                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                        </div>
+
+                    </div>
+                    
+                    <div class="row nuovoAnnuncioBox" id="postiLettoBox">
+
+                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
+                            <span class="glyphicon glyphicon-unchecked" id="postiLettoCheckedIcon" aria-hidden="true"></span>
+
+                        </div>
+                        
+                        <div class="col-xs-9">
+                            <div class="row nuovoAnnuncioRowOne">
+                                <div class="col-xs-12">
+                                    <h5 class="nuovoAnnuncioRowOneTitle">Numero di posti letto - <small> totali </small> </h5>
+                                </div>
+                            </div>
+                            <div class="row nuovoAnnuncioRowTwo">
+                                <div class="col-xs-12">
+                                    <h6 class="nuovoAnnuncioRowTwoTitle" id="postiLettoPreview"> -</h6>
+                                </div>    
+                            </div>
+                        </div>
+                        
+                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                        </div>
+
+                    </div>
+                    
+                    
+                    <div style="height:2em;"></div>
+                </div>
+                
+                <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioTitoloDetail">
+                    <div class="row nuovoAnnuncioDetailIntestazioneRow">
+                        <div class="col-xs-4">
+                            <a class="annulla_indietroNuovoAnnuncioButton backToAnnuncioContent">Indietro</a>
+                        </div>
+                        
+                        <div class="col-xs-8 nuovoAnnuncioTestoIntestazione">
+                            <h4 class="nuovoAnnuncioDetailTextTitle"> Titolo </h4>
+                        </div>
+                    </div>    
+                    
+                    <div class="row nuovoAnnuncioDetailFirstRow">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <h6 class="textInputIntroText"><i>Il titolo è il nome dell'annuncio.<br> Presta attenzione perchè il titolo è il biglietto da visita del tuo appartamento. </i> </h6>
+                        </div>
+                    </div>
+                    
+                    <div class="row nuovoAnnuncioDetailSecondRow">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <input type="text" id="titoloInput" data-role="none" maxlength="20" placeholder="Titolo annuncio">
+                        </div>
+                    </div>
+                        
+                </div>
+                
+                <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioPrezzoDetail">
+                    <div class="row nuovoAnnuncioDetailIntestazioneRow">
+                        <div class="col-xs-4">
+                            <a class="annulla_indietroNuovoAnnuncioButton backToAnnuncioContent">Indietro</a>
+                        </div>
+                        
+                        <div class="col-xs-8 nuovoAnnuncioTestoIntestazione">
+                            <h4 class="nuovoAnnuncioDetailTextTitle"> Prezzo </h4>
+                        </div>
+                    </div>    
+                    
+                    <div class="row nuovoAnnuncioDetailFirstRow">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <h6 class="textInputIntroText"><i>Il prezzo è la cifra mensile a persona che desideri ricevere per l'affitto. </i> </h6>
+                        </div>
+                    </div>
+                    
+                    <div class="row nuovoAnnuncioDetailSecondRow">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <input type="number" id="prezzoInput" data-role="none" maxlength="4" placeholder="€/persona"> 
+                        </div>
+                    </div>   
+                        
+                </div>
+                
+                <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioDescrizioneDetail">
+                    <div class="row nuovoAnnuncioDetailIntestazioneRow">
+                        <div class="col-xs-4">
+                            <a class="annulla_indietroNuovoAnnuncioButton backToAnnuncioContent">Indietro</a>
+                        </div>
+                        
+                        <div class="col-xs-8 nuovoAnnuncioTestoIntestazione">
+                            <h4 class="nuovoAnnuncioDetailTextTitle"> Descrizione </h4>
+                        </div>
+                    </div>    
+                    
+                    <div class="row nuovoAnnuncioDetailFirstRow">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <h6 class="textInputIntroText"><i> Scrivi una descrizione del tuo annuncio in massimo 60 caratteri. Le descrizioni servono per delineare il quadro generale dell'appartamento che stai affittando. Una descrizione buona, completa e ben strutturata incuriosisce un eventuale affittuario.  </i> </h6>
+                        </div>
+                    </div>
+                    
+                    <div class="row nuovoAnnuncioDetailSecondRow">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <textarea name="textarea" id="descrizioneInput" placeholder="...." maxlength="60"></textarea>
+                        </div>
+                    </div>   
+                </div>
+                
+                <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioNumLocaliDetail">
+                    <div class="row nuovoAnnuncioDetailIntestazioneRow">
+                        <div class="col-xs-4">
+                            <a class="annulla_indietroNuovoAnnuncioButton backToAnnuncioContent">Indietro</a>
+                        </div>
+                        
+                        <div class="col-xs-8 nuovoAnnuncioTestoIntestazione">
+                            <h4 class="nuovoAnnuncioDetailTextTitle"> Numero di locali </h4>
+                        </div>
+                    </div>    
+                    
+                    <div class="row nuovoAnnuncioDetailFirstRow">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <h6 class="textInputIntroText"><i> Inserisci il numero di locali dell'intero appartamento.  </i> </h6>
+                        </div>
+                    </div>
+                    
+                    <div class="row nuovoAnnuncioDetailSecondRow">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <input type="number" id="numLocaliInput" data-role="none" maxlength="4" placeholder=""> 
+                        </div>
+                    </div>     
+                </div>
+                
+                <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioSuperficieDetail">
+                    <div class="row nuovoAnnuncioDetailIntestazioneRow">
+                        <div class="col-xs-4">
+                            <a class="annulla_indietroNuovoAnnuncioButton backToAnnuncioContent">Indietro</a>
+                        </div>
+                        
+                        <div class="col-xs-8 nuovoAnnuncioTestoIntestazione">
+                            <h4 class="nuovoAnnuncioDetailTextTitle"> Superficie </h4>
+                        </div>
+                    </div>    
+                    
+                    <div class="row nuovoAnnuncioDetailFirstRow">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <h6 class="textInputIntroText"><i>Si intende la superficie totale dell'appartamento, espressa in metri quadrati (mq). </i> </h6>
+                        </div>
+                    </div>
+                    
+                    <div class="row nuovoAnnuncioDetailSecondRow">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <input type="number" id="superficieInput" data-role="none" maxlength="5" placeholder="mq"> 
+                        </div>
+                    </div>   
+                        
+                </div>
+                
+                <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioTipologiaDetail">
+                    <div class="row nuovoAnnuncioDetailIntestazioneRow">
+                        <div class="col-xs-4">
+                            <a class="annulla_indietroNuovoAnnuncioButton backToAnnuncioContent">Indietro</a>
+                        </div>
+                        
+                        <div class="col-xs-8 nuovoAnnuncioTestoIntestazione">
+                            <h4 class="nuovoAnnuncioDetailTextTitle"> Tipologia </h4>
+                        </div>
+                    </div>    
+                    
+                    <div class="row nuovoAnnuncioDetailFirstRow">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <h6 class="textInputIntroText"><i>Seleziona la tipologia di affitto che desideri effettuare. <br> - <u><b>Appartamento</b></u>: affitto di un intero appartamento, totalmente personale e non condiviso con nessun altro. <br> -<u><b>Stanza Privata</b></u>: affitto di una stanza privata all'interno di un appartamento condiviso con altre persone. <br> -<u><b>Stanza Condivisa</b></u>: affitto di una stanza condivisa con altre persone, all'interno di un appartamento condiviso. </i> </h6>
+                        </div>
+                    </div>
+                    
+                    <div class="row nuovoAnnuncioDetailSecondRow">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            
+                            <fieldset data-role="controlgroup">
+                                <label for="appartamentoTipologiaInput">Appartamento</label>
+                                <input type="radio" name="appartamento" id="appartamentoTipologiaInput" value="appartamento">
+                                
+                                <label for="privataTipologiaInput">Stanza Privata</label>
+                                <input type="radio" name="stanzaPrivata" id="privataTipologiaInput" value="stanzaPrivata"> 
+                                    
+                                <label for="condivisaTipologiaInput">Stanza Condivisa</label>
+                                <input type="radio" name="stanzaCondivisa" id="condivisaTipologiaInput" value="stanzaCondivisa"> 
+                                
+                            </fieldset>
+                        </div>
+                    </div>   
+                        
+                </div>
+                
+                <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioPostiLettoDetail">
+                    <div class="row nuovoAnnuncioDetailIntestazioneRow">
+                        <div class="col-xs-4">
+                            <a class="annulla_indietroNuovoAnnuncioButton backToAnnuncioContent">Indietro</a>
+                        </div>
+                        
+                        <div class="col-xs-8 nuovoAnnuncioTestoIntestazione">
+                            <h4 class="nuovoAnnuncioDetailTextTitle"> Numero Posti Letto </h4>
+                        </div>
+                    </div>    
+                    
+                    <div class="row nuovoAnnuncioDetailFirstRow">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <h6 class="textInputIntroText"><i>Descrizione posti letto. </i> </h6>
+                        </div>
+                    </div>
+                    
+                    <div class="row nuovoAnnuncioDetailSecondRow">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <input type="number" id="postiLettoInput" data-role="none" maxlength="2" placeholder=""> 
+                        </div>
+                    </div>   
+                        
+                </div>
+                
             </div>
 
             <div class="contentPageDiv" id="preferitiContent" style="overflow-y:scroll;">
                 <div id="myMap" style="height:9em; width:100%"></div>
                 <br> 
-                <div id="accordion">
+                <div id="accordionPreferiti">
                     <h2 class="accordionTitle"> Appartamento restaurato zona navigli </h2>
                     <div class="accordionContent container-fluid divChild">
                         <div class="row">    
@@ -459,17 +678,17 @@
                                 STANZA SINGOLA
                                 </h5>
                                 
-                                <h5 style="margin-top:0.5em;">
+                                <h5 class="informazioniAnnuncio">
                                 ZONA 5
                                 </h5>
                                 
-                                <h6 style="margin-top:0.5em;">
+                                <h6 class="informazioniAnnuncio">
                                     55mq
                                 </h6>
-                                <h6 style="margin-top:0.5em;">
+                                <h6 class="informazioniAnnuncio">
                                     Posti letto: 2
                                 </h6>
-                                <h6 style="margin-top:0.5em;">
+                                <h6 class="informazioniAnnuncio">
                                     Piano: 2
                                 </h6>
                             </div>
@@ -512,14 +731,14 @@
                             
                         </div>
                     
-                        <div class="row" style="margin-top:1em;">
+                        <div class="row preferitoDescriptionDiv">
                             <div class="col-xs-12">
-                                <h6 style="line-height:1.3em;"><i>Appartamento di mq. 120  posto al piano secondo, composto da ampio salone con camino, cucina abitabile,  doppi servizi, due  camere da letto, balcone, cantina e posto auto
+                                <h6 class="preferitoDescriptionText"><i>Appartamento di mq. 120  posto al piano secondo, composto da ampio salone con camino, cucina abitabile,  doppi servizi, due  camere da letto, balcone, cantina e posto auto
                                     </i>
                                 </h6>
                             </div>
                         </div>
-                        <div class="row photoswipe" style="margin-top:1em;">
+                        <div class="row photoswipe">
                             <img class="img-responsive previewImage foto"/>
                             <img class="img-responsive previewImage foto" />
                             <img class="img-responsive previewImage foto"/>
@@ -528,7 +747,7 @@
                             <img class="img-responsive previewImage foto"/>
                         </div>
                         
-                        <div class="row" style="margin-top:1em;">
+                        <div class="row preferitoBottomButtonDiv">
                             <div class="col-xs-3">
                                 <a class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-mini rimuoviPreferito">rimuovi</a>
                             </div>
@@ -547,17 +766,17 @@
                                 STANZA SINGOLA
                                 </h5>
                                 
-                                <h5 style="margin-top:0.5em;">
+                                <h5 class="informazioniAnnuncio">
                                 ZONA 5
                                 </h5>
                                 
-                                <h6 style="margin-top:0.5em;">
+                                <h6 class="informazioniAnnuncio">
                                     55mq
                                 </h6>
-                                <h6 style="margin-top:0.5em;">
+                                <h6 class="informazioniAnnuncio">
                                     Posti letto: 2
                                 </h6>
-                                <h6 style="margin-top:0.5em;">
+                                <h6 class="informazioniAnnuncio">
                                     Piano: 2
                                 </h6>
                             </div>
@@ -572,38 +791,38 @@
                                
                             </div>
                         </div>
-                        <div class="row mezziDiv" style="height:25px; width: 100%; margin:0; margin-top:0.5em;">
+                        <div class="row mezziDiv">
                             <img src="img/bus.png" style="display:inline-block; height:25px; width:25px; line-height:0.5em;"/>
                             <p style="display:inline-block; max-width:100%; background-color:yellowgreen; font-size:0.7em;">Bus 90, 145, 375 </p>
                         
                         </div>
                         
-                        <div class="row mezziDiv" style="height:25px; width: 100%; margin:0; margin-top:0.5em;">
+                        <div class="row mezziDiv">
                             <img src="img/tram.png" style="display:inline-block; height:25px; width:25px; line-height:0.5em;"/>
                             <p style="display:inline-block; max-width:100%; background-color:yellowgreen; font-size:0.7em;">Tram 14, 76, 91 </p>
                         
                         </div>
                         
-                        <div class="row mezziDiv" style="height:25px; width: 100%; margin:0; margin-top:0.5em;">
+                        <div class="row mezziDiv">
                             <img src="img/metro.jpg" style="display:inline-block; height:25px; width:25px; line-height:0.5em;"/>
                             <p style="display:inline-block; max-width:100%; background-color:yellowgreen; font-size:0.7em;"> Metro M1 </p>
                         
                         </div>
                         
-                        <div class="row mezziDiv" style="height:25px; width: 100%; margin:0; margin-top:0.5em;">
+                        <div class="row mezziDiv">
                             <img src="img/treno.png" style="display:inline-block; height:25px; width:25px; line-height:0.5em;"/>
                             <p style="display:inline-block; max-width:100%; background-color:yellowgreen; font-size:0.7em;">Passante S1,S2,S3 </p>
                         
                         </div>
                         
-                        <div class="row" style="margin-top:1em;">
+                        <div class="row preferitoDescriptionDiv">
                             <div class="col-xs-12">
-                                <h6 style="line-height:1.3em;"><i>Appartamento di mq. 120  posto al piano secondo, composto da ampio salone con camino, cucina abitabile,  doppi servizi, due  camere da letto, balcone, cantina e posto auto
+                                <h6 class="preferitoDescriptionText"><i>Appartamento di mq. 120  posto al piano secondo, composto da ampio salone con camino, cucina abitabile,  doppi servizi, due  camere da letto, balcone, cantina e posto auto
                                     </i>
                                 </h6>
                             </div>
                         </div>
-                        <div class="row photoswipe" style="margin-top:1em;">
+                        <div class="row photoswipe">
                             <img class="img-responsive previewImage foto"/>
                             <img class="img-responsive previewImage foto" />
                             <img class="img-responsive previewImage foto"/>
@@ -612,7 +831,7 @@
                             <img class="img-responsive previewImage foto"/>
                         </div>
                         
-                        <div class="row" style="margin-top:1em;">
+                        <div class="row preferitoBottomButtonDiv">
                             <div class="col-xs-3">
                                 <a class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-mini rimuoviPreferito">rimuovi</a>
                             </div>
@@ -786,84 +1005,89 @@
             </div>
 
             <div class="contentPageDiv" id="messaggiContent">
-                <br>
-                <div class="separatoreDiv"></div>
                 
-                <div class="messageDivParent">
-                    <div class="messageFirstDiv">
-                        <div class="messageProfilePicture">
-                            <img class="img-responsive" src="http://www.dagospia.com/img/foto/08-2012/mattia-destro-185288.jpg" style="height:100%; width:100%; border-radius:50%">
-                        </div>
-                        <div class="previewMessage">
-                            <h2 class="sender">Mattia Destro</h2>
-                            <p class="time">15.02</p>
-                            <p class="previewText">
-                                ciao, mi hai preso al fantacalcio e faccio cagare
-                            </p>
-                        </div>
-                        
-                        <div class="arrowDiv"> 
-                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                <form class="ui-filterable" id="searchFilterForm">
+                  <input id="myFilter" data-type="search" placeholder="Cerca">
+                </form>
+                <div id="messaggiContainerDiv" data-filter="true" data-input="#myFilter">
+                    <div class="separatoreDiv"></div>
+                
+                    <div class="messageDivParent">
+                        <div class="messageFirstDiv">
+                            <div class="messageProfilePicture">
+                                <img class="img-responsive" src="http://www.dagospia.com/img/foto/08-2012/mattia-destro-185288.jpg" style="height:100%; width:100%; border-radius:50%">
+                            </div>
+                            <div class="previewMessage">
+                                <h2 class="sender">Mattia Destro</h2>
+                                <p class="time">15.02</p>
+                                <p class="previewText">
+                                    ciao, mi hai preso al fantacalcio e faccio cagare
+                                </p>
+                            </div>
 
+                            <div class="arrowDiv"> 
+                                <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+
+                            </div>
                         </div>
-                    </div>
-                    <div class="messageSecondDiv">
-                        <span id="eliminaIcon" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                    </div>
+                        <div class="messageSecondDiv">
+                            <span id="eliminaIcon" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        </div>
+</div>
+
+                    <div class="separatoreDiv"></div>
+
+                    <div class="messageDivParent">
+                        <div class="messageFirstDiv">
+                            <div class="messageProfilePicture">
+                                <img class="img-responsive" src="http://www.wakeupnews.eu/wp-content/uploads/2013/06/montolivo-www.tifomilan.it_.jpg" style="height:100%; width:100%; border-radius:50%">
+                            </div>
+                            <div class="previewMessage">
+                                <h2 class="sender">Riccardo Montolivo</h2>
+                                <p class="time">15.02</p>
+                                <p class="previewText">
+                                    Buon Ferragosto e tanti auguri di San Valentino !
+                                </p>
+                            </div>
+
+                            <div class="arrowDiv"> 
+                                <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+
+                            </div>
+                        </div>
+                        <div class="messageSecondDiv">
+                            <span id="eliminaIcon" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        </div>
+</div>    
+
+                    <div class="separatoreDiv"></div>
+
+                   <div class="messageDivParent">
+
+                        <div class="messageFirstDiv">
+                            <div class="messageProfilePicture">
+                                <img class="img-responsive" src="https://pbs.twimg.com/profile_images/507504087198216192/P5oRP5sY_400x400.jpeg" style="height:100%; width:100%; border-radius:50%">
+                            </div>
+                            <div class="previewMessage">
+                                <h2 class="sender">Cristian Zaccardo</h2>
+                                <p class="time">Martedì</p>
+                                <p class="previewText">
+                                    Tu ridi e mi sfotti ma io sono campione del mondo!
+                                </p>
+                            </div>
+
+                            <div class="arrowDiv"> 
+                                <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+
+                            </div>
+                        </div>
+                        <div class="messageSecondDiv">
+                            <span id="eliminaIcon" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        </div>
+</div>      
+
+                    <div class="separatoreDiv"></div>
                 </div>
-                
-                <div class="separatoreDiv"></div>
-                
-                <div class="messageDivParent">
-                    <div class="messageFirstDiv">
-                        <div class="messageProfilePicture">
-                            <img class="img-responsive" src="http://www.wakeupnews.eu/wp-content/uploads/2013/06/montolivo-www.tifomilan.it_.jpg" style="height:100%; width:100%; border-radius:50%">
-                        </div>
-                        <div class="previewMessage">
-                            <h2 class="sender">Riccardo Montolivo</h2>
-                            <p class="time">15.02</p>
-                            <p class="previewText">
-                                Buon Ferragosto e tanti auguri di San Valentino !
-                            </p>
-                        </div>
-                        
-                        <div class="arrowDiv"> 
-                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-
-                        </div>
-                    </div>
-                    <div class="messageSecondDiv">
-                        <span id="eliminaIcon" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                    </div>
-                </div>    
-
-                <div class="separatoreDiv"></div>
-                
-               <div class="messageDivParent">
-                   
-                    <div class="messageFirstDiv">
-                        <div class="messageProfilePicture">
-                            <img class="img-responsive" src="https://pbs.twimg.com/profile_images/507504087198216192/P5oRP5sY_400x400.jpeg" style="height:100%; width:100%; border-radius:50%">
-                        </div>
-                        <div class="previewMessage">
-                            <h2 class="sender">Cristian Zaccardo</h2>
-                            <p class="time">Martedì</p>
-                            <p class="previewText">
-                                Tu ridi e mi sfotti ma io sono campione del mondo!
-                            </p>
-                        </div>
-                        
-                        <div class="arrowDiv"> 
-                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-
-                        </div>
-                    </div>
-                    <div class="messageSecondDiv">
-                        <span id="eliminaIcon" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                    </div>
-                </div>      
-
-                <div class="separatoreDiv"></div>
           </div>    
 
             <div class="contentPageDiv" id="cercaContent"> 
@@ -877,7 +1101,59 @@
               
                 
             </div>
+           
+            
+            <div class="contentPageDiv" id="modificaDatiPersonaliContent"> 
+                
+                <input data-role="none" class="userDataInputText" type="password" id="pwUtenteInput">
+                
+                <h3 style="text-align:center; margin-top:0.4em; text-shadow: 1px 1px 1px gray;">Dati Personali</h3>
+                
+                <h5 id="loginTypeMode" class="text-center margin-top:5em;"> Login con facebook </h5>
+                
+                <div class="modificaBox" id="modificaNomeBox">
+                    
+                    <input data-role="none" class="userDataInputText" type="text" id="nomeUtenteInput">
+                    <p class="userDataText">Stefano</p>
+                    <span class="glyphicon glyphicon-pencil modificaIconText" aria-hidden="true"></span>
+                
+                </div>
+                
+                <div class="modificaBox" id="modificaCognomeBox">
+                    <input data-role="none" class="userDataInputText" type="text" id="cognomeUtenteInput">
+                    
+                    <p class="userDataText">Colomeo</p>
+                    <span class="glyphicon glyphicon-pencil modificaIconText" aria-hidden="true"></span>
+                </div>
+                
+                <div class="modificaBox" id="modificaEmailBox">
+                                        
+                    <p class="userDataText">email@email.com</p>
+                    
+                </div>
+                
+                <div class="modificaBox" id="modificaPasswordBox">
+                    <p id="labelPwUtenteInput" for="pwUtenteInput">Password</p>                    
+                    <input data-role="none" class="userDataInputText" type="password" id="pwUtenteInput">
+                    
+                    <h4 class="userDataText" id="pwInputField">***********</h4>
+                    <span class="glyphicon glyphicon-pencil modificaIconText" aria-hidden="true"></span>
+                    
+                </div>
+                
+                <div class="modificaBox" id="modificaConfermaPasswordBox">
+                   
+                    <p id="labelConfermaPwUtenteInput" for="confermaPwUtenteInput">Conferma password</p>                    
+                    <input data-role="none" class="userDataInputText" type="password" id="confermaPwUtenteInput">                  
+                    <h4 class="userDataText" id="confermaPwInputField">***********</h4>
+                    
+                </div>
+                
+                <button class="pull-right" id="modificaDatiButton"> Conferma </button>
+                <button class="pull-left" id="modificaDatiButton"> Annulla </button>
+            </div>
        </div>
+       
        <!-- BARRA NAVIGAZIONE IN BASSO  -->
        <div id="fixedBottomDiv">
             <div id="rowBottomBar">

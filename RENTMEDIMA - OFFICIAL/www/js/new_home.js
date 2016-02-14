@@ -145,16 +145,13 @@ function swipeDetection(){
     //$(".ciao").click(function (){console.log("ciao");});
 
 }
-/*
-function drawMap(){
-  var mapProp = {
-    center:new google.maps.LatLng(45.46356,9.19419),
-    zoom:13,
-    mapTypeId:google.maps.MapTypeId.ROADMAP
-  };
-  var map=new google.maps.Map(document.getElementById("myMap"),mapProp);
-  
-}*/
+
+function showModificaDatiPersonali(){
+    
+    // NASCONDI TUTTI I CONTENTPAGEDIV
+    $(".contentPageDiv").hide();
+    $("#modificaDatiPersonaliContent").show();
+}
 
 
 function drawMap(){
