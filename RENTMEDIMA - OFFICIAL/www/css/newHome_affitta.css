@@ -1,4 +1,8 @@
 
+#affittaContent_creaAnnuncio{
+    display: none;
+}
+
 .annuncioDiv{
     display: block;
     align-content: center;
@@ -124,7 +128,7 @@
     width: 100%;   
 }
 
-#prezzoInput, #numLocaliInput, #superficieInput, #postiLettoInput{
+#prezzoInput, #numLocaliInput, #superficieInput, #postiLettoInput, #pianoInput{
     display: block;
     width: 6em;   
     margin-left: auto;
@@ -137,15 +141,17 @@
     max-height: 8em;
 }
 
+
 .nuovoAnnuncioRowTwoTitle{
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;   
 }
-
+/*
 a {
     text-decoration: none;
 }
+
 a:link, a:visited {
     color: blue;
     text-decoration: none;
@@ -153,6 +159,21 @@ a:link, a:visited {
 
 a:hover{
     text-decoration: none;
+}*/
+
+
+#pubblicaAnnuncioButton:link, #pubblicaAnnuncioButton:visited {
+    background-color: #f44336;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;	
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+#pubblicaAnnuncioButton:hover, #pubblicaAnnuncioButton:active {
+    background-color: red;
 }
 
 

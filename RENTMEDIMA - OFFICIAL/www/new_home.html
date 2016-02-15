@@ -275,7 +275,7 @@
                     <div class="annuncioContentDiv">Annuncio 1</div>
                 </div>
 
-                
+                <a href="#" id="pubblicaAnnuncioButton">Pubblica</a>
                                 
             </div>
            
@@ -284,7 +284,7 @@
              
                     <div class="row nuovoAnnuncioIntestazione">
                         <div class="col-xs-4">
-                            <a class="annulla_indietroNuovoAnnuncioButton">Annulla</a>
+                            <a class="annulla_indietroNuovoAnnuncioButton"id="annullaNuovoAnnuncioButton">Annulla</a>
                         </div>
                         
                         <div class="col-xs-8 nuovoAnnuncioTestoIntestazione">
@@ -309,7 +309,7 @@
                             </div>
                             <div class="row nuovoAnnuncioRowTwo">
                                 <div class="col-xs-12">
-                                    <h6 class="nuovoAnnuncioRowTwoTitle" id="titoloPreview"> il titolo inserito</h6>
+                                    <h6 class="nuovoAnnuncioRowTwoTitle" id="titoloPreview"> -</h6>
                                 </div>    
                             </div>
                         </div>
@@ -335,7 +335,7 @@
                             </div>
                             <div class="row nuovoAnnuncioRowTwo">
                                 <div class="col-xs-12">
-                                    <h6 class="nuovoAnnuncioRowTwoTitle" id="prezzoPreview"> il prezzo inserito</h6>
+                                    <h6 class="nuovoAnnuncioRowTwoTitle" id="prezzoPreview"> -</h6>
                                 </div>    
                             </div>
                         </div>
@@ -361,7 +361,7 @@
                             </div>
                             <div class="row nuovoAnnuncioRowTwo">
                                 <div class="col-xs-12">
-                                    <h6 class="nuovoAnnuncioRowTwoTitle" id="descrizionePreview"> preview della descrione</h6>
+                                    <h6 class="nuovoAnnuncioRowTwoTitle" id="descrizionePreview"> -</h6>
                                 </div>    
                             </div>
                         </div>
@@ -372,6 +372,7 @@
 
                     </div>
                     
+                    <br>
                     <div class="row nuovoAnnuncioBox" id="numLocaliBox">
 
                         <div class="col-xs-1 nuovoAnnuncioIconsBox">
@@ -387,7 +388,7 @@
                             </div>
                             <div class="row nuovoAnnuncioRowTwo">
                                 <div class="col-xs-12">
-                                    <h6 class="nuovoAnnuncioRowTwoTitle" id="numLocaliPreview"> Numero di locali</h6>
+                                    <h6 class="nuovoAnnuncioRowTwoTitle" id="numLocaliPreview"> -</h6>
                                 </div>    
                             </div>
                         </div>
@@ -413,7 +414,7 @@
                             </div>
                             <div class="row nuovoAnnuncioRowTwo">
                                 <div class="col-xs-12">
-                                    <h6 class="nuovoAnnuncioRowTwoTitle" id="superficiePreview"> superficie inserita</h6>
+                                    <h6 class="nuovoAnnuncioRowTwoTitle" id="superficiePreview"> - </h6>
                                 </div>    
                             </div>
                         </div>
@@ -434,12 +435,12 @@
                         <div class="col-xs-9">
                             <div class="row nuovoAnnuncioRowOne">
                                 <div class="col-xs-12">
-                                    <h5 class="nuovoAnnuncioRowOneTitle">Tipologia di affittoPrezzo - <small> a scelta tra appartamento, stanza privata, stanza condivisa </small> </h5>
+                                    <h5 class="nuovoAnnuncioRowOneTitle">Tipologia - <small> a scelta tra appartamento, stanza privata, stanza condivisa </small> </h5>
                                 </div>
                             </div>
                             <div class="row nuovoAnnuncioRowTwo">
                                 <div class="col-xs-12">
-                                    <h6 class="nuovoAnnuncioRowTwoTitle" id="tipologiaPreview"> la tipologia scelta</h6>
+                                    <h6 class="nuovoAnnuncioRowTwoTitle" id="tipologiaPreview"> -</h6>
                                 </div>    
                             </div>
                         </div>
@@ -475,6 +476,193 @@
                         </div>
 
                     </div>
+                    
+                    <div class="row nuovoAnnuncioBox" id="pianoBox">
+
+                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
+                            <span class="glyphicon glyphicon-unchecked" id="pianoCheckedIcon" aria-hidden="true"></span>
+
+                        </div>
+                        
+                        <div class="col-xs-9">
+                            <div class="row nuovoAnnuncioRowOne">
+                                <div class="col-xs-12">
+                                    <h5 class="nuovoAnnuncioRowOneTitle">Piano </h5>
+                                </div>
+                            </div>
+                            <div class="row nuovoAnnuncioRowTwo">
+                                <div class="col-xs-12">
+                                    <h6 class="nuovoAnnuncioRowTwoTitle" id="pianoPreview"> - </h6>
+                                </div>    
+                            </div>
+                        </div>
+                        
+                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                        </div>
+
+                    </div>
+                    
+                    <br>
+                    
+                    <div class="row nuovoAnnuncioBox" id="zonaBox">
+
+                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
+                            <span class="glyphicon glyphicon-unchecked" id="zonaCheckedIcon" aria-hidden="true"></span>
+
+                        </div>
+                        
+                        <div class="col-xs-9">
+                            <div class="row nuovoAnnuncioRowOne">
+                                <div class="col-xs-12">
+                                    <h5 class="nuovoAnnuncioRowOneTitle">Zona </h5>
+                                </div>
+                            </div>
+                            <div class="row nuovoAnnuncioRowTwo">
+                                <div class="col-xs-12">
+                                    <h6 class="nuovoAnnuncioRowTwoTitle" id="zonaPreview"> - </h6>
+                                </div>    
+                            </div>
+                        </div>
+                        
+                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                        </div>
+
+                    </div>
+                    
+                    <div class="row nuovoAnnuncioBox" id="indirizzoBox">
+
+                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
+                            <span class="glyphicon glyphicon-unchecked" id="indirizzoCheckedIcon" aria-hidden="true"></span>
+
+                        </div>
+                        
+                        <div class="col-xs-9">
+                            <div class="row nuovoAnnuncioRowOne">
+                                <div class="col-xs-12">
+                                    <h5 class="nuovoAnnuncioRowOneTitle">Indirizzo </h5>
+                                </div>
+                            </div>
+                            <div class="row nuovoAnnuncioRowTwo">
+                                <div class="col-xs-12">
+                                    <h6 class="nuovoAnnuncioRowTwoTitle" id="indirizzoPreview"> -</h6>
+                                </div>    
+                            </div>
+                        </div>
+                        
+                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                        </div>
+
+                    </div>
+                    
+                    <br>
+                    
+                    <div class="row nuovoAnnuncioBox" id="metroBox">
+
+                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
+                            <span class="glyphicon glyphicon-unchecked" id="metroCheckedIcon" aria-hidden="true"></span>
+
+                        </div>
+                        
+                        <div class="col-xs-9">
+                            <div class="row nuovoAnnuncioRowOne">
+                                <div class="col-xs-12">
+                                    <h5 class="nuovoAnnuncioRowOneTitle">Metro </h5>
+                                </div>
+                            </div>
+                            <div class="row nuovoAnnuncioRowTwo">
+                                <div class="col-xs-12">
+                                    <h6 class="nuovoAnnuncioRowTwoTitle" id="metroPreview"> -</h6>
+                                </div>    
+                            </div>
+                        </div>
+                        
+                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                        </div>
+
+                    </div>
+                    
+                    <div class="row nuovoAnnuncioBox" id="tramBox">
+
+                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
+                            <span class="glyphicon glyphicon-unchecked" id="tramCheckedIcon" aria-hidden="true"></span>
+
+                        </div>
+                        
+                        <div class="col-xs-9">
+                            <div class="row nuovoAnnuncioRowOne">
+                                <div class="col-xs-12">
+                                    <h5 class="nuovoAnnuncioRowOneTitle">Tram </h5>
+                                </div>
+                            </div>
+                            <div class="row nuovoAnnuncioRowTwo">
+                                <div class="col-xs-12">
+                                    <h6 class="nuovoAnnuncioRowTwoTitle" id="tramPreview"> -</h6>
+                                </div>    
+                            </div>
+                        </div>
+                        
+                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                        </div>
+
+                    </div>
+                    
+                    <div class="row nuovoAnnuncioBox" id="busBox">
+
+                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
+                            <span class="glyphicon glyphicon-unchecked" id="busCheckedIcon" aria-hidden="true"></span>
+
+                        </div>
+                        
+                        <div class="col-xs-9">
+                            <div class="row nuovoAnnuncioRowOne">
+                                <div class="col-xs-12">
+                                    <h5 class="nuovoAnnuncioRowOneTitle">Bus </h5>
+                                </div>
+                            </div>
+                            <div class="row nuovoAnnuncioRowTwo">
+                                <div class="col-xs-12">
+                                    <h6 class="nuovoAnnuncioRowTwoTitle" id="busPreview"> -</h6>
+                                </div>    
+                            </div>
+                        </div>
+                        
+                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                        </div>
+
+                    </div>
+                    
+                    <div class="row nuovoAnnuncioBox" id="passanteBox">
+
+                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
+                            <span class="glyphicon glyphicon-unchecked" id="passanteCheckedIcon" aria-hidden="true"></span>
+
+                        </div>
+                        
+                        <div class="col-xs-9">
+                            <div class="row nuovoAnnuncioRowOne">
+                                <div class="col-xs-12">
+                                    <h5 class="nuovoAnnuncioRowOneTitle">Passante Ferroviario </h5>
+                                </div>
+                            </div>
+                            <div class="row nuovoAnnuncioRowTwo">
+                                <div class="col-xs-12">
+                                    <h6 class="nuovoAnnuncioRowTwoTitle" id="passantePreview"> -</h6>
+                                </div>    
+                            </div>
+                        </div>
+                        
+                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                        </div>
+
+                    </div>
+                    
                     
                     
                     <div style="height:2em;"></div>
@@ -603,7 +791,7 @@
                         
                 </div>
                 
-                <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioTipologiaDetail">
+                <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioTipologiaDetail" style="overflow-y:scroll;">
                     <div class="row nuovoAnnuncioDetailIntestazioneRow">
                         <div class="col-xs-4">
                             <a class="annulla_indietroNuovoAnnuncioButton backToAnnuncioContent">Indietro</a>
@@ -616,26 +804,43 @@
                     
                     <div class="row nuovoAnnuncioDetailFirstRow">
                         <div class="col-xs-10 col-xs-offset-1">
-                            <h6 class="textInputIntroText"><i>Seleziona la tipologia di affitto che desideri effettuare. <br> - <u><b>Appartamento</b></u>: affitto di un intero appartamento, totalmente personale e non condiviso con nessun altro. <br> -<u><b>Stanza Privata</b></u>: affitto di una stanza privata all'interno di un appartamento condiviso con altre persone. <br> -<u><b>Stanza Condivisa</b></u>: affitto di una stanza condivisa con altre persone, all'interno di un appartamento condiviso. </i> </h6>
+                            <h6 class="textInputIntroText"><i>Seleziona la tipologia di affitto a scelta tra le seguenti modalità. <br> - <u><b>Appartamento</b></u>: affitto di un intero appartamento, totalmente personale e non condiviso con nessun altro. <br> -<u><b>Stanza Privata</b></u>: affitto di una stanza privata all'interno di un appartamento condiviso con altre persone. <br> -<u><b>Stanza Condivisa</b></u>: affitto di una stanza condivisa con altre persone, all'interno di un appartamento condiviso. <br> In caso di scelta di "Stanza Condivisa", seleziona anche il numero di posti letto totali nella stanza. </i> </h6>
                         </div>
                     </div>
                     
                     <div class="row nuovoAnnuncioDetailSecondRow">
                         <div class="col-xs-10 col-xs-offset-1">
                             
-                            <fieldset data-role="controlgroup">
-                                <label for="appartamentoTipologiaInput">Appartamento</label>
-                                <input type="radio" name="appartamento" id="appartamentoTipologiaInput" value="appartamento">
-                                
-                                <label for="privataTipologiaInput">Stanza Privata</label>
-                                <input type="radio" name="stanzaPrivata" id="privataTipologiaInput" value="stanzaPrivata"> 
-                                    
-                                <label for="condivisaTipologiaInput">Stanza Condivisa</label>
-                                <input type="radio" name="stanzaCondivisa" id="condivisaTipologiaInput" value="stanzaCondivisa"> 
-                                
-                            </fieldset>
+                            <fieldset data-role="controlgroup" data-mini="true" id="tipologiaInput">
+    	                       <input type="radio" name="radio-mini" id="appartamentoRadio" value="Appartamento" checked="checked" />
+    	                       <label for="appartamentoRadio">Appartamento</label>
+
+	                           <input type="radio" name="radio-mini" id="stanzaSingolaRadio" value="Stanza Singola"/>
+                                <label for="stanzaSingolaRadio">Stanza Singola</label>
+
+                                <input type="radio" name="radio-mini" id="stanzaCondivisaRadio" value="Stanza Condivisa"/>
+                                <label for="stanzaCondivisaRadio">Stanza Condivisa</label>
+</fieldset>
+                        
                         </div>
-                    </div>   
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-xs-5 col-xs-offset-1">
+                            <h5>Posti Letto:</h5>
+                        </div>
+                    
+                        <div class="col-xs-4">
+                          <select class="form-control" id="postiLettoStanza">
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>>5</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div style="height:2em;"></div>
                         
                 </div>
                 
@@ -664,6 +869,242 @@
                         
                 </div>
                 
+                <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioPianoDetail">
+                    <div class="row nuovoAnnuncioDetailIntestazioneRow">
+                        <div class="col-xs-4">
+                            <a class="annulla_indietroNuovoAnnuncioButton backToAnnuncioContent">Indietro</a>
+                        </div>
+                        
+                        <div class="col-xs-8 nuovoAnnuncioTestoIntestazione">
+                            <h4 class="nuovoAnnuncioDetailTextTitle"> Piano </h4>
+                        </div>
+                    </div>    
+                    
+                    <div class="row nuovoAnnuncioDetailFirstRow">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <h6 class="textInputIntroText"><i>Il piano a cui si trova l'appartamento/stanza in questione. <br>La voce '0' è da intendersi come piano terra. </i> </h6>
+                        </div>
+                    </div>
+                    
+                    <div class="row nuovoAnnuncioDetailSecondRow">
+                        <div class="col-xs-5 col-xs-offset-4">
+                            <select class="form-control" id="pianoInput">
+                                <option>Seminterrato</option>
+                                    <option>0</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>>6</option>
+                            </select>
+                        </div>
+                    </div>   
+                        
+                </div>
+                
+                <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioZonaDetail" style="overflow-y:scroll;">
+                    <div class="row nuovoAnnuncioDetailIntestazioneRow">
+                        <div class="col-xs-4">
+                            <a class="annulla_indietroNuovoAnnuncioButton backToAnnuncioContent">Indietro</a>
+                        </div>
+                        
+                        <div class="col-xs-8 nuovoAnnuncioTestoIntestazione">
+                            <h4 class="nuovoAnnuncioDetailTextTitle"> Zona </h4>
+                        </div>
+                    </div>    
+                    
+                    <div class="row nuovoAnnuncioDetailFirstRow">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <h6 class="textInputIntroText"><i> Scegli la zona di Milano in cui si trova l'appartamento. Utilizza la mappa a lato per maggiori chiarimenti sulla suddivisione in zone. </i> </h6>
+                        </div>
+                    </div>
+                    
+                    <div class="row nuovoAnnuncioDetailSecondRow">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            
+                            <fieldset data-role="controlgroup" data-mini="true" id="zonaInput">
+    	                       <input type="radio" name="elencoZone" id="zonaUnoRadio" value="Zona 1" checked="checked" />
+    	                       <label for="zonaUnoRadio">Zona 1</label>
+
+                               <input type="radio" name="elencoZone" id="zonaDueRadio" value="Zona 2"/>
+    	                       <label for="zonaDueRadio">Zona 2</label>
+	                           
+                                <input type="radio" name="elencoZone" id="zonaTreRadio" value="Zona 3"/>
+    	                       <label for="zonaTreRadio">Zona 3</label>
+                                
+                               <input type="radio" name="elencoZone" id="zonaQuattroRadio" value="Zona 4"/>
+    	                       <label for="zonaQuattroRadio">Zona 4</label>
+	                           
+                                <input type="radio" name="elencoZone" id="zonaCinqueRadio" value="Zona 5"/>
+    	                       <label for="zonaCinqueRadio">Zona 5</label> 
+                                
+                                <input type="radio" name="elencoZone" id="zonaSeiRadio" value="Zona 6"/>
+    	                       <label for="zonaSeiRadio">Zona 6</label>
+                                
+                                <input type="radio" name="elencoZone" id="zonaSetteRadio" value="Zona 7"/>
+    	                       <label for="zonaSetteRadio">Zona 7</label>
+                                
+                                <input type="radio" name="elencoZone" id="zonaOttoRadio" value="Zona 8"/>
+    	                       <label for="zonaOttoRadio">Zona 8</label>
+                                
+                                <input type="radio" name="elencoZone" id="zonaNoveRadio" value="Zona 9"/>
+    	                       <label for="zonaNoveRadio">Zona 9</label>
+                            </fieldset>
+                        
+                        </div>
+                    </div>
+                    
+                    <div style="height:2em;"></div>
+                        
+                </div>
+                
+                <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioIndirizzoDetail">
+                    <div class="row nuovoAnnuncioDetailIntestazioneRow">
+                        <div class="col-xs-4">
+                            <a class="annulla_indietroNuovoAnnuncioButton backToAnnuncioContent">Indietro</a>
+                        </div>
+                        
+                        <div class="col-xs-8 nuovoAnnuncioTestoIntestazione">
+                            <h4 class="nuovoAnnuncioDetailTextTitle"> Indirizzo </h4>
+                        </div>
+                    </div>    
+                    
+                    <div class="row nuovoAnnuncioDetailFirstRow">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <h6 class="textInputIntroText"><i>Inserisci l'indirizzo completo dell'appartamento. </i> </h6>
+                        </div>
+                    </div>
+                    
+                    <div class="row nuovoAnnuncioDetailSecondRow">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <input type="text" id="indirizzoInput" data-role="none" maxlength="40" placeholder="Indirizzo">
+                        </div>
+                    </div>
+                        
+                </div>
+                
+                <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioMetroDetail">
+                    <div class="row nuovoAnnuncioDetailIntestazioneRow">
+                        <div class="col-xs-4">
+                            <a class="annulla_indietroNuovoAnnuncioButton backToAnnuncioContent">Indietro</a>
+                        </div>
+                        
+                        <div class="col-xs-8 nuovoAnnuncioTestoIntestazione">
+                            <h4 class="nuovoAnnuncioDetailTextTitle"> Metro </h4>
+                        </div>
+                    </div>    
+                    
+                    <div class="row nuovoAnnuncioDetailFirstRow">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <h6 class="textInputIntroText"><i>Seleziona le linee della <b>metro</b> che hanno delle fermate vicine al tuo appartamento. <br> Una fermata è considerata "vicina" se si trova in un raggio massimo di circa 500 metri.  </i> </h6>
+                        </div>
+                    </div>
+                    
+                    <div class="row nuovoAnnuncioDetailSecondRow">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                  <label for="metroM1">M1 - Linea Rossa</label>
+                                  <input type="checkbox" name="elencoMetro" id="metroM1" value="M1">
+                                  <label for="metroM2">M2 - Linea Verde</label>
+                                  <input type="checkbox" name="elencoMetro" id="metroM2" value="M2">
+                                  <label for="metroM3">M3 - Linea Gialla</label>
+                                  <input type="checkbox" name="elencoMetro" id="metroM3" value="M3">	
+                                  <label for="metroM5">M5 - Linea Lilla</label>
+                                  <input type="checkbox" name="elencoMetro" id="metroM5" value="M5">	
+                            </fieldset> 
+                        </div>
+                    </div>   
+                        
+                </div>
+                
+                <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioTramDetail">
+                    <div class="row nuovoAnnuncioDetailIntestazioneRow">
+                        <div class="col-xs-4">
+                            <a class="annulla_indietroNuovoAnnuncioButton backToAnnuncioContent">Indietro</a>
+                        </div>
+                        
+                        <div class="col-xs-8 nuovoAnnuncioTestoIntestazione">
+                            <h4 class="nuovoAnnuncioDetailTextTitle"> Tram </h4>
+                        </div>
+                    </div>    
+                    
+                    <div class="row nuovoAnnuncioDetailFirstRow">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <h6 class="textInputIntroText"><i>Seleziona le linee del <b>tram</b> che hanno delle fermate vicine al tuo appartamento. <br> Una fermata è considerata "vicina" se si trova in un raggio massimo di circa 500 metri.  </i></h6>
+                        </div>
+                    </div>
+                    
+                    <div class="row nuovoAnnuncioDetailSecondRow">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                  <label for="linea1"> 1</label>
+                                  <input type="checkbox" name="elencoTram" id="linea1" value="1">
+                                  
+                            </fieldset> 
+                        </div>
+                    </div>   
+                        
+                </div>
+                
+                <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioBusDetail">
+                    <div class="row nuovoAnnuncioDetailIntestazioneRow">
+                        <div class="col-xs-4">
+                            <a class="annulla_indietroNuovoAnnuncioButton backToAnnuncioContent">Indietro</a>
+                        </div>
+                        
+                        <div class="col-xs-8 nuovoAnnuncioTestoIntestazione">
+                            <h4 class="nuovoAnnuncioDetailTextTitle"> Bus </h4>
+                        </div>
+                    </div>    
+                    
+                    <div class="row nuovoAnnuncioDetailFirstRow">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <h6 class="textInputIntroText"><i>Seleziona le linee dell'<b>autobus </b> che hanno delle fermate vicine al tuo appartamento. <br> Una fermata è considerata "vicina" se si trova in un raggio massimo di circa 500 metri.  </i> </h6>
+                        </div>
+                    </div>
+                    
+                    <div class="row nuovoAnnuncioDetailSecondRow">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                  <label for="linea424"> 424</label>
+                                  <input type="checkbox" name="elencoBus" id="linea424" value="424">
+                                  
+                            </fieldset> 
+                        </div>
+                    </div>   
+                        
+                </div>
+                
+                <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioPassanteDetail">
+                    <div class="row nuovoAnnuncioDetailIntestazioneRow">
+                        <div class="col-xs-4">
+                            <a class="annulla_indietroNuovoAnnuncioButton backToAnnuncioContent">Indietro</a>
+                        </div>
+                        
+                        <div class="col-xs-8 nuovoAnnuncioTestoIntestazione">
+                            <h4 class="nuovoAnnuncioDetailTextTitle"> Passante Ferroviario </h4>
+                        </div>
+                    </div>    
+                    
+                    <div class="row nuovoAnnuncioDetailFirstRow">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <h6 class="textInputIntroText"><i>Seleziona le linee del <b> passante ferroviario </b> che hanno delle fermate vicine al tuo appartamento. <br> Una fermata è considerata "vicina" se si trova in un raggio massimo di circa 500 metri.  </i> </h6>
+                        </div>
+                    </div>
+                    
+                    <div class="row nuovoAnnuncioDetailSecondRow">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                  <label for="lineaS1"> S1</label>
+                                  <input type="checkbox" name="elencoPassante" id="lineaS1" value="S1">
+                                  
+                            </fieldset> 
+                        </div>
+                    </div>   
+                        
+                </div>
             </div>
 
             <div class="contentPageDiv" id="preferitiContent" style="overflow-y:scroll;">

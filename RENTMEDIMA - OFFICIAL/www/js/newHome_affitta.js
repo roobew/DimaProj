@@ -7,14 +7,14 @@ var actualPill=1;
 
 $(document).ready(function (){
 
-   // $("#affittaContent_creaAnnuncio").hide();
+    $("#affittaContent_creaAnnuncio").hide();
     
     $("#btnNuovoAnnuncio").on("tap", function (){
-        
+        console.log("CREO TUTTO");
         $("#affittaContent").fadeOut();
         $("#affittaContent_creaAnnuncio").fadeIn();
         
-        
+  
     });
    
     $("#btnDeleteAnnuncio").on("tap", function (){
@@ -31,7 +31,7 @@ $(document).ready(function (){
         countDeleteClick++;
     });
     
-    $("#annullaButton").on("tap", function (){
+    $("#annullaNuovoAnnuncioButton").on("tap", function (){
        /* var res=confirm("Annullando l'annuncio verrà eliminato. Sei sicuro di voler procedere?");   
         if(res==true){
             rimuoviAnnuncio(null,false);
@@ -40,7 +40,9 @@ $(document).ready(function (){
             $("#affittaContent").fadeIn();
         }*/
         
-        $("#affittaContent_creaAnnuncio").fadeOut();
+        
+       // console.log("ANNULLO TUTTO");
+        //$("#affittaContent_creaAnnuncio").fadeOut();
        // $("#affittaContent").fadeIn();
     });
     
@@ -81,7 +83,27 @@ $(document).ready(function (){
             myElementID="PostiLetto";
             
         }
-        
+        else if(boxID=="pianoBox"){
+            myElementID="Piano";
+        }
+        else if(boxID=="zonaBox"){
+            myElementID="Zona";
+        }
+        else if(boxID=="indirizzoBox"){
+            myElementID="Indirizzo";
+        }
+        else if(boxID=="metroBox"){
+            myElementID="Metro";
+        }
+        else if(boxID=="tramBox"){
+            myElementID="Tram";
+        }
+        else if(boxID=="busBox"){
+            myElementID="Bus";
+        }
+        else if(boxID=="passanteBox"){
+            myElementID="Passante";
+        }
         
         $("#nuovoAnnuncioContent").hide();
         $("#nuovoAnnuncio"+myElementID+"Detail").show();  
@@ -125,8 +147,84 @@ $(document).ready(function (){
             backToNuovoAnnuncioFunction(newValue, $("#superficiePreview"), $("#superficieCheckedIcon"));
             
         }
+        else if(boxDetailId=="nuovoAnnuncioTipologiaDetail"){
+            var newValue=$("#tipologiaInput :radio:checked").val();  
+            
+            backToNuovoAnnuncioFunction(newValue, $("#tipologiaPreview"), $("#tipologiaCheckedIcon"));
+            
+        }
+        else if(boxDetailId=="nuovoAnnuncioPostiLettoDetail"){
+            var newValue=$("#postiLettoInput").val();  
+            
+            backToNuovoAnnuncioFunction(newValue, $("#postiLettoPreview"), $("#postiLettoCheckedIcon"));
+            
+        }
+        else if(boxDetailId=="nuovoAnnuncioPianoDetail"){
+            var newValue=$("#pianoInput").val();  
+            
+            backToNuovoAnnuncioFunction(newValue, $("#pianoPreview"), $("#pianoCheckedIcon"));
+            
+        }
+        else if(boxDetailId=="nuovoAnnuncioZonaDetail"){
+            var newValue=$("#zonaInput :radio:checked").val(); 
+            
+            backToNuovoAnnuncioFunction(newValue, $("#zonaPreview"), $("#zonaCheckedIcon"));
+            
+        }
+        else if(boxDetailId=="nuovoAnnuncioIndirizzoDetail"){
+            var newValue=$("#indirizzoInput").val();  
+            
+            backToNuovoAnnuncioFunction(newValue, $("#indirizzoPreview"), $("#indirizzoCheckedIcon"));
+            
+        }
+        else if(boxDetailId=="nuovoAnnuncioMetroDetail"){
+           var newValue = $('input[name="elencoMetro"]:checked').map(function() {
+                return this.value;
+            }).get();
+                        
+            backToNuovoAnnuncioFunction(newValue, $("#metroPreview"), $("#metroCheckedIcon"));
+            
+        }
+        else if(boxDetailId=="nuovoAnnuncioTramDetail"){
+           var newValue = $('input[name="elencoTram"]:checked').map(function() {
+                return this.value;
+            }).get();
+                        
+            backToNuovoAnnuncioFunction(newValue, $("#tramPreview"), $("#tramCheckedIcon"));
+            
+        }
+        else if(boxDetailId=="nuovoAnnuncioBusDetail"){
+           var newValue = $('input[name="elencoBus"]:checked').map(function() {
+                return this.value;
+            }).get();
+                        
+            backToNuovoAnnuncioFunction(newValue, $("#busPreview"), $("#busCheckedIcon"));
+            
+        }
+        else if(boxDetailId=="nuovoAnnuncioPassanteDetail"){
+           var newValue = $('input[name="elencoPassante"]:checked').map(function() {
+                return this.value;
+            }).get();
+                        
+            backToNuovoAnnuncioFunction(newValue, $("#passantePreview"), $("#passanteCheckedIcon"));
+            
+        }
+        
     });
     
+    $("#tipologiaInput").change(function (){
+        console.log("aggiorno posto letto stanza");
+    var yourChoice=$("#tipologiaInput :radio:checked").val();  
+    
+    if(yourChoice=="Stanza Condivisa"){
+        console.log("*** ABILITO");
+        $("#postiLettoStanza").prop("disabled",false);   
+    }
+    else{
+        console.log("*** DISABILITO");
+        $("#postiLettoStanza").prop("disabled",true);
+    }   
+    });
     
 });
 
@@ -135,12 +233,26 @@ function backToNuovoAnnuncioFunction(value, elementPreview, elementCheckedIcon){
     
     
     $(".nuovoAnnuncioDetailContent").hide()
-    elementPreview.text(value);
-    elementCheckedIcon.removeClass("glyphicon-unchecked");
-    elementCheckedIcon.addClass("glyphicon-record");
+    if(value!=""){
+        elementPreview.text(value);
+        
+        elementCheckedIcon.removeClass("glyphicon-unchecked");
+        //elementCheckedIcon.addClass("glyphicon-record");
+        elementCheckedIcon.addClass("glyphicon-ok-circle");
+        //elementCheckedIcon.addClass("glyphicon-ok-sign");
+    }
+    else{
+        elementPreview.text("-");
+        elementCheckedIcon.removeClass("glyphicon-ok-circle");
+        elementCheckedIcon.addClass("glyphicon-unchecked");
+       
+    }
+
+    
             
     $("#nuovoAnnuncioContent").show();  
 }
+
 
 
 /*
@@ -206,7 +318,7 @@ function closeDeleteElement(){
     });
      
 }
-
+/*
 function change_tabs(dest){
     if(dest==1){
         $("#pillDue").removeClass("active");
@@ -236,7 +348,7 @@ function change_tabs(dest){
         $("#annuncioParteTre").show();
     }
     
-}
+}*/
 
 /*
 function animate_uno_due(){
