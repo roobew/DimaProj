@@ -1,12 +1,12 @@
 /*var replaceWith = $('<input type="text" style="width:100%;" placeholder="Nome annuncio" />'),
-    connectWith = $('input[name="hiddenField"]');
-var divToAdd="<div class='annuncioDiv'><div class='annuncioDelDiv'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></div><div class='annuncioContentDiv'></div></div>"*/
+    connectWith = $('input[name="hiddenField"]');*/
+var divToAdd="<div class='annuncioDiv'><div class='annuncioDelDiv'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></div><div class='annuncioContentDiv'>annuncio </div></div>";
 
 var countDeleteClick=0;
 var actualPill=1;
 
 $(document).ready(function (){
-
+    
     $("#affittaContent_creaAnnuncio").hide();
     
     $("#btnNuovoAnnuncio").on("tap", function (){
@@ -42,8 +42,8 @@ $(document).ready(function (){
         
         
        // console.log("ANNULLO TUTTO");
-        //$("#affittaContent_creaAnnuncio").fadeOut();
-       // $("#affittaContent").fadeIn();
+        $("#affittaContent_creaAnnuncio").fadeOut();
+        $("#affittaContent").fadeIn();
     });
     
     $(".nuovoAnnuncioBox").on("tap", function (){
@@ -150,6 +150,11 @@ $(document).ready(function (){
         else if(boxDetailId=="nuovoAnnuncioTipologiaDetail"){
             var newValue=$("#tipologiaInput :radio:checked").val();  
             
+            if(newValue=="Stanza Condivisa"){
+                newValue=newValue + " - Posti Letto Stanza: "+$("#postiLettoStanzaInput").val();
+                //console.log("VAAAAL: "+newValue);
+            }
+            
             backToNuovoAnnuncioFunction(newValue, $("#tipologiaPreview"), $("#tipologiaCheckedIcon"));
             
         }
@@ -213,17 +218,27 @@ $(document).ready(function (){
     });
     
     $("#tipologiaInput").change(function (){
-        console.log("aggiorno posto letto stanza");
-    var yourChoice=$("#tipologiaInput :radio:checked").val();  
+        
+        var yourChoice=$("#tipologiaInput :radio:checked").val();  
     
-    if(yourChoice=="Stanza Condivisa"){
-        console.log("*** ABILITO");
-        $("#postiLettoStanza").prop("disabled",false);   
-    }
-    else{
-        console.log("*** DISABILITO");
-        $("#postiLettoStanza").prop("disabled",true);
-    }   
+        console.log("Your choice is: "+yourChoice);
+        if(yourChoice=="Stanza Condivisa"){
+            console.log("*** ABILITO");
+            $("#postiLettoStanzaInput").prop("disabled",false);   
+        }
+        else{
+            console.log("*** DISABILITO");
+            $("#postiLettoStanzaInput").prop("disabled",true);
+        }   
+    });
+    
+    $("#pubblicaAnnuncioButton").on("tap", function(){
+        //if(checkCorrectValue()==true){
+            $("#affittaContent_creaAnnuncio").fadeOut();
+            $("#affittaContent").fadeIn();  
+        
+            $("#affittaContent .annuncioDiv").first().before(divToAdd);
+        //}
     });
     
 });
@@ -238,12 +253,13 @@ function backToNuovoAnnuncioFunction(value, elementPreview, elementCheckedIcon){
         
         elementCheckedIcon.removeClass("glyphicon-unchecked");
         //elementCheckedIcon.addClass("glyphicon-record");
-        elementCheckedIcon.addClass("glyphicon-ok-circle");
-        //elementCheckedIcon.addClass("glyphicon-ok-sign");
+        //elementCheckedIcon.addClass("glyphicon-ok-circle");
+        elementCheckedIcon.addClass("glyphicon-ok-sign");
     }
     else{
         elementPreview.text("-");
-        elementCheckedIcon.removeClass("glyphicon-ok-circle");
+        //elementCheckedIcon.removeClass("glyphicon-ok-circle");
+        elementCheckedIcon.removeClass("glyphicon-ok-sign");
         elementCheckedIcon.addClass("glyphicon-unchecked");
        
     }

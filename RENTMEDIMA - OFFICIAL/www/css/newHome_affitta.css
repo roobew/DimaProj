@@ -1,8 +1,13 @@
+a:link, a:hover, a:visited, a:active{
+    text-decoration: none;
+    color: #127ebf;
+}
+
 
 #affittaContent_creaAnnuncio{
     display: none;
 }
-
+/*
 .annuncioDiv{
     display: block;
     align-content: center;
@@ -13,41 +18,61 @@
     margin-top: 1vh;
 }
 
-#buttonsDiv{
-    height:4em; 
-    width: 96%;
-    margin-left:2%; 
-    margin-right:2%; 
-    margin-top:0.5em;
-}
-
-#btnNuovoAnnuncio{
-    display:inline-block; 
-    font-size: 0.8em;
-    height: 2em; 
-    width: 5em; 
-    float:left;
-    background-color:transparent;
-    padding: 0;
-}
-
-#btnDeleteAnnuncio{
-    display:inline-block;
-    font-size: 0.8em;
-    height:2em; 
-    width:5em; 
-    float:right; 
-    background-color:transparent;
-    padding: 0;
-}
-
 .annuncioDelDiv{
     display: none;
     height: auto;
     width: 0;
     background-color: red;
     
+}*/
+
+#rowButton{
+    margin-top: 1em;   
 }
+
+.annuncioDiv{
+    margin-top: 0.1em;
+    background-color: #dddddd; 
+    border-bottom: 1px solid gray;
+    border-top: 1px solid gray;
+}
+
+.annuncioDivLeft{
+    :background-color:orange; 
+    height:4.5em;
+}
+
+.annuncioDivIconRight{
+    height: 4.5em;
+    padding: 0;
+    :background-color: gold;
+    line-height: 4.5em;   
+}
+
+.annuncioDivTitolo, .annuncioDivZona, .annuncioDivIndirizzo{
+    padding-top: 0.3em;   
+    text-align: center;
+}
+
+.annuncioDivZona, .annuncioDivIndirizzo{
+    width: 8em;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.annuncioDivTitolo, .annuncioDivZona{
+    margin-top: 0.2em;   
+}
+
+.annuncioDivIndirizzo{
+    margin-top: 0.1em;   
+}
+
+.annuncioDivIndirizzo{
+    width:100%;   
+}
+
 
 .nuovoAnnuncioIntestazione, .nuovoAnnuncioDetailIntestazioneRow{
     margin-top: 0.6em;   
@@ -135,6 +160,13 @@
     margin-right: auto;
 }
 
+#indirizzoInput{
+    display: block;
+    width: 20em;   
+    margin-left: auto;
+    margin-right: auto; 
+}
+
 #descrizioneInput{
     min-height: 8em;
     height: 8em;
@@ -146,6 +178,11 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;   
+}
+
+.contentOverflowProperty{
+    overflow-y:scroll; 
+    overflow-x:hidden;   
 }
 /*
 a {
@@ -161,10 +198,11 @@ a:hover{
     text-decoration: none;
 }*/
 
-
+/*
 #pubblicaAnnuncioButton:link, #pubblicaAnnuncioButton:visited {
-    background-color: #f44336;
-    color: white;
+    :background-color: #f44336;
+    border: 2px solid #f44336;
+    color: black;
     padding: 14px 25px;
     text-align: center;	
     text-decoration: none;
@@ -173,8 +211,91 @@ a:hover{
 
 
 #pubblicaAnnuncioButton:hover, #pubblicaAnnuncioButton:active {
-    background-color: red;
+    background-color: #f44336;
 }
+*/
+
+.okButton:link, .okButton:visited {
+    border: 2px solid #4CAF50;
+    background-color: #5db761;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    color:black;
+    font-weight: normal;
+    margin-left: 20px;
+    
+}
+
+.okButton:hover, .okButton:active{
+    background-color: #4CAF50;
+    text-decoration: none;
+    color: #FFFFFF !important;
+    font-weight: lighter;
+}
+
+.creaButton:link, .okButton:visited{
+    border: 2px solid #4CAF50;
+    :background-color: #5db761;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    color:black;
+    font-weight: normal;
+    margin-left: 20px;    
+}
+
+.creaButton:hover, .creaButton:active{
+    background-color: #4CAF50;
+    text-decoration: none;
+    color: #FFFFFF !important;
+    font-weight: lighter;
+}
+
+.deleteButton:link, .deleteButton:visited{
+    display: inline-block;
+    background-color: #f44336;
+    color: #FFFFFF;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin-left: 20px;
+    opacity: 0.9;
+    font-weight: normal;
+}
+
+.deleteButton:hover, .deleteButton:active{
+    color: white !important;
+    background-color: red;
+    opacity: 1;   
+    font-weight: lighter;
+}
+
+
+
+#pubblicaAnnuncioButton, #btnNuovoAnnuncio, #btnDeleteAnnuncio{
+    display: block;
+    width: 8em;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 0.6em;
+}
+
+#btnNuovoAnnuncio, #btnDeleteAnnuncio{
+    display: block;
+    height: 1.8em;
+    width: 4em;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 0.6em; 
+    padding: 0;
+    line-height: 1.8em;
+}
+
 
 
 

@@ -239,18 +239,21 @@
                 </div> 
             </div>
 
-            <div class="contentPageDiv" id="affittaContent">
-                
-                <div id="buttonsDiv">
-                    <button id="btnNuovoAnnuncio"> 
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Nuovo
-                    </button>
+            <div class="contentPageDiv" id="affittaContent" style="overflow-y:scroll;">
+                <div class="row" id="rowButton">
+                    <div class="col-xs-3 col-xs-offset-3">
+                        <a href="#" class="creaButton" id="btnNuovoAnnuncio">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                    </div>
                     
-                    <button id="btnDeleteAnnuncio"> Elimina</button>
-                
+                    <div class="col-xs-3">
+                        <a href="#" class="deleteButton" id="btnDeleteAnnuncio">
+                        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
+                    </div>
                 </div>
-                    
-                <div class="annuncioDiv"> 
+               
+                <br>
+                <!--<div class="annuncioDiv"> 
                     <div class="annuncioDelDiv">
                         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                     </div>
@@ -273,18 +276,47 @@
                         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                     </div>
                     <div class="annuncioContentDiv">Annuncio 1</div>
-                </div>
+                </div>-->
 
-                <a href="#" id="pubblicaAnnuncioButton">Pubblica</a>
-                                
+                <div class="row annuncioDiv">
+                    <div class="col-xs-11 annuncioDivLeft">    
+
+                        <h4 class="annuncioDivTitolo">12345678901234567890 </h4>
+                        <h5 class="annuncioDivZona">Zona 9</h4>
+                        <h6 class="annuncioDivIndirizzo">Via Santa Maria Valle, 31/B</h5>
+
+                    </div>
+                    
+                    <div class="col-xs-1 annuncioDivIconRight">
+                        <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                    </div>
+                </div>
+                
+                <div class="row annuncioDiv">
+                    <div class="col-xs-11 annuncioDivLeft">    
+
+                        <h4 class="annuncioDivTitolo">12345678901234567890 </h4>
+                        <h5 class="annuncioDivZona">Zona 9</h4>
+                        <h6 class="annuncioDivIndirizzo">Via Santa Maria Valle, 31/B</h5>
+
+                    </div>
+                    
+                    <div class="col-xs-1 annuncioDivIconRight">
+                        <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                    </div>
+                </div>
+                
+                
+                
+                <div style="height:2em;"></div>                
             </div>
            
-            <div class="contentPageDiv" id="affittaContent_creaAnnuncio" style="overflow-y:scroll;">
+            <div class="contentPageDiv contentOverflowProperty" id="affittaContent_creaAnnuncio">
                 <div id="nuovoAnnuncioContent">
              
                     <div class="row nuovoAnnuncioIntestazione">
                         <div class="col-xs-4">
-                            <a class="annulla_indietroNuovoAnnuncioButton"id="annullaNuovoAnnuncioButton">Annulla</a>
+                            <a class="annulla_indietroNuovoAnnuncioButton" id="annullaNuovoAnnuncioButton">Annulla</a>
                         </div>
                         
                         <div class="col-xs-8 nuovoAnnuncioTestoIntestazione">
@@ -304,7 +336,7 @@
                         <div class="col-xs-9">
                             <div class="row nuovoAnnuncioRowOne">
                                 <div class="col-xs-12">
-                                    <h5 class="nuovoAnnuncioRowOneTitle">Titolo - <small> max 20 caratteri </small> </h5>
+                                    <h5 class="nuovoAnnuncioRowOneTitle">Titolo</h5>
                                 </div>
                             </div>
                             <div class="row nuovoAnnuncioRowTwo">
@@ -330,7 +362,7 @@
                         <div class="col-xs-9">
                             <div class="row nuovoAnnuncioRowOne">
                                 <div class="col-xs-12">
-                                    <h5 class="nuovoAnnuncioRowOneTitle">Prezzo - <small> mensile, euro/persona </small> </h5>
+                                    <h5 class="nuovoAnnuncioRowOneTitle">Prezzo </h5>
                                 </div>
                             </div>
                             <div class="row nuovoAnnuncioRowTwo">
@@ -356,7 +388,7 @@
                         <div class="col-xs-9">
                             <div class="row nuovoAnnuncioRowOne">
                                 <div class="col-xs-12">
-                                    <h5 class="nuovoAnnuncioRowOneTitle">Descrizione - <small> max 60 caratteri </small> </h5>
+                                    <h5 class="nuovoAnnuncioRowOneTitle">Descrizione</h5>
                                 </div>
                             </div>
                             <div class="row nuovoAnnuncioRowTwo">
@@ -435,7 +467,7 @@
                         <div class="col-xs-9">
                             <div class="row nuovoAnnuncioRowOne">
                                 <div class="col-xs-12">
-                                    <h5 class="nuovoAnnuncioRowOneTitle">Tipologia - <small> a scelta tra appartamento, stanza privata, stanza condivisa </small> </h5>
+                                    <h5 class="nuovoAnnuncioRowOneTitle">Tipologia </h5>
                                 </div>
                             </div>
                             <div class="row nuovoAnnuncioRowTwo">
@@ -461,7 +493,7 @@
                         <div class="col-xs-9">
                             <div class="row nuovoAnnuncioRowOne">
                                 <div class="col-xs-12">
-                                    <h5 class="nuovoAnnuncioRowOneTitle">Numero di posti letto - <small> totali </small> </h5>
+                                    <h5 class="nuovoAnnuncioRowOneTitle">Numero di posti letto - <small> totale appartamento </small> </h5>
                                 </div>
                             </div>
                             <div class="row nuovoAnnuncioRowTwo">
@@ -569,7 +601,7 @@
                         <div class="col-xs-9">
                             <div class="row nuovoAnnuncioRowOne">
                                 <div class="col-xs-12">
-                                    <h5 class="nuovoAnnuncioRowOneTitle">Metro </h5>
+                                    <h5 class="nuovoAnnuncioRowOneTitle">Metro - <small> opzionale </small> </h5>
                                 </div>
                             </div>
                             <div class="row nuovoAnnuncioRowTwo">
@@ -595,7 +627,7 @@
                         <div class="col-xs-9">
                             <div class="row nuovoAnnuncioRowOne">
                                 <div class="col-xs-12">
-                                    <h5 class="nuovoAnnuncioRowOneTitle">Tram </h5>
+                                    <h5 class="nuovoAnnuncioRowOneTitle">Tram - <small> opzionale </small></h5>
                                 </div>
                             </div>
                             <div class="row nuovoAnnuncioRowTwo">
@@ -621,7 +653,7 @@
                         <div class="col-xs-9">
                             <div class="row nuovoAnnuncioRowOne">
                                 <div class="col-xs-12">
-                                    <h5 class="nuovoAnnuncioRowOneTitle">Bus </h5>
+                                    <h5 class="nuovoAnnuncioRowOneTitle">Bus - <small> opzionale </small> </h5>
                                 </div>
                             </div>
                             <div class="row nuovoAnnuncioRowTwo">
@@ -647,7 +679,7 @@
                         <div class="col-xs-9">
                             <div class="row nuovoAnnuncioRowOne">
                                 <div class="col-xs-12">
-                                    <h5 class="nuovoAnnuncioRowOneTitle">Passante Ferroviario </h5>
+                                    <h5 class="nuovoAnnuncioRowOneTitle">Passante Ferroviario - <small> opzionale </small></h5>
                                 </div>
                             </div>
                             <div class="row nuovoAnnuncioRowTwo">
@@ -663,7 +695,8 @@
 
                     </div>
                     
-                    
+                    <br>
+                    <a href="#" class="okButton" id="pubblicaAnnuncioButton">Pubblica</a>
                     
                     <div style="height:2em;"></div>
                 </div>
@@ -791,7 +824,7 @@
                         
                 </div>
                 
-                <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioTipologiaDetail" style="overflow-y:scroll;">
+                <div class="nuovoAnnuncioDetailContent contentOverflowProperty" id="nuovoAnnuncioTipologiaDetail">
                     <div class="row nuovoAnnuncioDetailIntestazioneRow">
                         <div class="col-xs-4">
                             <a class="annulla_indietroNuovoAnnuncioButton backToAnnuncioContent">Indietro</a>
@@ -831,7 +864,7 @@
                         </div>
                     
                         <div class="col-xs-4">
-                          <select class="form-control" id="postiLettoStanza">
+                          <select data-role="none" class="form-control" id="postiLettoStanzaInput" disabled>
                             <option>2</option>
                             <option>3</option>
                             <option>4</option>
@@ -857,7 +890,7 @@
                     
                     <div class="row nuovoAnnuncioDetailFirstRow">
                         <div class="col-xs-10 col-xs-offset-1">
-                            <h6 class="textInputIntroText"><i>Descrizione posti letto. </i> </h6>
+                            <h6 class="textInputIntroText"><i>Si intende il numero totale di posti letto presente nell'appartamento. Con questo dato si vuole fornire informazioni sul numero massimo di coinquilini che possono essere presenti nell'appartamento. </i> </h6>
                         </div>
                     </div>
                     
@@ -889,7 +922,6 @@
                     <div class="row nuovoAnnuncioDetailSecondRow">
                         <div class="col-xs-5 col-xs-offset-4">
                             <select class="form-control" id="pianoInput">
-                                <option>Seminterrato</option>
                                     <option>0</option>
                                     <option>1</option>
                                     <option>2</option>
@@ -898,13 +930,14 @@
                                     <option>5</option>
                                     <option>6</option>
                                     <option>>6</option>
+                                    <option>Seminterrato</option>
                             </select>
                         </div>
                     </div>   
                         
                 </div>
                 
-                <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioZonaDetail" style="overflow-y:scroll;">
+                <div class="nuovoAnnuncioDetailContent contentOverflowProperty" id="nuovoAnnuncioZonaDetail">
                     <div class="row nuovoAnnuncioDetailIntestazioneRow">
                         <div class="col-xs-4">
                             <a class="annulla_indietroNuovoAnnuncioButton backToAnnuncioContent">Indietro</a>
@@ -1097,14 +1130,16 @@
                     <div class="row nuovoAnnuncioDetailSecondRow">
                         <div class="col-xs-10 col-xs-offset-1">
                             <fieldset data-role="controlgroup" data-mini="true">
-                                  <label for="lineaS1"> S1</label>
-                                  <input type="checkbox" name="elencoPassante" id="lineaS1" value="S1">
+                                <label for="lineaS1"> S1</label>
+                                <input type="checkbox" name="elencoPassante" id="lineaS1" value="S1">
+                                
                                   
                             </fieldset> 
                         </div>
                     </div>   
                         
                 </div>
+                
             </div>
 
             <div class="contentPageDiv" id="preferitiContent" style="overflow-y:scroll;">
