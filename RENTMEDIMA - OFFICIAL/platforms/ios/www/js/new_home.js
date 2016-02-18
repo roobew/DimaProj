@@ -1,3 +1,5 @@
+var mapInitialized=false;
+
 $(document).ready(setField);
 
 function setField(){
@@ -7,15 +9,24 @@ function setField(){
     // CONTENTPAGEDIV NASCOSTI, TRANNE HOME 
     $(".contentPageDiv").hide();
     $("#homeContent").show();    
+    
     $("#my-menu").mmenu({
-            slidingSubmenus: false
-          }, {
-             // configuration
-             classNames: {
-                vertical: "expand",
-                selected: "active"
-             }
-          });    
+        slidingSubmenus: false,
+        //extensions: ["pagedim-black"]            
+    });
+    
+    /*$("#autoHeight-mmenu").mmenu({
+         // options
+
+        
+         autoHeight: true,
+        offCanvas: {
+            position: "bottom",
+            zposition: "front"
+         }
+        
+      });*/
+    
     enableSwiperHome();    
             /*var swiperUno = $('#swiperContainer1').swiper({
                 mode: 'horizontal',
@@ -60,7 +71,7 @@ function setField(){
                 }
             });
     */            
-    $(".myColumn").click(function(){
+    $(".myColumn").on("tap", function (){
         // RIMUOVI TUTTI I TAB SELEZIONATI
         $(".myColumn").find("p").removeClass("selectedTab");        
         var pressedId=$(this).attr("id");        
@@ -77,7 +88,6 @@ function setField(){
             
             $("#affittaContent").show();
             console.log("Premuto affitta"); 
-            enableSwiperAffitta();
         }
         else if(pressedId=="homeTab"){
             $("#homeContent").show();
@@ -87,7 +97,10 @@ function setField(){
         else if(pressedId=="preferitiTab"){
             $("#preferitiContent").show();
             console.log("Premuto preferiti"); 
-
+            if(mapInitialized==false){    
+                drawMap();
+                mapInitialized=true;
+            }
             //swipeDetection();
         }
         else if(pressedId=="messaggiTab"){
@@ -99,23 +112,7 @@ function setField(){
         }
         $(this).find("p").addClass("selectedTab");
     });
-
     
-}
-
-function enableSwiperAffitta(){
-    var swiperTre = new Swiper ('#swiperAffitta', {
-            // Optional parameters
-            direction: 'horizontal',
-            loop: true,
-            
-            // If we need pagination
-            pagination: '.swiper-pagination',
-
-            // Navigation arrows
-            nextButton: '#nextStepButton',
-            prevButton: '#affittaBackButton',
-        });   
 }
 
 function enableSwiperHome(){
@@ -123,7 +120,7 @@ function enableSwiperHome(){
             // Optional parameters
             direction: 'horizontal',
             loop: true,
-            //autoplay:3000,
+            autoplay:3000,
             autoplayDisableOnInteraction:false,
           });
           
@@ -154,6 +151,26 @@ function swipeDetection(){
        
     });
     //$(".ciao").click(function (){console.log("ciao");});
+
+}
+
+function showModificaDatiPersonali(){
+    
+    // NASCONDI TUTTI I CONTENTPAGEDIV
+    $(".contentPageDiv").hide();
+    $("#modificaDatiPersonaliContent").show();
+}
+
+
+function drawMap(){
+    var myLatlng;
+    var mapOptions = {
+        zoom: 12,
+        center: new google.maps.LatLng(45.4642200,9.1905600)
+    }
+    var map = new google.maps.Map(document.getElementById('myMap'), mapOptions);
+    drawMyMarker(map);
+    // Funzione in newHome_preferiti.js
 
 }
 
