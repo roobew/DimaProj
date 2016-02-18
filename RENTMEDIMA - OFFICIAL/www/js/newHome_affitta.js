@@ -40,7 +40,7 @@ $(document).ready(function (){
             $("#affittaContent").fadeIn();
         }*/
         
-        
+        navigator.camera.cleanup(onSuccess, onFail);
        // console.log("ANNULLO TUTTO");
         $("#affittaContent_creaAnnuncio").fadeOut();
         $("#affittaContent").fadeIn();
@@ -61,6 +61,10 @@ $(document).ready(function (){
         }
         else if(boxID=="prezzoBox"){
             myElementID="Prezzo";
+           
+        }
+        else if(boxID=="fotoBox"){
+            myElementID="Foto";
            
         }
         else if(boxID=="descrizioneBox"){
@@ -104,9 +108,15 @@ $(document).ready(function (){
         else if(boxID=="passanteBox"){
             myElementID="Passante";
         }
+        else if(boxID=="altreFotoBox"){
+            myElementID="AltreFoto";
+        }
         
         $("#nuovoAnnuncioContent").hide();
         $("#nuovoAnnuncio"+myElementID+"Detail").show();  
+        $("#nuovoAnnuncio"+myElementID+"Detail").animate({
+           scrollTop: 0
+        }, 'slow'); 
         
     });
     
@@ -127,6 +137,17 @@ $(document).ready(function (){
             newValue=$("#prezzoInput").val();  
             
             backToNuovoAnnuncioFunction(newValue, $("#prezzoPreview"), $("#prezzoCheckedIcon"));
+            
+        }
+        else if(boxDetailId=="nuovoAnnuncioFotoDetail"){
+            $(".nuovoAnnuncioDetailContent").hide();
+            $("#fotoPreview").show();
+            $("#fotoCheckedIcon").removeClass("glyphicon-unchecked");
+            //elementCheckedIcon.addClass("glyphicon-record");
+            //elementCheckedIcon.addClass("glyphicon-ok-circle");
+            $("#fotoCheckedIcon").addClass("glyphicon-check");
+            
+            $("#nuovoAnnuncioContent").show();
             
         }
         else if(boxDetailId=="nuovoAnnuncioDescrizioneDetail"){
@@ -151,7 +172,7 @@ $(document).ready(function (){
             var newValue=$("#tipologiaInput :radio:checked").val();  
             
             if(newValue=="Stanza Condivisa"){
-                newValue=newValue + " - Posti Letto Stanza: "+$("#postiLettoStanzaInput").val();
+                newValue=newValue + " - Posti Letto: "+$("#postiLettoStanzaInput").val();
                 //console.log("VAAAAL: "+newValue);
             }
             
@@ -214,6 +235,17 @@ $(document).ready(function (){
             backToNuovoAnnuncioFunction(newValue, $("#passantePreview"), $("#passanteCheckedIcon"));
             
         }
+        else if(boxDetailId=="nuovoAnnuncioAltreFotoDetail"){
+            $(".nuovoAnnuncioDetailContent").hide();
+            $("#altreFotoPreview").show();
+            $("#altreFotoCheckedIcon").removeClass("glyphicon-unchecked");
+            //elementCheckedIcon.addClass("glyphicon-record");
+            //elementCheckedIcon.addClass("glyphicon-ok-circle");
+            $("#altreFotoCheckedIcon").addClass("glyphicon-check");
+            
+            $("#nuovoAnnuncioContent").show();
+            
+        }
         
     });
     
@@ -247,14 +279,14 @@ function backToNuovoAnnuncioFunction(value, elementPreview, elementCheckedIcon){
     //console.log("Il valore ricevuto è: "+value);
     
     
-    $(".nuovoAnnuncioDetailContent").hide()
+    $(".nuovoAnnuncioDetailContent").hide();
     if(value!=""){
         elementPreview.text(value);
         
         elementCheckedIcon.removeClass("glyphicon-unchecked");
         //elementCheckedIcon.addClass("glyphicon-record");
         //elementCheckedIcon.addClass("glyphicon-ok-circle");
-        elementCheckedIcon.addClass("glyphicon-ok-sign");
+        elementCheckedIcon.addClass("glyphicon-check");
     }
     else{
         elementPreview.text("-");
@@ -264,12 +296,9 @@ function backToNuovoAnnuncioFunction(value, elementPreview, elementCheckedIcon){
        
     }
 
-    
-            
+       
     $("#nuovoAnnuncioContent").show();  
 }
-
-
 
 /*
 jQuery(document).on('click','.annuncioDelDiv', function(event) { 

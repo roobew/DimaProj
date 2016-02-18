@@ -106,8 +106,13 @@ a:link, a:hover, a:visited, a:active{
 
 .nuovoAnnuncioDetailTextTitle{
     margin-top: 0.5em;
+    padding-left: 2em;
     font-weight: 600;
     text-shadow: 1px 1px 1px gray;
+}
+
+.titleTooMuchPadding{
+    padding-left: 0;   
 }
 
 .nuovoAnnuncioDetailFirstRow{
@@ -184,6 +189,20 @@ a:link, a:hover, a:visited, a:active{
     overflow-y:scroll; 
     overflow-x:hidden;   
 }
+
+.rowMiniaturaImage{
+    margin-top: 0.1em;   
+}
+
+.miniaturaImage{
+    display:inline-block;
+    width:60px;
+    height:60px;
+    margin-left:auto; 
+    margin-right:auto; 
+    border: 1px solid black;
+}
+
 /*
 a {
     text-decoration: none;

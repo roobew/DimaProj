@@ -9,15 +9,24 @@ function setField(){
     // CONTENTPAGEDIV NASCOSTI, TRANNE HOME 
     $(".contentPageDiv").hide();
     $("#homeContent").show();    
+    
     $("#my-menu").mmenu({
-            slidingSubmenus: false
-          }, {
-             // configuration
-             classNames: {
-                vertical: "expand",
-                selected: "active"
-             }
-          });    
+        slidingSubmenus: false,
+        //extensions: ["pagedim-black"]            
+    });
+    
+    /*$("#autoHeight-mmenu").mmenu({
+         // options
+
+        
+         autoHeight: true,
+        offCanvas: {
+            position: "bottom",
+            zposition: "front"
+         }
+        
+      });*/
+    
     enableSwiperHome();    
             /*var swiperUno = $('#swiperContainer1').swiper({
                 mode: 'horizontal',
@@ -103,7 +112,6 @@ function setField(){
         }
         $(this).find("p").addClass("selectedTab");
     });
-
     
 }
 

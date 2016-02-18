@@ -54,6 +54,7 @@ $(document).ready(function (){
     });
     */
     
+    /*
     $(".messageSecondDiv").on("tap", function (){
         var parentElement= $(this).parent();
         
@@ -63,7 +64,7 @@ $(document).ready(function (){
         
         
     });
-    
+    */
     /*
     $(".messageFirstDiv").on("tap", function (){
         if(elementDragged==true){  

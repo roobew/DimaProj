@@ -1,249 +1,100 @@
-<!doctype html>
-<html lang="en">
-
-   <head>
-    <title>RENT ME</title>
-    <meta charset="utf-8"/>
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-tap-highlight" content="no" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-    <!-- ***** IMPORT CSS  *****-->
-        <link href="bootstrap_all/css/bootstrap.css" rel="stylesheet" type="text/css">
-		
-        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-        
-        
-         <!-- Core CSS file -->
-        <link rel="stylesheet" href="PhotoSwipe/dist/photoswipe.css"> 
-
-        <!-- Skin CSS file (styling of UI - buttons, caption, etc.)
-             In the folder of skin CSS file there are also:
-             - .png and .svg icons sprite, 
-             - preloader.gif (for browsers that do not support CSS animations) -->
-        <link rel="stylesheet" href="PhotoSwipe/dist/default-skin/default-skin.css"> 
-        
-        <link href="swiper/dist/css/swiper.min.css" rel="stylesheet" type="text/css">
-        
-        <link href="jQuery.mmenu/dist/core/css/jquery.mmenu.all.css" type="text/css" rel="stylesheet"/>
-        
-        <link href="jQuery-UI-1.11.4/jquery-ui.min.css" type="text/css" rel="stylesheet"/>
-        
-        <link href="css/commonLayout.css" rel="stylesheet" type="text/css"/>
-        
-        <link href="css/newHome_affitta.css" rel=stylesheet type="text/css"/>
-        <link href="css/newHome_cerca.css" rel=stylesheet type="text/css"/>
-        <link href="css/newHome_preferiti.css" rel=stylesheet type="text/css"/>
-        <link href="css/newHome_messaggi.css" rel=stylesheet type="text/css"/>
-        <link href="css/newHome_modificaDati.css" rel=stylesheet type="text/css"/>
-        
-    <!-- ***** END CSS  *****-->
-       
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-<link href="http://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css" />
-
-     
-     
-    <!-- ***** IMPORT JS  *****-->    
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
-         
-        <!-- Core JS file -->
-        <script src="PhotoSwipe/dist/photoswipe.min.js"></script> 
-
-        <!-- UI JS file -->
-        <script src="PhotoSwipe/dist/photoswipe-ui-default.min.js"></script>
-        
-        
-        <script src="jQuery.mmenu/dist/core/js/jquery.mmenu.min.all.js"></script>
-        
-        <script src="jQuery-UI-1.11.4/jquery-ui.min.js"></script>
-        
-        <script src="js/touch_punch_min.js"></script>
-        
-        <script src="js/newHome_cerca.js"></script>
-        
-        <script src="js/new_home.js"></script>
-       
-        <script src="js/newHome_preferiti.js"></script>
-        
-        <script src="js/newHome_messaggi.js"></script>
-        
-        <script src="js/newHome_affitta.js"></script>
-        
-        <script src="js/newHome_modificaDati.js"></script>
-                
-    <!-- ***** END JS  *****-->   
-                
-        
-    </head> 
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Capture Photo</title>
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1"/>
+    <script type="text/javascript" charset="utf-8" src="js/phonegap.js"></script>
+    <script type="text/javascript" charset="utf-8">
+    var pictureSource;   // picture source
+    var destinationType; // sets the format of returned value 
+    // Wait for PhoneGap to connect with the device
+    //
+    document.addEventListener("deviceready",onDeviceReady,false);
+    // PhoneGap is ready to be used!
+    //
+    function onDeviceReady() {
+        pictureSource=navigator.camera.PictureSourceType;
+        destinationType=navigator.camera.DestinationType;
+    }
+    // Called when a photo is successfully retrieved
+    //
+    function onPhotoDataSuccess(imageData) {
+      // Get image handle
+      //
+      var smallImage = document.getElementById('smallImage');
+      // Unhide image elements
+      //
+      smallImage.style.display = 'block';
+      // Show the captured photo
+      // The inline CSS rules are used to resize the image
+      //
+      smallImage.src = "data:image/jpeg;base64," + imageData;
+    }
     
-<body style="overflow-x:hidden">
+	// Called when a photo is successfully retrieved
+    //
+    function onPhotoFileSuccess(imageData) {
+      // Get image handle
+      console.log(JSON.stringify(imageData));
+      
+   	  // Get image handle
+      //
+      var smallImage = document.getElementById('smallImage');
+      // Unhide image elements
+      //
+      smallImage.style.display = 'block';
+      // Show the captured photo
+      // The inline CSS rules are used to resize the image
+      //
+      smallImage.src = imageData;
+    }
+    // Called when a photo is successfully retrieved
+    //
+    function onPhotoURISuccess(imageURI) {
+      // Uncomment to view the image file URI 
+      // console.log(imageURI);
+      // Get image handle
+      //
+      var largeImage = document.getElementById('largeImage');
+      // Unhide image elements
+      //
+      largeImage.style.display = 'block';
+      // Show the captured photo
+      // The inline CSS rules are used to resize the image
+      //
+      largeImage.src = imageURI;
+    }
+    // A button will call this function
+    //
+    function capturePhotoWithData() {
+      // Take picture using device camera and retrieve image as base64-encoded string
+      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50 });
+    }
+    function capturePhotoWithFile() {
+        navigator.camera.getPicture(onPhotoFileSuccess, onFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI });
+    }
     
-    <div id="my-menu">
-            <ul>
-                <li>
-                    <span id="profilePicture">
-                        <img id="uImg" class="img-circle" src="img/profile.jpg"/>
-                    </span>
-                    <span id="profileData">
-                        <p id="uName">nome</p> 
-                        <p id="uSurname">cognome</p> 
-                        <p id="uMail">email</p>
-                        <p id="uloginType">login type </p> 
-                    </span>
-                </li>
-                <br><br><br>         
-                <li>
-                    <a href="#" onclick="showModificaDatiPersonali()">
-                        <span class="glyphicon glyphicon-pencil" aria-hidden="true" style="font-size:1.1em"> Modifica</span>
-                    </a>
-                </li>
-                <br>
-                <li>
-                    <a href="#">
-                        <span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="font-size:1.1em"> Recensioni</span>
-                    </a>
-                </li>
-                <br>
-                <li>
-                    <a onclick="logout()">
-                        <span class="glyphicon glyphicon-user" aria-hidden="true" style="font-size:1.1em"> Logout</span>
-                    </a>
-                </li>
-           </ul>
-        </div>
-    
-<div data-role="page" id="foo">
-    
-	<div data-role="header">
-		<a href="#my-menu" id="navbarImageLink">
-                        <img class="img-responsive" src="img/navbar_color.png" id="navbarImage"/>
-                    </a>
-	</div><!-- /header -->
-
-	<div>
-                <div id="annuncioPanelContent">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <a>Annulla</a>
-                        </div>
-                        
-                        <div class="col-xs-9">
-                            <h4 id="nuovoAnnuncioTextTitle"> Nuovo annuncio </h4>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row nuovoAnnuncioBox" id="titoloBox">
-
-                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
-                            <span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>
-<!--
-                            <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
-                            <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
-                            <span class="glyphicon glyphicon-record" aria-hidden="true"></span>
--->
-
-                        </div>
-                        
-                        <div class="col-xs-9">
-                            <div class="row nuovoAnnuncioRowOne">
-                                <div class="col-xs-12">
-                                    <a href="#pageTwo" data-transition="slide">
-                                    <h5 class="nuovoAnnuncioRowOneTitle">Titolo - <small> max 20 caratteri </small> </h5></a>
-                                </div>
-                            </div>
-                            <div class="row nuovoAnnuncioRowTwo">
-                                <div class="col-xs-12">
-                                    <h6 class="nuovoAnnuncioRowTwoTitle"> il titolo inserito</h6>
-                                </div>    
-                            </div>
-                        </div>
-                        
-                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
-                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-                        </div>
-
-                    </div>
-                    
-                    <div class="row nuovoAnnuncioBox" id="prezzoBox">
-
-                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
-                            <span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>
-<!--
-                            <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
-                            <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
-                            <span class="glyphicon glyphicon-record" aria-hidden="true"></span>
--->
-
-                        </div>
-                        
-                        <div class="col-xs-9">
-                            <div class="row nuovoAnnuncioRowOne">
-                                <div class="col-xs-12">
-                                    <h5 class="nuovoAnnuncioRowOneTitle">Prezzo - <small> mensile, euro/persona </small> </h5>
-                                </div>
-                            </div>
-                            <div class="row nuovoAnnuncioRowTwo">
-                                <div class="col-xs-12">
-                                    <h6 class="nuovoAnnuncioRowTwoTitle"> il prezzo inserito</h6>
-                                </div>    
-                            </div>
-                        </div>
-                        
-                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
-                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-                        </div>
-
-                    </div>
-                    
-                    <div class="row nuovoAnnuncioBox" id="descrizioneBox">
-
-                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
-                            <span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>
-<!--
-                            <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
-                            <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
-                            <span class="glyphicon glyphicon-record" aria-hidden="true"></span>
--->
-
-                        </div>
-                        
-                        <div class="col-xs-9">
-                            <div class="row nuovoAnnuncioRowOne">
-                                <div class="col-xs-12">
-                                    <h5 class="nuovoAnnuncioRowOneTitle">Descrizione - <small> max 60 caratteri </small> </h5>
-                                </div>
-                            </div>
-                            <div class="row nuovoAnnuncioRowTwo">
-                                <div class="col-xs-12">
-                                    <h6 class="nuovoAnnuncioRowTwoTitle"> preview della descrione</h6>
-                                </div>    
-                            </div>
-                        </div>
-                        
-                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
-                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-                        </div>
-
-                    </div>
-                    
-                </div>
-                
-
-            </div>
-
-	<div data-role="footer" id="myFooter">
-		<h4>Page Footer</h4>
-	</div><!-- /footer -->
-</div><!-- /page -->
-    
-<div data-role="page" id="pageTwo">
-    
-    ciao cia ciao csoaqldkeowl
-    </div>  
-</body> 
-    
+    // A button will call this function
+    //
+    function getPhoto(source) {
+      // Retrieve image file location from specified source
+      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50, 
+        destinationType: destinationType.FILE_URI,
+        sourceType: source });
+    }
+    // Called if something bad happens.
+    // 
+    function onFail(message) {
+      alert('Failed because: ' + message);
+    }
+    </script>
+  </head>
+  <body>
+    <button onclick="capturePhotoWithData();">Capture Photo With Image Data</button> <br>
+    <button onclick="capturePhotoWithFile();">Capture Photo With Image File URI</button> <br>
+    <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
+    <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
+    <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
+    <img style="display:none;" id="largeImage" src="" />
+  </body>
 </html>
