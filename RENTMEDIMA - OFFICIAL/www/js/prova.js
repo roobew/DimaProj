@@ -1,14 +1,11 @@
-$(document).ready(startLoad);
-
-function startLoad(){
-  $("#autoHeight-mmenu").mmenu({
-         // options
-      
-        autoHeight: true,
-        offCanvas: {
+$(document).ready(function() {
+      $("#provaMenu").mmenu({
+         slidingSubmenus: false,
+      }, {
+         // configuration
+         offCanvas: {
             position: "bottom",
             zposition: "front"
          }
-        
       });
-}
+   });

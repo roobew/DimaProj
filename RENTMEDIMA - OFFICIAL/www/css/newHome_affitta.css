@@ -191,16 +191,99 @@ a:link, a:hover, a:visited, a:active{
 }
 
 .rowMiniaturaImage{
+    height: 4em;
     margin-top: 0.1em;   
 }
 
 .miniaturaImage{
-    display:inline-block;
-    width:60px;
-    height:60px;
-    margin-left:auto; 
-    margin-right:auto; 
-    border: 1px solid black;
+    height: 64px;
+    width: 64px;
+}
+
+/*********  BACK MENU - Nuovo annuncio  *********/
+#back-mmenu > div > div,
+#caricaFoto-mmenu > div > div,
+#deleteMessage-mmenu > div > div{
+    overflow-y: hidden;
+    margin-top: 0.3em;
+}
+
+#back-mmenu,
+#caricaFoto-mmenu,
+#deleteMessage-mmenu{
+    background-color:#d3d3d3;    
+}
+
+#back-mmenu{
+    height:11.8em; 
+}
+
+#caricaFoto-mmenu{
+    height:10em; 
+}
+
+#deleteMessage-mmenu{
+    height:9em; 
+}
+
+.menuRow{
+    width: 95%;
+    height: 3em;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    background-color: #ededed;
+    margin-top: 0.1em !important;
+    text-align: center;
+}
+
+.menuRowTitle{
+    text-align: left;
+    padding: 1em !important;
+    color: #a8a8a8;
+    border-top-left-radius: 0.4em;
+    border-top-right-radius: 0.4em;
+}
+
+.menuRowAnnulla{
+    margin-top:0.5em !important;
+    border-bottom-left-radius: 0.4em;
+    border-bottom-right-radius: 0.4em;
+}
+
+
+.menuRowStrongText{
+    font-size: 1.45em;
+}
+
+.menuRowTextBluColor{
+    color: blue !important;   
+}
+
+.menuRowTextRedColor{
+    color: red !important;
+}
+
+.menuRowLightText{
+    font-size: 1.15em;   
+}
+
+#caricaFotoFirstElement{
+    border-top-left-radius: 0.4em;   
+    border-top-right-radius: 0.4em;   
+}
+
+#caricaFotoMenuRowAnnulla{
+    margin-top:0.5em !important;
+    border-bottom-left-radius: 0.4em;
+    border-bottom-right-radius: 0.4em;
+}
+
+/******  FINE MENU  *******/
+
+#affittaPills{
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /*
@@ -257,7 +340,7 @@ a:hover{
 
 .creaButton:link, .okButton:visited{
     border: 2px solid #4CAF50;
-    :background-color: #5db761;
+    background-color: #5db761;
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
@@ -267,7 +350,7 @@ a:hover{
     margin-left: 20px;    
 }
 
-.creaButton:hover, .creaButton:active{
+.creaButton:hover, .creaButton:active, creaButton:visited{
     background-color: #4CAF50;
     text-decoration: none;
     color: #FFFFFF !important;

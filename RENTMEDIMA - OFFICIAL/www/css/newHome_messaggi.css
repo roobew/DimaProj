@@ -4,6 +4,10 @@
     margin-right: 0.5em;
 }
 
+#myFilter{
+    font-size :0.9em;  
+}
+
 #messaggiContainerDiv{
     margin-top:1em;   
 }

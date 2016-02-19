@@ -28,7 +28,6 @@
         
 <!--        <link href="jQuery.mmenu/dist/extensions/css/jquery.mmenu.pagedim.css" type="text/css" rel="stylesheet"/>-->
         
-<!--        <link href="jQuery.mmenu/dist/addons/css/jquery.mmenu.autoheight.css" type="text/css" rel="stylesheet"/>-->
         
         <link href="jQuery-UI-1.11.4/jquery-ui.min.css" type="text/css" rel="stylesheet"/>
         
@@ -62,10 +61,8 @@
         
         <script src="jQuery.mmenu/dist/core/js/jquery.mmenu.min.js"></script>
         
-<!--        <script src="jQuery.mmenu/src/addons/js/jquery.mmenu.autoheight.js"></script>-->
-        
-<!--        <script src="jQuery.mmenu/src/addons/js/jquery.mmenu.fixedelements.js"></script>-->
-        
+        <script src="jQuery.mmenu/src/addons/js/jquery.mmenu.autoheight.js"></script>
+                
         <script src="jQuery-UI-1.11.4/jquery-ui.min.js"></script>
         
         <script src="js/touch_punch_min.js"></script>
@@ -122,15 +119,71 @@
            </ul>
         </div>
        
-       <!--<div id="autoHeight-mmenu">
+       <div id="back-mmenu">
             <ul>
-               <li class="Divider">Sei sicuro?</li>
-                <li class="Spacer"></li>
-               <li><a href="#">Elimina</a></li>
-               <li><a href="#">Annulla</a></li>
+                <li class="menuRow menuRowTitle">
+                   <h6>Scegli cosa fare con il nuovo annuncio.</h6>
+                </li>
                 
+                <li class="menuRow">
+                    <a href="#" class="menuRowStrongText menuRowTextRedColor" id="backMenuRowEliminaButton">Elimina
+                    </a>
+                </li>
+                <li class="menuRow">
+                    <a href="#" class="menuRowStrongText menuRowTextBluColor" id="backMenuRowSalvaButton">Salva bozza
+                    </a>
+                </li>
+                <li class="menuRow menuRowAnnulla">
+                    <a href="#" class="menuRowLightText menuRowTextBluColor" id="backMenuRowAnnullaButton">
+                       Annulla
+                    </a>
+                </li>
             </ul>
-       </div>-->
+       </div>
+       
+       <div id="caricaFoto-mmenu">
+            <ul>
+                <li class="menuRow" id="caricaFotoFirstElement">
+                    <a onclick="capturePhotoWithFile();" class="menuRowStrongText menuRowTextBluColor" id="menuRowFotocameraButton">Scatta Foto
+                    </a>
+                </li>
+                
+                <li class="menuRow">
+                    <a onclick="getPhoto(pictureSource.PHOTOLIBRARY);" class="menuRowStrongText menuRowTextBluColor" id="menuRowGalleriaButton">Galleria Immagini
+                    </a>
+                </li>
+                
+                <li class="menuRow menuRowAnnulla">
+                   <a href="#" class="menuRowLightText menuRowTextBluColor" id="caricaFotoMenuRowAnnullaButton">Annulla</a>
+                </li>
+            </ul>
+       </div>
+       
+       <div id="deleteMessage-mmenu">
+        <ul>
+                <li class="menuRow menuRowTitle">
+                   <h6>Desideri eliminare il messaggio?</h6>
+                </li>
+                <li class="menuRow"><a href="#" class="menuRowStrongText menuRowTextRedColor" id="deleteMessageMenuEliminaButton">Elimina</a></li>
+                <li class="menuRow menuRowAnnulla">
+                   <a href="#" class="menuRowLightText menuRowTextBluColor" id="deleteMessageMenuAnnullaButton">Annulla</a>
+                </li>
+            </ul>
+       </div>
+       
+       <!--
+                        <div class="col-xs-6" style="margin-left:0.5em;">
+                            <button onclick="capturePhotoWithFile();">
+                                <span class="glyphicon glyphicon-camera" aria-hidden="true"></span>Fotocamera
+                            </button>
+                        </div>
+                        
+                        <div class="col-xs-5">
+                            <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">
+                                <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>Galleria
+                            </button>
+                        </div>
+-->
        
        <!-- INTESTAZIONE APP: NAVBAR + NOME APP -->
        <div id="header">
@@ -261,11 +314,12 @@
                 <div class="row" id="rowButton">
                     <div class="col-xs-3 col-xs-offset-3">
                         <a href="#" class="creaButton" id="btnNuovoAnnuncio">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        </a>
                     </div>
                     
                     <div class="col-xs-3">
-                        <a href="#autoHeight-mmenu" class="deleteButton" id="btnDeleteAnnuncio">
+                        <a href="#" class="deleteButton" id="btnDeleteAnnuncio">
                         <span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
                     </div>
                 </div>
@@ -296,6 +350,24 @@
                     <div class="annuncioContentDiv">Annuncio 1</div>
                 </div>-->
 
+                <div class="row">
+                    <div class="col-xs-12">
+                        <ul class="nav nav-tabs" id="affittaPills">
+                            <li role="presentation" id="pillUno" class="active">
+                                <a href="#">Pubblicati</a>
+                            </li>
+                            <li id="pillDue" role="presentation">
+                                <a href="#">Bozze</a>
+                            </li>
+                            <li id="pillTre" role="presentation">
+                                <a href="#">Scaduti</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <br>
+                
                 <div class="row annuncioDiv">
                     <div class="col-xs-11 annuncioDivLeft">    
 
@@ -334,7 +406,7 @@
              
                     <div class="row nuovoAnnuncioIntestazione">
                         <div class="col-xs-4">
-                            <a class="annulla_indietroNuovoAnnuncioButton" id="annullaNuovoAnnuncioButton">Annulla</a>
+                            <a href="#back-mmenu" class="annulla_indietroNuovoAnnuncioButton" id="annullaNuovoAnnuncioButton">Annulla</a>
                         </div>
                         
                         <div class="col-xs-8 nuovoAnnuncioTestoIntestazione">
@@ -767,7 +839,7 @@
                         </div>
 
                     </div>
-                    
+                    <br>
                     <a href="#" class="okButton" id="pubblicaAnnuncioButton">Pubblica</a>
                     
                     <div style="height:2em;"></div>
@@ -836,23 +908,20 @@
                     
                     <div class="row nuovoAnnuncioDetailFirstRow">
                         <div class="col-xs-10 col-xs-offset-1">
-                            <h6 class="textInputIntroText"><i>Inserisci una foto dell'appartamento. <br> Ricorda che l'immagine scelta apparirà nell'anteprima del tuo annuncio.   </i> </h6>
+                            <h6 class="textInputIntroText"><i>Inserisci una foto dell'appartamento. Ricorda che l'immagine scelta apparirà nell'anteprima del tuo annuncio.   </i> </h6>
                         </div>
                     </div>
                      
                     <div class="row nuovoAnnuncioDetailSecondRow">
                         
-                        <div class="col-xs-6" style="margin-left:0.5em;">
-                            <button onclick="capturePhotoWithFile();">
-                                <span class="glyphicon glyphicon-camera" aria-hidden="true"></span>Fotocamera
-                            </button>
+                        <div class="row">
+                            <div class="col-xs-6 col-xs-offset-3">
+                                <a href="#caricaFoto-mmenu">
+                                   <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Carica Foto
+                                </a> 
+                            </div>
                         </div>
                         
-                        <div class="col-xs-5">
-                            <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">
-                                <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>Galleria
-                            </button>
-                        </div>
                     </div>   
                     <br>
                     <div class="row">
@@ -1268,55 +1337,20 @@
                             <h6 class="textInputIntroText"><i>Inserisci fino a un massimo di 10 immagini dell'appartamento. <br> Ricorda che le immagini sono la migliore descrizione del tuo appartamento; per questo motivo è consigliabile di caricare più immagini possibili.</i> </h6>
                         </div>
                     </div>
-                     
-                    <div class="row nuovoAnnuncioDetailSecondRow">
-                        
-                        <div class="col-xs-6" style="margin-left:0.5em;">
-                            <button onclick="capturePhotoWithFile();">
-                                <span class="glyphicon glyphicon-camera" aria-hidden="true"></span>Fotocamera
-                            </button>
-                        </div>
-                        
-                        <div class="col-xs-5">
-                            <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">
-                                <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>Galleria
-                            </button>
-                        </div>
-                    </div>   
+                       
                     <br>
                     <div class="row rowMiniaturaImage">
                         <div class="col-xs-10 col-xs-offset-1">
-                            <img class="miniaturaImage" src="img/plus_icon.png"/>
-                            
+                            <a href="#caricaFoto-mmenu">
+                                <img class="miniaturaImage" src="img/add_photo.png"/>
+                            </a>
                             <img class="miniaturaImage" src="" />
                             
                             <img class="miniaturaImage" src="" />
                             
-                            <img class="miniaturaImage" src="" />
-                        </div>
-                    </div>
-                    <div class="row rowMiniaturaImage">
-                        <div class="col-xs-10 col-xs-offset-1">
-                            <img class="miniaturaImage" src="" />
-                            
-                            <img class="miniaturaImage" src="" />
-                            
-                            <img class="miniaturaImage" src="" />
-                            
-                            <img class="miniaturaImage" src="" />
-                        </div>
-                    </div>
-                    <div class="row rowMiniaturaImage">
-                        <div class="col-xs-10 col-xs-offset-1">
-                            <img class="miniaturaImage" src="" />
-                            
-                            <img class="miniaturaImage" src="" />
-                            
-                            <img class="miniaturaImage" src="" />
                             
                         </div>
                     </div>
-                         
                 </div>
                 
             </div>
@@ -1681,12 +1715,14 @@
                             </div>
 
                             <div class="arrowDiv"> 
-                                <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-
+                                    <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
                             </div>
                         </div>
+                        
                         <div class="messageSecondDiv">
-                            <span id="eliminaIcon" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                            <a href="#deleteMessage-mmenu">
+                                <span id="eliminaIcon" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                            </a>
                         </div>
 </div>
 

@@ -17,7 +17,7 @@ $(document).ready(function (){
   
     });
    
-    $("#btnDeleteAnnuncio").on("tap", function (){
+   /* $("#btnDeleteAnnuncio").on("tap", function (){
         
         $(".annuncioContentDiv").css("display","inline-block");
         if(countDeleteClick%2==0){    
@@ -29,19 +29,13 @@ $(document).ready(function (){
             closeDeleteElement();
         }
         countDeleteClick++;
-    });
+    });*/
     
-    $("#annullaNuovoAnnuncioButton").on("tap", function (){
-       /* var res=confirm("Annullando l'annuncio verrà eliminato. Sei sicuro di voler procedere?");   
-        if(res==true){
-            rimuoviAnnuncio(null,false);
-
-            $("#affittaContent_creaAnnuncio").fadeOut();
-            $("#affittaContent").fadeIn();
-        }*/
+    $("#menuRowEliminaButton").on("tap", function (){
+       
         
         navigator.camera.cleanup(onSuccess, onFail);
-       // console.log("ANNULLO TUTTO");
+        //console.log("ANNULLO TUTTO");
         $("#affittaContent_creaAnnuncio").fadeOut();
         $("#affittaContent").fadeIn();
     });
@@ -273,6 +267,17 @@ $(document).ready(function (){
         //}
     });
     
+    $("#pillUno").on("tap", function(){
+        change_tabs(1);
+    });
+    
+    $("#pillDue").on("tap", function(){
+        change_tabs(2);
+    });
+    
+    $("#pillTre").on("tap", function(){
+        change_tabs(3);
+    });
 });
 
 function backToNuovoAnnuncioFunction(value, elementPreview, elementCheckedIcon){
@@ -363,37 +368,37 @@ function closeDeleteElement(){
     });
      
 }
-/*
+
 function change_tabs(dest){
     if(dest==1){
         $("#pillDue").removeClass("active");
         $("#pillTre").removeClass("active");
         $("#pillUno").addClass("active");
         
-        $("#annuncioParteDue").hide();
-        $("#annuncioParteTre").hide();
-        $("#annuncioParteUno").show();
+        //$("#annuncioParteDue").hide();
+        //$("#annuncioParteTre").hide();
+        //$("#annuncioParteUno").show();
     }
     else if(dest==2){
         $("#pillUno").removeClass("active");
         $("#pillTre").removeClass("active");
         $("#pillDue").addClass("active");
 
-        $("#annuncioParteUno").hide();
-        $("#annuncioParteTre").hide();
-        $("#annuncioParteDue").show();       
+        //$("#annuncioParteUno").hide();
+        //$("#annuncioParteTre").hide();
+        //$("#annuncioParteDue").show();       
     }
     else if(dest==3){
         $("#pillUno").removeClass("active");
         $("#pillDue").removeClass("active");
         $("#pillTre").addClass("active");
         
-        $("#annuncioParteUno").hide();
-        $("#annuncioParteDue").hide();
-        $("#annuncioParteTre").show();
+        //$("#annuncioParteUno").hide();
+        //$("#annuncioParteDue").hide();
+       // $("#annuncioParteTre").show();
     }
     
-}*/
+}
 
 /*
 function animate_uno_due(){

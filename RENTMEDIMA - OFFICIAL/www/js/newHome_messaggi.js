@@ -54,6 +54,16 @@ $(document).ready(function (){
     });
     */
     
+    
+    $("#deleteMessageMenuEliminaButton").on("tap", function (){
+        console.log("Premuto ELIMINA");
+    });
+    
+    
+    $("#deleteMessageMenuAnnullaButton").on("tap", function (){
+        console.log("Premuto ANNULLA");
+        closeDraggableElement();
+    });
     /*
     $(".messageSecondDiv").on("tap", function (){
         var parentElement= $(this).parent();

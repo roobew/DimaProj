@@ -15,17 +15,38 @@ function setField(){
         //extensions: ["pagedim-black"]            
     });
     
-    /*$("#autoHeight-mmenu").mmenu({
+    $("#back-mmenu").mmenu({
          // options
-
-        
-         autoHeight: true,
+        slidingSubmenus: false,
+        extensions: ["pagedim-black"],
         offCanvas: {
             position: "bottom",
             zposition: "front"
          }
         
-      });*/
+    });
+    
+    $("#caricaFoto-mmenu").mmenu({
+         // options
+        slidingSubmenus: false,
+        extensions: ["pagedim-black"],
+        offCanvas: {
+            position: "bottom",
+            zposition: "front"
+         }
+        
+      });
+    
+     $("#deleteMessage-mmenu").mmenu({
+         // options
+        slidingSubmenus: false,
+        extensions: ["pagedim-black"],
+        offCanvas: {
+            position: "bottom",
+            zposition: "front"
+         }
+        
+    });
     
     enableSwiperHome();    
             /*var swiperUno = $('#swiperContainer1').swiper({
