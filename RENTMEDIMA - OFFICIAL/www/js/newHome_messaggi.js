@@ -96,6 +96,13 @@ $(document).ready(function (){
     });
     */
     
+    $(".messageDivParent").on("tap", function(){
+        console.log("GO TO message Detail"); 
+        
+        $("#fixedBottomDiv").hide();
+        $("#messaggiContent").hide();
+        $("#messaggiDetailContent").show();
+    });
 
 });
 

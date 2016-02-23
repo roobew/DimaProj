@@ -110,3 +110,11 @@
     text-align: left; 
     line-height: 2vh;
 }
+
+#messaggiDetailContent{
+    display: block;
+    height: 100%;
+    width:100%;
+    background-color: greenyellow;
+    overflow-y: scroll;
+}

@@ -2,72 +2,64 @@
     <head>
         <style>
             /*
-            body{
-                :overflow-x: hidden;   
-            }
-            
-            button{
-                display: block;
-            }
-            
-            #divParent{
-                display: block;
-                width: 210%;
-                height: 300px;
-                background-color: aqua;
-            }
-            
             #div1{
                 display: inline-block;
-                height: 200px;
-                width: 50%;
-                background-color: yellowgreen;
+                width: 100px;
+                height: 100px;
+                background-color: green;
+                position: absolute;
                 z-index: 1;
             }
             
-            #div2{
-                display: inline-block;
-                height:200px; 
-                width:100%; 
-                :right: 0;
-                position: absolute;
-                background-color:red; 
-                :transition: width 1s ease-in-out;   
-                transition: 0.2s ease-in-out;   
-                z-index: 2;
+            #div2 {
+              display: inline-block;
+              width:0;
+              height:100px;
+              float: right;
+              :border:1px solid red;
+              
+              background-color: red;
+              position: relative;
+              :opacity: 0;
+              z-index: 2;
+              transition: width 0.225s ease-in;
+            }
+            
+            
+            #div2.go {
+                width: 100%;
+                :opacity: 1;
+                transition: width 0.35s ease-out;
             }
             */
-            /*#div2:hover{
-                :transform: translate(-100px,0);    
-                width: 500px;
-            }
-            */
-            /*
-            .animateWidth{
-                
-                width: 500px;   
-            }
+           
             
-            .translate{
-               transform: translate(-100%,0); 
-            }
-            
-            .remove{
-               transform: translate(100%,0);  
-            }
-            */
-            
-            @keyframes example {
-                from {width: 1px;}
-                to {width: 100px;}
-            }
-            
-            div {
-                width: 100px;
+            #div1{
+                display: block;
+                width: 100%;
                 height: 100px;
-                background-color: red;
-                animation-name: example;
-                animation-duration: 2s;
+                background-color: green;
+                position: absolute;
+                z-index: 1;
+            }
+            
+            #div2 {
+              display: block;
+              width:102%;
+              height:100px;
+              float: right;
+              margin-right: -105%;
+              
+              background-color: red;
+              position: relative;
+              z-index: 2;
+              transition: margin-right 0.225s ease-in;
+            }
+            
+            
+            #div2.go {
+                margin-right: -1px;
+                transition: margin-right 0.35s ease-out;
             }
         </style>
         
@@ -76,34 +68,18 @@
         
     </head>
 
-    <body>
-       <!-- <button id="a">Click me</button>
-        <button id="b">Clear me</button>
-        <div id="divParent">    
-            <div id="div1"> <button ID="click">AAAA</button></div>
-            <div id="div2"></div>
-        </div>-->
+    <body style="overflow-x:hidden;">
+        <button>Click Me</button>
+        <br><br><br><br><br><br>
+        <div id="div1"></div>
+        <div id="div2"></div>
         
+       
         
-        <div></div>
-        <!--<script>
-            $("#a").click(function(){
-                //$("#div2").css("display","inline-block");
-                //$("#div2").addClass("animateWidth"); 
-                $("#div2").removeClass("remove");
-                $("#div2").addClass("translate"); 
-                $("#div1 >*").hide();
-            });    
-            
-            $("#b").click(function(){
-                $("#div1>*").show();
-                $("#div2").removeClass("translate");   
-                $("#div2").addClass("remove");   
+        <script>
+            $("button").click(function(){
+              $("#div2").toggleClass("go");
             });
-            
-            $("#click").click(function(){
-                alert("Ciao");   
-            });
-        </script>-->
+        </script>
     </body>
 </html>

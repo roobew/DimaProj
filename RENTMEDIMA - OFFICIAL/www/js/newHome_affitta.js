@@ -278,6 +278,17 @@ $(document).ready(function (){
     $("#pillTre").on("tap", function(){
         change_tabs(3);
     });
+    
+    $(".annuncioDiv").on("tap", function(){
+        $("#affittaContent").hide();
+        $("#affittaContent_dettaglioAnnuncio").show();
+    });
+    
+    $("#backToAnnuncioHome").on("tap", function(){
+        $("#affittaContent_dettaglioAnnuncio").hide();
+        $("#affittaContent").show();
+        
+    });
 });
 
 function backToNuovoAnnuncioFunction(value, elementPreview, elementCheckedIcon){
@@ -371,31 +382,72 @@ function closeDeleteElement(){
 
 function change_tabs(dest){
     if(dest==1){
-        $("#pillDue").removeClass("active");
-        $("#pillTre").removeClass("active");
-        $("#pillUno").addClass("active");
+        $("#pillDue").removeClass("myActiveClass");
+        $("#pillDue").children().removeClass("myActiveClassColor");
+        $("#pillDue").children().addClass("myActiveClassColorStandard");
         
-        //$("#annuncioParteDue").hide();
-        //$("#annuncioParteTre").hide();
-        //$("#annuncioParteUno").show();
+        $("#pillTre").removeClass("myActiveClass");
+        $("#pillTre").children().removeClass("myActiveClassColor");
+        $("#pillTre").children().addClass("myActiveClassColorStandard");
+        
+        $("#pillUno").addClass("myActiveClass");
+        $("#pillUno").children().addClass("myActiveClassColor");
+        $("#pillUno").children().removeClass("myActiveClassColorStandard");
+        
+        $("#bozzeDiv").hide();
+        $("#scadutiDiv").hide();
+        $("#pubblicatiDiv").show();
+        
+     
+        
+        $("#bozzeDiv").hide();
+        $("#scadutiDiv").hide();
+        $("#pubblicatiDiv").show();
     }
     else if(dest==2){
-        $("#pillUno").removeClass("active");
-        $("#pillTre").removeClass("active");
-        $("#pillDue").addClass("active");
+        $("#pillUno").removeClass("myActiveClass");
+        $("#pillUno").children().removeClass("myActiveClassColor");
+        $("#pillUno").children().addClass("myActiveClassColorStandard");
+        
+        
+        $("#pillTre").removeClass("myActiveClass");
+        $("#pillTre").children().removeClass("myActiveClassColor");
+        $("#pillTre").children().addClass("myActiveClassColorStandard");
+        
+        
+        $("#pillDue").addClass("myActiveClass");
+        $("#pillDue").children().addClass("myActiveClassColor");
+        $("#pillDue").children().removeClass("myActiveClassColorStandard");
 
-        //$("#annuncioParteUno").hide();
-        //$("#annuncioParteTre").hide();
-        //$("#annuncioParteDue").show();       
+        $("#pubblicatiDiv").hide();
+        $("#scadutiDiv").hide();
+        $("#bozzeDiv").show();   
+        
+        
+
+        $("#pubblicatiDiv").hide();
+        $("#scadutiDiv").hide();
+        $("#bozzeDiv").show();       
     }
     else if(dest==3){
-        $("#pillUno").removeClass("active");
-        $("#pillDue").removeClass("active");
-        $("#pillTre").addClass("active");
+        $("#pillUno").removeClass("myActiveClass");
+        $("#pillUno").children().removeClass("myActiveClassColor");
+        $("#pillUno").children().addClass("myActiveClassColorStandard");
         
-        //$("#annuncioParteUno").hide();
-        //$("#annuncioParteDue").hide();
-       // $("#annuncioParteTre").show();
+        
+        $("#pillDue").removeClass("myActiveClass");
+        $("#pillDue").children().removeClass("myActiveClassColor");
+        $("#pillDue").children().addClass("myActiveClassColorStandard");
+        
+        
+        $("#pillTre").addClass("myActiveClass");
+        $("#pillTre").children().addClass("myActiveClassColor");
+        $("#pillTre").children().removeClass("myActiveClassColorStandard");
+        
+        $("#pubblicatiDiv").hide();
+        $("#bozzeDiv").hide();
+        $("#scadutiDiv").show();
+        
     }
     
 }

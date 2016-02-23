@@ -26,8 +26,6 @@
         
         <link href="jQuery.mmenu/dist/core/css/jquery.mmenu.all.css" type="text/css" rel="stylesheet"/>
         
-<!--        <link href="jQuery.mmenu/dist/extensions/css/jquery.mmenu.pagedim.css" type="text/css" rel="stylesheet"/>-->
-        
         
         <link href="jQuery-UI-1.11.4/jquery-ui.min.css" type="text/css" rel="stylesheet"/>
         
@@ -310,18 +308,18 @@
                 </div> 
             </div>
 
-            <div class="contentPageDiv" id="affittaContent" style="overflow-y:scroll;">
+            <div class="contentPageDiv" id="affittaContent" style="overflow-y:hidden;">
                 <div class="row" id="rowButton">
-                    <div class="col-xs-3 col-xs-offset-3">
+                    <div class="col-xs-4 col-xs-offset-4">
                         <a href="#" class="creaButton" id="btnNuovoAnnuncio">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true">Nuovo</span>
                         </a>
                     </div>
                     
-                    <div class="col-xs-3">
+                    <!--<div class="col-xs-3">
                         <a href="#" class="deleteButton" id="btnDeleteAnnuncio">
                         <span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
-                    </div>
+                    </div>-->
                 </div>
                
                 <br>
@@ -353,14 +351,14 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <ul class="nav nav-tabs" id="affittaPills">
-                            <li role="presentation" id="pillUno" class="active">
-                                <a href="#">Pubblicati</a>
+                            <li class="pillListElement myActiveClass" role="presentation" id="pillUno">
+                                <a class="pillElementLink myActiveClassColor" id="pillUnoLink" href="#">Pubblicati</a>
                             </li>
-                            <li id="pillDue" role="presentation">
-                                <a href="#">Bozze</a>
+                            <li class="pillListElement" id="pillDue" role="presentation">
+                                <a class="pillElementLink" id="pillDueLink" href="#">Bozze</a>
                             </li>
-                            <li id="pillTre" role="presentation">
-                                <a href="#">Scaduti</a>
+                            <li class="pillListElement" id="pillTre" role="presentation">
+                                <a class="pillElementLink" id="pillTreLink" href="#">Scaduti</a>
                             </li>
                         </ul>
                     </div>
@@ -368,37 +366,143 @@
                 
                 <br>
                 
-                <div class="row annuncioDiv">
-                    <div class="col-xs-11 annuncioDivLeft">    
+                <div class="pillDivClass" id="pubblicatiDiv">
+                    <div class="row annuncioDiv">
+                        <div class="col-xs-11 annuncioDivLeft">    
 
-                        <h5 class="annuncioDivTitolo">123456789012345678900123456789001234567890 </h5>
-                        <h6 class="annuncioDivZona">Zona 9</h6>
-                        <h6 class="annuncioDivIndirizzo">Via Santa Maria Valle, 31/B</h6>
+                            <h5 class="annuncioDivTitolo">123456789012345678900123456789001234567890 </h5>
+                            <h6 class="annuncioDivZona">Zona 9</h6>
+                            <h6 class="annuncioDivIndirizzo">Via Santa Maria Valle, 31/B</h6>
 
-                    </div>
+                        </div>
                     
-                    <div class="col-xs-1 annuncioDivIconRight">
-                        <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-                    </div>
+                        <div class="col-xs-1 annuncioDivIconRight">
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                        </div>
                 </div>
                 
-                <div class="row annuncioDiv">
-                    <div class="col-xs-11 annuncioDivLeft">    
+                    <div class="row annuncioDiv">
+                        <div class="col-xs-11 annuncioDivLeft">    
 
-                        <h4 class="annuncioDivTitolo">12345678901234567890 </h4>
-                        <h5 class="annuncioDivZona">Zona 9</h4>
-                        <h6 class="annuncioDivIndirizzo">Via Santa Maria Valle, 31/B</h5>
+                            <h4 class="annuncioDivTitolo">12345678901234567890 </h4>
+                            <h5 class="annuncioDivZona">Zona 9</h5>
+                            <h6 class="annuncioDivIndirizzo">Via Santa Maria Valle, 31/B</h6>
 
+                        </div>
+
+                        <div class="col-xs-1 annuncioDivIconRight">
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                        </div>
                     </div>
+                
+                      <div class="row annuncioDiv">
+                        <div class="col-xs-11 annuncioDivLeft">    
+
+                            <h5 class="annuncioDivTitolo">123456789012345678900123456789001234567890 </h5>
+                            <h6 class="annuncioDivZona">Zona 9</h6>
+                            <h6 class="annuncioDivIndirizzo">Via Santa Maria Valle, 31/B</h6>
+
+                        </div>
                     
-                    <div class="col-xs-1 annuncioDivIconRight">
-                        <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-                    </div>
+                        <div class="col-xs-1 annuncioDivIconRight">
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                        </div>
                 </div>
                 
+                    <div class="row annuncioDiv">
+                        <div class="col-xs-11 annuncioDivLeft">    
+
+                            <h4 class="annuncioDivTitolo">12345678901234567890 </h4>
+                            <h5 class="annuncioDivZona">Zona 9</h5>
+                            <h6 class="annuncioDivIndirizzo">Via Santa Maria Valle, 31/B</h6>
+
+                        </div>
+
+                        <div class="col-xs-1 annuncioDivIconRight">
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                    
+                      <div class="row annuncioDiv">
+                        <div class="col-xs-11 annuncioDivLeft">    
+
+                            <h5 class="annuncioDivTitolo">123456789012345678900123456789001234567890 </h5>
+                            <h6 class="annuncioDivZona">Zona 9</h6>
+                            <h6 class="annuncioDivIndirizzo">Via Santa Maria Valle, 31/B</h6>
+
+                        </div>
+                    
+                        <div class="col-xs-1 annuncioDivIconRight">
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                        </div>
+                </div>
                 
+                    <div class="row annuncioDiv">
+                        <div class="col-xs-11 annuncioDivLeft">    
+
+                            <h4 class="annuncioDivTitolo">12345678901234567890 </h4>
+                            <h5 class="annuncioDivZona">Zona 9</h5>
+                            <h6 class="annuncioDivIndirizzo">Via Santa Maria Valle, 31/B</h6>
+
+                        </div>
+
+                        <div class="col-xs-1 annuncioDivIconRight">
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                    
+                    <div style="height:2em;"></div> 
+                </div>
                 
-                <div style="height:2em;"></div>                
+                <div class="pillDivClass" id="bozzeDiv">
+                    <div class="row annuncioDiv">
+                        <div class="col-xs-11 annuncioDivLeft">    
+
+                            <h5 class="annuncioDivTitolo">123456789012345678900123456789001234567890 </h5>
+                            <h6 class="annuncioDivZona">Zona 9</h6>
+                            <h6 class="annuncioDivIndirizzo">Via Santa Maria Valle, 31/B</h6>
+
+                        </div>
+                    
+                        <div class="col-xs-1 annuncioDivIconRight">
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                        </div>
+                </div>
+                
+                    <div class="row annuncioDiv">
+                        <div class="col-xs-11 annuncioDivLeft">    
+
+                            <h4 class="annuncioDivTitolo">12345678901234567890 </h4>
+                            <h5 class="annuncioDivZona">Zona 9</h5>
+                            <h6 class="annuncioDivIndirizzo">Via Santa Maria Valle, 31/B</h6>
+
+                        </div>
+
+                        <div class="col-xs-1 annuncioDivIconRight">
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                
+                </div>
+                
+                <div class="pillDivClass" id="scadutiDiv">
+                    <div class="row annuncioDiv">
+                        <div class="col-xs-11 annuncioDivLeft">    
+
+                            <h5 class="annuncioDivTitolo">123456789012345678900123456789001234567890 </h5>
+                            <h6 class="annuncioDivZona">Zona 9</h6>
+                            <h6 class="annuncioDivIndirizzo">Via Santa Maria Valle, 31/B</h6>
+
+                        </div>
+                    
+                        <div class="col-xs-1 annuncioDivIconRight">
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                        </div>
+                </div>
+                
+                </div>
+                
+                               
             </div>
            
             <div class="contentPageDiv contentOverflowProperty" id="affittaContent_creaAnnuncio">
@@ -1355,6 +1459,11 @@
                 
             </div>
 
+           
+            <div class="contentPageDiv" id="affittaContent_dettaglioAnnuncio">
+                <button id="backToAnnuncioHome"></button>
+            </div>
+           
             <div class="contentPageDiv" id="preferitiContent" style="overflow-y:scroll;">
                 <div id="myMap" style="height:9em; width:100%"></div>
                 <br> 
@@ -1693,7 +1802,7 @@
                 <div style="height:5em; background-color:transparent; user-select: none;"></div>
             </div>
 
-            <div class="contentPageDiv" id="messaggiContent">
+            <div class="contentPageDiv" id="messaggiContent" style="overflow-y:scroll;">
                 
                 <form class="ui-filterable" id="searchFilterForm">
                   <input id="myFilter" data-type="search" placeholder="Cerca">
@@ -1753,7 +1862,7 @@
 
                     <div class="separatoreDiv"></div>
 
-                   <div class="messageDivParent">
+                    <div class="messageDivParent">
 
                         <div class="messageFirstDiv">
                             <div class="messageProfilePicture">
@@ -1780,6 +1889,9 @@
                     <div class="separatoreDiv"></div>
                 </div>
           </div>    
+            <div class="contentPageDiv" id="messaggiDetailContent">
+            
+            </div>
 
             <div class="contentPageDiv" id="cercaContent"> 
                 <div id="inputData">
