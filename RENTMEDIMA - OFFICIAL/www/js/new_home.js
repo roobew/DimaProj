@@ -37,7 +37,7 @@ function setField(){
         
       });
     
-     $("#deleteMessage-mmenu").mmenu({
+    $("#deleteMessage-mmenu").mmenu({
          // options
         slidingSubmenus: false,
         extensions: ["pagedim-black"],
@@ -47,6 +47,18 @@ function setField(){
          }
         
     });
+    
+    $("#modificaAnnuncio-mmenu").mmenu({
+         // options
+        slidingSubmenus: false,
+        extensions: ["pagedim-black"],
+        offCanvas: {
+            position: "bottom",
+            zposition: "front"
+         }
+        
+    });
+    
     
     enableSwiperHome();    
             /*var swiperUno = $('#swiperContainer1').swiper({

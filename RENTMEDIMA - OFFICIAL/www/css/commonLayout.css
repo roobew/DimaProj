@@ -10,37 +10,62 @@ p {margin: 0;padding: 0;}
 }
 
 /****  STRUTTURA GENERALE PAGINA  ****/
+
 #header{
     :display: block;
     height: 10vh;
     width: 100vw;
     position: fixed;
-    background-color: #125688;  /* Linkedin blue*/
-    :background-color: #007ee5;  /* Dropbox blue*/
-    :background-color: #0072b1;  /* Other blue*/
+    background-color: #125688; 
     z-index: 1;
 }
+
 #contentDiv{
-    :display: block;
+    display: block;
     height: 83vh;
     width: 100vw; 
     margin-top: 10vh; 
-    :position: fixed;
+    :position: relative;
+    
     overflow-y: hidden;
     z-index: 2;
     overflow-x: hidden;
     background-image: url(../img/background.png);
     background-size: cover;
 }
+
 #fixedBottomDiv{
-    :display: block;
+    display: block;
     height: 7vh;
     width: 100vw;
-    bottom: 0;
     :position: fixed;
+    bottom: 0;
     z-index:3;
     background-color: #e9e9e9;
 }
+
+/*
+#pageRightDiv {
+    display: block;
+    width:100vw;
+    height:83vh;
+    margin-top: 10vh;
+    float: left;
+    margin-left: 100vw;
+
+    background-color: red;
+    :position: relative;
+    z-index: 3;
+    transition: margin-left 0.225s ease-in;
+}
+
+#pageRightDiv.go {
+    margin-left: 0;
+    transition: margin-left 0.35s ease-out;
+}*/
+ 
+
+
 /**** FINE ****/
 
 /**** INTESTAZIONE APP: NAVBAR + NOME APP ****/
@@ -141,7 +166,9 @@ p {margin: 0;padding: 0;}
     height: 5vh;
     margin: auto;
     text-align: center;
-    :background-color: yellow;
+    color:#125688;
+    text-shadow: 1px 1px 1px #1872b5;
+    font-family: Helvetica, Sans-Serif;
 }
 #swiperHome1, #swiperHome2, #swiperHome3 {
     height: 20.5vh;

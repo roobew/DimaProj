@@ -6,16 +6,6 @@ var countDeleteClick=0;
 var actualPill=1;
 
 $(document).ready(function (){
-    
-    $("#affittaContent_creaAnnuncio").hide();
-    
-    $("#btnNuovoAnnuncio").on("tap", function (){
-        console.log("CREO TUTTO");
-        $("#affittaContent").fadeOut();
-        $("#affittaContent_creaAnnuncio").fadeIn();
-        
-  
-    });
    
    /* $("#btnDeleteAnnuncio").on("tap", function (){
         
@@ -30,19 +20,74 @@ $(document).ready(function (){
         }
         countDeleteClick++;
     });*/
+  
+    // **** EVENTU DI ANNUNCIO_HOME PAGE
     
-    $("#menuRowEliminaButton").on("tap", function (){
+    $("#pillUno").on("tap", function(){
+        change_tabs(1);
+    });
+    
+    $("#pillDue").on("tap", function(){
+        change_tabs(2);
+    });
+    
+    $("#pillTre").on("tap", function(){
+        change_tabs(3);
+    });
+    
+    $("#btnNuovoAnnuncio").on("tap", function (){
+        console.log("CREO TUTTO");
+        $("#affittaContent_creaAnnuncio").fadeIn();
+        $("#affittaContent").fadeOut();   
+  
+    });
+    
+    $("#eliminaAnnuncioHome").on("tap", function(){
+        alert("Elimina!"); 
+    });    
+      
+    $(".annuncioDiv").on("tap", function(){
+        
+        $("#affittaContent").hide();
+        setAnnuncioValue($(this));
+        
+        
+        setTimeout(function(){ 
+            $("#affittaContent_dettaglioAnnuncio").show();
+        },30); 
+         
+    });
+   
+    
+    
+    // **** EVENTI DI NUOVO_ANNUNCIO PAGE
+    $("#backMenuRowEliminaButton").on("tap", function (){
        
         
-        navigator.camera.cleanup(onSuccess, onFail);
+        //navigator.camera.cleanup(onSuccess, onFail);
         //console.log("ANNULLO TUTTO");
         $("#affittaContent_creaAnnuncio").fadeOut();
         $("#affittaContent").fadeIn();
     });
     
+    $("#tipologiaInput").change(function (){
+        
+        var yourChoice=$("#tipologiaInput :radio:checked").val();  
+    
+        console.log("Your choice is: "+yourChoice);
+        if(yourChoice=="Stanza Condivisa"){
+            console.log("*** ABILITO");
+            $("#postiLettoStanzaInput").prop("disabled",false);   
+        }
+        else{
+            console.log("*** DISABILITO");
+            $("#postiLettoStanzaInput").prop("disabled",true);
+        }   
+    });
+     
     $(".nuovoAnnuncioBox").on("tap", function (){
-        //$(".nuovoAnnuncioBox").hide();
-        //$(this).next().show();
+        
+        $("#annullaNuovoAnnuncioButton").hide();
         
         var boxID= $(this).attr("id");
         console.log("ID è: " + boxID );
@@ -107,13 +152,14 @@ $(document).ready(function (){
         }
         
         $("#nuovoAnnuncioContent").hide();
-        $("#nuovoAnnuncio"+myElementID+"Detail").show();  
-        $("#nuovoAnnuncio"+myElementID+"Detail").animate({
+        $("#nuovoAnnuncio"+myElementID+"Detail").show(); 
+        
+        
+        /*$("#nuovoAnnuncio"+myElementID+"Detail").animate({
            scrollTop: 0
         }, 'slow'); 
-        
+        */
     });
-    
     
     $(".backToAnnuncioContent").on("tap", function (){
         var boxDetailId=$(this).closest(".nuovoAnnuncioDetailContent").attr("id");
@@ -137,11 +183,13 @@ $(document).ready(function (){
             $(".nuovoAnnuncioDetailContent").hide();
             $("#fotoPreview").show();
             $("#fotoCheckedIcon").removeClass("glyphicon-unchecked");
-            //elementCheckedIcon.addClass("glyphicon-record");
-            //elementCheckedIcon.addClass("glyphicon-ok-circle");
-            $("#fotoCheckedIcon").addClass("glyphicon-check");
             
-            $("#nuovoAnnuncioContent").show();
+            $("#fotoCheckedIcon").addClass("glyphicon-check");
+                
+            setTimeout(function(){ 
+                $("#nuovoAnnuncioContent").show(); 
+                $("#annullaNuovoAnnuncioButton").show(); 
+            }, 70);
             
         }
         else if(boxDetailId=="nuovoAnnuncioDescrizioneDetail"){
@@ -167,7 +215,6 @@ $(document).ready(function (){
             
             if(newValue=="Stanza Condivisa"){
                 newValue=newValue + " - Posti Letto: "+$("#postiLettoStanzaInput").val();
-                //console.log("VAAAAL: "+newValue);
             }
             
             backToNuovoAnnuncioFunction(newValue, $("#tipologiaPreview"), $("#tipologiaCheckedIcon"));
@@ -233,88 +280,329 @@ $(document).ready(function (){
             $(".nuovoAnnuncioDetailContent").hide();
             $("#altreFotoPreview").show();
             $("#altreFotoCheckedIcon").removeClass("glyphicon-unchecked");
-            //elementCheckedIcon.addClass("glyphicon-record");
-            //elementCheckedIcon.addClass("glyphicon-ok-circle");
+            
             $("#altreFotoCheckedIcon").addClass("glyphicon-check");
             
-            $("#nuovoAnnuncioContent").show();
+            setTimeout(function(){ 
+                $("#nuovoAnnuncioContent").show(); 
+                $("#annullaNuovoAnnuncioButton").show(); 
+            }, 70);
             
         }
         
     });
-    
-    $("#tipologiaInput").change(function (){
-        
-        var yourChoice=$("#tipologiaInput :radio:checked").val();  
-    
-        console.log("Your choice is: "+yourChoice);
-        if(yourChoice=="Stanza Condivisa"){
-            console.log("*** ABILITO");
-            $("#postiLettoStanzaInput").prop("disabled",false);   
-        }
-        else{
-            console.log("*** DISABILITO");
-            $("#postiLettoStanzaInput").prop("disabled",true);
-        }   
-    });
-    
-    $("#pubblicaAnnuncioButton").on("tap", function(){
+       
+    /*$("#pubblicaAnnuncioButton").on("tap", function(){
         //if(checkCorrectValue()==true){
             $("#affittaContent_creaAnnuncio").fadeOut();
             $("#affittaContent").fadeIn();  
         
             $("#affittaContent .annuncioDiv").first().before(divToAdd);
         //}
+    });*/
+    
+    
+    
+    // **** EVENTI DI MODIFICA_ANNUNCIO PAGE
+    $("#modificaAnnuncioMenuRowAnnullaModificaButton").on("tap", function(){
+        setTimeout(function(){ 
+            $("#affittaContent_dettaglioAnnuncio").hide();
+            $("#affittaContent").show();
+        },70);  
     });
     
-    $("#pillUno").on("tap", function(){
-        change_tabs(1);
+    $("#modificaAnnuncioMenuRowConfermaButton").on("tap", function(){
+        setTimeout(function(){ 
+            $("#affittaContent_dettaglioAnnuncio").hide();
+            $("#affittaContent").show();
+        },70);  
     });
     
-    $("#pillDue").on("tap", function(){
-        change_tabs(2);
-    });
-    
-    $("#pillTre").on("tap", function(){
-        change_tabs(3);
-    });
-    
-    $(".annuncioDiv").on("tap", function(){
-        $("#affittaContent").hide();
-        $("#affittaContent_dettaglioAnnuncio").show();
-    });
-    
-    $("#backToAnnuncioHome").on("tap", function(){
-        $("#affittaContent_dettaglioAnnuncio").hide();
-        $("#affittaContent").show();
+    $(".modificaAnnuncioBox").on("tap", function (){
+        
+        $("#backToAnnuncioHome").hide();
+        
+        var boxID= $(this).attr("id");
+        console.log("ID è: " + boxID );
+        
+        var myElementID;
+        
+        if(boxID=="modifica_titoloBox"){
+            myElementID="Titolo";
+          
+        }
+        else if(boxID=="modifica_prezzoBox"){
+            myElementID="Prezzo";
+           
+        }
+        else if(boxID=="modifica_fotoBox"){
+            myElementID="Foto";
+           
+        }
+        else if(boxID=="modifica_descrizioneBox"){
+            myElementID="Descrizione";
+             
+        }
+        else if(boxID=="modifica_numLocaliBox"){
+            myElementID="NumLocali";
+            
+        }
+        else if(boxID=="modifica_superficieBox"){
+            myElementID="Superficie";
+            
+        }
+        else if(boxID=="modifica_tipologiaBox"){
+            myElementID="Tipologia";
+            
+        }
+        else if(boxID=="modifica_postiLettoBox"){
+            myElementID="PostiLetto";
+            
+        }
+        else if(boxID=="modifica_pianoBox"){
+            myElementID="Piano";
+        }
+        else if(boxID=="modifica_zonaBox"){
+            myElementID="Zona";
+        }
+        else if(boxID=="modifica_indirizzoBox"){
+            myElementID="Indirizzo";
+        }
+        else if(boxID=="modifica_metroBox"){
+            myElementID="Metro";
+        }
+        else if(boxID=="modifica_tramBox"){
+            myElementID="Tram";
+        }
+        else if(boxID=="modifica_busBox"){
+            myElementID="Bus";
+        }
+        else if(boxID=="modifica_passanteBox"){
+            myElementID="Passante";
+        }
+        else if(boxID=="modifica_altreFotoBox"){
+            myElementID="AltreFoto";
+        }
+        
+        $("#modificaAnnuncioContent").hide();
+        $("#modificaAnnuncio"+myElementID+"Detail").show();
+         
+        
         
     });
+    
+    $(".modifica_backToAnnuncioContent").on("tap", function (){
+        var boxDetailId=$(this).closest(".modificaAnnuncioDetailContent").attr("id");
+        var newValue;
+        
+        if(boxDetailId=="modificaAnnuncioTitoloDetail"){
+            
+            newValue=$("#modifica_titoloInput").val();  
+
+            modifica_backToNuovoAnnuncioFunction(newValue, $("#modifica_titoloPreview"), $("#modifica_titoloCheckedIcon"));
+            
+        }
+        else if(boxDetailId=="modificaAnnuncioPrezzoDetail"){
+            
+            newValue=$("#modifica_prezzoInput").val();  
+            
+            modifica_backToNuovoAnnuncioFunction(newValue, $("#modifica_prezzoPreview"), $("#modifica_prezzoCheckedIcon"));
+            
+        }
+        else if(boxDetailId=="modificaAnnuncioFotoDetail"){
+            $(".modificaAnnuncioDetailContent").hide();
+            $("#modifica_fotoPreview").show();
+            $("#modifica_fotoCheckedIcon").removeClass("glyphicon-unchecked");
+            
+            $("#modifica_fotoCheckedIcon").addClass("glyphicon-check");
+                
+            setTimeout(function(){ 
+                $("#modificaAnnuncioContent").show(); 
+                $("#backToAnnuncioHome").show(); 
+            }, 70);
+            
+        }
+        else if(boxDetailId=="modificaAnnuncioDescrizioneDetail"){
+            var newValue=$("#modifica_descrizioneInput").val();  
+            
+            modifica_backToNuovoAnnuncioFunction(newValue, $("#modifica_descrizionePreview"), $("#modifica_descrizioneCheckedIcon"));
+            
+        }
+        else if(boxDetailId=="modificaAnnuncioNumLocaliDetail"){
+            var newValue=$("#modifica_numLocaliInput").val();  
+            
+            modifica_backToNuovoAnnuncioFunction(newValue, $("#modifica_numLocaliPreview"), $("#modifica_numLocaliCheckedIcon"));
+            
+        }
+        else if(boxDetailId=="modificaAnnuncioSuperficieDetail"){
+            var newValue=$("#modifica_superficieInput").val();  
+            
+            modifica_backToNuovoAnnuncioFunction(newValue, $("#modifica_superficiePreview"), $("#modifica_superficieCheckedIcon"));
+            
+        }
+        else if(boxDetailId=="modificaAnnuncioTipologiaDetail"){
+            var newValue=$("#modifica_tipologiaInput :radio:checked").val();  
+            
+            if(newValue=="Stanza Condivisa"){
+                newValue=newValue + " - Posti Letto: "+$("#modifica_postiLettoStanzaInput").val();
+            }
+            
+            modifica_backToNuovoAnnuncioFunction(newValue, $("#modifica_tipologiaPreview"), $("#modifica_tipologiaCheckedIcon"));
+            
+        }
+        else if(boxDetailId=="modificaAnnuncioPostiLettoDetail"){
+            var newValue=$("#modifica_postiLettoInput").val();  
+            
+            modifica_backToNuovoAnnuncioFunction(newValue, $("#modifica_postiLettoPreview"), $("#modifica_postiLettoCheckedIcon"));
+            
+        }
+        else if(boxDetailId=="modificaAnnuncioPianoDetail"){
+            var newValue=$("#modifica_pianoInput").val();  
+            
+            modifica_backToNuovoAnnuncioFunction(newValue, $("#modifica_pianoPreview"), $("#modifica_pianoCheckedIcon"));
+            
+        }
+        else if(boxDetailId=="modificaAnnuncioZonaDetail"){
+            var newValue=$("#modifica_zonaInput :radio:checked").val(); 
+            
+            modifica_backToNuovoAnnuncioFunction(newValue, $("#modifica_zonaPreview"), $("#modifica_zonaCheckedIcon"));
+            
+        }
+        else if(boxDetailId=="modificaAnnuncioIndirizzoDetail"){
+            var newValue=$("#modifica_indirizzoInput").val();  
+            
+            modifica_backToNuovoAnnuncioFunction(newValue, $("#modifica_indirizzoPreview"), $("#modifica_indirizzoCheckedIcon"));
+            
+        }
+        else if(boxDetailId=="modificaAnnuncioMetroDetail"){
+           var newValue = $('input[name="modifica_elencoMetro"]:checked').map(function() {
+                return this.value;
+            }).get();
+                        
+            modifica_backToNuovoAnnuncioFunction(newValue, $("#modifica_metroPreview"), $("#modifica_metroCheckedIcon"));
+            
+        }
+        else if(boxDetailId=="modificaAnnuncioTramDetail"){
+           var newValue = $('input[name="modifica_elencoTram"]:checked').map(function() {
+                return this.value;
+            }).get();
+                        
+            modifica_backToNuovoAnnuncioFunction(newValue, $("#modifica_tramPreview"), $("#modifica_tramCheckedIcon"));
+            
+        }
+        else if(boxDetailId=="modificaAnnuncioBusDetail"){
+           var newValue = $('input[name="modifica_elencoBus"]:checked').map(function() {
+                return this.value;
+            }).get();
+                        
+            modifica_backToNuovoAnnuncioFunction(newValue, $("#modifica_busPreview"), $("#modifica_busCheckedIcon"));
+            
+        }
+        else if(boxDetailId=="modificaAnnuncioPassanteDetail"){
+           var newValue = $('input[name="modifica_elencoPassante"]:checked').map(function() {
+                return this.value;
+            }).get();
+                        
+            modifica_backToNuovoAnnuncioFunction(newValue, $("#modifica_passantePreview"), $("#modifica_passanteCheckedIcon"));
+            
+        }
+        else if(boxDetailId=="modificaAnnuncioAltreFotoDetail"){
+            $(".modificaAnnuncioDetailContent").hide();
+            $("#modifica_altreFotoPreview").show();
+            $("#modifica_altreFotoCheckedIcon").removeClass("glyphicon-unchecked");
+            
+            $("#modifica_altreFotoCheckedIcon").addClass("glyphicon-check");
+            
+            setTimeout(function(){ 
+                $("#modificaAnnuncioContent").show(); 
+                $("#backToAnnuncioHome").show(); 
+            }, 70);
+            
+        }
+        
+    });
+    
 });
 
-function backToNuovoAnnuncioFunction(value, elementPreview, elementCheckedIcon){
-    //console.log("Il valore ricevuto è: "+value);
+function setAnnuncioValue(annuncioClicked){
+    var titolo=annuncioClicked.find(".annuncioDivTitolo").text();
+    var zona=annuncioClicked.find(".annuncioDivZona").text();
+    var indirizzo=annuncioClicked.find(".annuncioDivIndirizzo").text();
     
+    console.log("Titolo è: "+titolo);
+    console.log("Zona è: "+zona);
+    console.log("Indirizzo è: "+indirizzo);
     
-    $(".nuovoAnnuncioDetailContent").hide();
+    $("#modifica_titoloPreview").text(titolo);
+    $("#modifica_titoloInput").val(titolo);
+    
+    $("#modifica_indirizzoPreview").text(indirizzo);
+    $("#modifica_indirizzoInput").val(indirizzo);
+    
+    $("#modifica_zonaPreview").text(zona);
+    //$("#modifica_zonaInput").text(zona);
+}
+
+function checkValue(){
+    
+}
+
+function backToNuovoAnnuncioFunction(value, elementPreview, elementCheckedIcon){    
+    
     if(value!=""){
         elementPreview.text(value);
         
         elementCheckedIcon.removeClass("glyphicon-unchecked");
-        //elementCheckedIcon.addClass("glyphicon-record");
-        //elementCheckedIcon.addClass("glyphicon-ok-circle");
+        
         elementCheckedIcon.addClass("glyphicon-check");
     }
     else{
         elementPreview.text("-");
-        //elementCheckedIcon.removeClass("glyphicon-ok-circle");
+
         elementCheckedIcon.removeClass("glyphicon-ok-sign");
         elementCheckedIcon.addClass("glyphicon-unchecked");
        
     }
 
-       
-    $("#nuovoAnnuncioContent").show();  
+    $(".nuovoAnnuncioDetailContent").fadeOut();
+    
+    $("#nuovoAnnuncioContent").fadeIn(200, "swing", function(){
+        setTimeout(function(){ 
+         
+        $("#annullaNuovoAnnuncioButton").show(); 
+    }, 70);   
+    });
+    
+    
+    
 }
+
+
+function modifica_backToNuovoAnnuncioFunction(value, elementPreview, elementCheckedIcon){
+    
+    if(value!=""){
+        elementPreview.text(value);
+        
+        elementCheckedIcon.removeClass("glyphicon-unchecked");
+        
+        elementCheckedIcon.addClass("glyphicon-check");
+    }
+    else{
+        elementPreview.text("-");
+
+        elementCheckedIcon.removeClass("glyphicon-ok-sign");
+        elementCheckedIcon.addClass("glyphicon-unchecked");
+       
+    }
+
+    $(".modificaAnnuncioDetailContent").hide();   
+    
+    setTimeout(function(){ 
+        $("#modificaAnnuncioContent").show(); 
+        $("#backToAnnuncioHome").show(); 
+    }, 70);
+}
+    
 
 /*
 jQuery(document).on('click','.annuncioDelDiv', function(event) { 
@@ -327,6 +615,8 @@ jQuery(document).on('click','.annuncioDelDiv', function(event) {
         }
     });
 */
+
+
 
 
 
@@ -541,9 +831,9 @@ function animate_tre_due(){
         
         $("#annuncioParteDue").fadeIn(1500).css("display","inline-block");  
     
-}*/
+}
 
-/*
+
 function editText(nuovoAnnuncioDiv) {
     var elem = nuovoAnnuncioDiv.find(".annuncioContentDiv");
 

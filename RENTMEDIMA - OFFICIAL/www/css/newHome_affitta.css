@@ -8,9 +8,7 @@ a:link, a:hover, a:visited, a:active{
     display: none;
 }
 
-#affittaContent_dettaglioAnnuncio{
-    background-color: burlywood;   
-}
+
 
 /*
 .annuncioDiv{
@@ -45,12 +43,12 @@ a:link, a:hover, a:visited, a:active{
 
 
 #pubblicatiDiv{
-    background-color: green;   
+   :background-color: lightgray;   
 }
 
 #bozzeDiv, #scadutiDiv{
     display: none;
-    background-color: limegreen;
+    :background-color: limegreen;
 }
 
 #rowButton{
@@ -59,7 +57,8 @@ a:link, a:hover, a:visited, a:active{
 
 .annuncioDiv{
     margin-top: 0.1em;
-    background-color: #dddddd; 
+    :background-color: #dddddd; 
+    background-color: white; 
     border-bottom: 1px solid gray;
     border-top: 1px solid gray;
 }
@@ -105,7 +104,7 @@ a:link, a:hover, a:visited, a:active{
     margin-top: 0.6em;   
 }
 
-.annulla_indietroNuovoAnnuncioButton{
+.paddingElement{
     padding: 1em;   
 }
 
@@ -118,15 +117,15 @@ a:link, a:hover, a:visited, a:active{
     height: auto;
     width: 100%;
     background-color: yellow;
-    position:absolute;
 }
 
-.nuovoAnnuncioDetailContent{
+
+.nuovoAnnuncioDetailContent, .modificaAnnuncioDetailContent{
     display: none;   
-    
+
 }
 
-#nuovoAnnuncioTextTitle{
+.annuncioTextTitle{
     margin-top: 0.5em;
     text-shadow: 1px 1px 1px black;      
 }
@@ -150,7 +149,7 @@ a:link, a:hover, a:visited, a:active{
     margin-top: 1.5em;   
 }
 
-.nuovoAnnuncioBox{
+.nuovoAnnuncioBox, .modificaAnnuncioBox{
     :margin-top: 0.5em;
     margin-left: 0.3em;
     background-color: whitesmoke;
@@ -181,28 +180,33 @@ a:link, a:hover, a:visited, a:active{
     line-height: 1.4em;   
 }
 
-#titoloInput{
+#titoloInput, #modifica_titoloInput{
     width: 100%;   
 }
 
-#prezzoInput, #numLocaliInput, #superficieInput, #postiLettoInput, #pianoInput{
+#prezzoInput, #numLocaliInput, #superficieInput, #postiLettoInput, #pianoInput,
+#modifica_prezzoInput, #modifica_numLocaliInput, #modifica_superficieInput, #modifica_postiLettoInput, #modifica_pianoInput{
     display: block;
     width: 6em;   
     margin-left: auto;
     margin-right: auto;
 }
 
-#indirizzoInput{
+#indirizzoInput, #modifica_indirizzoInput{
     display: block;
-    width: 20em;   
+    width: 17em;   
     margin-left: auto;
     margin-right: auto; 
 }
 
-#descrizioneInput{
+#descrizioneInput, #modifica_descrizioneInput{
     min-height: 8em;
     height: 8em;
     max-height: 8em;
+}
+
+#postiLettoStanzaInput, #modifica_postiLettoStanzaInput{
+    width: 5em;   
 }
 
 
@@ -230,14 +234,17 @@ a:link, a:hover, a:visited, a:active{
 /*********  BACK MENU - Nuovo annuncio  *********/
 #back-mmenu > div > div,
 #caricaFoto-mmenu > div > div,
-#deleteMessage-mmenu > div > div{
+#deleteMessage-mmenu > div > div,
+#modificaAnnuncio-mmenu > div > div
+{
     overflow-y: hidden;
     margin-top: 0.3em;
 }
 
 #back-mmenu,
 #caricaFoto-mmenu,
-#deleteMessage-mmenu{
+#deleteMessage-mmenu,
+#modificaAnnuncio-mmenu{
     background-color:#d3d3d3;    
 }
 
@@ -251,6 +258,14 @@ a:link, a:hover, a:visited, a:active{
 
 #deleteMessage-mmenu{
     height:9em; 
+}
+
+#modificaAnnuncio-mmenu{
+    height: 15em;   
+}
+
+#modificaAnnuncioMenuTitle{
+    height: 7em;   
 }
 
 .menuRow{
@@ -269,6 +284,10 @@ a:link, a:hover, a:visited, a:active{
     color: #a8a8a8;
     border-top-left-radius: 0.4em;
     border-top-right-radius: 0.4em;
+}
+
+.menuRowTitleText{
+    color: #3f3f3f;   
 }
 
 .menuRowAnnulla{
@@ -308,7 +327,7 @@ a:link, a:hover, a:visited, a:active{
 /******  FINE MENU  *******/
 
 #affittaPills{
-    width: 80%;
+    width: 15em;
     margin-left: auto;
     margin-right: auto;
 }
@@ -358,36 +377,7 @@ a:link, a:hover, a:visited, a:active{
     border-color: transparent !important;
 }
 
-/*
-a {
-    text-decoration: none;
-}
-
-a:link, a:visited {
-    color: blue;
-    text-decoration: none;
-}
-
-a:hover{
-    text-decoration: none;
-}*/
-
-/*
-#pubblicaAnnuncioButton:link, #pubblicaAnnuncioButton:visited {
-    :background-color: #f44336;
-    border: 2px solid #f44336;
-    color: black;
-    padding: 14px 25px;
-    text-align: center;	
-    text-decoration: none;
-    display: inline-block;
-}
-
-
-#pubblicaAnnuncioButton:hover, #pubblicaAnnuncioButton:active {
-    background-color: #f44336;
-}
-*/
+/*  LINK BUTTONS */ 
 
 .okButton:link, .okButton:visited {
     border: 2px solid #4CAF50;
@@ -451,7 +441,7 @@ a:hover{
 
 
 
-#pubblicaAnnuncioButton, #btnNuovoAnnuncio, #btnDeleteAnnuncio{
+#pubblicaAnnuncioButton, #btnDeleteAnnuncio{
     display: block;
     width: 8em;
     margin-left: auto;
@@ -459,7 +449,7 @@ a:hover{
     border-radius: 0.6em;
 }
 
-#btnNuovoAnnuncio, #btnDeleteAnnuncio{
+#btnDeleteAnnuncio{
     display: block;
     height: 1.8em;
     width: 4em;

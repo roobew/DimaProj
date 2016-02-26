@@ -36,30 +36,32 @@
             
             #div1{
                 display: block;
-                width: 100%;
+                width: 100vw;
                 height: 100px;
                 background-color: green;
                 position: absolute;
+                top:50px
                 z-index: 1;
             }
             
             #div2 {
               display: block;
-              width:102%;
+              width:100vw;
               height:100px;
-              float: right;
-              margin-right: -105%;
+              float: left;
+              margin-left: 100vw;
               
               background-color: red;
               position: relative;
               z-index: 2;
-              transition: margin-right 0.225s ease-in;
+              transition: margin-left 0.225s ease-in;
             }
             
             
             #div2.go {
-                margin-right: -1px;
-                transition: margin-right 0.35s ease-out;
+                :margin-right: -1px;
+                margin-left: 0;
+                transition: margin-left 0.35s ease-out;
             }
         </style>
         
@@ -68,7 +70,7 @@
         
     </head>
 
-    <body style="overflow-x:hidden;">
+    <body>
         <button>Click Me</button>
         <br><br><br><br><br><br>
         <div id="div1"></div>
