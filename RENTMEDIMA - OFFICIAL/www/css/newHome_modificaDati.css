@@ -1,3 +1,4 @@
+/*
 .modificaBox{
     height: 2em;
     width:100vw;
@@ -17,15 +18,57 @@
     line-height: 1.5em;   
     :background-color: yellowgreen;
     padding-left: 1em;
+}*/
+
+.modificaDatiLoginColumn{
+    text-align: center;
 }
+
+#googleLoginLabel, #rentMeLoginLabel{
+    display: none;   
+}
+
+.modificaDatiColumn{
+    text-align: center;   
+}
+
+.leftTextElement{
+    margin-left: 1.5em;
+    display:inline-block;
+    width: 15em;
+    height: 2em;
+    line-height: 1.8em;
+    font-size: 0.9em;
+    background-color: lightseagreen;
+}
+/*
+.modificaIconText{
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    text-align: center;
+    background-color: orange;
+    line-height: 1.7em;
+}*/
+
+
+.singleElementMargin{
+    margin-left: -15px !important;   
+}
+
+#confermaPasswordModificaIcon{
+    display: none;
+}
+/*
+.userDataText, .userDataInputText{
+    
+    
+}*/
+
 
 .userDataInputText{
     display: none;
-    height: 100%;
-    width: 70vw;
-    line-height: 1.5em;   
-    :background-color: darkcyan;
-    padding-left: 1em;
+    background-color: yellowgreen;
 }
 
 #pwUtenteInput, #confermaPwUtenteInput{
@@ -46,12 +89,10 @@
     height: 1.3em;  
 }
 
-.modificaIconText{
-    display: inline-block;
-    height: 2em;
-    width: 8vw;
-    line-height: 1.7em;
-    :background-color: lightgreen;
-    :margin-left: 2vw;
-    text-align: center;
+.datiTextTitle{
+    text-align: center;   
+}
+
+.loginTypeMode{
+       
 }
