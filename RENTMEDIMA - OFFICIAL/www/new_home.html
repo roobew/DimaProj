@@ -281,7 +281,7 @@
                     </div>
                     
                     <div class="col-xs-4 col-xs-offset-3">
-                            <a class="paddingElement" id="eliminaAnnuncioHome">Elimina</a>
+                            <a href="#" class="paddingElement" id="eliminaAnnuncioHome">Elimina</a>
                         </div>
                         
                     <!--<div class="col-xs-3">
@@ -844,7 +844,7 @@
 
                     </div>
                     <br>
-                    <a href="#" class="okButton" id="pubblicaAnnuncioButton">Pubblica</a>
+                    <a href="#" id="pubblicaAnnuncioButton">Pubblica</a>
                     
                     <div style="height:2em;"></div>
                 </div>
@@ -2741,13 +2741,76 @@
             </div>
 
             <div class="contentPageDiv" id="cercaContent"> 
-                <div id="inputData">
-                    <input type="text" id="nomeAnnuncio" placeholder="Dove?" maxlength="20">
-                    <input type="text" id="prezzo" placeholder="Prezzo cad." max="4">        
-                    <button id="nextStepButton">Cerca</button>
+                
+                <div class="row" id="rowPillCerca">
+                    <div class="col-xs-12">
+                        <ul class="nav nav-tabs" id="cercaPills">
+                            <li class="pillListElement myActiveClass" role="presentation" id="cercaPillUno">
+                                <a class="pillElementLink myActiveClassColor" id="cercaZonaPillLink" href="#">Per Zona</a>
+                            </li>
+                            <li class="pillListElement" id="cercaPillDue" role="presentation">
+                                <a class="pillElementLink" id="cercaVicinanzePillLink" href="#">Nelle Vicinanze</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <br><br>
+                
+                <div class="pillDivClass" id="cercaZonaDiv"> 
+                    <div class="row">
+                        <div class="col-xs-12 cercaColumn">
+                            <select class="form-control" id="cercaZonaInput">
+                                    <option value="1">Zona 1 </option>
+                                    <option value="2">Zona 2</option>
+                                    <option value="3">Zona 3</option>
+                                    <option value="4">Zona 4</option>
+                                    <option value="5">Zona 5</option>
+                                    <option value="6">Zona 6</option>
+                                    <option value="7">Zona 7</option>
+                                    <option value="8">Zona 8</option>
+                                    <option value="9">Zona 9</option>
+                                    
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-xs-12 cercaColumn">
+                            <a href="#" id="cercaZonaButton"> Cerca nella zona</a>
+                        </div>
+                    </div> 
+                    
+                    <div class="row cercaColumn">
+                        <div class="col-xs-12">
+                            <div id="cercaZonaMap"></div>   
+                        
+                        </div>
+                    </div>
+                
+                    <div style="height:2em;"></div> 
+                </div>
+                
+                <div class="pillDivClass" id="cercaVicinanzeDiv">
+                    <div class="row">
+                        <div class="col-xs-12 cercaColumn">
+                            <a href="#" id="cercaVicinanzeButton"> Cerca vicino a te</a>
+                        </div>
+                    </div>  
+                    
+                    <div class="row">
+                        <div class="col-xs-12 cercaColumn">
+                            <p id="cercaVicinanzeNota">NOTA: Ricorda di abilitare i servizi di geolocalizzazione </p>
+                        </div>
+                    </div>
+                
+                
+                    <div style="height:2em;"></div> 
                 
                     <div id="map_canvas"></div>
                 </div>
+                
+                <!---->
               
                 
             </div>

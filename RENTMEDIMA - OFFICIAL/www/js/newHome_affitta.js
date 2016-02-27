@@ -24,15 +24,15 @@ $(document).ready(function (){
     // **** EVENTI DI ANNUNCIO_HOME PAGE
     
     $("#pillUno").on("tap", function(){
-        change_tabs(1);
+        change_tabs(1, true);
     });
     
     $("#pillDue").on("tap", function(){
-        change_tabs(2);
+        change_tabs(2, true);
     });
     
     $("#pillTre").on("tap", function(){
-        change_tabs(3);
+        change_tabs(3, true);
     });
     
     $("#btnNuovoAnnuncio").on("tap", function (){
@@ -534,6 +534,17 @@ $(document).ready(function (){
         
     });
     
+    
+    // **** EVENTI DI CERCA
+     $("#cercaPillUno").on("tap", function(){
+        change_tabs(1,false);
+    });
+    
+    $("#cercaPillDue").on("tap", function(){
+        change_tabs(2, false);
+    });
+    
+    
 });
 
 function setAnnuncioValue(annuncioClicked){
@@ -786,56 +797,45 @@ function closeDeleteElement(){
      
 }
 
-function change_tabs(dest){
-    if(dest==1){
-        $("#pillDue").removeClass("myActiveClass");
-        $("#pillDue").children().removeClass("myActiveClassColor");
-        $("#pillDue").children().addClass("myActiveClassColorStandard");
-        
-        $("#pillTre").removeClass("myActiveClass");
-        $("#pillTre").children().removeClass("myActiveClassColor");
-        $("#pillTre").children().addClass("myActiveClassColorStandard");
-        
-        $("#pillUno").addClass("myActiveClass");
-        $("#pillUno").children().addClass("myActiveClassColor");
-        $("#pillUno").children().removeClass("myActiveClassColorStandard");
-        
-        $("#bozzeDiv").hide();
-        $("#scadutiDiv").hide();
-        $("#pubblicatiDiv").show();
-        
-     
-        
-        $("#bozzeDiv").hide();
-        $("#scadutiDiv").hide();
-        $("#pubblicatiDiv").show();
-    }
-    else if(dest==2){
-        $("#pillUno").removeClass("myActiveClass");
-        $("#pillUno").children().removeClass("myActiveClassColor");
-        $("#pillUno").children().addClass("myActiveClassColorStandard");
-        
-        
-        $("#pillTre").removeClass("myActiveClass");
-        $("#pillTre").children().removeClass("myActiveClassColor");
-        $("#pillTre").children().addClass("myActiveClassColorStandard");
-        
-        
-        $("#pillDue").addClass("myActiveClass");
-        $("#pillDue").children().addClass("myActiveClassColor");
-        $("#pillDue").children().removeClass("myActiveClassColorStandard");
+function change_tabs(dest, affittaBool){
+    if(affittaBool){    
+        if(dest==1){
+            $("#pillDue").removeClass("myActiveClass");
+            $("#pillDue").children().removeClass("myActiveClassColor");
+            $("#pillDue").children().addClass("myActiveClassColorStandard");
 
-        $("#pubblicatiDiv").hide();
-        $("#scadutiDiv").hide();
-        $("#bozzeDiv").show();   
-        
-        
+            $("#pillTre").removeClass("myActiveClass");
+            $("#pillTre").children().removeClass("myActiveClassColor");
+            $("#pillTre").children().addClass("myActiveClassColorStandard");
 
-        $("#pubblicatiDiv").hide();
-        $("#scadutiDiv").hide();
-        $("#bozzeDiv").show();       
-    }
-    else if(dest==3){
+            $("#pillUno").addClass("myActiveClass");
+            $("#pillUno").children().addClass("myActiveClassColor");
+            $("#pillUno").children().removeClass("myActiveClassColorStandard");
+
+            $("#bozzeDiv").hide();
+            $("#scadutiDiv").hide();
+            $("#pubblicatiDiv").show();
+        }
+        else if(dest==2){
+            $("#pillUno").removeClass("myActiveClass");
+            $("#pillUno").children().removeClass("myActiveClassColor");
+            $("#pillUno").children().addClass("myActiveClassColorStandard");
+
+
+            $("#pillTre").removeClass("myActiveClass");
+            $("#pillTre").children().removeClass("myActiveClassColor");
+            $("#pillTre").children().addClass("myActiveClassColorStandard");
+
+
+            $("#pillDue").addClass("myActiveClass");
+            $("#pillDue").children().addClass("myActiveClassColor");
+            $("#pillDue").children().removeClass("myActiveClassColorStandard");
+
+            $("#pubblicatiDiv").hide();
+            $("#scadutiDiv").hide();
+            $("#bozzeDiv").show();        
+        }
+        else if(dest==3){
         $("#pillUno").removeClass("myActiveClass");
         $("#pillUno").children().removeClass("myActiveClassColor");
         $("#pillUno").children().addClass("myActiveClassColorStandard");
@@ -854,6 +854,34 @@ function change_tabs(dest){
         $("#bozzeDiv").hide();
         $("#scadutiDiv").show();
         
+    }
+        
+    }
+    else{
+         if(dest==1){
+            $("#cercaPillDue").removeClass("myActiveClass");
+            $("#cercaPillDue").children().removeClass("myActiveClassColor");
+            $("#cercaPillDue").children().addClass("myActiveClassColorStandard");
+
+            $("#cercaPillUno").addClass("myActiveClass");
+            $("#cercaPillUno").children().addClass("myActiveClassColor");
+            $("#cercaPillUno").children().removeClass("myActiveClassColorStandard");
+
+            $("#cercaVicinanzeDiv").hide();
+            $("#cercaZonaDiv").show();
+        } 
+        else if(dest==2){
+            $("#cercaPillUno").removeClass("myActiveClass");
+            $("#cercaPillUno").children().removeClass("myActiveClassColor");
+            $("#cercaPillUno").children().addClass("myActiveClassColorStandard");
+
+            $("#cercaPillDue").addClass("myActiveClass");
+            $("#cercaPillDue").children().addClass("myActiveClassColor");
+            $("#cercaPillDue").children().removeClass("myActiveClassColorStandard");
+
+            $("#cercaZonaDiv").hide();
+            $("#cercaVicinanzeDiv").show();
+        }   
     }
     
 }

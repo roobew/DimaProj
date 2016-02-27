@@ -1,3 +1,4 @@
+
 var GoogleMap = ( function(){
     var mapOptions,
         map,
@@ -132,3 +133,24 @@ var GoogleMap = ( function(){
         addMarkersToMap: addMarkersToMap
     }
 });
+
+$(document).ready(doStuff);
+
+function doStuff(){
+    drawCercaMap();
+    
+       
+}
+
+function drawCercaMap(){
+    var myLatlng;
+    var mapOptions = {
+        zoom: 12
+        //center: new google.maps.LatLng(45.4642200,9.1905600)
+    }
+    var map = new google.maps.Map(document.getElementById('cercaZonaMap'), mapOptions);
+    
+    //drawMyMarker(map);
+    // Funzione in newHome_preferiti.js
+
+}
