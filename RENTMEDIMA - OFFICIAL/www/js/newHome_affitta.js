@@ -21,7 +21,7 @@ $(document).ready(function (){
         countDeleteClick++;
     });*/
   
-    // **** EVENTU DI ANNUNCIO_HOME PAGE
+    // **** EVENTI DI ANNUNCIO_HOME PAGE
     
     $("#pillUno").on("tap", function(){
         change_tabs(1);
@@ -36,11 +36,18 @@ $(document).ready(function (){
     });
     
     $("#btnNuovoAnnuncio").on("tap", function (){
-        console.log("CREO TUTTO");
+        
+        //$("#annullaNuovoAnnuncioButton").css("pointer-events", "none");
+        
         $("#affittaContent_creaAnnuncio").fadeIn();
         $("#affittaContent").fadeOut();   
-  
-    });
+        
+        /*setTimeout(function(){ 
+         
+            $("#annullaNuovoAnnuncioButton").css("pointer-events", "auto"); 
+            
+        }, 400); */
+        });
     
     $("#eliminaAnnuncioHome").on("tap", function(){
         alert("Elimina!"); 
@@ -48,13 +55,14 @@ $(document).ready(function (){
       
     $(".annuncioDiv").on("tap", function(){
         
-        $("#affittaContent").hide();
+        $("#affittaContent").fadeOut();
         setAnnuncioValue($(this));
+        $("#affittaContent_dettaglioAnnuncio").fadeIn();
         
-        
+        /*
         setTimeout(function(){ 
             $("#affittaContent_dettaglioAnnuncio").show();
-        },30); 
+        },30); */
          
     });
    
@@ -63,7 +71,7 @@ $(document).ready(function (){
     // **** EVENTI DI NUOVO_ANNUNCIO PAGE
     $("#backMenuRowEliminaButton").on("tap", function (){
        
-        
+        clearAllField();
         //navigator.camera.cleanup(onSuccess, onFail);
         //console.log("ANNULLO TUTTO");
         $("#affittaContent_creaAnnuncio").fadeOut();
@@ -87,7 +95,8 @@ $(document).ready(function (){
      
     $(".nuovoAnnuncioBox").on("tap", function (){
         
-        $("#annullaNuovoAnnuncioButton").hide();
+        //$("#annullaNuovoAnnuncioButton").hide();
+        //$("#annullaNuovoAnnuncioButton").css("pointer-events", "none");
         
         var boxID= $(this).attr("id");
         console.log("ID è: " + boxID );
@@ -161,7 +170,10 @@ $(document).ready(function (){
         */
     });
     
-    $(".backToAnnuncioContent").on("tap", function (){
+    $(".backToAnnuncioContent").on("tap", function (e){
+        
+        e.stopImmediatePropagation();
+        
         var boxDetailId=$(this).closest(".nuovoAnnuncioDetailContent").attr("id");
         var newValue;
         
@@ -547,6 +559,102 @@ function checkValue(){
     
 }
 
+function clearAllField(){
+    $("#titoloPreview").text("-");
+    $("#titoloCheckedIcon").removeClass("glyphicon-check");
+    $("#titoloCheckedIcon").addClass("glyphicon-unchecked");
+    $("#titoloInput").val("");
+    
+    $("#prezzoPreview").text("-");
+    $("#prezzoCheckedIcon").removeClass("glyphicon-check");
+    $("#prezzoCheckedIcon").addClass("glyphicon-unchecked");
+    $("#prezzoInput").val("");
+    
+    $("#descrizionePreview").text("-");
+    $("#descrizioneCheckedIcon").removeClass("glyphicon-check");
+    $("#descrizioneCheckedIcon").addClass("glyphicon-unchecked");
+    $("#descrizioneInput").val("");
+    
+    $("#fotoPreview").hide();
+    $("#fotoCheckedIcon").removeClass("glyphicon-check");
+    $("#fotoCheckedIcon").addClass("glyphicon-unchecked");
+    $("#smallImage").attr("src", "");
+    
+    $("#numLocaliPreview").text("-");
+    $("#numLocaliCheckedIcon").removeClass("glyphicon-check");
+    $("#numLocaliCheckedIcon").addClass("glyphicon-unchecked");
+    $("#numLocaliInput").val("");
+    
+    $("#superficiePreview").text("-");
+    $("#superficieCheckedIcon").removeClass("glyphicon-check");
+    $("#superficieCheckedIcon").addClass("glyphicon-unchecked");
+    $("#superficieInput").val("");
+    
+    $("#tipologiaPreview").text("-");
+    $("#tipologiaCheckedIcon").removeClass("glyphicon-check");
+    $("#tipologiaCheckedIcon").addClass("glyphicon-unchecked");
+    $("#postiLettoStanzaInput").val("");
+    $('#tipologiaInput input[type=radio]').each(function() {
+        $(this).prop( "checked", false ).checkboxradio('refresh');  
+    });
+    
+    $("#postiLettoPreview").text("-");
+    $("#postiLettoCheckedIcon").removeClass("glyphicon-check");
+    $("#postiLettoCheckedIcon").addClass("glyphicon-unchecked");
+    $("#postiLettoInput").val("");
+    
+    $("#pianoPreview").text("-");
+    $("#pianoCheckedIcon").removeClass("glyphicon-check");
+    $("#pianoCheckedIcon").addClass("glyphicon-unchecked");
+    $("#pianoInput").prop('selectedIndex',0);
+    
+    $("#zonaPreview").text("-");
+    $("#zonaCheckedIcon").removeClass("glyphicon-check");
+    $("#zonaCheckedIcon").addClass("glyphicon-unchecked");
+    $('#zonaInput input[type=radio]').each(function() {
+        $(this).prop( "checked", false ).checkboxradio('refresh');  
+    });
+    
+    $("#indirizzoPreview").text("-");
+    $("#indirizzoCheckedIcon").removeClass("glyphicon-check");
+    $("#indirizzoCheckedIcon").addClass("glyphicon-unchecked");
+    $("#indirizzoInput").val("");
+    
+    $("#metroPreview").text("-");
+    $("#metroCheckedIcon").removeClass("glyphicon-check");
+    $("#metroCheckedIcon").addClass("glyphicon-unchecked");
+    $('#metroInput input[type=checkbox]').each(function() {
+        $(this).prop( "checked", false ).checkboxradio('refresh');  
+    });
+    
+    $("#tramPreview").text("-");
+    $("#tramCheckedIcon").removeClass("glyphicon-check");
+    $("#tramCheckedIcon").addClass("glyphicon-unchecked");
+    $('#tramInput input[type=checkbox]').each(function() {
+        $(this).prop( "checked", false ).checkboxradio('refresh');  
+    });
+    
+    $("#busPreview").text("-");
+    $("#busCheckedIcon").removeClass("glyphicon-check");
+    $("#busCheckedIcon").addClass("glyphicon-unchecked");
+    $('#busInput input[type=checkbox]').each(function() {
+        $(this).prop( "checked", false ).checkboxradio('refresh');  
+    });
+    
+    $("#passantePreview").text("-");
+    $("#passanteCheckedIcon").removeClass("glyphicon-check");
+    $("#passanteCheckedIcon").addClass("glyphicon-unchecked");
+    $('#passanteInput input[type=checkbox]').each(function() {
+        $(this).prop( "checked", false ).checkboxradio('refresh');  
+    });
+    
+    $("#altreFotoPreview").hide();
+    $("#altreFotoCheckedIcon").removeClass("glyphicon-check");
+    $("#altreFotoCheckedIcon").addClass("glyphicon-unchecked");
+    $(".miniaturaImage").attr("src", "");
+    
+}
+
 function backToNuovoAnnuncioFunction(value, elementPreview, elementCheckedIcon){    
     
     if(value!=""){
@@ -563,16 +671,24 @@ function backToNuovoAnnuncioFunction(value, elementPreview, elementCheckedIcon){
         elementCheckedIcon.addClass("glyphicon-unchecked");
        
     }
-
-    $(".nuovoAnnuncioDetailContent").fadeOut();
     
+    
+    $(".nuovoAnnuncioDetailContent").fadeOut();
+    $("#nuovoAnnuncioContent").fadeIn();
+       /* setTimeout(function(){ 
+         
+        $("#annullaNuovoAnnuncioButton").css("pointer-events", "auto"); 
+    }, 400);   */
+         
+    
+    /*
     $("#nuovoAnnuncioContent").fadeIn(200, "swing", function(){
         setTimeout(function(){ 
          
         $("#annullaNuovoAnnuncioButton").show(); 
     }, 70);   
     });
-    
+    */
     
     
 }
@@ -590,7 +706,7 @@ function modifica_backToNuovoAnnuncioFunction(value, elementPreview, elementChec
     else{
         elementPreview.text("-");
 
-        elementCheckedIcon.removeClass("glyphicon-ok-sign");
+        elementCheckedIcon.removeClass("glyphicon-check");
         elementCheckedIcon.addClass("glyphicon-unchecked");
        
     }
