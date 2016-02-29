@@ -1,0 +1,99 @@
+/* CSS DI DETTAGLIO ANNUNCIO */
+
+.dettaglioStarColumn{
+    text-align: center;
+}
+
+.starElement{
+    display: inline-block;
+    color: #f0ad4e;
+}
+
+#dettaglioZonaText{
+    font-size: 1.2em;   
+}
+
+.mioDivElement{
+    display: inline-block;
+    width:48vw;
+    height: 100%;
+    background-color: red;
+    border:1px solid black;
+}
+
+
+/*   CSS DI MODIFICA DATI    */
+
+.datiTextTitle{
+    text-align: center;   
+}
+
+.userDataInputText{
+    display: none;
+    background-color: #cecece;
+}
+
+#modificaDatiConfermaPasswordIcon{
+    display: none;
+}
+
+.wrongPasswordValue{
+   color: red;    
+}
+
+
+
+
+/*   CSS DI RISULTATI RICERCA       */
+/*
+#risultatiRicercaMap{
+    display: block;
+    width: 100%;
+    height: 10em;
+    border:1px solid black;
+}*/
+
+
+.elementListview{
+    margin-left: 0.3em !important;  
+    height: 7em;
+    margin-top: 0.2em !important;
+}
+
+.linkListview{
+    height: 100%;
+    padding-left: 5.4em !important;   
+}
+
+.imageListview{
+    margin-top: 8%;   
+}
+
+.titoloListview{
+    height: 3em;
+    font-size: 0.8em !important;
+    margin-top: 0 !important;
+    padding-left: 0.5em !important;
+    :background-color: orange;
+    :border: 1px solid black;
+    line-height: 1.5em;
+    
+    word-wrap: break-word;
+    text-overflow: inherit !important;
+    white-space: normal !important;
+}
+
+.subtitoloListview{
+    margin: 0 !important;
+    margin-bottom: 0.3em !important;
+    font-size: 0.66em !important;
+    font-weight: normal !important;
+    :text-align: center !important;
+    padding-left: 1.6em;
+}
+
+.prezzoListview{
+    text-align: right;
+    color: #146eb4;
+    margin-right: 0.5em !important;
+}

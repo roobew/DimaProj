@@ -1,9 +1,5 @@
-/*var replaceWith = $('<input type="text" style="width:100%;" placeholder="Nome annuncio" />'),
-    connectWith = $('input[name="hiddenField"]');*/
-var divToAdd="<div class='annuncioDiv'><div class='annuncioDelDiv'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></div><div class='annuncioContentDiv'>annuncio </div></div>";
 
-var countDeleteClick=0;
-var actualPill=1;
+//var countDeleteClick=0;
 
 $(document).ready(function (){
    
@@ -50,13 +46,17 @@ $(document).ready(function (){
         });
     
     $("#eliminaAnnuncioHome").on("tap", function(){
-        alert("Elimina!"); 
+        /*  
+        $(".contentPageDiv").hide();
+        $("#pageDettaglioContent").show();
+        */
+        
     });    
       
     $(".annuncioDiv").on("tap", function(){
         
         $("#affittaContent").fadeOut();
-        setAnnuncioValue($(this));
+        //setAnnuncioValue($(this));
         $("#affittaContent_dettaglioAnnuncio").fadeIn();
         
         /*
@@ -171,9 +171,7 @@ $(document).ready(function (){
     });
     
     $(".backToAnnuncioContent").on("tap", function (e){
-        
-        e.stopImmediatePropagation();
-        
+                
         var boxDetailId=$(this).closest(".nuovoAnnuncioDetailContent").attr("id");
         var newValue;
         
@@ -247,6 +245,8 @@ $(document).ready(function (){
         else if(boxDetailId=="nuovoAnnuncioZonaDetail"){
             var newValue=$("#zonaInput :radio:checked").val(); 
             
+            console.log("SCROLL è: "+$("#nuovoAnnuncioZonaDetail").scrollTop());
+            $("#nuovoAnnuncioZonaDetail").scrollTop(50);
             backToNuovoAnnuncioFunction(newValue, $("#zonaPreview"), $("#zonaCheckedIcon"));
             
         }
@@ -678,7 +678,7 @@ function backToNuovoAnnuncioFunction(value, elementPreview, elementCheckedIcon){
     else{
         elementPreview.text("-");
 
-        elementCheckedIcon.removeClass("glyphicon-ok-sign");
+        elementCheckedIcon.removeClass("glyphicon-check");
         elementCheckedIcon.addClass("glyphicon-unchecked");
        
     }

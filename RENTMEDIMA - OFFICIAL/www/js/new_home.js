@@ -5,11 +5,13 @@ $(document).ready(setField);
 function setField(){
     // ICONE HOME SELEZIONATE
     $("#homeIcon").addClass("selectedTab");
-    $("#homeText").addClass("selectedTab");    
+    $("#homeText").addClass("selectedTab"); 
+    
     // CONTENTPAGEDIV NASCOSTI, TRANNE HOME 
     $(".contentPageDiv").hide();
     $("#homeContent").show();    
     
+    // INIZIALIZZA JQUERY_MMENU
     $("#my-menu").mmenu({
         slidingSubmenus: false,
         //extensions: ["pagedim-black"]            

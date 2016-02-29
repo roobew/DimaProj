@@ -137,20 +137,36 @@ var GoogleMap = ( function(){
 $(document).ready(doStuff);
 
 function doStuff(){
-    drawCercaMap();
+    //drawCercaMap();
     
+    $("#cercaZonaButton").on("tap", function(){
+        $(".contentPageDiv").hide();
+        $("#risultatiRicercaContent").show(); 
+        
+        drawSearchResultMap();
+        
+       // drawCercaVicinanzeMap();
+    });
        
 }
 
-function drawCercaMap(){
+
+function drawSearchResultMap(){
+    console.log("Disegno mappa risultati ricerca");
     var myLatlng;
     var mapOptions = {
-        zoom: 12
-        //center: new google.maps.LatLng(45.4642200,9.1905600)
+        zoom: 12,
+        center: new google.maps.LatLng(45.4642200,9.1905600)
     }
-    var map = new google.maps.Map(document.getElementById('cercaZonaMap'), mapOptions);
-    
-    //drawMyMarker(map);
-    // Funzione in newHome_preferiti.js
-
-}
+    var map = new google.maps.Map(document.getElementById('risultatiRicercaMap'), mapOptions);
+} 
+/*
+function drawCercaVicinanzeMap(){
+     console.log("Disegno mappa risultati ricerca");
+    var myLatlng;
+    var mapOptions = {
+        zoom: 12,
+        center: new google.maps.LatLng(45.4642200,9.1905600)
+    }
+    var map = new google.maps.Map(document.getElementById('cercaVicinanzeMap'), mapOptions);
+}*/

@@ -1,80 +1,40 @@
-//var newValue, valueToShow;
+var nomeValue,
+    cognomeValue,
+    passwordValue, 
+    confirmPasswordValue, 
+    passwordWrongBool=false;
 
 $(document).ready(startModificaDati);
 
 function startModificaDati(){
-   /*
-    var lastValue, inputElement, textElement, elementToOverride;
-
-    $(".modificaIconText").on("click", function(){
-        
-        inputElement = $(this).siblings(".userDataInputText");
     
-        textElement = $(this).siblings(".userDataText").hide();
-        
-        if(inputElement.hasClass("passwordClass")==true){
-            lastValue = "";
-            console.log("VERO");
-        }
-        else{
-            lastValue = textElement.text();
-            console.log("FALSO");
-        }
-            
-        inputElement.val(lastValue);
-        console.log("Last value è: "+lastValue);
-
-        textElement.hide();
-        inputElement.show();
-
-        inputElement.focus();
-        
-    });
-    
-    $(".userDataInputText").blur(function (){
-        console.log("Blur EVENT");
-        // InputElement è $(this)
-        
-        textElement = $(this).siblings(".userDataText");
-        
-        if($(this).hasClass("passwordClass")==true){
-            valueToShow = "**********";
-           
-        }
-        else{
-            valueToShow = $(this).val();
-        }
-        
-        if($(this).attr("id")=="passwordUtenteInput"){
-            $("#confermaPasswordModificaIcon").show();   
-        }
-        
-        newValue = $(this).val();
-        console.log("Input Value è: "+newValue);
-        
-        textElement.text(valueToShow);
-        $(this).hide();
-        textElement.show();
-        
-        
-    });
-    */
-    
-    var iconClicked;
-    var inputElement;
-    var textElement;
-    var iconCheckedElement;
-    var blurElementID;
+    var iconClicked, 
+        inputElement,
+        textElement,
+        iconCheckedElement,
+        blurElementID,
+        nomeCliccato, inputBlur;
     
     $(".modificaIconText").on("click", function(){
         iconClicked=$(this).attr("id");
-        console.log("Icon clicked è: "+iconClicked);
+        //console.log("Icon clicked è: "+iconClicked);
         
-        if(iconClicked=="modificaDatiNomeIcon"){
-            inputElement = $("#modificaDatiNomeInput");
-            textElement = $("#modificaDatiNomeText");
-            iconCheckedElement = $("#modificaDatiNomeCheckedIcon");
+        if(iconClicked=="modificaDatiNomeIcon"){ 
+            nomeCliccato="Nome";
+        } 
+        else if(iconClicked=="modificaDatiCognomeIcon"){
+            nomeCliccato = "Cognome";   
         }
+        else if(iconClicked=="modificaDatiPasswordIcon"){
+            nomeCliccato = "Password";   
+        }
+        else if(iconClicked=="modificaDatiConfermaPasswordIcon"){
+            nomeCliccato = "ConfermaPassword";   
+        }
+        
+        inputElement = $("#modificaDati"+nomeCliccato+"Input");
+        textElement = $("#modificaDati"+nomeCliccato+"Text");
+        iconCheckedElement = $("#modificaDati"+nomeCliccato+"CheckedIcon");
         
         showInputText(inputElement, textElement, iconCheckedElement);
  
@@ -82,18 +42,30 @@ function startModificaDati(){
     
     $(".userDataInputText").blur(function (){
         blurElementID=$(this).attr("id");
-        console.log("Blur Element ID è: "+blurElementID);
+        //console.log("Blur Element ID è: "+blurElementID);
         
         inputElement = $(this);
+        
         if(blurElementID=="modificaDatiNomeInput"){
-            
-            textElement = $("#modificaDatiNomeText");
-            iconCheckedElement = $("#modificaDatiNomeCheckedIcon");
+            inputBlur="Nome";
         }  
+        else if(blurElementID=="modificaDatiCognomeInput"){
+            inputBlur="Cognome";   
+        }
+        else if(blurElementID=="modificaDatiPasswordInput"){
+            inputBlur="Password";   
+        }
+        else if(blurElementID=="modificaDatiConfermaPasswordInput"){
+            inputBlur="ConfermaPassword";   
+        }
+        
+        textElement = $("#modificaDati"+inputBlur+"Text");
+        iconCheckedElement = $("#modificaDati"+inputBlur+"CheckedIcon");
         
         showTextField(inputElement, textElement, iconCheckedElement);
         
     });
+    
     
 }
 
@@ -112,7 +84,6 @@ function showInputText(myInput, myText, myIcon){
         }
             
         myInput.val(lastValue);
-        console.log("Last value è: "+lastValue);
 
         myText.hide();
         myInput.show();
@@ -127,19 +98,92 @@ function showTextField(myInput, myText, myIcon){
     
     if(myInput.hasClass("passwordClass")==true){
         valueToShow = "**********";
-
     }
     else{
         valueToShow = myInput.val();
     }
 
-    if(myInput.attr("id")=="passwordUtenteInput"){
-        $("#confermaPasswordModificaIcon").show();   
+    if(myInput.attr("id")=="modificaDatiPasswordInput"){
+        console.log("ID di tipo PASSWORD"); 
+        
+        if(myInput.val()!=""){
+            passwordValue=myInput.val();
+            
+            myIcon.removeClass("glyphicon-unchecked");
+            myIcon.addClass("glyphicon-check");
+            
+            $("#modificaDatiConfermaPasswordIcon").show();
+        }
+        
     }
-
-    newValue = myInput.val();
-    console.log("Input Value è: "+newValue);
-
+    else if(myInput.attr("id")=="modificaDatiConfermaPasswordInput"){
+        console.log("ID di tipo CONFERMA_PASSWORD");
+        
+        if(myInput.val()!=""){
+            confirmPasswordValue=myInput.val();
+            
+            myIcon.removeClass("glyphicon-unchecked");
+            myIcon.addClass("glyphicon-check");
+        }
+                
+        if( passwordValue != confirmPasswordValue ){
+            console.log("Password diverse");
+            myText.addClass("wrongPasswordValue"); 
+            $("#modificaDatiConfermaPasswordTitle").addClass("wrongPasswordValue"); 
+            $("#modificaDatiConfermaPasswordTitle").text("Conferma Password *");
+            
+            if(passwordWrongBool==false){
+                myIcon.removeClass("glyphicon-check");
+                myIcon.addClass("glyphicon-unchecked");    
+            } 
+            passwordWrongBool=true;
+        }
+        else{
+            console.log("Password uguali"); 
+            
+            if(passwordWrongBool==true){
+                myText.removeClass("wrongPasswordValue"); 
+                $("#modificaDatiConfermaPasswordTitle").removeClass("wrongPasswordValue"); 
+                $("#modificaDatiConfermaPasswordTitle").text("Conferma Password");
+                passwordWrongBool=false;           
+            }
+            
+            myIcon.removeClass("glyphicon-unchecked");
+            myIcon.addClass("glyphicon-check");   
+            $("#modificaDatiConfermaPasswordIcon").hide(); 
+            
+        }
+    }
+    else if (myInput.attr("id")=="modificaDatiNomeInput") {
+        
+        if(valueToShow!=""){
+            nomeValue=myInput.val();
+            
+            myIcon.removeClass("glyphicon-unchecked");
+            myIcon.addClass("glyphicon-check");
+        }
+        else{
+            valueToShow = nomeValue;   
+        }
+        //console.log("INPUT è: "+myInput.val());
+        //console.log("NOME è: "+nomeValue);
+        //console.log("VALUE To Show è: "+valueToShow);
+    }
+    else if(myInput.attr("id")=="modificaDatiCognomeInput"){
+        
+        if(valueToShow!=""){
+            cognomeValue=myInput.val();
+            
+            myIcon.removeClass("glyphicon-unchecked");
+            myIcon.addClass("glyphicon-check");
+        }
+        else{
+            valueToShow = cognomeValue;   
+        }
+        console.log("COGNOME è: "+cognomeValue);
+    }
+    
+    
     myText.text(valueToShow);
     myInput.hide();
     myText.show();

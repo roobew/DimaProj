@@ -40,8 +40,12 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
 }
 */
 
+#cercaVicinanzeDiv{
+    display: none;
+}
+
 #rowPillCerca{
-    margin-top: 2em;   
+    margin-top: 3vh;   
 }
 
 #cercaPills{
@@ -65,15 +69,31 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
 }
 
 #cercaZonaInput-button{
-    width:10em !important;   
+    width:10em !important;  
+    font-size: 0.8em !important;
 }
 
-#cercaZonaMap{
-    border:1px solid black;
-    height: 10em;
-    width:10em;
+#raggioCercaVicinanzaInput-button{
+    width:9em !important;   
+    font-size: 0.8em !important;
 }
 /*
-#cercaZonaMap img {
-  max-width: none;
+#cercaZonaMap{
+    border:1px solid black;
+    height: 15em;
+    width:80vw;
+    margin-left: auto;
+    margin-right: auto;
 }*/
+
+.normalText {
+  font-size: 16px;
+}
+
+.smallText {
+  font-size: 12px; /* 75% of the baseline */
+}
+
+.largeText {
+  font-size: 20px; /* 125% of the baseline */
+}
