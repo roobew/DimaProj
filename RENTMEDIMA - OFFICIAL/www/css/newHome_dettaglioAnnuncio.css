@@ -1,5 +1,19 @@
 /* CSS DI DETTAGLIO ANNUNCIO */
 
+
+#dettaglioZonaText{
+    font-size: 1.2em;   
+}
+
+.pageDettaglioTitleRow{
+    margin-top:0.5em;
+}
+
+#pageDettaglioTitleColumn{
+    text-align:center; 
+    margin-top:0.7em;   
+}
+
 .dettaglioStarColumn{
     text-align: center;
 }
@@ -9,16 +23,65 @@
     color: #f0ad4e;
 }
 
-#dettaglioZonaText{
-    font-size: 1.2em;   
+#pageDettaglioZonaRow{
+    padding:0.4em; 
+    margin-top:0.2em; 
+    margin-left:0.3em;   
 }
 
-.mioDivElement{
-    display: inline-block;
-    width:48vw;
-    height: 100%;
-    background-color: red;
-    border:1px solid black;
+#pageDettaglioPhotoswipeRow{
+    margin-left:0.3em; 
+    margin-right: 0.5em; 
+}
+
+.pageDettaglioInfoRow{
+    height:2em; 
+    background-color:white; 
+    padding:0.4em; 
+    margin-top:0.1em; 
+    margin-left:0.2em;
+}
+
+.marginFirstRow{
+    margin-top:1.5em; 
+}
+
+.pageDettaglioTextLineHeight{
+    line-height:1.4em
+}
+
+.pageDettaglioMezziRow{
+    height:2.5em; 
+    background-color:white; 
+    padding:0.5em; 
+    margin-top:0.1em; 
+    margin-left:0.2em;   
+}
+
+.marginFirstMezziRow{
+    margin-top:1.5em;
+}
+
+
+#pageDettaglioDEscrizioneRow{
+    height:auto; 
+    background-color:white; 
+    padding:0.8em; 
+    margin-top:1.5em;   
+}
+
+#pageDettaglioDescrizioneText{
+    line-height:1.4em; 
+    margin-left:0.3em;   
+}
+
+
+.pageDettaglioPrezzoRow{
+    height:2em; 
+    background-color:white; 
+    padding:0.4em; 
+    margin-top:1em; 
+    margin-left:0.2em;   
 }
 
 

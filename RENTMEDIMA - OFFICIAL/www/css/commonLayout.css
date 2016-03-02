@@ -25,7 +25,7 @@ p {margin: 0;padding: 0;}
     height: 83vh;
     width: 100vw; 
     margin-top: 10vh; 
-    :position: relative;
+    :position: fixed;
     
     overflow-y: hidden;
     z-index: 2;
@@ -56,6 +56,13 @@ p {margin: 0;padding: 0;}
     margin-right: 2vw;
     margin-top: 5.5vh;
     margin-bottom: 1vh;
+}
+
+#nuovoAnnuncioTopRow, #dettaglioAnnuncioTopRow, #modificaAnnuncioTopRow, #dettaglioAnnuncioTopRow_daAffitta{
+    display: none;
+    color: white;
+    margin:0;
+    margin-top: 5vh;
 }
 #navbarImageDiv{
     :display: block;
@@ -146,7 +153,7 @@ p {margin: 0;padding: 0;}
 
 /****  CONTENT  ****/
 .contentPageDiv{
-    height: 83vh;
+    height: 100%;
     width: 100vw;
     overflow-x:hidden;
     overflow-y:hidden;

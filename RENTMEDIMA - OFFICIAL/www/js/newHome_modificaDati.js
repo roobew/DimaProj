@@ -16,6 +16,10 @@ function startModificaDati(){
         nomeCliccato, inputBlur;
     
     $(".modificaIconText").on("click", function(){
+       //$("#fixedBottomDiv").css("position", "absolute");
+       //$("#contentDiv").css("position", "absolute");
+       //$("#header").css("position", "absolute");
+        
         iconClicked=$(this).attr("id");
         //console.log("Icon clicked è: "+iconClicked);
         
