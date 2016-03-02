@@ -1393,9 +1393,6 @@
                 
             </div>
 
-           
-           
-           
             <!-- *** PAGINA PER VEDERE DETTAGLI E MODIFICARE L'ANNUNCIO *** -->
             <div class="contentPageDiv contentOverflowY NOcontentOverflowX" id="affittaContent_dettaglioAnnuncio">   
                 
@@ -2347,9 +2344,6 @@
                 
             </div>
            
-           
-           
-           
             <div class="contentPageDiv contentOverflowY" id="preferitiContent">
                 <div id="myMap" style="height:9em; width:100%"></div>
                 <br> 
@@ -2775,25 +2769,79 @@
             <div class="contentPageDiv" id="messaggiDetailContent">
             
             </div>
-
+           
+            <!-- *** CERCA ***-->
             <div class="contentPageDiv" id="cercaContent"> 
-                
-                <div class="row" id="rowPillCerca">
-                    <div class="col-xs-12">
-                        <ul class="nav nav-tabs" id="cercaPills">
-                            <li class="pillListElement myActiveClass" role="presentation" id="cercaPillUno">
-                                <a class="pillElementLink myActiveClassColor" id="cercaZonaPillLink" href="#">Per Zona</a>
-                            </li>
-                            <li class="pillListElement" id="cercaPillDue" role="presentation">
-                                <a class="pillElementLink" id="cercaVicinanzePillLink" href="#">Nelle Vicinanze</a>
-                            </li>
-                        </ul>
+                <div class="" id="buttons">
+                    <div class="row input ">
+                        <a href="#" id="doveButton"> 
+                            <div class="col-xs-6 left">
+                                Dove? 
+                            </div>
+                            <div class="col-xs-6 right" id="scelta">
+                                Scegli
+                            </div>
+                       </a>
+                    </div>          
+                    <div class="row input ">
+                        <a href="#"> 
+                            <div class="col-xs-6 left">
+                                Tipo? 
+                            </div>
+                            <div class="col-xs-6 right">
+                                Indifferente
+                            </div>
+                       </a>                        
+                    </div>
+                    <div class="row input ">
+                        <a href="#"> 
+                            <div class="col-xs-6 left">
+                                Prezzo? 
+                            </div>
+                            <div class="col-xs-6 right">
+                                Indifferente
+                            </div>
+                       </a>
+
+</div>
+                    <div class="row input ">
+                        <a href="#" id="searchBtn">
+                            <div class="col-xs-12 button">
+                                CERCA
+                            </div>
+                        </a>
                     </div>
                 </div>
-                 
-                <br>
+                <div id="cercaDove" hidden>  
+                    <form class="validateDontSubmit">
+                        <fieldset>
+                            <div class="row center input">
+                                <div class="col-xs-12">
+                                    <button id="curPos" type="submit">curr pos</button>
+                                </div>
+                            </div>
+                            <div class="row center input">
+                                <div class="col-xs-12">
+                                    <select class="form-control target" id="selectZone">
+                                        <option value="-1">Select a Zone</option>
+                                        <option value="0">Zero</option>
+                                        <option value="1">uno</option>
+                                        <option value="2">due</option>                    
+                                    </select> 
+
+                                </div>
+                            </div>
+                            <div class="row center input">
+                                <div class="col-xs-12">                            
+                                    <input type="text" id="cercaVia">
+                                </div>
+                            </div>  
+                        </fieldset>
+                    </form>
+                </div>
                 
-                <div class="pillDivClass" id="cercaZonaDiv"> 
+                <!-- 
+<div class="pillDivClass" id="cercaZonaDiv"> 
                     <div class="row">
                         <div class="col-xs-12 cercaColumn">
                             <select class="form-control" id="cercaZonaInput">
@@ -2817,17 +2865,12 @@
                         </div>
                     </div> 
                     
-                    <!--<div class="row cercaColumn">
-                        <div class="col-xs-12">
-                            <div id="cercaZonaMap"></div>   
-                        
-                        </div>
-                    </div>-->
+                    
                 
                     <div style="height:2em;"></div> 
-                </div>
+                </div> -->
                 
-                <div class="pillDivClass" id="cercaVicinanzeDiv">
+                <!--<div class="pillDivClass" id="cercaVicinanzeDiv">
                     
                     <div class="row">
                         <div class="col-xs-12 cercaColumn">
@@ -2858,14 +2901,13 @@
                     <div style="height:2em;"></div> 
                 
                     <div id="map_canvas"></div>
-                </div>
+                </div>-->
                 
                 <!---->
               
                 
             </div>
-           
-            
+                       
             <div class="contentPageDiv contentOverflowY" id="modificaDatiPersonaliContent"> 
                 
                 <div class="row datiTextTitle">
@@ -3201,10 +3243,8 @@
                
            </div>
            
-            <div class="contentPageDiv contentOverflowY" id="risultatiRicercaContent">
-                <div id="risultatiRicercaMap" style="height:9em; width:100%"></div>
-                
-                <br><br>
+            <div class="contentPageDiv contentOverflowY" id="risultatiRicercaContent" hidden>
+                <!--<div id="risultatiRicercaMap" style="height:9em; width:100%"></div>-->
                 
                 <ul data-role="listview" data-inset="true">
                     
