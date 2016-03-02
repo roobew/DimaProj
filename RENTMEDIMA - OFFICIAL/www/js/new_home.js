@@ -286,7 +286,12 @@ function showModificaDatiPersonali(){
 }
 
 function confermaModificaDatiPersonali(){
-     mostraBottomBar();
+    mostraBottomBar();
+    
+    $(".myColumn").find("p").removeClass("selectedTab"); 
+    //$(this).find("p").addClass("selectedTab");
+    $("#homeIcon").addClass("selectedTab");
+    $("#homeText").addClass("selectedTab");
 
     $("#datiPersonaliModificaTopRow").hide();
     $("#homeTopRow").show();
