@@ -1,4 +1,9 @@
 
+#preferitiMap{
+    height:9em; 
+    width:100%   
+}
+
 .preferitiDivParent{
     display:inline-block; 
     height: 8vh; 
@@ -12,6 +17,11 @@
     vertical-align:middle;
     margin:auto;
 }
+
+.accordionTitle{
+    font-size: 0.9em !important;   
+}
+
 .text{
     height:4vh; 
     width: 88vw;
@@ -34,7 +44,54 @@
     position:absolute;
 }
 .divChild{
-   overflow-x:hidden;
+    overflow-x:hidden !important;
+    padding: 0 !important;
+    padding-left: 1em !important;
+    padding-top: 0.5em !important;
+    height: 8em;
+    
+
+}
+
+#preferitiInfoSecondRow{
+   margin-top: 0.3em; 
+}
+
+#preferitiInfoFourthRows{
+    margin-top: 0.4em;  
+    text-align: center;
+}
+
+#preferitiInfoFifthRows{
+    margin-top: 0.5em;   
+}
+
+.preferitiTextInfo{
+    font-size: 0.8em;
+    font-style: italic;
+}
+
+.preferitiViaText{
+    font-size: 0.72em;   
+}
+
+.preferitiPezzoText{
+    font-size: 1.6em;
+    color: #237f52;
+    font-weight: bolder;
+}
+
+#preferitiButtonRow{
+    margin-top: 0.5em;      
+}
+
+.eliminaPreferitoIcon{
+    color: red;
+    font-size: 1.3em;
+}
+
+#emptyFinalDiv{
+    height:5em;
 }
 
 .informazioniAnnuncio{
@@ -95,8 +152,3 @@
     margin-top:1em;
 }
 
-
-.rimuoviPreferito, .contattaPreferito{
-    background-color: #cc0000;
-    box-shadow: 1px 1px 15px #888888;   
-}

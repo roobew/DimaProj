@@ -1,5 +1,4 @@
-
-//var countDeleteClick=0;
+var annuncioID_toDelete, modificaCliccato=false;;
 
 $(document).ready(function (){
    
@@ -27,55 +26,111 @@ $(document).ready(function (){
         change_tabs(2, true);
     });
     
-    $("#pillTre").on("tap", function(){
-        change_tabs(3, true);
-    });
     
     $("#btnNuovoAnnuncio").on("tap", function (){
         
-        //$("#annullaNuovoAnnuncioButton").css("pointer-events", "none");
+        $("#homeTopRow").hide();
+        $("#nuovoAnnuncioTopRow").show();
         
+        nascondiBottomBar();
+        
+        $("#affittaContent").fadeOut();
         $("#affittaContent_creaAnnuncio").fadeIn();
-        $("#affittaContent").fadeOut();   
+           
+        if(modificaCliccato==true){
+            premiTastoModifica();   
+        }
         
-        /*setTimeout(function(){ 
-         
-            $("#annullaNuovoAnnuncioButton").css("pointer-events", "auto"); 
-            
-        }, 400); */
         });
     
-    $("#eliminaAnnuncioHome").on("tap", function(){
-        /*  
-        $(".contentPageDiv").hide();
-        $("#pageDettaglioContent").show();
-        */
+    $("#modificaAnnuncioHome").on("tap", function(){
+        
+        premiTastoModifica(); 
         
     });    
       
-    $(".annuncioDiv").on("tap", function(){
+    $(".annuncioParteUno").on("tap", function(){
         
+        if(dettaglioMapInit==false){
+            //drawMap("dettaglioMap", false);
+           // drawMapDettaglio();
+            dettaglioMapInit=true;
+        }
+        
+        //Mostra top bar corretta
+        $("#homeTopRow").hide();
+        $("#dettaglioAnnuncioTopRow_daAffitta").show();
+        
+        nascondiBottomBar();
+        
+        $("#pageDettaglioContent").fadeIn();
         $("#affittaContent").fadeOut();
-        //setAnnuncioValue($(this));
-        $("#affittaContent_dettaglioAnnuncio").fadeIn();
         
-        /*
-        setTimeout(function(){ 
-            $("#affittaContent_dettaglioAnnuncio").show();
-        },30); */
+        $(".annuncioListElement").removeClass("go");
          
     });
    
     
+    $(".modificaAffittaAnnuncio").click(function(){
+        console.log("MODIFICA ANNUNCIO");
+        
+        premiTastoModifica();
+        
+        $("#homeTopRow").hide();
+        $("#modificaAnnuncioTopRow").show();
+        
+        nascondiBottomBar();
+        
+        $("#affittaContent").hide();
+        $("#affittaContent_dettaglioAnnuncio").show();
+    });
+    
+    $(".eliminaAffittaAnnuncio").click(function(){
+        console.log("Elimina ANNUNCIO"); 
+        
+        annuncioID_toDelete=$(this).closest(".annuncioListElement").attr("id");
+        
+        console.log("ID VALE: "+annuncioID_toDelete);
+    });
+    
+    $("#deleteAnnuncioMenuCancella").on("tap", function(){
+        
+        console.log("TO DELETE VALE_ "+annuncioID_toDelete);
+        
+        $("#"+annuncioID_toDelete).addClass("remove");
+        
+        setTimeout(function(){ 
+            $("#"+annuncioID_toDelete).remove();
+        }, 150);
+        
+    });
+    
     
     // **** EVENTI DI NUOVO_ANNUNCIO PAGE
     $("#backMenuRowEliminaButton").on("tap", function (){
-       
+        
         clearAllField();
         //navigator.camera.cleanup(onSuccess, onFail);
         //console.log("ANNULLO TUTTO");
+        $("#nuovoAnnuncioTopRow").hide();
+        $("#homeTopRow").show();
+        
+        mostraBottomBar();
+        
         $("#affittaContent_creaAnnuncio").fadeOut();
         $("#affittaContent").fadeIn();
+    });
+    
+    $("#backMenuRowSalvaButton").on("tap", function (){
+        console.log("SALVA BOZZA");
+        
+        $("#nuovoAnnuncioTopRow").toggle();
+        $("#homeTopRow").toggle(); 
+        
+        mostraBottomBar();
+        
+        $("#affittaContent_creaAnnuncio").toggle();
+        $("#affittaContent").toggle();
     });
     
     $("#tipologiaInput").change(function (){
@@ -92,11 +147,10 @@ $(document).ready(function (){
             $("#postiLettoStanzaInput").prop("disabled",true);
         }   
     });
-     
-    $(".nuovoAnnuncioBox").on("tap", function (){
-        
-        //$("#annullaNuovoAnnuncioButton").hide();
-        //$("#annullaNuovoAnnuncioButton").css("pointer-events", "none");
+    
+    $(".nuovoAnnuncioBox").click(function (){
+            
+        $("#annullaNuovoAnnuncioButton").hide();
         
         var boxID= $(this).attr("id");
         console.log("ID è: " + boxID );
@@ -129,6 +183,7 @@ $(document).ready(function (){
         }
         else if(boxID=="tipologiaBox"){
             myElementID="Tipologia";
+            $("#postiLettoStanzaInput").prop("disabled",true); 
             
         }
         else if(boxID=="postiLettoBox"){
@@ -160,6 +215,7 @@ $(document).ready(function (){
             myElementID="AltreFoto";
         }
         
+        
         $("#nuovoAnnuncioContent").hide();
         $("#nuovoAnnuncio"+myElementID+"Detail").show(); 
         
@@ -170,14 +226,18 @@ $(document).ready(function (){
         */
     });
     
-    $(".backToAnnuncioContent").on("tap", function (e){
-                
+    $(".backToAnnuncioContent").click(function (){
+           
+        $("#annullaNuovoAnnuncioButton").show();
+        
         var boxDetailId=$(this).closest(".nuovoAnnuncioDetailContent").attr("id");
         var newValue;
         
         if(boxDetailId=="nuovoAnnuncioTitoloDetail"){
             
             newValue=$("#titoloInput").val();  
+            //$("#nuovoAnnuncioTitoloDetail").hide();
+            //$("#nuovoAnnuncioContent").show();
             
             backToNuovoAnnuncioFunction(newValue, $("#titoloPreview"), $("#titoloCheckedIcon"));
             
@@ -195,11 +255,6 @@ $(document).ready(function (){
             $("#fotoCheckedIcon").removeClass("glyphicon-unchecked");
             
             $("#fotoCheckedIcon").addClass("glyphicon-check");
-                
-            setTimeout(function(){ 
-                $("#nuovoAnnuncioContent").show(); 
-                $("#annullaNuovoAnnuncioButton").show(); 
-            }, 70);
             
         }
         else if(boxDetailId=="nuovoAnnuncioDescrizioneDetail"){
@@ -294,11 +349,7 @@ $(document).ready(function (){
             $("#altreFotoCheckedIcon").removeClass("glyphicon-unchecked");
             
             $("#altreFotoCheckedIcon").addClass("glyphicon-check");
-            
-            setTimeout(function(){ 
-                $("#nuovoAnnuncioContent").show(); 
-                $("#annullaNuovoAnnuncioButton").show(); 
-            }, 70);
+           
             
         }
         
@@ -317,22 +368,39 @@ $(document).ready(function (){
     
     // **** EVENTI DI MODIFICA_ANNUNCIO PAGE
     $("#modificaAnnuncioMenuRowAnnullaModificaButton").on("tap", function(){
-        setTimeout(function(){ 
-            $("#affittaContent_dettaglioAnnuncio").hide();
-            $("#affittaContent").show();
-        },70);  
+        
+        //modificoAnnuncio=false;
+        
+        $("#modificaAnnuncioTopRow").hide();
+        $("#homeTopRow").show();
+        
+        mostraBottomBar();
+        
+        $("#affittaContent_dettaglioAnnuncio").fadeOut();
+        $("#affittaContent").fadeIn();
+        
+        console.log("ANNULLA MODIFICHE");
     });
     
     $("#modificaAnnuncioMenuRowConfermaButton").on("tap", function(){
-        setTimeout(function(){ 
-            $("#affittaContent_dettaglioAnnuncio").hide();
-            $("#affittaContent").show();
-        },70);  
+        
+        //modificoAnnuncio=false;
+        
+        $("#modificaAnnuncioTopRow").hide();
+        $("#homeTopRow").show();
+        
+        $("#contentDiv").css("height","83vh");
+        $("#fixedBottomDiv").show();
+        
+        $("#affittaContent_dettaglioAnnuncio").fadeOut();
+        $("#affittaContent").fadeIn();
+        
+        console.log("SALVA MODIFICHE");
     });
     
-    $(".modificaAnnuncioBox").on("tap", function (){
+    $(".modificaAnnuncioBox").click(function (){
         
-        $("#backToAnnuncioHome").hide();
+        $("#annullaModificaAnnuncioButton").hide();
         
         var boxID= $(this).attr("id");
         console.log("ID è: " + boxID );
@@ -365,6 +433,7 @@ $(document).ready(function (){
         }
         else if(boxID=="modifica_tipologiaBox"){
             myElementID="Tipologia";
+            $("#modifica_postiLettoStanzaInput").prop("disabled",true);
             
         }
         else if(boxID=="modifica_postiLettoBox"){
@@ -403,7 +472,10 @@ $(document).ready(function (){
         
     });
     
-    $(".modifica_backToAnnuncioContent").on("tap", function (){
+    $(".modifica_backToAnnuncioContent").click(function (){
+       
+        $("#annullaModificaAnnuncioButton").show();
+        
         var boxDetailId=$(this).closest(".modificaAnnuncioDetailContent").attr("id");
         var newValue;
         
@@ -427,12 +499,7 @@ $(document).ready(function (){
             $("#modifica_fotoCheckedIcon").removeClass("glyphicon-unchecked");
             
             $("#modifica_fotoCheckedIcon").addClass("glyphicon-check");
-                
-            setTimeout(function(){ 
-                $("#modificaAnnuncioContent").show(); 
-                $("#backToAnnuncioHome").show(); 
-            }, 70);
-            
+            $("#modificaAnnuncioContent").show();
         }
         else if(boxDetailId=="modificaAnnuncioDescrizioneDetail"){
             var newValue=$("#modifica_descrizioneInput").val();  
@@ -525,13 +592,23 @@ $(document).ready(function (){
             
             $("#modifica_altreFotoCheckedIcon").addClass("glyphicon-check");
             
-            setTimeout(function(){ 
-                $("#modificaAnnuncioContent").show(); 
-                $("#backToAnnuncioHome").show(); 
-            }, 70);
-            
         }
         
+    });
+    
+    $("#modifica_tipologiaInput").change(function (){
+        
+        var yourChoice=$("#modifica_tipologiaInput :radio:checked").val();  
+    
+        console.log("La tua scelta è: "+yourChoice);
+        if(yourChoice=="Stanza Condivisa"){
+            console.log("*** ABILITO");
+            $("#modifica_postiLettoStanzaInput").prop("disabled",false);   
+        }
+        else{
+            console.log("*** DISABILITO");
+            $("#modifica_postiLettoStanzaInput").prop("disabled",true);
+        }    
     });
     
     
@@ -684,22 +761,11 @@ function backToNuovoAnnuncioFunction(value, elementPreview, elementCheckedIcon){
     }
     
     
-    $(".nuovoAnnuncioDetailContent").fadeOut();
-    $("#nuovoAnnuncioContent").fadeIn();
-       /* setTimeout(function(){ 
-         
-        $("#annullaNuovoAnnuncioButton").css("pointer-events", "auto"); 
-    }, 400);   */
-         
-    
-    /*
-    $("#nuovoAnnuncioContent").fadeIn(200, "swing", function(){
-        setTimeout(function(){ 
-         
-        $("#annullaNuovoAnnuncioButton").show(); 
-    }, 70);   
-    });
-    */
+    //$(".nuovoAnnuncioDetailContent").fadeOut();
+    $(".nuovoAnnuncioDetailContent").hide();
+    //$("#nuovoAnnuncioContent").fadeIn();
+    $("#nuovoAnnuncioContent").show();
+  
     
     
 }
@@ -722,12 +788,8 @@ function modifica_backToNuovoAnnuncioFunction(value, elementPreview, elementChec
        
     }
 
-    $(".modificaAnnuncioDetailContent").hide();   
-    
-    setTimeout(function(){ 
-        $("#modificaAnnuncioContent").show(); 
-        $("#backToAnnuncioHome").show(); 
-    }, 70);
+    $(".modificaAnnuncioDetailContent").hide(); 
+    $("#modificaAnnuncioContent").show();
 }
     
 
@@ -743,7 +805,19 @@ jQuery(document).on('click','.annuncioDelDiv', function(event) {
     });
 */
 
-
+function premiTastoModifica(){
+ 
+    if(modificaCliccato==false){
+            modificaCliccato=true;
+            $("#modificaAnnuncioHome").text("Fine"); 
+            
+    }
+    else{
+            modificaCliccato= false;
+            $("#modificaAnnuncioHome").text("Modifica");
+    }
+    $(".annuncioListElement").toggleClass("go");
+}
 
 
 
@@ -798,22 +872,21 @@ function closeDeleteElement(){
 }
 
 function change_tabs(dest, affittaBool){
+    if(modificaCliccato==true){
+        premiTastoModifica();   
+    }
+    
     if(affittaBool){    
         if(dest==1){
             $("#pillDue").removeClass("myActiveClass");
             $("#pillDue").children().removeClass("myActiveClassColor");
             $("#pillDue").children().addClass("myActiveClassColorStandard");
 
-            $("#pillTre").removeClass("myActiveClass");
-            $("#pillTre").children().removeClass("myActiveClassColor");
-            $("#pillTre").children().addClass("myActiveClassColorStandard");
-
             $("#pillUno").addClass("myActiveClass");
             $("#pillUno").children().addClass("myActiveClassColor");
             $("#pillUno").children().removeClass("myActiveClassColorStandard");
 
             $("#bozzeDiv").hide();
-            $("#scadutiDiv").hide();
             $("#pubblicatiDiv").show();
         }
         else if(dest==2){
@@ -821,40 +894,13 @@ function change_tabs(dest, affittaBool){
             $("#pillUno").children().removeClass("myActiveClassColor");
             $("#pillUno").children().addClass("myActiveClassColorStandard");
 
-
-            $("#pillTre").removeClass("myActiveClass");
-            $("#pillTre").children().removeClass("myActiveClassColor");
-            $("#pillTre").children().addClass("myActiveClassColorStandard");
-
-
             $("#pillDue").addClass("myActiveClass");
             $("#pillDue").children().addClass("myActiveClassColor");
             $("#pillDue").children().removeClass("myActiveClassColorStandard");
 
             $("#pubblicatiDiv").hide();
-            $("#scadutiDiv").hide();
             $("#bozzeDiv").show();        
         }
-        else if(dest==3){
-        $("#pillUno").removeClass("myActiveClass");
-        $("#pillUno").children().removeClass("myActiveClassColor");
-        $("#pillUno").children().addClass("myActiveClassColorStandard");
-        
-        
-        $("#pillDue").removeClass("myActiveClass");
-        $("#pillDue").children().removeClass("myActiveClassColor");
-        $("#pillDue").children().addClass("myActiveClassColorStandard");
-        
-        
-        $("#pillTre").addClass("myActiveClass");
-        $("#pillTre").children().addClass("myActiveClassColor");
-        $("#pillTre").children().removeClass("myActiveClassColorStandard");
-        
-        $("#pubblicatiDiv").hide();
-        $("#bozzeDiv").hide();
-        $("#scadutiDiv").show();
-        
-    }
         
     }
     else{
@@ -885,128 +931,5 @@ function change_tabs(dest, affittaBool){
     }
     
 }
-
-/*
-function animate_uno_due(){
-    $("#pillUno").removeClass("active");
-    $("#pillDue").addClass("active");
-    
-    $("#annuncioParteUno").animate({
-            left: '-100px', 
-            width: '0px',
-            opacity:0
-        }, 500, function(){
-            $(this).css("display", "none");   
-        });  
-        
-        
-        $("#annuncioParteDue").animate({
-            right: '5vw', 
-            width: '90vw',
-            opacity:1
-        }, 500);  
-        
-        $("#annuncioParteDue").fadeIn(1500).css("display","inline-block"); 
-}
-
-function animate_due_uno(){
-    $("#pillDue").removeClass("active");
-    $("#pillUno").addClass("active");
-    
-     $("#annuncioParteDue").animate({
-            right: '0', 
-            width: '0',
-            opacity: 0
-        }, 500, function(){
-            $(this).css("display", "none"); 
-        }); 
-        
-        $("#annuncioParteUno").animate({
-            left: '10px', 
-            width: '90vw',
-            opacity:1
-        }, 500);  
-        
-        $("#annuncioParteUno").fadeIn(1500).css("display","inline-block"); 
-}
-
-function animate_due_tre(){
-    
-    $("#pillDue").removeClass("active");
-    $("#pillTre").addClass("active");
-    
-    $("#annuncioParteDue").animate({
-            left: '-100px', 
-            width: '0px',
-            opacity:0
-        }, 500, function(){
-            $(this).css("display", "none");   
-        });  
-        
-        
-        $("#annuncioParteTre").animate({
-            right: '5vw', 
-            width: '90vw',
-            opacity:1
-        }, 500);  
-        
-        $("#annuncioParteTre").fadeIn(1500).css("display","inline-block"); 
-    
-}
-
-function animate_tre_due(){
-    
-    $("#pillTre").removeClass("active");
-    $("#pillDue").addClass("active");
-    
-    $("#annuncioParteTre").animate({
-            right: '0', 
-            width: '0',
-            opacity: 0
-        }, 500, function(){
-            $(this).css("display", "none"); 
-        }); 
-        
-        $("#annuncioParteDue").animate({
-            left: '10px', 
-            width: '90vw',
-            opacity:1
-        }, 500);  
-        
-        $("#annuncioParteDue").fadeIn(1500).css("display","inline-block");  
-    
-}
-
-
-function editText(nuovoAnnuncioDiv) {
-    var elem = nuovoAnnuncioDiv.find(".annuncioContentDiv");
-
-    console.log(elem);
-    elem.hide();
-    elem.after(replaceWith);
-    replaceWith.focus();
-
-    replaceWith.blur(function() {
-
-        if ($(this).val() != "") {
-            connectWith.val($(this).val()).change();
-            elem.text($(this).val());
-            $(this).val("");
-        }
-        else{
-           elem.text("Nuovo annuncio");   
-        }
-        titoloNuovoAnnuncio=elem.text();
-        console.log("l'annuncio è: "+titoloNuovoAnnuncio);
-        $(this).remove();
-        elem.show();
-
-        creaAnnuncio();
-
-    });
-
-}
-*/
-
 
 

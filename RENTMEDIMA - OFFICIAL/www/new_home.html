@@ -7,6 +7,19 @@
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
+        
+        
+<!--    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *">-->
+        
+<!--       <meta http-equiv="Content-Security-Policy" content="script-src 'self' http://code.jquery.com/ https://apis.google.com http://maps.googleapis.com https://ajax.googleapis.com">-->
+        
+        
+       <!-- <meta http-equiv="Content-Security-Policy" content="
+    default-src *;
+    style-src * 'unsafe-inline'; 
+    script-src * 'unsafe-inline'; 
+" />-->
+        
     <!-- ***** IMPORT CSS  *****-->
         <link href="bootstrap_all/css/bootstrap.css" rel="stylesheet" type="text/css">
 		
@@ -77,7 +90,7 @@
                 
     <!-- ***** END JS  *****-->   
                 
-       
+    
     </head>    
    <body> 
        <!-- MENU LATERALE  -->
@@ -167,6 +180,18 @@
             </ul>
        </div>
        
+       <div id="deleteAnnuncio-mmenu">
+        <ul>
+                <li class="menuRow menuRowTitle">
+                   <h6 class="menuRowTitleText">Desideri eliminare l'annuncio?</h6>
+                </li>
+                <li class="menuRow"><a href="#" class="menuRowStrongText menuRowTextRedColor" id="deleteAnnuncioMenuCancella">Elimina</a></li>
+                <li class="menuRow menuRowAnnulla">
+                   <a href="#" class="menuRowLightText menuRowTextBluColor" id="deleteAnnuncioMenuAnnulla">Annulla</a>
+                </li>
+            </ul>
+       </div>
+       
        <div id="modificaAnnuncio-mmenu">
             <ul>
                 <li class="menuRow menuRowTitle" id="modificaAnnuncioMenuTitle">
@@ -210,6 +235,84 @@
                         <img class="img-responsive" src="img/navbar_color.png" id="navbarImage"/>
                     </a>
                 </div>
+            </div>
+           
+            <div id="nuovoAnnuncioTopRow" class="row">
+                <div class="row nuovoAnnuncioIntestazione">
+                        <div class="col-xs-4">
+                            <a href="#back-mmenu" class="paddingElement" id="annullaNuovoAnnuncioButton" style="color:white; text-shadow: 1px 1px 1px black;">
+                                <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                        
+                        <div class="col-xs-8 nuovoAnnuncioTestoIntestazione">
+                            <h4 class="annuncioTextTitle"> Nuovo annuncio </h4>
+                        </div>
+                </div>
+            </div>
+           
+            <div id="modificaAnnuncioTopRow" class="row">
+                <div class="row nuovoAnnuncioIntestazione">
+                        <div class="col-xs-4">
+                            <a href="#modificaAnnuncio-mmenu" class="paddingElement" id="annullaModificaAnnuncioButton" style="color:white; text-shadow: 1px 1px 1px black;">
+                                <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                        
+                        <div class="col-xs-8 nuovoAnnuncioTestoIntestazione">
+                            <h4 class="annuncioTextTitle"> Modifica annuncio </h4>
+                        </div>
+                </div>
+            </div>
+           
+            <div id="dettaglioAnnuncioTopRow" class="row">
+                <div class="row nuovoAnnuncioIntestazione">
+                    <div class="col-xs-3">
+                        <a href="#" id="backLink_fromHome" class="paddingElement" style="color:white; text-shadow: 1px 1px 1px black;">
+                            <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    
+                    <div class="col-xs-2 col-xs-offset-4" style="padding: 0;
+    text-align: center; margin-top:-0.2em;">
+                        <a href="#" style="color:white; text-shadow: 1px 1px 1px black;">
+                            <span class="glyphicon glyphicon-envelope" aria-hidden="true" style="font-size:1.3em;"></span>
+                        </a>
+                    </div>
+                    
+                    
+                    <div class="col-xs-2" style="padding: 0;
+    text-align: center; margin-left:0.5em; margin-top:-0.2em;">
+                        <a href="#" style="color:white; text-shadow: 1px 1px 1px black;">
+                            <span class="glyphicon glyphicon-heart" aria-hidden="true" style="font-size:1.3em;"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+           
+            <div id="dettaglioAnnuncioTopRow_daAffitta" class="row">
+                <div class="row nuovoAnnuncioIntestazione">
+                    <div class="col-xs-3">
+                        <a href="#" id="backLink_fromAffitta" class="paddingElement" style="color:white; text-shadow: 1px 1px 1px black;">
+                            <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+           
+            <div id="datiPersonaliModificaTopRow" class="row">
+                <div class="row nuovoAnnuncioIntestazione">
+                        <div class="col-xs-4">
+                            <a href="#" class="paddingElement" style="color:white; text-shadow: 1px 1px 1px black;">
+                                Annulla
+                            </a>
+                        </div>
+                        
+                        <div class="col-xs-4 col-xs-offset-4">
+                            <a href="#" id="confermaModificaDatiPersonali" onclick="confermaModificaDatiPersonali()" style="color:white; text-shadow: 1px 1px 1px black;"> Conferma </a>
+                        </div>
+                </div>
+                
             </div>
        </div>
        
@@ -271,51 +374,21 @@
                 </div> 
             </div>
 
-            <div class="contentPageDiv NOcontentOverflowY" id="affittaContent">
+            <div class="contentPageDiv NOcontentOverflowY NOcontentOverflowX" id="affittaContent">
                 <div class="row" id="rowButton">
                     <div class="col-xs-4">
                         <a href="#" class="paddingElement" id="btnNuovoAnnuncio">
-                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             Nuovo
                         </a>
                     </div>
                     
                     <div class="col-xs-4 col-xs-offset-3">
-                            <a href="#" class="paddingElement" id="eliminaAnnuncioHome">Elimina</a>
-                        </div>
+                            <a href="#" class="paddingElement" id="modificaAnnuncioHome">Modifica</a>
+                    </div>
                         
-                    <!--<div class="col-xs-3">
-                        <a href="#" class="deleteButton" id="btnDeleteAnnuncio">
-                        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
-                    </div>-->
                 </div>
                
                 <br>
-                <!--<div class="annuncioDiv"> 
-                    <div class="annuncioDelDiv">
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                    </div>
-                    <div class="annuncioContentDiv">Annuncio 1</div>
-                </div>
-                <div class="annuncioDiv"> 
-                    <div class="annuncioDelDiv">
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                    </div>
-                    <div class="annuncioContentDiv">Annuncio 2</div>
-                </div>
-                <div class="annuncioDiv"> 
-                    <div class="annuncioDelDiv">
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                    </div>
-                    <div class="annuncioContentDiv">Annuncio 3</div>
-                </div>
-                <div class="annuncioDiv"> 
-                    <div class="annuncioDelDiv">
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                    </div>
-                    <div class="annuncioContentDiv">Annuncio 1</div>
-                </div>-->
-
                 <div class="row">
                     <div class="col-xs-12">
                         <ul class="nav nav-tabs" id="affittaPills">
@@ -325,9 +398,6 @@
                             <li class="pillListElement" id="pillDue" role="presentation">
                                 <a class="pillElementLink" id="pillDueLink" href="#">Bozze</a>
                             </li>
-                            <li class="pillListElement" id="pillTre" role="presentation">
-                                <a class="pillElementLink" id="pillTreLink" href="#">Scaduti</a>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -335,156 +405,106 @@
                 <br>
                 
                 <div class="pillDivClass" id="pubblicatiDiv">
-                    <ul data-role="listview" data-inset="true">
                     
-                        <li class="elementListview annuncioDiv" data-icon="false">
-                            <a class="linkListview" href="#">
-                            <img class="imageListview" src="http://www.salentosalento.it/Camere/upload/_28-Affitto_Appartamento_economico_Torre_dell_Orso__Affitto_appartamento_per_vacanze_costa_adriatica_salento_1.jpg">
-                            <h5 class="titoloListview">123456789 1234 678 0 234 67890 2345 7890</h5>
-                            <h6 class="subtitoloListview">ZONA 2 - Via Vittorio Veneto 24/B1</h6>
-                            <h6 class="subtitoloListview">Stanza Singola</h6>
-                            <h5 class="prezzoListview">350€</h5>
-                        </a>
-                      </li>
-
-                        <li class="elementListview annuncioDiv" data-icon="false">
-                        <a class="linkListview" href="#">
-                        <img class="imageListview" src="http://www.salentosalento.it/Camere/upload/_28-Affitto_Appartamento_economico_Torre_dell_Orso__Affitto_appartamento_per_vacanze_costa_adriatica_salento_1.jpg">
-                        <h5 class="titoloListview">123456789 1234 678 0 234 67890 2345 7890</h5>
-                        <h6 class="subtitoloListview">ZONA 2 - Via Vittorio Veneto 24/B1</h6>
-                        <h6 class="subtitoloListview">Stanza Singola</h6>
-                        <h5 class="prezzoListview">350€</h5>
-                        </a>
-                      </li>
-
-
-                    </ul>
-                    
-                    <div class="toDeleteDivContainer">
-                        <div class="toDeleteDivElement">
-                        
+                    <div class="row annuncioListElement" id="UNO_CAZZO">
+                        <div class="annuncioParteUno">
+                            <h5 class="titoloAffittaAnnuncio">123 5678 012 45678 01234 678 0123 567 90</h5>
+                            
                         </div>
-                        
-                        <div class="toDeleteDivElement">
-                        
+                        <div class="annuncioParteDue">
+                            <span class="glyphicon glyphicon-pencil iconaOpzioneAnnuncio modificaAffittaAnnuncio" aria-hidden="true"></span>
+                            
+                         <a href="#deleteAnnuncio-mmenu">        
+                            <span class="glyphicon glyphicon-trash iconaOpzioneAnnuncio eliminaAffittaAnnuncio" aria-hidden="true"></span>
+                         </a>
+                            
                         </div>
-                        
                     </div>
-                
-                    <div style="height:2em;"></div> 
+                    
+                    <div class="row annuncioListElement" id="DUE_CAZZO" >
+                        <div class="annuncioParteUno">
+                            <h5 class="titoloAffittaAnnuncio">annuncio due </h5>
+                            
+                        </div>
+                        <div class="annuncioParteDue">
+                            <span class="glyphicon glyphicon-pencil iconaOpzioneAnnuncio modificaAffittaAnnuncio" aria-hidden="true"></span>
+                            
+                            <a href="#deleteAnnuncio-mmenu">
+                                <span class="glyphicon glyphicon-trash iconaOpzioneAnnuncio eliminaAffittaAnnuncio" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </div>
+                   <!-- <div class="row annuncioListElement" id="TRE_CAZZO">
+                        <div class="annuncioParteUno">
+                            <h5 class="titoloAffittaAnnuncio">annuncio 3</h5>
+                            
+                        </div>
+                        <div class="annuncioParteDue">
+                            <span class="glyphicon glyphicon-pencil iconaOpzioneAnnuncio modificaAffittaAnnuncio" aria-hidden="true"></span>
+                            
+                            <span class="glyphicon glyphicon-trash iconaOpzioneAnnuncio eliminaAffittaAnnuncio" aria-hidden="true"></span>
+                            
+                        </div>
+                    </div>-->
+                    
+                    
+                    <div style="height:2em;"></div>
                 </div>
+                    
                 
+                       
+                                     
                 <div class="pillDivClass" id="bozzeDiv">
-                     <ul data-role="listview" data-inset="true">
-                    
-                        <li class="elementListview annuncioDiv" data-icon="false">
-                        <a class="linkListview" href="#">
-                        <img class="imageListview" src="http://www.salentosalento.it/Camere/upload/_28-Affitto_Appartamento_economico_Torre_dell_Orso__Affitto_appartamento_per_vacanze_costa_adriatica_salento_1.jpg">
-                        <h5 class="titoloListview">123456789 1234 678 0 234 67890 2345 7890</h5>
-                        <h6 class="subtitoloListview">ZONA 2 - Via Vittorio Veneto 24/B1</h6>
-                        <h6 class="subtitoloListview">Stanza Singola</h6>
-                        <h5 class="prezzoListview">350€</h5>
-                        </a>
-                      </li>
-
-                        <li class="elementListview annuncioDiv" data-icon="false">
-                        <a class="linkListview" href="#">
-                        <img class="imageListview" src="http://www.salentosalento.it/Camere/upload/_28-Affitto_Appartamento_economico_Torre_dell_Orso__Affitto_appartamento_per_vacanze_costa_adriatica_salento_1.jpg">
-                        <h5 class="titoloListview">123456789 1234 678 0 234 67890 2345 7890</h5>
-                        <h6 class="subtitoloListview">ZONA 2 - Via Vittorio Veneto 24/B1</h6>
-                        <h6 class="subtitoloListview">Stanza Singola</h6>
-                        <h5 class="prezzoListview">350€</h5>
-                        </a>
-                      </li>
-
-                        <li class="elementListview annuncioDiv" data-icon="false">
-                        <a class="linkListview" href="#">
-                        <img class="imageListview" src="http://www.salentosalento.it/Camere/upload/_28-Affitto_Appartamento_economico_Torre_dell_Orso__Affitto_appartamento_per_vacanze_costa_adriatica_salento_1.jpg">
-                        <h5 class="titoloListview">123456789 1234 678 0 234 67890 2345 7890</h5>
-                        <h6 class="subtitoloListview">ZONA 2 - Via Vittorio Veneto 24/B1</h6>
-                        <h6 class="subtitoloListview">Stanza Singola</h6>
-                        <h5 class="prezzoListview">350€</h5>
-                        </a>
-                      </li>
-
-                        <li class="elementListview annuncioDiv" data-icon="false">
-                        <a class="linkListview" href="#">
-                        <img class="imageListview" src="http://www.salentosalento.it/Camere/upload/_28-Affitto_Appartamento_economico_Torre_dell_Orso__Affitto_appartamento_per_vacanze_costa_adriatica_salento_1.jpg">
-                        <h5 class="titoloListview">123456789 1234 678 0 234 67890 2345 7890</h5>
-                        <h6 class="subtitoloListview">ZONA 2 - Via Vittorio Veneto 24/B1</h6>
-                        <h6 class="subtitoloListview">Stanza Singola</h6>
-                        <h5 class="prezzoListview">350€</h5>
-                        </a>
-                      </li>
-
-                    </ul>
+                     <div class="row annuncioListElement">
+                        <div class="annuncioParteUno">
+                            <h5 class="titoloAffittaAnnuncio">123 5678 012 45678 01234 678 0123 567 90</h5>
+                            
+                        </div>
+                        <div class="annuncioParteDue">
+                            <span class="glyphicon glyphicon-pencil iconaOpzioneAnnuncio modificaAffittaAnnuncio" aria-hidden="true"></span>
+                            
+                            <span class="glyphicon glyphicon-trash iconaOpzioneAnnuncio eliminaAffittaAnnuncio" aria-hidden="true"></span>
+                            
+                        </div>
+                    </div>
                     
                     <div style="height:2em;"></div>
                 </div>
                 
-                <div class="pillDivClass" id="scadutiDiv">
-                    <ul data-role="listview" data-inset="true">
-                    
-                        <li class="elementListview annuncioDiv" data-icon="false">
-                        <a class="linkListview" href="#">
-                        <img class="imageListview" src="http://www.salentosalento.it/Camere/upload/_28-Affitto_Appartamento_economico_Torre_dell_Orso__Affitto_appartamento_per_vacanze_costa_adriatica_salento_1.jpg">
-                        <h5 class="titoloListview">123456789 1234 678 0 234 67890 2345 7890</h5>
-                        <h6 class="subtitoloListview">ZONA 2 - Via Vittorio Veneto 24/B1</h6>
-                        <h6 class="subtitoloListview">Stanza Singola</h6>
-                        <h5 class="prezzoListview">350€</h5>
-                        </a>
-                      </li>
-
-                    </ul>
-                    
-                    <div style="height:2em;"></div>
-                </div>
-                
+            </div> 
                                
-            </div>
            
             <!-- *** PAGINA PER CREARE UN NUOVO ANNUNCIO *** -->
             <div class="contentPageDiv contentOverflowY NOcontentOverflowX" id="affittaContent_creaAnnuncio">
-                <div id="nuovoAnnuncioContent">
-                
-                    <div class="row nuovoAnnuncioIntestazione">
-                        <div class="col-xs-4">
-                            <a href="#back-mmenu" class="paddingElement" id="annullaNuovoAnnuncioButton">Annulla</a>
-                        </div>
+                <div id="nuovoAnnuncioContent" class="contentOverflowY" style="height:100%;">
+
+                    <div class="row nuovoAnnuncioBox" id="titoloBox" style="margin-top:2em;">
                         
-                        <div class="col-xs-8 nuovoAnnuncioTestoIntestazione">
-                            <h4 class="annuncioTextTitle"> Nuovo annuncio </h4>
-                        </div>
-                    </div>
-                    
-                    <br>
+                            <div class="col-xs-1 nuovoAnnuncioIconsBox">
+                                <span class="glyphicon glyphicon-unchecked" id="titoloCheckedIcon" aria-hidden="true"></span>
 
-                    <div class="row nuovoAnnuncioBox" id="titoloBox">
+                            </div>
 
-                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
-                            <span class="glyphicon glyphicon-unchecked" id="titoloCheckedIcon" aria-hidden="true"></span>
-
-                        </div>
-                        
-                        <div class="col-xs-9">
-                            <div class="row nuovoAnnuncioRowOne">
-                                <div class="col-xs-12">
-                                    <h5 class="nuovoAnnuncioRowOneTitle">Titolo</h5>
+                            <div class="col-xs-9">
+                                <div class="row nuovoAnnuncioRowOne">
+                                    <div class="col-xs-12">
+                                        <h5 class="nuovoAnnuncioRowOneTitle">Titolo</h5>
+                                    </div>
+                                </div>
+                                <div class="row nuovoAnnuncioRowTwo">
+                                    <div class="col-xs-12">
+                                        <h6 class="nuovoAnnuncioRowTwoTitle" id="titoloPreview"> -</h6>
+                                    </div>    
                                 </div>
                             </div>
-                            <div class="row nuovoAnnuncioRowTwo">
-                                <div class="col-xs-12">
-                                    <h6 class="nuovoAnnuncioRowTwoTitle" id="titoloPreview"> -</h6>
-                                </div>    
-                            </div>
-                        </div>
-                        
-                        <div class="col-xs-1 nuovoAnnuncioIconsBox">
-                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-                        </div>
 
+                            <div class="col-xs-1 nuovoAnnuncioIconsBox">
+                                <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                            </div>
+
+                        
                     </div>
-                
+                    
                     <div class="row nuovoAnnuncioBox" id="prezzoBox">
 
                         <div class="col-xs-1 nuovoAnnuncioIconsBox">
@@ -886,11 +906,13 @@
                     <a href="#" id="pubblicaAnnuncioButton">Pubblica</a>
                     
                     <div style="height:2em;"></div>
-                </div>
                 
+                </div>
+                    
                 <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioTitoloDetail">
+                        
                     <div class="row nuovoAnnuncioDetailIntestazioneRow">
-                        <div class="col-xs-4">
+                        <div class="col-xs-4 marginColumn">
                             <a class="paddingElement backToAnnuncioContent">Indietro</a>
                         </div>
                         
@@ -899,23 +921,23 @@
                         </div>
                     </div>    
                     
-                    <div class="row nuovoAnnuncioDetailFirstRow">
-                        <div class="col-xs-10 col-xs-offset-1">
-                            <h6 class="textInputIntroText"><i>Il titolo è il nome che desideri dare all'annuncio.<br> Ricorda che il titolo è il biglietto da visita del tuo appartamento, quindi sceglilo con cura. <br> <br>Sono ammessi massimo 40 caratteri  </i> </h6>
+                        <div class="row nuovoAnnuncioDetailFirstRow">
+                            <div class="col-xs-10 col-xs-offset-1">
+                                <h6 class="textInputIntroText"><i>Il titolo è il nome che desideri dare all'annuncio.<br> Ricorda che il titolo è il biglietto da visita del tuo appartamento, quindi sceglilo con cura. <br> <br>Sono ammessi massimo 40 caratteri  </i> </h6>
+                            </div>
                         </div>
+                    
+                        <div class="row nuovoAnnuncioDetailSecondRow">
+                            <div class="col-xs-10 col-xs-offset-1">
+                                <input type="text" id="titoloInput" data-role="none" maxlength="40">
+                            </div>
+                        </div>
+                        
                     </div>
                     
-                    <div class="row nuovoAnnuncioDetailSecondRow">
-                        <div class="col-xs-10 col-xs-offset-1">
-                            <input type="text" id="titoloInput" data-role="none" maxlength="40">
-                        </div>
-                    </div>
-                        
-                </div>
-                
                 <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioPrezzoDetail">
                     <div class="row nuovoAnnuncioDetailIntestazioneRow">
-                        <div class="col-xs-4">
+                        <div class="col-xs-4 marginColumn">
                             <a class="paddingElement backToAnnuncioContent">Indietro</a>
                         </div>
                         
@@ -940,7 +962,7 @@
                 
                 <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioFotoDetail">
                     <div class="row nuovoAnnuncioDetailIntestazioneRow">
-                        <div class="col-xs-4">
+                        <div class="col-xs-4 marginColumn">
                             <a class="paddingElement backToAnnuncioContent">Indietro</a>
                         </div>
                         
@@ -977,7 +999,7 @@
                 
                 <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioDescrizioneDetail">
                     <div class="row nuovoAnnuncioDetailIntestazioneRow">
-                        <div class="col-xs-4">
+                        <div class="col-xs-4 marginColumn">
                             <a class="paddingElement backToAnnuncioContent">Indietro</a>
                         </div>
                         
@@ -1001,7 +1023,7 @@
                 
                 <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioNumLocaliDetail">
                     <div class="row nuovoAnnuncioDetailIntestazioneRow">
-                        <div class="col-xs-4">
+                        <div class="col-xs-4 marginColumn">
                             <a class="paddingElement backToAnnuncioContent">Indietro</a>
                         </div>
                         
@@ -1025,7 +1047,7 @@
                 
                 <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioSuperficieDetail">
                     <div class="row nuovoAnnuncioDetailIntestazioneRow">
-                        <div class="col-xs-4">
+                        <div class="col-xs-4 marginColumn">
                             <a class="paddingElement backToAnnuncioContent">Indietro</a>
                         </div>
                         
@@ -1048,9 +1070,9 @@
                         
                 </div>
                 
-                <div class="nuovoAnnuncioDetailContent contentOverflowProperty" id="nuovoAnnuncioTipologiaDetail">
+                <div class="nuovoAnnuncioDetailContent contentOverflowY" id="nuovoAnnuncioTipologiaDetail">
                     <div class="row nuovoAnnuncioDetailIntestazioneRow">
-                        <div class="col-xs-4">
+                        <div class="col-xs-4 marginColumn">
                             <a class="paddingElement backToAnnuncioContent">Indietro</a>
                         </div>
                         
@@ -1098,7 +1120,7 @@
                 
                 <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioPostiLettoDetail">
                     <div class="row nuovoAnnuncioDetailIntestazioneRow">
-                        <div class="col-xs-4">
+                        <div class="col-xs-4 marginColumn">
                             <a class="paddingElement backToAnnuncioContent">Indietro</a>
                         </div>
                         
@@ -1123,7 +1145,7 @@
                 
                 <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioPianoDetail">
                     <div class="row nuovoAnnuncioDetailIntestazioneRow">
-                        <div class="col-xs-4">
+                        <div class="col-xs-4 marginColumn">
                             <a class="paddingElement backToAnnuncioContent">Indietro</a>
                         </div>
                         
@@ -1158,7 +1180,7 @@
                 
                 <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioZonaDetail">
                     <div class="row nuovoAnnuncioDetailIntestazioneRow">
-                        <div class="col-xs-4">
+                        <div class="col-xs-4 marginColumn">
                             <a class="paddingElement backToAnnuncioContent">Indietro</a>
                         </div>
                         
@@ -1212,9 +1234,9 @@
                         
                 </div>
                 
-                <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioIndirizzoDetail">
+                <div class="nuovoAnnuncioDetailContent contentOverflowY" id="nuovoAnnuncioIndirizzoDetail">
                     <div class="row nuovoAnnuncioDetailIntestazioneRow">
-                        <div class="col-xs-4">
+                        <div class="col-xs-4 marginColumn">
                             <a class="paddingElement backToAnnuncioContent">Indietro</a>
                         </div>
                         
@@ -1239,7 +1261,7 @@
                 
                 <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioMetroDetail">
                     <div class="row nuovoAnnuncioDetailIntestazioneRow">
-                        <div class="col-xs-4">
+                        <div class="col-xs-4 marginColumn">
                             <a class="paddingElement backToAnnuncioContent">Indietro</a>
                         </div>
                         
@@ -1273,7 +1295,7 @@
                 
                 <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioTramDetail">
                     <div class="row nuovoAnnuncioDetailIntestazioneRow">
-                        <div class="col-xs-4">
+                        <div class="col-xs-4 marginColumn">
                             <a class="paddingElement backToAnnuncioContent">Indietro</a>
                         </div>
                         
@@ -1302,7 +1324,7 @@
                 
                 <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioBusDetail">
                     <div class="row nuovoAnnuncioDetailIntestazioneRow">
-                        <div class="col-xs-4">
+                        <div class="col-xs-4 marginColumn">
                             <a class="paddingElement backToAnnuncioContent">Indietro</a>
                         </div>
                         
@@ -1331,7 +1353,7 @@
                 
                 <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioPassanteDetail">
                     <div class="row nuovoAnnuncioDetailIntestazioneRow">
-                        <div class="col-xs-4">
+                        <div class="col-xs-4 marginColumn">
                             <a class="paddingElement backToAnnuncioContent">Indietro</a>
                         </div>
                         
@@ -1361,7 +1383,7 @@
                 
                 <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioAltreFotoDetail">
                     <div class="row nuovoAnnuncioDetailIntestazioneRow">
-                        <div class="col-xs-4">
+                        <div class="col-xs-4 marginColumn">
                             <a class="paddingElement backToAnnuncioContent">Indietro</a>
                         </div>
                         
@@ -1390,26 +1412,21 @@
                         </div>
                     </div>
                 </div>
-                
+                    
             </div>
+<<<<<<< HEAD
 
             <!-- *** PAGINA PER VEDERE DETTAGLI E MODIFICARE L'ANNUNCIO *** -->
+=======
+           
+           
+            <!-- *** PAGINA PER MODIFICARE L'ANNUNCIO *** -->
+>>>>>>> origin/master
             <div class="contentPageDiv contentOverflowY NOcontentOverflowX" id="affittaContent_dettaglioAnnuncio">   
                 
-                <div id="modificaAnnuncioContent">
-                    <div class="row nuovoAnnuncioDetailIntestazioneRow">
-                        <div class="col-xs-4">
-                            <a href="#modificaAnnuncio-mmenu" class="paddingElement" id="backToAnnuncioHome">Indietro</a>
-                        </div>
-                        
-                        <div class="col-xs-8 nuovoAnnuncioTestoIntestazione">
-                            <h4 class="annuncioTextTitle"> Modifica Annuncio </h4>
-                        </div>
-                    </div>     
-                    
-                    <br>
-                    
-                    <div class="row modificaAnnuncioBox" id="modifica_titoloBox">
+                <div id="modificaAnnuncioContent">   
+                   
+                    <div class="row modificaAnnuncioBox" id="modifica_titoloBox" style="margin-top:2em;">
 
                     <div class="col-xs-1 nuovoAnnuncioIconsBox">
                         <span class="glyphicon glyphicon-check" id="modifica_titoloCheckedIcon" aria-hidden="true"></span>
@@ -1837,9 +1854,7 @@
                     <br>
                 
             </div>
-                
-                
-                
+                                
                 <div class="modificaAnnuncioDetailContent" id="modificaAnnuncioTitoloDetail">
                     <div class="row nuovoAnnuncioDetailIntestazioneRow">
                         <div class="col-xs-4">
@@ -2021,14 +2036,14 @@
                         <div class="col-xs-10 col-xs-offset-1">
                             
                             <fieldset data-role="controlgroup" data-mini="true" id="modifica_tipologiaInput">
-    	                       <input type="radio" name="radio-mini" id="modifica_appartamentoRadio" value="Appartamento" checked="checked" />
-    	                       <label for="appartamentoRadio">Appartamento</label>
+    	                       <input type="radio" name="modifica_tipologia" id="modifica_appartamentoRadio" value="Appartamento" checked="checked" />
+    	                       <label for="modifica_appartamentoRadio">Appartamento</label>
 
-	                           <input type="radio" name="radio-mini" id="modifica_stanzaSingolaRadio" value="Stanza Singola"/>
-                                <label for="stanzaSingolaRadio">Stanza Singola</label>
+	                           <input type="radio" name="modifica_tipologia" id="modifica_stanzaSingolaRadio" value="Stanza Singola"/>
+                                <label for="modifica_stanzaSingolaRadio">Stanza Singola</label>
 
-                                <input type="radio" name="radio-mini" id="modifica_stanzaCondivisaRadio" value="Stanza Condivisa"/>
-                                <label for="stanzaCondivisaRadio">Stanza Condivisa</label>
+                                <input type="radio" name="modifica_tipologia" id="modifica_stanzaCondivisaRadio" value="Stanza Condivisa"/>
+                                <label for="modifica_stanzaCondivisaRadio">Stanza Condivisa</label>
 </fieldset>
                         
                         </div>
@@ -2124,36 +2139,37 @@
                         </div>
                     </div>
                     
+               
                     <div class="row nuovoAnnuncioDetailSecondRow">
                         <div class="col-xs-10 col-xs-offset-1">
                             
                             <fieldset data-role="controlgroup" data-mini="true" id="modifica_zonaInput">
     	                       <input type="radio" name="modifica_elencoZone" id="modifica_zonaUnoRadio" value="Zona 1" checked="checked" />
-    	                       <label for="zonaUnoRadio">Zona 1</label>
+    	                       <label for="modifica_zonaUnoRadio">Zona 1</label>
 
                                <input type="radio" name="modifica_elencoZone" id="modifica_zonaDueRadio" value="Zona 2"/>
-    	                       <label for="zonaDueRadio">Zona 2</label>
+    	                       <label for="modifica_zonaDueRadio">Zona 2</label>
 	                           
                                 <input type="radio" name="modifica_elencoZone" id="modifica_zonaTreRadio" value="Zona 3"/>
-    	                       <label for="zonaTreRadio">Zona 3</label>
+    	                       <label for="modifica_zonaTreRadio">Zona 3</label>
                                 
                                <input type="radio" name="modifica_elencoZone" id="modifica_zonaQuattroRadio" value="Zona 4"/>
-    	                       <label for="zonaQuattroRadio">Zona 4</label>
+    	                       <label for="modifica_zonaQuattroRadio">Zona 4</label>
 	                           
                                 <input type="radio" name="modifica_elencoZone" id="modifica_zonaCinqueRadio" value="Zona 5"/>
-    	                       <label for="zonaCinqueRadio">Zona 5</label> 
+    	                       <label for="modifica_zonaCinqueRadio">Zona 5</label> 
                                 
                                 <input type="radio" name="modifica_elencoZone" id="modifica_zonaSeiRadio" value="Zona 6"/>
-    	                       <label for="zonaSeiRadio">Zona 6</label>
+    	                       <label for="modifica_zonaSeiRadio">Zona 6</label>
                                 
                                 <input type="radio" name="modifica_elencoZone" id="modifica_zonaSetteRadio" value="Zona 7"/>
-    	                       <label for="zonaSetteRadio">Zona 7</label>
+    	                       <label for="modifica_zonaSetteRadio">Zona 7</label>
                                 
                                 <input type="radio" name="modifica_elencoZone" id="modifica_zonaOttoRadio" value="Zona 8"/>
-    	                       <label for="zonaOttoRadio">Zona 8</label>
+    	                       <label for="modifica_zonaOttoRadio">Zona 8</label>
                                 
                                 <input type="radio" name="modifica_elencoZone" id="modifica_zonaNoveRadio" value="Zona 9"/>
-    	                       <label for="zonaNoveRadio">Zona 9</label>
+    	                       <label for="modifica_zonaNoveRadio">Zona 9</label>
                             </fieldset>
                         
                         </div>
@@ -2188,7 +2204,7 @@
                         
                 </div>
                 
-                <!--<div class="modificaAnnuncioDetailContent" id="modificaAnnuncioMetroDetail"> 
+                <div class="modificaAnnuncioDetailContent" id="modificaAnnuncioMetroDetail"> 
                     <div class="row nuovoAnnuncioDetailIntestazioneRow">
                         <div class="col-xs-4">
                             <a class="paddingElement modifica_backToAnnuncioContent">Indietro</a>
@@ -2207,15 +2223,15 @@
                     
                     <div class="row nuovoAnnuncioDetailSecondRow">
                         <div class="col-xs-10 col-xs-offset-1">
-                            <fieldset data-role="controlgroup" data-mini="true">
-                                  <label for="metroM1">M1 - Linea Rossa</label>
-                                  <input type="checkbox" name="elencoMetro" id="modifica_metroM1" value="M1">
-                                  <label for="metroM2">M2 - Linea Verde</label>
-                                  <input type="checkbox" name="elencoMetro" id="modifica_metroM2" value="M2">
-                                  <label for="metroM3">M3 - Linea Gialla</label>
-                                  <input type="checkbox" name="elencoMetro" id="modifica_metroM3" value="M3">	
-                                  <label for="metroM5">M5 - Linea Lilla</label>
-                                  <input type="checkbox" name="elencoMetro" id="modifica_metroM5" value="M5">	
+                            <fieldset data-role="controlgroup" data-mini="true" id="modifica_metroInput">
+                                  <label for="modifica_metroM1">M1 - Linea Rossa</label>
+                                  <input type="checkbox" name="modifica_elencoMetro" id="modifica_metroM1" value="M1">
+                                  <label for="modifica_metroM2">M2 - Linea Verde</label>
+                                  <input type="checkbox" name="modifica_elencoMetro" id="modifica_metroM2" value="M2">
+                                  <label for="modifica_metroM3">M3 - Linea Gialla</label>
+                                  <input type="checkbox" name="modifica_elencoMetro" id="modifica_metroM3" value="M3">	
+                                  <label for="modifica_metroM5">M5 - Linea Lilla</label>
+                                  <input type="checkbox" name="modifica_elencoMetro" id="modifica_metroM5" value="M5">	
                             </fieldset> 
                         </div>
                     </div>   
@@ -2241,9 +2257,9 @@
                     
                     <div class="row nuovoAnnuncioDetailSecondRow">
                         <div class="col-xs-10 col-xs-offset-1">
-                            <fieldset data-role="controlgroup" data-mini="true">
-                                  <label for="linea1"> 1</label>
-                                  <input type="checkbox" name="elencoTram" id="linea1" value="1">
+                            <fieldset data-role="controlgroup" data-mini="true" id="modifica_tramInput">
+                                  <label for="modifica_linea1"> 1</label>
+                                  <input type="checkbox" name="modifica_elencoTram" id="modifica_linea1" value="1">
                                   
                             </fieldset> 
                         </div>
@@ -2270,9 +2286,9 @@
                     
                     <div class="row nuovoAnnuncioDetailSecondRow">
                         <div class="col-xs-10 col-xs-offset-1">
-                            <fieldset data-role="controlgroup" data-mini="true">
-                                  <label for="linea424"> 424</label>
-                                  <input type="checkbox" name="elencoBus" id="linea424" value="424">
+                            <fieldset data-role="controlgroup" data-mini="true" id="modifica_BusInput">
+                                  <label for="modifica_linea424"> 424</label>
+                                  <input type="checkbox" name="modifica_elencoBus" id="modifica_linea424" value="424">
                                   
                             </fieldset> 
                         </div>
@@ -2299,16 +2315,16 @@
                     
                     <div class="row nuovoAnnuncioDetailSecondRow">
                         <div class="col-xs-10 col-xs-offset-1">
-                            <fieldset data-role="controlgroup" data-mini="true">
-                                <label for="lineaS1"> S1</label>
-                                <input type="checkbox" name="elencoPassante" id="lineaS1" value="S1">
+                            <fieldset data-role="controlgroup" data-mini="true" id="modifica_passanteInput">
+                                <label for="modifica_lineaS1"> S1</label>
+                                <input type="checkbox" name="modifica_elencoPassante" id="modifica_lineaS1" value="S1">
                                 
                                   
                             </fieldset> 
                         </div>
                     </div>   
                         
-                </div>-->
+                </div>
                 
                 <div class="modificaAnnuncioDetailContent" id="modificaAnnuncioAltreFotoDetail">
                     <div class="row nuovoAnnuncioDetailIntestazioneRow">
@@ -2344,338 +2360,184 @@
                 
             </div>
            
+<<<<<<< HEAD
+=======
+           
+           
+>>>>>>> origin/master
             <div class="contentPageDiv contentOverflowY" id="preferitiContent">
-                <div id="myMap" style="height:9em; width:100%"></div>
+                <div id="preferitiMap"></div>
+                
                 <br> 
+                
                 <div id="accordionPreferiti">
-                    <h2 class="accordionTitle"> Appartamento restaurato zona navigli </h2>
-                    <div class="accordionContent container-fluid divChild">
-                        <div class="row">    
-                            <div class="col-xs-6"> 
-                                <h5>
-                                STANZA SINGOLA
-                                </h5>
-                                
-                                <h5 class="informazioniAnnuncio">
-                                ZONA 5
-                                </h5>
-                                
-                                <h6 class="informazioniAnnuncio">
-                                    55mq
-                                </h6>
-                                <h6 class="informazioniAnnuncio">
-                                    Posti letto: 2
-                                </h6>
-                                <h6 class="informazioniAnnuncio">
-                                    Piano: 2
-                                </h6>
-                            </div>
-                            <div class="col-xs-6">    
-                                <h3>
-                                    500€/mese
-                                </h3>
-                               
+                    <h2  class="accordionTitle"> 123456 8901 34567 90 234 678 0 2345 7890 </h2>
+                    <div class="accordionContent divChild">
+                           
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h5 class="preferitiTextInfo"> Stanza Condivisa - Posti letto stanza: 2</h5>
                             </div>
                         </div>
                         
-                        <div class="row" id="listaTrasportiDiv">
-                            <div class="col-xs-7" id="trasportiLeftColumn">
-                                <div class="row mezziDiv">
-                                    <img src="img/bus.png" class="iconImage"/>
-                                    <p class="listaTrasportiText"> 90, 145, 375 </p>
-                        
-                                </div>
-                        
-                                <div class="row mezziDiv">
-                            <img src="img/tram.png" class="iconImage"/>
-                            <p class="listaTrasportiText"> 14, 76, 91 </p>
-                        
-                                </div>
+                        <div class="row" id="preferitiInfoSecondRow">
+                            <div class="col-xs-12">
+                                <h5 class="preferitiTextInfo"> Zona Navigli</h5>
                             </div>
-                        
-                            <div class="col-xs-5" id="trasportiRightColumn">
-                                <div class="row mezziDiv" >
-                            <img src="img/metro.png" class="iconImage"/>
-                            <p class="listaTrasportiText"> M1, M2, M3 </p>
-                        
+                        </div>
+                          
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h5 class="preferitiTextInfo preferitiViaText"> Via Archimede Morleo 15/C1</h5>
+                            </div>
                         </div>
                         
-                        <div class="row mezziDiv">
-                            <img src="img/treno.png" class="iconImage"/>
-                            <p class="listaTrasportiText"> S1,S2,S3 </p>
-                        
-                        </div>
+                        <div class="row" id="preferitiInfoFourthRows">
+                            <div class="col-xs-12">
+                                <h5 class="preferitiTextInfo preferitiPezzoText"> 347€</h5>
                             </div>
-                            
                         </div>
                     
-                        <div class="row preferitoDescriptionDiv">
-                            <div class="col-xs-12">
-                                <h6 class="preferitoDescriptionText"><i>Appartamento di mq. 120  posto al piano secondo, composto da ampio salone con camino, cucina abitabile,  doppi servizi, due  camere da letto, balcone, cantina e posto auto
-                                    </i>
-                                </h6>
-                            </div>
-                        </div>
-                        <div class="row photoswipe">
-                            <img class="img-responsive previewImage foto"/>
-                            <img class="img-responsive previewImage foto" />
-                            <img class="img-responsive previewImage foto"/>
-                            <img class="img-responsive previewImage foto"/>
-                            <img class="img-responsive previewImage foto"/>
-                            <img class="img-responsive previewImage foto"/>
-                        </div>
-                        
-                        <div class="row preferitoBottomButtonDiv">
-                            <div class="col-xs-3">
-                                <a class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-mini rimuoviPreferito">rimuovi</a>
+                        <div class="row" id="preferitiInfoFifthRows">
+                            <div class="col-xs-6">
+                                <a href="#">Vedi dettaglio </a>
                             </div>
                             
-                            <div class="col-xs-3 col-xs-offset-4">
-                                <a class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-mini contattaPreferito" onclick="provaClick()">contatta</a>
+                            <div class="col-xs-2 col-xs-offset-3">
+                                <span class="glyphicon glyphicon-trash eliminaPreferitoIcon" aria-hidden="true"></span>
                             </div>
+                        
                         </div>
+                            
+           
                     </div>
                     
-                    <h2  class="accordionTitle"> Monolocale per 15 persone </h2>
-                    <div class="accordionContent container-fluid divChild">
-                        <div class="row">    
-                            <div class="col-xs-6"> 
-                                <h5>
-                                STANZA SINGOLA
-                                </h5>
-                                
-                                <h5 class="informazioniAnnuncio">
-                                ZONA 5
-                                </h5>
-                                
-                                <h6 class="informazioniAnnuncio">
-                                    55mq
-                                </h6>
-                                <h6 class="informazioniAnnuncio">
-                                    Posti letto: 2
-                                </h6>
-                                <h6 class="informazioniAnnuncio">
-                                    Piano: 2
-                                </h6>
-                            </div>
-                            <div class="col-xs-6">    
-                                <h3>
-                                    500€/mese
-                                </h3>
-                               
-                            </div>
-                        </div>
-                        <div class="row mezziDiv">
-                            <img src="img/bus.png" style="display:inline-block; height:25px; width:25px; line-height:0.5em;"/>
-                            <p style="display:inline-block; max-width:100%; background-color:yellowgreen; font-size:0.7em;">Bus 90, 145, 375 </p>
-                        
-                        </div>
-                        
-                        <div class="row mezziDiv">
-                            <img src="img/tram.png" style="display:inline-block; height:25px; width:25px; line-height:0.5em;"/>
-                            <p style="display:inline-block; max-width:100%; background-color:yellowgreen; font-size:0.7em;">Tram 14, 76, 91 </p>
-                        
-                        </div>
-                        
-                        <div class="row mezziDiv">
-                            <img src="img/metro.png" style="display:inline-block; height:25px; width:25px; line-height:0.5em;"/>
-                            <p style="display:inline-block; max-width:100%; background-color:yellowgreen; font-size:0.7em;"> Metro M1 </p>
-                        
-                        </div>
-                        
-                        <div class="row mezziDiv">
-                            <img src="img/treno.png" style="display:inline-block; height:25px; width:25px; line-height:0.5em;"/>
-                            <p style="display:inline-block; max-width:100%; background-color:yellowgreen; font-size:0.7em;">Passante S1,S2,S3 </p>
-                        
-                        </div>
-                        
-                        <div class="row preferitoDescriptionDiv">
+                    <h2  class="accordionTitle"> 123456 8901 34567 90 234 678 0 2345 7890 </h2>
+                    <div class="accordionContent divChild">
+                           
+                        <div class="row">
                             <div class="col-xs-12">
-                                <h6 class="preferitoDescriptionText"><i>Appartamento di mq. 120  posto al piano secondo, composto da ampio salone con camino, cucina abitabile,  doppi servizi, due  camere da letto, balcone, cantina e posto auto
-                                    </i>
-                                </h6>
+                                <h5 class="preferitiTextInfo"> Stanza Condivisa - Posti letto stanza: 2</h5>
                             </div>
                         </div>
-                        <div class="row photoswipe">
-                            <img class="img-responsive previewImage foto"/>
-                            <img class="img-responsive previewImage foto" />
-                            <img class="img-responsive previewImage foto"/>
-                            <img class="img-responsive previewImage foto"/>
-                            <img class="img-responsive previewImage foto"/>
-                            <img class="img-responsive previewImage foto"/>
+                        
+                        <div class="row" id="preferitiInfoSecondRow">
+                            <div class="col-xs-12">
+                                <h5 class="preferitiTextInfo"> Zona Navigli</h5>
+                            </div>
+                        </div>
+                          
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h5 class="preferitiTextInfo"> Via Archimede Morleo 15/C1</h5>
+                            </div>
                         </div>
                         
-                        <div class="row preferitoBottomButtonDiv">
-                            <div class="col-xs-3">
-                                <a class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-mini rimuoviPreferito">rimuovi</a>
+                        <div class="row" id="preferitiInfoFourthRows">
+                            <div class="col-xs-12">
+                                <h5 class="preferitiTextInfo preferitiPezzoText"> 347€</h5>
+                            </div>
+                        </div>
+                    
+                        <div class="row" id="preferitiInfoFifthRows">
+                            <div class="col-xs-6">
+                                <a href="#">Vedi dettaglio </a>
                             </div>
                             
-                            <div class="col-xs-3 col-xs-offset-4">
-                                <a class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-mini contattaPreferito" onclick="provaClick()">contatta</a>
+                            <div class="col-xs-2 col-xs-offset-3">
+                                <span class="glyphicon glyphicon-trash eliminaPreferitoIcon" aria-hidden="true"></span>
                             </div>
+                        
                         </div>
+                            
+           
                     </div>
-                    <!--<div class="preferitiDivParent">
-                        <div class="firstDiv">
-                            <p class="text">Appartamento restaurato zona navigli</p>
-                        </div>
-                        <div class="secondDiv"> 
-                            Elimina 
-                        </div>
-                    </div>
-                    <div class="accordionContent container-fluid divChild">
-                        <div class="row">    
-                            <div class="col-xs-6"> 
-                                <h5>
-                                STANZA SINGOLA
-                                </h5>
-                                <h6>
-                                    55mq
-                                </h6>
-                                <h6>
-                                    Posti letto: 2
-                                </h6>
-                                <h6>
-                                    Piano: 2
-                                </h6>
-                            </div>
-                            <div class="col-xs-6">    
-                                <h3>
-                                    500€/mese
-                                </h3>
-
-                                <div>
-                                    MAPS
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row" >
+                    
+                    <h2  class="accordionTitle"> 123456 8901 34567 90 234 678 0 2345 7890 </h2>
+                    <div class="accordionContent divChild">
+                           
+                        <div class="row">
                             <div class="col-xs-12">
-                                <h6> <i>Appartamento di mq. 120  posto al piano secondo, composto da ampio salone con camino, cucina abitabile,  doppi servizi, due  camere da letto, balcone, cantina e posto auto </i>
-                                </h6>
+                                <h5 class="preferitiTextInfo"> Stanza Condivisa - Posti letto stanza: 2</h5>
                             </div>
                         </div>
-                        <div class="row photoswipe">
-                            <img class="img-responsive previewImage foto"/>
-                            <img class="img-responsive previewImage foto" />
-                            <img class="img-responsive previewImage foto"/>
-                            <img class="img-responsive previewImage foto"/>
-                            <img class="img-responsive previewImage foto"/>
-                            <img class="img-responsive previewImage foto"/>
+                        
+                        <div class="row" id="preferitiInfoSecondRow">
+                            <div class="col-xs-12">
+                                <h5 class="preferitiTextInfo"> Zona Navigli</h5>
+                            </div>
                         </div>
-                        <div class="row" style="margin-top:1em;">
-                            <div class="col-xs-3">
-                                <a class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-mini">rimuovi</a>
+                          
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h5 class="preferitiTextInfo"> Via Archimede Morleo 15/C1</h5>
+                            </div>
+                        </div>
+                        
+                        <div class="row" id="preferitiInfoFourthRows">
+                            <div class="col-xs-12">
+                                <h5 class="preferitiTextInfo preferitiPezzoText"> 347€</h5>
+                            </div>
+                        </div>
+                    
+                        <div class="row" id="preferitiInfoFifthRows">
+                            <div class="col-xs-6">
+                                <a href="#">Vedi dettaglio </a>
                             </div>
                             
-                            <div class="col-xs-3 col-xs-offset-5">
-                                <a class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-mini">contatta</a>
+                            <div class="col-xs-2 col-xs-offset-3">
+                                <span class="glyphicon glyphicon-trash eliminaPreferitoIcon" aria-hidden="true"></span>
                             </div>
+                        
                         </div>
+                            
+           
                     </div>
-                
-                    <div class="preferitiDivParent">
-                        <div class="firstDiv">
-                            <p class="text">Appartamento restaurato zona navigli</p>
-                        </div>
-                        <div class="secondDiv"> 
-                            Elimina 
-                        </div>
-                    </div>
-                    <div class="accordionContent container-fluid divChild">
-                        <div class="row">    
-                            <div class="col-xs-6"> 
-                                <h5>
-                                STANZA SINGOLA
-                                </h5>
-                                <h6>
-                                    55mq
-                                </h6>
-                                <h6>
-                                    Posti letto: 2
-                                </h6>
-                                <h6>
-                                    Piano: 2
-                                </h6>
-                            </div>
-                            <div class="col-xs-6">    
-                                <h3>
-                                    500€/mese
-                                </h3>
-
-                                <div>
-                                    MAPS
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row" >
+                    
+                    <h2  class="accordionTitle"> 123456 8901 34567 90 234 678 0 2345 7890 </h2>
+                    <div class="accordionContent divChild">
+                           
+                        <div class="row">
                             <div class="col-xs-12">
-                                <h6>Appartamento di mq. 120  posto al piano secondo, composto da ampio salone con camino, cucina abitabile,  doppi servizi, due  camere da letto, balcone, cantina e posto auto
-                                </h6>
+                                <h5 class="preferitiTextInfo"> Stanza Condivisa - Posti letto stanza: 2</h5>
                             </div>
                         </div>
-                        <div class="row photoswipe">
-                            <img class="img-responsive previewImage foto"/>
-                            <img class="img-responsive previewImage foto" />
-                            <img class="img-responsive previewImage foto"/>
-                            <img class="img-responsive previewImage foto"/>
-                            <img class="img-responsive previewImage foto"/>
-                            <img class="img-responsive previewImage foto"/>
-                        </div>
-                    </div>
-                
-                    <div class="preferitiDivParent">
-                        <div class="firstDiv">
-                            <p class="text">Appartamento restaurato zona navigli</p>
-                        </div>
-                        <div class="secondDiv"> 
-                            Elimina 
-                        </div>
-                    </div>
-                    <div class="accordionContent container-fluid divChild">
-                        <div class="row">    
-                            <div class="col-xs-6"> 
-                                <h5>
-                                STANZA SINGOLA
-                                </h5>
-                                <h6>
-                                    55mq
-                                </h6>
-                                <h6>
-                                    Posti letto: 2
-                                </h6>
-                                <h6>
-                                    Piano: 2
-                                </h6>
-                            </div>
-                            <div class="col-xs-6">    
-                                <h3>
-                                    500€/mese
-                                </h3>
-
-                                <div>
-                                    MAPS
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row" >
+                        
+                        <div class="row" id="preferitiInfoSecondRow">
                             <div class="col-xs-12">
-                                <h6>Appartamento di mq. 120  posto al piano secondo, composto da ampio salone con camino, cucina abitabile,  doppi servizi, due  camere da letto, balcone, cantina e posto auto
-                                </h6>
+                                <h5 class="preferitiTextInfo"> Zona Navigli</h5>
                             </div>
                         </div>
-                        <div class="row photoswipe">
-                            <img class="img-responsive previewImage foto"/>
-                            <img class="img-responsive previewImage foto" />
-                            <img class="img-responsive previewImage foto"/>
-                            <img class="img-responsive previewImage foto"/>
-                            <img class="img-responsive previewImage foto"/>
-                            <img class="img-responsive previewImage foto"/>
+                          
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h5 class="preferitiTextInfo"> Via Archimede Morleo 15/C1</h5>
+                            </div>
                         </div>
-                    </div>-->
+                        
+                        <div class="row" id="preferitiInfoFourthRows">
+                            <div class="col-xs-12">
+                                <h5 class="preferitiTextInfo preferitiPezzoText"> 347€</h5>
+                            </div>
+                        </div>
+                    
+                        <div class="row" id="preferitiInfoFifthRows">
+                            <div class="col-xs-6">
+                                <a href="#">Vedi dettaglio </a>
+                            </div>
+                            
+                            <div class="col-xs-2 col-xs-offset-3">
+                                <span class="glyphicon glyphicon-trash eliminaPreferitoIcon" aria-hidden="true"></span>
+                            </div>
+                        
+                        </div>
+                            
+           
+                    </div>
+                    
                     
                 </div>
-                <div style="height:5em; background-color:transparent; user-select: none;"></div>
+                <div id="emptyFinalDiv"></div>
             </div>
 
             <div class="contentPageDiv contentOverflowY" id="messaggiContent">
@@ -2909,10 +2771,9 @@
             </div>
                        
             <div class="contentPageDiv contentOverflowY" id="modificaDatiPersonaliContent"> 
-                
-                <div class="row datiTextTitle">
+                <div class="row datiTextTitle" style="margin-top:1em;">
                     <div class="col-xs-12">
-                        <h4 class="annuncioTextTitle">Dati Personali</h4>
+                        <h4 class="annuncioTextTitle">Modifica Profilo</h4>
                     </div>
                 </div>
                 
@@ -3097,20 +2958,17 @@
            
             <div class="contentPageDiv contentOverflowY" id="pageDettaglioContent">
                 
-                <div class="row" style="margin-top:0.6em; margin-left:0.3em;">
-                    <div class="col-xs-5">
-                        <a href="#" class="pull-left">Indietro</a>
-                    </div>
+                <div id="dettaglioMap" style="height:8em; width:100%;"></div>
                 
-                </div>
-                
-                <div class="row" style="margin-top:0.8em; text-align:center;">
-                    <div class="col-xs-12">
-                        <h5 class="annuncioTextTitle"> Monolocale appena ristrutturato </h5>
+                <div class="row pageDettaglioTitleRow">
+                    <div class="col-xs-12" id="pageDettaglioTitleColumn">
+                    
+                        <h5 class="annuncioTextTitle"> 1234567890 12345 7890 1234 67890 234567 90 
+                        </h5>
                     </div>
                 </div> 
                 
-                <div class="row">
+                <div class="row pageDettaglioTitleRow">
                     <div class="col-xs-12 dettaglioStarColumn">
                         <span class="glyphicon glyphicon-star starElement" aria-hidden="true"></span>  
                         <span class="glyphicon glyphicon-star starElement" aria-hidden="true"></span>  
@@ -3118,24 +2976,21 @@
                     </div>
                 </div>
                 
-                <div class="row pageDettaglioBox" style="padding:0.4em; margin-top:0.2em; margin-left:0.3em;">
+                <div class="row pageDettaglioBox" id="pageDettaglioZonaRow">
                     <div class="row">
                         <div class="col-xs-12">
-                           <h6> <span id="dettaglioZonaText">Zona 5 - </span> Via Vittorio veneto 24/B1 </h6>
+                           <h6> <span id="dettaglioZonaText">Zona Navigli - </span>  </h6>
                         </div>
                     </div>
                     
-                    <div class="row" style="margin-top:0.5em;">
+                    <div class="row pageDettaglioTitleRow">
                         <div class="col-xs-12">
-                            <a href="#">
-                                <h6> Mostra sulla mappa</h6> 
-                            </a>
+                            <h6> Via Vittorio veneto 24/B1</h6> 
                         </div>
                     </div>
                 </div>
                 
-
-                <div class="row photoswipe" style="margin-left:0.3em; margin-right: 0.5em;">
+                <div class="row photoswipe" id="pageDettaglioPhotoswipeRow">
                     <img class="img-responsive previewImage foto"/>
                     <img class="img-responsive previewImage foto" />
                     <img class="img-responsive previewImage foto"/>
@@ -3143,101 +2998,146 @@
                     <img class="img-responsive previewImage foto"/>
                     <img class="img-responsive previewImage foto"/>
                 </div>
+                
+                <br>
+                
+                <div class="row pageDettaglioInfoRow marginFirstRow">
+                    <div class="col-xs-3">
+                        <h5 class="pageDettaglioTextLineHeight"> <b> Locali: </b></h5>
+                    </div>
                     
-                <div class="row" style="padding:0.4em; margin-top:0.7em; margin-left:0.3em;">
+                    <div class="col-xs-3 col-xs-offset-4">
+                        <h6 class="pageDettaglioTextLineHeight"> 4 </h6>
+                    </div>
+                    
+                    
+                </div>
+                
+                <div class="row pageDettaglioInfoRow" >
+                    <div class="col-xs-3">
+                        <h5 class="pageDettaglioTextLineHeight"> <b> Superficie: </b></h5>
+                    </div>
+                    
+                    <div class="col-xs-3 col-xs-offset-4">
+                        <h6 class="pageDettaglioTextLineHeight"> 55 mq </h6>
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="row pageDettaglioInfoRow">
+                    <div class="col-xs-3">
+                        <h5 class="pageDettaglioTextLineHeight"> <b> Piano: </b></h5>
+                    </div>
+                    
+                    <div class="col-xs-3 col-xs-offset-4">
+                        <h6 class="pageDettaglioTextLineHeight"> 2 </h6>
+                    </div>
+                    
+                </div>
+                   
+                <div class="row pageDettaglioInfoRow">
+                    <div class="col-xs-3">
+                        <h5 class="pageDettaglioTextLineHeight"> <b> Tipo: </b></h5>
+                    </div>
+                    
+                    <div class="col-xs-5 col-xs-offset-3">
+                        <h6 class="pageDettaglioTextLineHeight"> Stanza Condivisa </h6>
+                    </div>
+                    
+                </div>
+                   
+                 <div class="row pageDettaglioInfoRow">
+                    <div class="col-xs-7">
+                        <h5 class="pageDettaglioTextLineHeight"> <b> Posti Letto Stanza: </b></h5>
+                    </div>
                     
                     <div class="col-xs-3">
-                        <h6> <b> Locali: </b> 4 </h6>
+                        <h6 class="pageDettaglioTextLineHeight"> 3 </h6>
                     </div>
                     
-                    <div class="col-xs-6">
-                        <h6> <b> Superficie: </b> 55mq </h6>
+                </div>
+                
+                
+                <div class="row pageDettaglioInfoRow">
+                    <div class="col-xs-7">
+                        <h5 class="pageDettaglioTextLineHeight"> <b> Posti Letto Totali: </b></h5>
                     </div>
                     
-                    <div class="col-xs-3" style="margin-left: -1.5em;">
-                        <h6> <b> Piano: </b> 2 </h6>
+                    <div class="col-xs-3">
+                        <h6 class="pageDettaglioTextLineHeight"> 7 </h6>
+                    </div>
+                    
+                </div>
+                
+                <div class="row pageDettaglioMezziRow marginFirstMezziRow">
+                    <div class="col-xs-2">
+                        <img src="img/bus.png" class="iconImage"/>
+                    </div>
+                    
+                    <div class="col-xs-9 col-xs-offset-1">
+                        <h6 style="line-height:2em;"> 90, 145, 375 </h6>
+                    </div>
+                    
+                </div>
+                
+                <div class="row pageDettaglioMezziRow">
+                    <div class="col-xs-2">
+                        <img src="img/metro.png" class="iconImage"/>
+                    </div>
+                    
+                    <div class="col-xs-9 col-xs-offset-1">
+                        <h6 style="line-height:2em;"> M1, M2, M3 </h6>
+                    </div>
+                    
+                </div>
+                
+                <div class="row pageDettaglioMezziRow">
+                    <div class="col-xs-2">
+                        <img src="img/treno.png" class="iconImage"/>
+                    </div>
+                    
+                    <div class="col-xs-9 col-xs-offset-1">
+                        <h6 style="line-height:2em;"> S1, S2, S9 </h6>
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="row pageDettaglioMezziRow">
+                    <div class="col-xs-2">
+                        <img src="img/tram.png" class="iconImage"/>
+                    </div>
+                    
+                    <div class="col-xs-9 col-xs-offset-1">
+                        <h6 style="line-height:2em;"> 4, 18, 45, 97 </h6>
+                    </div>
+                    
+                </div>
+                
+                <div class="row" id="pageDettaglioDEscrizioneRow">
+                    <div class="col-xs-12">
+                       <h6 id="pageDettaglioDescrizioneText">
+                            <i>
+                            1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890
+                            </i>
+                        </h6>   
+                    </div>
+                    
+                </div>
+  
+                 <div class="row pageDettaglioPrezzoRow">
+                    <div class="col-xs-8">
+                        <h5 class="pageDettaglioTextLineHeight"> <b> Prezzo </b><small>(mensile, a persona): </small></h5>
+                    </div>
+                    
+                    <div class="col-xs-2 col-xs-offset-1">
+                        <h6 class="pageDettaglioTextLineHeight"> 315€ </h6>
                     </div>
                     
                 </div>   
                 
-                <div class="row" style="padding:0.4em; margin-top:0.7em; margin-left:0.3em;">
-                    <div class="col-xs-6">
-                        <h6> <b> Tipo: </b> Stanza Condivisa </h6>
-                    </div>
-                    
-                    <div class="col-xs-6">
-                        <h6> <b> Posti Letto Stanza: </b> 4 </h6>
-                    </div>
-                </div>
                 
-                <div class="row" style="padding:0.4em; margin-top:0.7em; margin-left:0.3em; text-align.center;">
-                    <div class="col-xs-12" style="text-align:center;">
-                        <h6> <b> Posti Letto Totali: </b> 8 </h6>
-                    </div>
-                </div>
-                                
-<!--                    <h6> Stanza Condivisa - 3 Posti letto stanza - 5 Posti letto totali  </h6>-->
-                
-               
-                
-                <div class="row" style="padding:0.4em; margin-top:0.7em; margin-left:0.3em;">
-                    <div class="col-xs-11">
-                        <h6 style="line-height:1.4em;">
-                            <i>
-                            Appartamento di mq. 120  posto al piano secondo, composto da ampio salone con camino, cucina abitabile,  doppi servizi, due  camere da letto, balcone, cantina e posto auto
-                            </i>
-                        </h6>  
-                    </div>
-                </div>
-                
-                <div class="row" style="margin-left:0.3em; margin-top:0.5em;">
-                    <div class="col-xs-12" style="text-align:center;">
-                        <h5><strong>315€ </strong> </h5>
-                    </div>
-                </div>
-                <div class="row" style="height:4em; margin-left:0.3em; margin-top:0.8em;">
-                    
-                    <div class="col-xs-6">
-                        <div class="row mezziDiv">
-                            <img src="img/bus.png" class="iconImage"/>
-                            <p class="listaTrasportiText"> 90, 145, 375 </p>
-
-                        </div>
-                        
-                        <div class="row mezziDiv">
-                            <img src="img/tram.png" class="iconImage"/>
-                            <p class="listaTrasportiText"> 14, 76, 91 </p>
-
-                        </div>
-                    </div>
-
-                    <div class="col-xs-6">
-                        <div class="row mezziDiv">
-                            <img src="img/metro.png" class="iconImage"/>
-                            <p class="listaTrasportiText"> M1, M2, M3 </p>
-                        
-                        </div>
-                        
-                        <div class="row mezziDiv">
-                            <img src="img/treno.png" class="iconImage"/>
-                            <p class="listaTrasportiText"> S1,S2,S3 </p>
-                        
-                        </div>
-                    </div>
-                            
-                </div>
-                
-                
-                <div class="row" style="margin-top:1.5em;">
-                    <a href="#" id="dettaglioContattaButton" class="pull-left" style="margin-left:2em;">Contatta</a>   
-                    
-                    <a href="#" id="dettaglioPreferitiButton" class="pull-right" style="margin-right:2em;">
-                     <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>  
-                     Preferiti</a>
-                </div>
-                 
-                 
-                    
                 <div style="height:2em;"></div>
                
                

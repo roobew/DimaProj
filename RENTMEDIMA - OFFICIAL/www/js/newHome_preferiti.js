@@ -28,7 +28,7 @@ $(document).ready(function (){
         //$.fn.createPhotoSwiperGallery();
     });
     
-    $(".rimuoviPreferito").on("tap", function(){
+    $(".eliminaPreferitoIcon").click(function(){
        $(this).closest(".accordionContent").prev("h2").remove(); 
        $(this).closest(".accordionContent").remove(); 
         
