@@ -1,5 +1,4 @@
-
-var countEliminaClick=0;
+var annuncioID_toDelete, modificaCliccato=false;;
 
 $(document).ready(function (){
    
@@ -27,9 +26,6 @@ $(document).ready(function (){
         change_tabs(2, true);
     });
     
-    $("#pillTre").on("tap", function(){
-        change_tabs(3, true);
-    });
     
     $("#btnNuovoAnnuncio").on("tap", function (){
         
@@ -41,16 +37,15 @@ $(document).ready(function (){
         $("#affittaContent").fadeOut();
         $("#affittaContent_creaAnnuncio").fadeIn();
            
+        if(modificaCliccato==true){
+            premiTastoModifica();   
+        }
+        
         });
     
     $("#modificaAnnuncioHome").on("tap", function(){
-         /*
-        $(".contentPageDiv").hide();
-        $("#pageDettaglioContent").show();*/
         
-        cambiaTestoTastoModifica();
-        
-        $(".annuncioListElement").toggleClass("go");
+        premiTastoModifica(); 
         
     });    
       
@@ -79,10 +74,7 @@ $(document).ready(function (){
     $(".modificaAffittaAnnuncio").click(function(){
         console.log("MODIFICA ANNUNCIO");
         
-        modificoAnnuncio=true;
-        cambiaTestoTastoModifica();
-        
-        $(".annuncioListElement").removeClass("go");
+        premiTastoModifica();
         
         $("#homeTopRow").hide();
         $("#modificaAnnuncioTopRow").show();
@@ -92,18 +84,26 @@ $(document).ready(function (){
         $("#affittaContent").hide();
         $("#affittaContent_dettaglioAnnuncio").show();
     });
-    /*
-    $(".eliminaAffittaAnnuncio").on("tap", function(){
+    
+    $(".eliminaAffittaAnnuncio").click(function(){
         console.log("Elimina ANNUNCIO"); 
         
-        cambiaTestoTastoModifica();
+        annuncioID_toDelete=$(this).closest(".annuncioListElement").attr("id");
         
-        //$(this).closest(".annuncioListElement").css("background-color","red");
-        //$(this).parent().closest(".annuncioListElement").remove();
-        console.log("Elemento è: "+ $(this).attr("id"));
-        $(".annuncioListElement").removeClass("go");
+        console.log("ID VALE: "+annuncioID_toDelete);
     });
-    */
+    
+    $("#deleteAnnuncioMenuCancella").on("tap", function(){
+        
+        console.log("TO DELETE VALE_ "+annuncioID_toDelete);
+        
+        $("#"+annuncioID_toDelete).addClass("remove");
+        
+        setTimeout(function(){ 
+            $("#"+annuncioID_toDelete).remove();
+        }, 150);
+        
+    });
     
     
     // **** EVENTI DI NUOVO_ANNUNCIO PAGE
@@ -147,7 +147,7 @@ $(document).ready(function (){
             $("#postiLettoStanzaInput").prop("disabled",true);
         }   
     });
-     
+    
     $(".nuovoAnnuncioBox").click(function (){
             
         $("#annullaNuovoAnnuncioButton").hide();
@@ -183,6 +183,7 @@ $(document).ready(function (){
         }
         else if(boxID=="tipologiaBox"){
             myElementID="Tipologia";
+            $("#postiLettoStanzaInput").prop("disabled",true); 
             
         }
         else if(boxID=="postiLettoBox"){
@@ -368,7 +369,7 @@ $(document).ready(function (){
     // **** EVENTI DI MODIFICA_ANNUNCIO PAGE
     $("#modificaAnnuncioMenuRowAnnullaModificaButton").on("tap", function(){
         
-        modificoAnnuncio=false;
+        //modificoAnnuncio=false;
         
         $("#modificaAnnuncioTopRow").hide();
         $("#homeTopRow").show();
@@ -383,7 +384,7 @@ $(document).ready(function (){
     
     $("#modificaAnnuncioMenuRowConfermaButton").on("tap", function(){
         
-        modificoAnnuncio=false;
+        //modificoAnnuncio=false;
         
         $("#modificaAnnuncioTopRow").hide();
         $("#homeTopRow").show();
@@ -432,6 +433,7 @@ $(document).ready(function (){
         }
         else if(boxID=="modifica_tipologiaBox"){
             myElementID="Tipologia";
+            $("#modifica_postiLettoStanzaInput").prop("disabled",true);
             
         }
         else if(boxID=="modifica_postiLettoBox"){
@@ -592,6 +594,21 @@ $(document).ready(function (){
             
         }
         
+    });
+    
+    $("#modifica_tipologiaInput").change(function (){
+        
+        var yourChoice=$("#modifica_tipologiaInput :radio:checked").val();  
+    
+        console.log("La tua scelta è: "+yourChoice);
+        if(yourChoice=="Stanza Condivisa"){
+            console.log("*** ABILITO");
+            $("#modifica_postiLettoStanzaInput").prop("disabled",false);   
+        }
+        else{
+            console.log("*** DISABILITO");
+            $("#modifica_postiLettoStanzaInput").prop("disabled",true);
+        }    
     });
     
     
@@ -788,16 +805,20 @@ jQuery(document).on('click','.annuncioDelDiv', function(event) {
     });
 */
 
-
-function cambiaTestoTastoModifica(){
-     if(countEliminaClick%2==0){
-            $("#modificaAnnuncioHome").text("Fine");   
-        }
-        else{
+function premiTastoModifica(){
+ 
+    if(modificaCliccato==false){
+            modificaCliccato=true;
+            $("#modificaAnnuncioHome").text("Fine"); 
+            
+    }
+    else{
+            modificaCliccato= false;
             $("#modificaAnnuncioHome").text("Modifica");
-        }
-        countEliminaClick++;  
+    }
+    $(".annuncioListElement").toggleClass("go");
 }
+
 
 
 //Riceve in ingresso il div ".annuncioDiv" e un bool per l'animazione
@@ -851,6 +872,10 @@ function closeDeleteElement(){
 }
 
 function change_tabs(dest, affittaBool){
+    if(modificaCliccato==true){
+        premiTastoModifica();   
+    }
+    
     if(affittaBool){    
         if(dest==1){
             $("#pillDue").removeClass("myActiveClass");

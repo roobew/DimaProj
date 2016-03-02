@@ -99,6 +99,11 @@ a:link, a:hover, a:visited, a:active{
     transition: .35s ease-out;
 }
 
+.annuncioListElement.remove{
+   transform: translate(-135vw,0); 
+    transition: .15s ease-out;    
+}
+
 .annuncioParteUno{
     display:inline-block; 
     width:100vw; 
@@ -279,10 +284,11 @@ a:link, a:hover, a:visited, a:active{
     width: 64px;
 }
 
-/*********  BACK MENU - Nuovo annuncio  *********/
+/*********  MMENU - Nuovo annuncio  *********/
 #back-mmenu > div > div,
 #caricaFoto-mmenu > div > div,
 #deleteMessage-mmenu > div > div,
+#deleteAnnuncio-mmenu > div > div,
 #modificaAnnuncio-mmenu > div > div
 {
     overflow-y: hidden;
@@ -292,6 +298,7 @@ a:link, a:hover, a:visited, a:active{
 #back-mmenu,
 #caricaFoto-mmenu,
 #deleteMessage-mmenu,
+#deleteAnnuncio-mmenu,
 #modificaAnnuncio-mmenu{
     background-color:#d3d3d3;    
 }
@@ -304,7 +311,8 @@ a:link, a:hover, a:visited, a:active{
     height:10em; 
 }
 
-#deleteMessage-mmenu{
+#deleteMessage-mmenu,
+#deleteAnnuncio-mmenu{
     height:9em; 
 }
 
@@ -540,6 +548,7 @@ a:link, a:hover, a:visited, a:active{
     padding: 0;
     line-height: 1.8em;
 }
+
 
 
 

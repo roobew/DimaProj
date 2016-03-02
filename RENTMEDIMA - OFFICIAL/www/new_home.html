@@ -180,6 +180,18 @@
             </ul>
        </div>
        
+       <div id="deleteAnnuncio-mmenu">
+        <ul>
+                <li class="menuRow menuRowTitle">
+                   <h6 class="menuRowTitleText">Desideri eliminare l'annuncio?</h6>
+                </li>
+                <li class="menuRow"><a href="#" class="menuRowStrongText menuRowTextRedColor" id="deleteAnnuncioMenuCancella">Elimina</a></li>
+                <li class="menuRow menuRowAnnulla">
+                   <a href="#" class="menuRowLightText menuRowTextBluColor" id="deleteAnnuncioMenuAnnulla">Annulla</a>
+                </li>
+            </ul>
+       </div>
+       
        <div id="modificaAnnuncio-mmenu">
             <ul>
                 <li class="menuRow menuRowTitle" id="modificaAnnuncioMenuTitle">
@@ -287,6 +299,21 @@
                     </div>
                 </div>
             </div>
+           
+            <div id="datiPersonaliModificaTopRow" class="row">
+                <div class="row nuovoAnnuncioIntestazione">
+                        <div class="col-xs-4">
+                            <a href="#" class="paddingElement" style="color:white; text-shadow: 1px 1px 1px black;">
+                                Annulla
+                            </a>
+                        </div>
+                        
+                        <div class="col-xs-4 col-xs-offset-4">
+                            <a href="#" id="confermaModificaDatiPersonali" onclick="confermaModificaDatiPersonali()" style="color:white; text-shadow: 1px 1px 1px black;"> Conferma </a>
+                        </div>
+                </div>
+                
+            </div>
        </div>
        
        <!-- CONTENUTO PAGINA  -->
@@ -379,10 +406,37 @@
                 
                 <div class="pillDivClass" id="pubblicatiDiv">
                     
-                    
-                    <div class="row annuncioListElement">
+                    <div class="row annuncioListElement" id="UNO_CAZZO">
                         <div class="annuncioParteUno">
                             <h5 class="titoloAffittaAnnuncio">123 5678 012 45678 01234 678 0123 567 90</h5>
+                            
+                        </div>
+                        <div class="annuncioParteDue">
+                            <span class="glyphicon glyphicon-pencil iconaOpzioneAnnuncio modificaAffittaAnnuncio" aria-hidden="true"></span>
+                            
+                         <a href="#deleteAnnuncio-mmenu">        
+                            <span class="glyphicon glyphicon-trash iconaOpzioneAnnuncio eliminaAffittaAnnuncio" aria-hidden="true"></span>
+                         </a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="row annuncioListElement" id="DUE_CAZZO" >
+                        <div class="annuncioParteUno">
+                            <h5 class="titoloAffittaAnnuncio">annuncio due </h5>
+                            
+                        </div>
+                        <div class="annuncioParteDue">
+                            <span class="glyphicon glyphicon-pencil iconaOpzioneAnnuncio modificaAffittaAnnuncio" aria-hidden="true"></span>
+                            
+                            <a href="#deleteAnnuncio-mmenu">
+                                <span class="glyphicon glyphicon-trash iconaOpzioneAnnuncio eliminaAffittaAnnuncio" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </div>
+                   <!-- <div class="row annuncioListElement" id="TRE_CAZZO">
+                        <div class="annuncioParteUno">
+                            <h5 class="titoloAffittaAnnuncio">annuncio 3</h5>
                             
                         </div>
                         <div class="annuncioParteDue">
@@ -391,36 +445,13 @@
                             <span class="glyphicon glyphicon-trash iconaOpzioneAnnuncio eliminaAffittaAnnuncio" aria-hidden="true"></span>
                             
                         </div>
-                    </div>
-                    <div class="row annuncioListElement">
-                        <div class="annuncioParteUno">
-                            <h5 class="titoloAffittaAnnuncio">123 5678 012 45678 01234 678 0123 567 90</h5>
-                            
-                        </div>
-                        <div class="annuncioParteDue">
-                            <span class="glyphicon glyphicon-pencil iconaOpzioneAnnuncio modificaAffittaAnnuncio" aria-hidden="true"></span>
-                            
-                            <span class="glyphicon glyphicon-trash iconaOpzioneAnnuncio eliminaAffittaAnnuncio" aria-hidden="true"></span>
-                            
-                        </div>
-                    </div>
-                    <div class="row annuncioListElement">
-                        <div class="annuncioParteUno">
-                            <h5 class="titoloAffittaAnnuncio">123 5678 012 45678 01234 678 0123 567 90</h5>
-                            
-                        </div>
-                        <div class="annuncioParteDue">
-                            <span class="glyphicon glyphicon-pencil iconaOpzioneAnnuncio modificaAffittaAnnuncio" aria-hidden="true"></span>
-                            
-                            <span class="glyphicon glyphicon-trash iconaOpzioneAnnuncio eliminaAffittaAnnuncio" aria-hidden="true"></span>
-                            
-                        </div>
-                    </div>
+                    </div>-->
                     
                     
+                    <div style="height:2em;"></div>
                 </div>
                     
-                <div style="height:2em;"></div>
+                
                        
                                      
                 <div class="pillDivClass" id="bozzeDiv">
@@ -439,6 +470,7 @@
                     
                     <div style="height:2em;"></div>
                 </div>
+                
             </div> 
                                
            
@@ -1817,9 +1849,7 @@
                     <br>
                 
             </div>
-                
-                
-                
+                                
                 <div class="modificaAnnuncioDetailContent" id="modificaAnnuncioTitoloDetail">
                     <div class="row nuovoAnnuncioDetailIntestazioneRow">
                         <div class="col-xs-4">
@@ -2001,14 +2031,14 @@
                         <div class="col-xs-10 col-xs-offset-1">
                             
                             <fieldset data-role="controlgroup" data-mini="true" id="modifica_tipologiaInput">
-    	                       <input type="radio" name="radio-mini" id="modifica_appartamentoRadio" value="Appartamento" checked="checked" />
-    	                       <label for="appartamentoRadio">Appartamento</label>
+    	                       <input type="radio" name="modifica_tipologia" id="modifica_appartamentoRadio" value="Appartamento" checked="checked" />
+    	                       <label for="modifica_appartamentoRadio">Appartamento</label>
 
-	                           <input type="radio" name="radio-mini" id="modifica_stanzaSingolaRadio" value="Stanza Singola"/>
-                                <label for="stanzaSingolaRadio">Stanza Singola</label>
+	                           <input type="radio" name="modifica_tipologia" id="modifica_stanzaSingolaRadio" value="Stanza Singola"/>
+                                <label for="modifica_stanzaSingolaRadio">Stanza Singola</label>
 
-                                <input type="radio" name="radio-mini" id="modifica_stanzaCondivisaRadio" value="Stanza Condivisa"/>
-                                <label for="stanzaCondivisaRadio">Stanza Condivisa</label>
+                                <input type="radio" name="modifica_tipologia" id="modifica_stanzaCondivisaRadio" value="Stanza Condivisa"/>
+                                <label for="modifica_stanzaCondivisaRadio">Stanza Condivisa</label>
 </fieldset>
                         
                         </div>
@@ -2104,36 +2134,37 @@
                         </div>
                     </div>
                     
+               
                     <div class="row nuovoAnnuncioDetailSecondRow">
                         <div class="col-xs-10 col-xs-offset-1">
                             
                             <fieldset data-role="controlgroup" data-mini="true" id="modifica_zonaInput">
     	                       <input type="radio" name="modifica_elencoZone" id="modifica_zonaUnoRadio" value="Zona 1" checked="checked" />
-    	                       <label for="zonaUnoRadio">Zona 1</label>
+    	                       <label for="modifica_zonaUnoRadio">Zona 1</label>
 
                                <input type="radio" name="modifica_elencoZone" id="modifica_zonaDueRadio" value="Zona 2"/>
-    	                       <label for="zonaDueRadio">Zona 2</label>
+    	                       <label for="modifica_zonaDueRadio">Zona 2</label>
 	                           
                                 <input type="radio" name="modifica_elencoZone" id="modifica_zonaTreRadio" value="Zona 3"/>
-    	                       <label for="zonaTreRadio">Zona 3</label>
+    	                       <label for="modifica_zonaTreRadio">Zona 3</label>
                                 
                                <input type="radio" name="modifica_elencoZone" id="modifica_zonaQuattroRadio" value="Zona 4"/>
-    	                       <label for="zonaQuattroRadio">Zona 4</label>
+    	                       <label for="modifica_zonaQuattroRadio">Zona 4</label>
 	                           
                                 <input type="radio" name="modifica_elencoZone" id="modifica_zonaCinqueRadio" value="Zona 5"/>
-    	                       <label for="zonaCinqueRadio">Zona 5</label> 
+    	                       <label for="modifica_zonaCinqueRadio">Zona 5</label> 
                                 
                                 <input type="radio" name="modifica_elencoZone" id="modifica_zonaSeiRadio" value="Zona 6"/>
-    	                       <label for="zonaSeiRadio">Zona 6</label>
+    	                       <label for="modifica_zonaSeiRadio">Zona 6</label>
                                 
                                 <input type="radio" name="modifica_elencoZone" id="modifica_zonaSetteRadio" value="Zona 7"/>
-    	                       <label for="zonaSetteRadio">Zona 7</label>
+    	                       <label for="modifica_zonaSetteRadio">Zona 7</label>
                                 
                                 <input type="radio" name="modifica_elencoZone" id="modifica_zonaOttoRadio" value="Zona 8"/>
-    	                       <label for="zonaOttoRadio">Zona 8</label>
+    	                       <label for="modifica_zonaOttoRadio">Zona 8</label>
                                 
                                 <input type="radio" name="modifica_elencoZone" id="modifica_zonaNoveRadio" value="Zona 9"/>
-    	                       <label for="zonaNoveRadio">Zona 9</label>
+    	                       <label for="modifica_zonaNoveRadio">Zona 9</label>
                             </fieldset>
                         
                         </div>
@@ -2168,7 +2199,7 @@
                         
                 </div>
                 
-                <!--<div class="modificaAnnuncioDetailContent" id="modificaAnnuncioMetroDetail"> 
+                <div class="modificaAnnuncioDetailContent" id="modificaAnnuncioMetroDetail"> 
                     <div class="row nuovoAnnuncioDetailIntestazioneRow">
                         <div class="col-xs-4">
                             <a class="paddingElement modifica_backToAnnuncioContent">Indietro</a>
@@ -2187,15 +2218,15 @@
                     
                     <div class="row nuovoAnnuncioDetailSecondRow">
                         <div class="col-xs-10 col-xs-offset-1">
-                            <fieldset data-role="controlgroup" data-mini="true">
-                                  <label for="metroM1">M1 - Linea Rossa</label>
-                                  <input type="checkbox" name="elencoMetro" id="modifica_metroM1" value="M1">
-                                  <label for="metroM2">M2 - Linea Verde</label>
-                                  <input type="checkbox" name="elencoMetro" id="modifica_metroM2" value="M2">
-                                  <label for="metroM3">M3 - Linea Gialla</label>
-                                  <input type="checkbox" name="elencoMetro" id="modifica_metroM3" value="M3">	
-                                  <label for="metroM5">M5 - Linea Lilla</label>
-                                  <input type="checkbox" name="elencoMetro" id="modifica_metroM5" value="M5">	
+                            <fieldset data-role="controlgroup" data-mini="true" id="modifica_metroInput">
+                                  <label for="modifica_metroM1">M1 - Linea Rossa</label>
+                                  <input type="checkbox" name="modifica_elencoMetro" id="modifica_metroM1" value="M1">
+                                  <label for="modifica_metroM2">M2 - Linea Verde</label>
+                                  <input type="checkbox" name="modifica_elencoMetro" id="modifica_metroM2" value="M2">
+                                  <label for="modifica_metroM3">M3 - Linea Gialla</label>
+                                  <input type="checkbox" name="modifica_elencoMetro" id="modifica_metroM3" value="M3">	
+                                  <label for="modifica_metroM5">M5 - Linea Lilla</label>
+                                  <input type="checkbox" name="modifica_elencoMetro" id="modifica_metroM5" value="M5">	
                             </fieldset> 
                         </div>
                     </div>   
@@ -2221,9 +2252,9 @@
                     
                     <div class="row nuovoAnnuncioDetailSecondRow">
                         <div class="col-xs-10 col-xs-offset-1">
-                            <fieldset data-role="controlgroup" data-mini="true">
-                                  <label for="linea1"> 1</label>
-                                  <input type="checkbox" name="elencoTram" id="linea1" value="1">
+                            <fieldset data-role="controlgroup" data-mini="true" id="modifica_tramInput">
+                                  <label for="modifica_linea1"> 1</label>
+                                  <input type="checkbox" name="modifica_elencoTram" id="modifica_linea1" value="1">
                                   
                             </fieldset> 
                         </div>
@@ -2250,9 +2281,9 @@
                     
                     <div class="row nuovoAnnuncioDetailSecondRow">
                         <div class="col-xs-10 col-xs-offset-1">
-                            <fieldset data-role="controlgroup" data-mini="true">
-                                  <label for="linea424"> 424</label>
-                                  <input type="checkbox" name="elencoBus" id="linea424" value="424">
+                            <fieldset data-role="controlgroup" data-mini="true" id="modifica_BusInput">
+                                  <label for="modifica_linea424"> 424</label>
+                                  <input type="checkbox" name="modifica_elencoBus" id="modifica_linea424" value="424">
                                   
                             </fieldset> 
                         </div>
@@ -2279,16 +2310,16 @@
                     
                     <div class="row nuovoAnnuncioDetailSecondRow">
                         <div class="col-xs-10 col-xs-offset-1">
-                            <fieldset data-role="controlgroup" data-mini="true">
-                                <label for="lineaS1"> S1</label>
-                                <input type="checkbox" name="elencoPassante" id="lineaS1" value="S1">
+                            <fieldset data-role="controlgroup" data-mini="true" id="modifica_passanteInput">
+                                <label for="modifica_lineaS1"> S1</label>
+                                <input type="checkbox" name="modifica_elencoPassante" id="modifica_lineaS1" value="S1">
                                 
                                   
                             </fieldset> 
                         </div>
                     </div>   
                         
-                </div>-->
+                </div>
                 
                 <div class="modificaAnnuncioDetailContent" id="modificaAnnuncioAltreFotoDetail">
                     <div class="row nuovoAnnuncioDetailIntestazioneRow">
@@ -2684,9 +2715,9 @@
            
             
             <div class="contentPageDiv contentOverflowY" id="modificaDatiPersonaliContent"> 
-                <div class="row datiTextTitle">
+                <div class="row datiTextTitle" style="margin-top:1em;">
                     <div class="col-xs-12">
-                        <h4 class="annuncioTextTitle">Dati Personali</h4>
+                        <h4 class="annuncioTextTitle">Modifica Profilo</h4>
                     </div>
                 </div>
                 

@@ -51,6 +51,17 @@ function setField(){
         
     });
     
+    $("#deleteAnnuncio-mmenu").mmenu({
+         // options
+        slidingSubmenus: false,
+        extensions: ["pagedim-black"],
+        offCanvas: {
+            position: "bottom",
+            zposition: "front"
+         }
+        
+    });
+    
     $("#modificaAnnuncio-mmenu").mmenu({
          // options
         slidingSubmenus: false,
@@ -115,6 +126,10 @@ function setField(){
         $(".contentPageDiv").hide();
         
         window.scrollTo(0,0);
+        
+        if(modificaCliccato==true){
+            premiTastoModifica();   
+        }
         
         switch(pressedId) {
             case "cercaTab":
@@ -207,8 +222,6 @@ function setField(){
         
     });
     
-    
-    
 }
 
 function nascondiBottomBar(){
@@ -262,9 +275,24 @@ function swipeDetection(){
 
 function showModificaDatiPersonali(){
     
+    nascondiBottomBar();
+    
+    $("#homeTopRow").hide();
+    $("#datiPersonaliModificaTopRow").show();
+    
     // NASCONDI TUTTI I CONTENTPAGEDIV
     $(".contentPageDiv").hide();
     $("#modificaDatiPersonaliContent").show();
+}
+
+function confermaModificaDatiPersonali(){
+     mostraBottomBar();
+
+    $("#datiPersonaliModificaTopRow").hide();
+    $("#homeTopRow").show();
+
+    $("#modificaDatiPersonaliContent").hide();
+    $("#homeContent").show();
 }
 
 /*
