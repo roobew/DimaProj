@@ -97,3 +97,34 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
 .largeText {
   font-size: 20px; /* 125% of the baseline */
 }
+
+.left{
+    text-align: left;
+}
+.center{
+    text-align: center;
+}
+.button{
+    text-align: center;
+    background-color: blue;
+    color:white;
+}
+
+.right{
+   
+    color: dimgray;
+    font-weight: 100;
+    text-align: right;
+}
+
+.input{
+    padding: 0.5em;
+    line-height: 2.5em;
+    margin-top: 0.1em ;
+    background-color: white;
+    font-size: 0.7em;
+    :border-color: black;
+    :border: solid 1px;
+    :border-radius: 0.5em;
+    
+}

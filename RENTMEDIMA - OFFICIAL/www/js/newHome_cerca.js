@@ -1,5 +1,5 @@
 
-var GoogleMap = ( function(){
+var GoogleMap = (function(){
     var mapOptions,
         map,
         accuracy = new google.maps.Marker(),
@@ -137,18 +137,53 @@ var GoogleMap = ( function(){
 $(document).ready(doStuff);
 
 function doStuff(){
-    //drawCercaMap();
+    //drawCercaMap();    
+    console.log("dostuff");
     
-    $("#cercaZonaButton").on("tap", function(){
-        $(".contentPageDiv").hide();
-        $("#risultatiRicercaContent").show(); 
-        
-        drawSearchResultMap();
-        
-       // drawCercaVicinanzeMap();
+    $("#doveButton").click(function(){
+        $("#buttons").toggle();
+        $("#cercaDove").toggle();
+        $("#homeTopRow").toggle();
+        //$("#nuovoAnnuncioTopRow").toggle();
+        $("#cercaVia").val("");
+        //$("#selectZone").val("-1");
+        //$("#selectZone").text("Select a Zone");       
     });
-       
+    $('#selectZone').on('change',function(){
+        alert('Change Happened');
+    });
+    $("#searchBtn").click(function(){
+        $("#risultatiRicercaContent").toggle();
+        $("#cercaContent").toggle();
+        
+    });
+    
 }
+
+
+
+$(document).on('submit','.validateDontSubmit',function (e) {
+    //prevent the form from doing a submit
+    e.preventDefault();
+    $("#buttons").toggle();
+    $("#cercaDove").toggle();
+    $("#homeTopRow").toggle();
+    //gestione scritte da fare
+   
+   
+    sceltaVia=$("#cercaVia").val();
+    sceltaZonaIndex=$("#selectZone").val();
+    sceltaZonaText=$("#selectZone :selected").text();
+    //alert(sceltaZonaIndex);
+    if(sceltaVia=="")
+        if(sceltaZonaIndex=="-1" )
+            $("#scelta").text("Current Position");
+        else
+            $("#scelta").text(sceltaZonaText);        
+    else
+        $("#scelta").text(sceltaVia);   
+    return false;
+});
 
 
 function drawSearchResultMap(){
