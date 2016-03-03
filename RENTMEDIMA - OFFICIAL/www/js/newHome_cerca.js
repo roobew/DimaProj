@@ -156,6 +156,14 @@ function doStuff(){
         $("#cercaDove").toggle();
         $("#homeTopRow").toggle();
         $("#searchTopRow").toggle();
+        mostraBottomBar();
+    });
+    $("#backSearchResultBtn").click(function(){
+        $("#cercaContent").toggle();
+        $("#risultatiRicercaContent").toggle();
+        $("#homeTopRow").toggle();
+        $("#risultatiRicercaTopRow").toggle();
+        mostraBottomBar();
     });
     $('#selectZone').on('change',function(){
         $(".validateDontSubmit").submit();
@@ -163,6 +171,9 @@ function doStuff(){
     $("#searchBtn").click(function(){
         $("#risultatiRicercaContent").toggle();
         $("#cercaContent").toggle();
+        $("#homeTopRow").toggle();
+        $("#risultatiRicercaTopRow").toggle();
+        nascondiBottomBar();
         
     });
     
