@@ -39,6 +39,7 @@ function setField(){
             position: "bottom",
             zposition: "front"
          }
+<<<<<<< HEAD
         
       });
     
@@ -54,6 +55,12 @@ function setField(){
     });
     
     $("#deleteAnnuncio-mmenu").mmenu({
+=======
+        
+      });
+    
+    $("#deleteMessage-mmenu").mmenu({
+>>>>>>> origin/master
          // options
         slidingSubmenus: false,
         extensions: ["pagedim-black"],
