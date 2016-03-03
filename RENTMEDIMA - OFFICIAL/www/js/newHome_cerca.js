@@ -141,16 +141,24 @@ function doStuff(){
     console.log("dostuff");
     
     $("#doveButton").click(function(){
-        $("#buttons").toggle();
+        $("#cercaContent").toggle();
         $("#cercaDove").toggle();
         $("#homeTopRow").toggle();
-        //$("#nuovoAnnuncioTopRow").toggle();
+        $("#searchTopRow").toggle();
+        
         $("#cercaVia").val("");
-        //$("#selectZone").val("-1");
-        //$("#selectZone").text("Select a Zone");       
+        //document.getElementById("selectZone").selectedIndex = 0;
+        //$("#selectZone").text("Select a Zone");  
+        nascondiBottomBar();
+    });
+    $("#backSearchBtn").click(function(){
+        $("#cercaContent").toggle();
+        $("#cercaDove").toggle();
+        $("#homeTopRow").toggle();
+        $("#searchTopRow").toggle();
     });
     $('#selectZone').on('change',function(){
-        alert('Change Happened');
+        $(".validateDontSubmit").submit();
     });
     $("#searchBtn").click(function(){
         $("#risultatiRicercaContent").toggle();
@@ -165,9 +173,10 @@ function doStuff(){
 $(document).on('submit','.validateDontSubmit',function (e) {
     //prevent the form from doing a submit
     e.preventDefault();
-    $("#buttons").toggle();
+    $("#cercaContent").toggle();
     $("#cercaDove").toggle();
     $("#homeTopRow").toggle();
+    $("#searchTopRow").toggle();
     //gestione scritte da fare
    
    
@@ -182,6 +191,7 @@ $(document).on('submit','.validateDontSubmit',function (e) {
             $("#scelta").text(sceltaZonaText);        
     else
         $("#scelta").text(sceltaVia);   
+     mostraBottomBar();
     return false;
 });
 

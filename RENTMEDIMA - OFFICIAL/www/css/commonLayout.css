@@ -58,7 +58,7 @@ p {margin: 0;padding: 0;}
     margin-bottom: 1vh;
 }
 
-#nuovoAnnuncioTopRow, #dettaglioAnnuncioTopRow, #modificaAnnuncioTopRow, #dettaglioAnnuncioTopRow_daAffitta, #datiPersonaliModificaTopRow, #dettaglioAnnuncioTopRow_daPreferiti, #messaggiHomeTopRow{
+#nuovoAnnuncioTopRow, #dettaglioAnnuncioTopRow, #modificaAnnuncioTopRow, #dettaglioAnnuncioTopRow_daAffitta, #datiPersonaliModificaTopRow, #dettaglioAnnuncioTopRow_daPreferiti, #messaggiHomeTopRow,#searchTopRow{
     display: none;
     color: white;
     margin:0;
