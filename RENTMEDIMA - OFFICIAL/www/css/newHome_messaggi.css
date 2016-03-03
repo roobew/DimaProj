@@ -118,3 +118,47 @@
     background-color: greenyellow;
     overflow-y: scroll;
 }
+
+
+.bubble 
+{
+position: relative;
+width: 70vw;
+height: 10vh;
+margin-left: 27vw;
+padding: 4px;
+background: #FFFFFF;
+-webkit-border-radius: 16px;
+-moz-border-radius: 16px;
+border-radius: 16px;
+border: #4690E7 solid 4px;
+}
+
+.bubble:after 
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 5px 0 5px 21px;
+border-color: transparent #FFFFFF;
+display: block;
+width: 0;
+z-index: 1;
+right: -20px;
+bottom: 8px;
+}
+
+.bubble:before 
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 8px 0 8px 24px;
+border-color: transparent #4690E7;
+display: block;
+width: 0;
+z-index: 0;
+right: -26px;
+bottom: 5px;
+}
+CSS
