@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+    <script>
+       var sk = angular.module("Schedule", []);
+sk.controller("ScheduleCtrl", function($scope, $http) {
+
+    console.log("dentro");
+    
+    $http.get("http://rentme.altervista.org/serverFile/getinfo.php").
+    success(function(data, status, headers, config) {
+        console.log("OK");
+      $scope.schedule = data;
+    }).
+    error(function(data, status, headers, config) {
+      // log error
+        console.log("LOG ERROR");
+    });
+     $scope.remove = function(index) {
+                        $scope.items.splice(index, 1);
+                    }
+});
+    
+    angular.bootstrap(document.getElementById("id1"),['Schedule']);
+    </script>
+    
+    
+    <div id="id1" ng-app="Schedule" ng-controller="ScheduleCtrl">
+            <div class="schedule" ng-repeat="m in schedule">
+                <div class="panel panel-default">
+                    <div class="panel-heading"></div>
+                    <div class="panel-body">
+                      <input type="checkbox" name="elencoMetro" id="{{m.metro}}">
+                        {{m.metro}}
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+</body>
+</html>

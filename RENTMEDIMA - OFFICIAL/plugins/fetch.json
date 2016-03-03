@@ -34,5 +34,14 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "org.apache.cordova.plugins.PickerView": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/mgcrea/cordova-pickerview.git",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }
