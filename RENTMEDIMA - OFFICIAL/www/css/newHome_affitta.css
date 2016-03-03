@@ -99,7 +99,7 @@ a:link, a:hover, a:visited, a:active{
     transition: .35s ease-out;
 }
 
-.annuncioListElement.remove{
+.annuncioListElement.remove, .messageDivParent.remove{
    transform: translate(-135vw,0); 
     transition: .15s ease-out;    
 }
@@ -550,6 +550,14 @@ a:link, a:hover, a:visited, a:active{
 }
 
 
-
+.ui-radio .ui-btn.ui-radio-on:after{
+    background-image: none;
+    background-color: #0099e5;
+    width: 17px;
+    height: 17px;
+    margin-left: 0.3em;
+    border-width: 0; 
+    border-style: none;    
+}
 
 

@@ -58,7 +58,7 @@ p {margin: 0;padding: 0;}
     margin-bottom: 1vh;
 }
 
-#nuovoAnnuncioTopRow, #dettaglioAnnuncioTopRow, #modificaAnnuncioTopRow, #dettaglioAnnuncioTopRow_daAffitta, #datiPersonaliModificaTopRow{
+#nuovoAnnuncioTopRow, #dettaglioAnnuncioTopRow, #modificaAnnuncioTopRow, #dettaglioAnnuncioTopRow_daAffitta, #datiPersonaliModificaTopRow, #dettaglioAnnuncioTopRow_daPreferiti{
     display: none;
     color: white;
     margin:0;
@@ -222,3 +222,8 @@ p {margin: 0;padding: 0;}
     overflow-y: scroll;
 }
 /**** FINE ****/
+
+
+.ui-btn-icon-right:after{
+    display: none !important;   
+}
