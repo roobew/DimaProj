@@ -8,6 +8,15 @@ var firstSorting=true;
 
 var messaggioID_toDelete;
 
+var testoMessaggio, timeInvioMessaggio;
+
+var messaggioHTMLcontent;
+
+var myDivToScrollBottom;
+
+var currentDate = new Date();
+//var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+
 $(document).ready(function (){
     console.log("Nel JS di MESSAGGI");
     /*
@@ -105,21 +114,46 @@ $(document).ready(function (){
     });
     */
     
-    $(".messageDivParent").on("tap", function(){
+    $("#myFilter").focusin(function (){
+        if(elementDragged==true){
+            console.log("CHIUDO");
+            closeDraggableElement(); 
+        }   
+    });
+    
+    $(".messageFirstDiv").click(function(){
+         
+        if(elementDragged==true){
+            console.log("CHIUDO");
+            closeDraggableElement(); 
+            return;
+        }
+        
         console.log("GO TO message Detail"); 
-        
+
+        myDivToScrollBottom = document.getElementById("messageFlowDiv");
+
+        scrollToBottom();
+
         nascondiBottomBar();
-        
+
         $("#homeTopRow").hide();
         $("#messaggiHomeTopRow").show();
-        
+
         $("#messaggiContent").hide();
-        $("#messaggiDetailContent").show();
+        $("#messaggiDetailContent").show(); 
+            
+        
     });
 
     
     $("#backToMessageList").click(function(){
         mostraBottomBar();
+        
+        updatePreviewElement();
+        
+        $(".previewText").text(testoMessaggio);
+        $(".time").text(timeInvioMessaggio);
         
         $("#messaggiHomeTopRow").hide();
         $("#homeTopRow").show();
@@ -128,6 +162,14 @@ $(document).ready(function (){
         $("#messaggiContent").show();
         
     });
+    
+    $("#inviaMessaggioButton").on("tap", function(){
+        inviaMessaggio(); 
+        
+        scrollToBottom();
+        
+    });
+    
 });
 
 function closeDraggableElement(){
@@ -140,6 +182,42 @@ function closeDraggableElement(){
     //$("#accordion").accordion("enable");
 }
 
+function inviaMessaggio(){
+     testoMessaggio=$("#messageInputText").val();
+     timeInvioMessaggio=currentDate.getHours()+":"+currentDate.getMinutes();
+    
+     console.log("INVIO: "+testoMessaggio);
+     console.log("Alle ore: "+timeInvioMessaggio);
+    
+     messaggioHTMLcontent="<div class='bubbleDivContainer'><div class='bubbleRight rightMessage'><h6>"+testoMessaggio+"</h6></div></div>";
+    
+     $("#messageFlowDiv").append(messaggioHTMLcontent);
+     $("#messageInputText").val("");
+}
+
+function scrollToBottom(){
+    
+    myDivToScrollBottom.scrollTop = myDivToScrollBottom.scrollHeight;
+   
+}
+
+
+function updatePreviewElement(){
+    
+    var adesso=new Date().getTime();
+    //var diff = new Date().getTime() - currentDate.getTime();
+    var last=currentDate.getTime();
+    
+    console.log("Adesso :"+adesso);
+    console.log("LAST :"+last);
+     var diff=adesso-last;
+    
+    console.log("DIFF è: "+diff);
+    
+    var days = diff / 1000 / 60 / 60 / 24;
+    console.log("giorni_ "+days);
+    
+}
 
 $(function() {
     console.log("Let's start!");

@@ -113,52 +113,117 @@
 
 #messaggiDetailContent{
     display: block;
-    height: 100%;
-    width:100%;
-    background-color: greenyellow;
+    :height: 100%;
+    :width:100%;
+    :background-color: greenyellow;
+    :overflow-y: scroll;
+}
+
+ #messageFlowDiv{
+    height:82vh; 
+    width:100vw; 
+    padding-bottom: 1em;
+    position: relative;
+    z-index: 1;
     overflow-y: scroll;
 }
 
-
-.bubble 
-{
-position: relative;
-width: 70vw;
-height: 10vh;
-margin-left: 27vw;
-padding: 4px;
-background: #FFFFFF;
--webkit-border-radius: 16px;
--moz-border-radius: 16px;
-border-radius: 16px;
-border: #4690E7 solid 4px;
+.leftMessage{
+    float: left;
+    margin-left: 3vw;
 }
 
-.bubble:after 
-{
-content: '';
-position: absolute;
-border-style: solid;
-border-width: 5px 0 5px 21px;
-border-color: transparent #FFFFFF;
-display: block;
-width: 0;
-z-index: 1;
-right: -20px;
-bottom: 8px;
+.rightMessage{
+    float: right;
+    margin-right: 5vw;
 }
 
-.bubble:before 
-{
-content: '';
-position: absolute;
-border-style: solid;
-border-width: 8px 0 8px 24px;
-border-color: transparent #4690E7;
-display: block;
-width: 0;
-z-index: 0;
-right: -26px;
-bottom: 5px;
+
+.bubbleDivContainer{
+    display:block; 
+    width:100%; 
+    min-height:8vh;   
+    margin-top: 3vw
 }
-CSS
+
+.bubbleRight, .bubbleLeft 
+{
+    display: inline-block;
+
+    max-width: 70vw;
+    min-width: 15vw;  
+    
+    min-height: 8vh;
+    position: relative;
+    padding: 0.5em;
+    background: #FFFFFF;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    border-radius: 16px;
+    border: #4690E7 solid 4px;
+}
+
+.bubbleRight:after, .bubbleLeft:after 
+{
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 5px 0 5px 6px;
+    border-color: transparent #FFFFFF;
+    display: block;
+    width: 0;
+    z-index: 1;
+    right: -6px;
+    bottom: 8px;
+}
+
+.bubbleRight:before, .bubbleLeft:before 
+{
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 8px 0 8px 9px;
+    border-color: transparent #4690E7;
+    display: block;
+    width: 0;
+    z-index: 0;
+    right: -13px;
+    bottom: 5px;
+}
+
+.bubbleLeft:after{
+    border-width: 5px 6px 5px 0;
+    left:-6px;   
+}
+.bubbleLeft:before{
+    border-width: 8px 9px 8px 0;
+    left:-11px;   
+}
+
+
+#messageInputDiv{
+    height:8vh; 
+    width:100vw; 
+    background-color:#d7d7d8;  
+    text-align: center;
+    padding: 1vh;
+    :position: fixed;
+    :z-index: 2;
+}
+
+#messageInputText{
+    display: inline-block;
+    height: 6vh;
+    width: 70vw;
+    padding-left: 0.4em;
+    border-radius: 0.4em;   
+}
+
+#inviaMessaggioButton{
+    display: inline-block;
+    height: 4.5vh;
+    width:13vw;
+    font-size: 0.85em;
+    :background-color:red;
+    margin-left: 4vw;
+}

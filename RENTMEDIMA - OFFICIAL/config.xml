@@ -26,7 +26,7 @@
     <preference name="fullscreen" value="false" /> 
 <!--    <preference name="android-windowSoftInputMode" value="stateVisible|adjustResize" />-->
     <preference name="android-windowSoftInputMode" value="adjustResize|stateVisible" />
-    
+    <preference name="KeyboardShrinksView" value="false" />
      
 <!--
     <preference name="HideKeyboardFormAccessoryBar" value="true" />
