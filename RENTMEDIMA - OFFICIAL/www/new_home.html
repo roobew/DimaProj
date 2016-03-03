@@ -256,6 +256,38 @@
                 </div>
             </div>
            
+            <div id="searchTopRow" hidden class="row">
+                <div class="row nuovoAnnuncioIntestazione">
+                        <div class="col-xs-5">
+                            <a href="#" class="paddingElement" id="backSearchBtn" style="color:white; text-shadow: 1px 1px 1px black;">
+                                <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                        
+                        <div class="col-xs-7 nuovoAnnuncioTestoIntestazione">
+                            <h4 class="searchTextTitle"> Search </h4>
+                        </div>
+                </div>
+            </div> 
+            <div id="risultatiRicercaTopRow" hidden class="row">
+                <div class="row nuovoAnnuncioIntestazione">
+                        <div class="col-xs-5">
+                            <a href="#" class="paddingElement" id="backSearchResultBtn" style="color:white; text-shadow: 1px 1px 1px black;">
+                                <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                        
+                        <div class="col-xs-5 nuovoAnnuncioTestoIntestazione">
+                            <h4 class="searchTextTitle"> Search Result </h4>
+                        </div>
+                    <div class="col-xs-1">
+                            <a href="#" class="paddingElement" id="backSearchResultBtn" style="color:white; text-shadow: 1px 1px 1px black;">
+                                <span class="glyphicon glyphicon glyphicon-map-marker " aria-hidden="true"></span>
+                            </a>
+                        </div>
+                </div>
+            </div>
+           
             <div id="modificaAnnuncioTopRow" class="row">
                 <div class="row nuovoAnnuncioIntestazione">
                         <div class="col-xs-4">
@@ -2759,58 +2791,139 @@
            
             <!-- *** CERCA ***-->
             <div class="contentPageDiv" id="cercaContent"> 
-                <div class="" id="buttons">
-                    <div class="row input ">
-                        <a href="#" id="doveButton"> 
-                            <div class="col-xs-6 left">
-                                Dove? 
-                            </div>
-                            <div class="col-xs-6 right" id="scelta">
-                                Scegli
-                            </div>
-                       </a>
-                    </div>          
-                    <div class="row input ">
-                        <a href="#"> 
-                            <div class="col-xs-6 left">
-                                Tipo? 
-                            </div>
-                            <div class="col-xs-6 right">
-                                Indifferente
-                            </div>
-                       </a>                        
-                    </div>
-                    <div class="row input ">
-                        <a href="#"> 
-                            <div class="col-xs-6 left">
-                                Prezzo? 
-                            </div>
-                            <div class="col-xs-6 right">
-                                Indifferente
-                            </div>
-                       </a>
+                <div class="row input ">
+                    <a href="#" id="doveButton"> 
+                        <div class="col-xs-6 left">
+                            Dove? 
+                        </div>
+                        <div class="col-xs-6 right" id="scelta">
+                            Scegli
+                        </div>
+                   </a>
+                </div>          
+                <div class="row input ">
+                    <a href="#"> 
+                        <div class="col-xs-6 left">
+                            Tipo? 
+                        </div>
+                        <div class="col-xs-6 right">
+                            <select class="styled-select"
+                                    data-corners="false"
+                                    data-iconshadow="false"
+                                    data-inline="true"
+                                    data-mini="true"
+                                    data-shadow="false">
+                                <option value="Indifferente">Indifferente</option>
+                                <option value="Appartamento">Appartamento</option>
+                                <option value="Stanza privata">Stanza privata</option>
+                                <option value="Stanza condivisa">Stanza condivisa</option>
+                            
+                            </select>
+                        </div>
+                   </a>                        
+                </div>
+                <div class="row input ">
+                    <a href="#"> 
+                        <div class="col-xs-2 left">
+                            Prezzo? 
+                        </div>
+                       <div class="col-xs-1 ">
+                            DA:
+                        </div>
+                        <div class="col-xs-4 right" >                            
+                            <select class="styled-select"
+                                    data-corners="false"
+                                    data-iconshadow="false"
+                                    data-inline="true"
+                                    data-mini="true"
+                                    data-shadow="false">
+                                <option value="0">0</option>
+                                <option value="100">100</option>
+                                <option value="200">200</option>
+                                <option value="300">300</option>
+                                <option value="400">400</option>
+                                <option value="500">500</option>
+                                <option value="600">600</option>
+                                <option value="700">700</option>
+                                <option value="800">800</option>
+                                <option value="900">900</option>
+                                <option value="1000">1000</option>
+                                <option value="1100">1100</option>
+                                <option value="1200">1200</option>
+                                <option value="1300">1300</option>
+                                <option value="1400">1400</option>
+                                <option value="1500">1500</option>
+                                <option value="1600">1600</option>
+                                <option value="1700">1700</option>
+                                <option value="1800">1800</option>
+                                <option value="1900">1900</option>
+                                <option value="2000">2000</option>
+                            
+                            </select>
+                        </div>
+                        <div class="col-xs-1 left">
+                           A: 
+                        </div>
+                        <div class="col-xs-4 right" >                            
+                            <select class="styled-select"
+                                    data-corners="false"
+                                    data-iconshadow="false"
+                                    data-inline="true"
+                                    data-mini="true"
+                                    data-shadow="false">
+                                <option value="0">0</option>
+                                <option value="100">100</option>
+                                <option value="200">200</option>
+                                <option value="300">300</option>
+                                <option value="400">400</option>
+                                <option value="500">500</option>
+                                <option value="600">600</option>
+                                <option value="700">700</option>
+                                <option value="800">800</option>
+                                <option value="900">900</option>
+                                <option value="1000">1000</option>
+                                <option value="1100">1100</option>
+                                <option value="1200">1200</option>
+                                <option value="1300">1300</option>
+                                <option value="1400">1400</option>
+                                <option value="1500">1500</option>
+                                <option value="1600">1600</option>
+                                <option value="1700">1700</option>
+                                <option value="1800">1800</option>
+                                <option value="1900">1900</option>
+                                <option value="2000">2000</option>
+                            
+                            </select>
+                                </div>                        
+                   </a>
 
 </div>
-                    <div class="row input ">
-                        <a href="#" id="searchBtn">
-                            <div class="col-xs-12 button">
-                                CERCA
-                            </div>
-                        </a>
-                    </div>
+                <div class="row input ">
+                    <a href="#" id="searchBtn">
+                        <div class="col-xs-12 button">
+                            CERCA
+                        </div>
+                    </a>
+                    
                 </div>
-                <div id="cercaDove" hidden>  
+                
+               
+                <!---->
+              
+                
+            </div>
+            <div class="contentPageDiv" id="cercaDove" hidden>  
                     <form class="validateDontSubmit">
                         <fieldset>
                             <div class="row center input">
                                 <div class="col-xs-12">
-                                    <button id="curPos" type="submit">curr pos</button>
+                                    <button id="curPos" type="submit">Near You</button>
                                 </div>
                             </div>
                             <div class="row center input">
                                 <div class="col-xs-12">
-                                    <select class="form-control target" id="selectZone">
-                                        <option value="-1">Select a Zone</option>
+                                    <select class="form-control target" id="selectZone">                                        
+                                        <option value="-1" selected>Select a Zone</option>
                                         <option value="0">Zero</option>
                                         <option value="1">uno</option>
                                         <option value="2">due</option>                    
@@ -2826,75 +2939,79 @@
                         </fieldset>
                     </form>
                 </div>
+            <div class="contentPageDiv contentOverflowY" id="risultatiRicercaContent" hidden>
+                <!--<div id="risultatiRicercaMap" style="height:9em; width:100%"></div>-->
                 
-                <!-- 
-<div class="pillDivClass" id="cercaZonaDiv"> 
-                    <div class="row">
-                        <div class="col-xs-12 cercaColumn">
-                            <select class="form-control" id="cercaZonaInput">
-                                    <option value="1">Zona 1 </option>
-                                    <option value="2">Zona 2</option>
-                                    <option value="3">Zona 3</option>
-                                    <option value="4">Zona 4</option>
-                                    <option value="5">Zona 5</option>
-                                    <option value="6">Zona 6</option>
-                                    <option value="7">Zona 7</option>
-                                    <option value="8">Zona 8</option>
-                                    <option value="9">Zona 9</option>
-                                    
-                            </select>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-xs-12 cercaColumn">
-                            <a href="#" id="cercaZonaButton"> Cerca nella zona</a>
-                        </div>
-                    </div> 
+                <ul data-role="listview" data-inset="true">
                     
+                    <li class="elementListview" data-icon="false">
+                    <a class="linkListview" href="#">
+                    <img class="imageListview" src="http://www.salentosalento.it/Camere/upload/_28-Affitto_Appartamento_economico_Torre_dell_Orso__Affitto_appartamento_per_vacanze_costa_adriatica_salento_1.jpg">
+                    <h5 class="titoloListview">123456789 1234 678 0 234 67890 2345 7890</h5>
+                    <h6 class="subtitoloListview">ZONA 2 - Via Vittorio Veneto 24/B1</h6>
+                    <h6 class="subtitoloListview">Stanza Singola</h6>
+                    <h5 class="prezzoListview">350€</h5>
+                    </a>
+                  </li>
                     
-                
-                    <div style="height:2em;"></div> 
-                </div> -->
-                
-                <!--<div class="pillDivClass" id="cercaVicinanzeDiv">
+                    <li class="elementListview" data-icon="false">
+                    <a class="linkListview" href="#">
+                    <img class="imageListview" src="http://www.salentosalento.it/Camere/upload/_28-Affitto_Appartamento_economico_Torre_dell_Orso__Affitto_appartamento_per_vacanze_costa_adriatica_salento_1.jpg">
+                    <h5 class="titoloListview">123456789 1234 678 0 234 67890 2345 7890</h5>
+                    <h6 class="subtitoloListview">ZONA 2 - Via Vittorio Veneto 24/B1</h6>
+                    <h6 class="subtitoloListview">Stanza Singola</h6>
+                    <h5 class="prezzoListview">350€</h5>
+                    </a>
+                  </li>
                     
-                    <div class="row">
-                        <div class="col-xs-12 cercaColumn">
-                            <select class="form-control" id="raggioCercaVicinanzaInput">
-                                    <option value="1">1 km </option>
-                                    <option value="2">2 km</option>
-                                    <option value="3">5 km</option>
-                                    <option value="4">10 km</option>
-                                    <option value="5">Ovunque</option>
-                            </select>
-                        </div>
-                    </div>
+                    <li class="elementListview" data-icon="false">
+                    <a class="linkListview" href="#">
+                    <img class="imageListview" src="http://www.salentosalento.it/Camere/upload/_28-Affitto_Appartamento_economico_Torre_dell_Orso__Affitto_appartamento_per_vacanze_costa_adriatica_salento_1.jpg">
+                    <h5 class="titoloListview">123456789 1234 678 0 234 67890 2345 7890</h5>
+                    <h6 class="subtitoloListview">ZONA 2 - Via Vittorio Veneto 24/B1</h6>
+                    <h6 class="subtitoloListview">Stanza Singola</h6>
+                    <h5 class="prezzoListview">350€</h5>
+                    </a>
+                  </li>
+                     
+                    <li class="elementListview" data-icon="false">
+                    <a class="linkListview" href="#">
+                    <img class="imageListview" src="http://www.salentosalento.it/Camere/upload/_28-Affitto_Appartamento_economico_Torre_dell_Orso__Affitto_appartamento_per_vacanze_costa_adriatica_salento_1.jpg">
+                    <h5 class="titoloListview">123456789 1234 678 0 234 67890 2345 7890</h5>
+                    <h6 class="subtitoloListview">ZONA 2 - Via Vittorio Veneto 24/B1</h6>
+                    <h6 class="subtitoloListview">Stanza Singola</h6>
+                    <h5 class="prezzoListview">350€</h5>
+                    </a>
+                  </li>
                     
-                    <div class="row" style="margin-top:0.5em;">
-                        <div class="col-xs-12 cercaColumn">
-                            <a href="#" id="cercaVicinanzeButton"> Cerca vicino a te</a>
-                        </div>
-                    </div>  
+                    <li class="elementListview" data-icon="false">
+                    <a class="linkListview" href="#">
+                    <img class="imageListview" src="http://www.salentosalento.it/Camere/upload/_28-Affitto_Appartamento_economico_Torre_dell_Orso__Affitto_appartamento_per_vacanze_costa_adriatica_salento_1.jpg">
+                    <h5 class="titoloListview">123456789 1234 678 0 234 67890 2345 7890</h5>
+                    <h6 class="subtitoloListview">ZONA 2 - Via Vittorio Veneto 24/B1</h6>
+                    <h6 class="subtitoloListview">Stanza Singola</h6>
+                    <h5 class="prezzoListview">350€</h5>
+                    </a>
+                  </li>
                     
-                    <div class="row">
-                        <div class="col-xs-12 cercaColumn">
-                            <p id="cercaVicinanzeNota">NOTA: Ricorda di abilitare i servizi di geolocalizzazione </p>
-                        </div>
-                    </div>
-                    
-                    <div id="cercaVicinanzeMap" style="height:10em; width:100%"></div>
+                    <li class="elementListview" data-icon="false">
+                    <a class="linkListview" href="#">
+                    <img class="imageListview" src="http://www.salentosalento.it/Camere/upload/_28-Affitto_Appartamento_economico_Torre_dell_Orso__Affitto_appartamento_per_vacanze_costa_adriatica_salento_1.jpg">
+                    <h5 class="titoloListview">123456789 1234 678 0 234 67890 2345 7890</h5>
+                    <h6 class="subtitoloListview">ZONA 2 - Via Vittorio Veneto 24/B1</h6>
+                    <h6 class="subtitoloListview">Stanza Singola</h6>
+                    <h5 class="prezzoListview">350€</h5>
+                    </a>
+                  </li>
+                     
                 
-                    <div style="height:2em;"></div> 
+                </ul>
                 
-                    <div id="map_canvas"></div>
-                </div>-->
-                
-                <!---->
-              
-                
-            </div>
-                       
+                <div style="height:2em;"></div>
+            </div>  
+           <div class="contentPageDiv contentOverflowY" id="risultatiRicercaMap" hidden>
+           </div>
+           
             <div class="contentPageDiv contentOverflowY" id="modificaDatiPersonaliContent"> 
                 <div class="row datiTextTitle" style="margin-top:1em;">
                     <div class="col-xs-12">
@@ -3268,76 +3385,7 @@
                
            </div>
            
-            <div class="contentPageDiv contentOverflowY" id="risultatiRicercaContent" hidden>
-                <!--<div id="risultatiRicercaMap" style="height:9em; width:100%"></div>-->
-                
-                <ul data-role="listview" data-inset="true">
-                    
-                    <li class="elementListview" data-icon="false">
-                    <a class="linkListview" href="#">
-                    <img class="imageListview" src="http://www.salentosalento.it/Camere/upload/_28-Affitto_Appartamento_economico_Torre_dell_Orso__Affitto_appartamento_per_vacanze_costa_adriatica_salento_1.jpg">
-                    <h5 class="titoloListview">123456789 1234 678 0 234 67890 2345 7890</h5>
-                    <h6 class="subtitoloListview">ZONA 2 - Via Vittorio Veneto 24/B1</h6>
-                    <h6 class="subtitoloListview">Stanza Singola</h6>
-                    <h5 class="prezzoListview">350€</h5>
-                    </a>
-                  </li>
-                    
-                    <li class="elementListview" data-icon="false">
-                    <a class="linkListview" href="#">
-                    <img class="imageListview" src="http://www.salentosalento.it/Camere/upload/_28-Affitto_Appartamento_economico_Torre_dell_Orso__Affitto_appartamento_per_vacanze_costa_adriatica_salento_1.jpg">
-                    <h5 class="titoloListview">123456789 1234 678 0 234 67890 2345 7890</h5>
-                    <h6 class="subtitoloListview">ZONA 2 - Via Vittorio Veneto 24/B1</h6>
-                    <h6 class="subtitoloListview">Stanza Singola</h6>
-                    <h5 class="prezzoListview">350€</h5>
-                    </a>
-                  </li>
-                    
-                    <li class="elementListview" data-icon="false">
-                    <a class="linkListview" href="#">
-                    <img class="imageListview" src="http://www.salentosalento.it/Camere/upload/_28-Affitto_Appartamento_economico_Torre_dell_Orso__Affitto_appartamento_per_vacanze_costa_adriatica_salento_1.jpg">
-                    <h5 class="titoloListview">123456789 1234 678 0 234 67890 2345 7890</h5>
-                    <h6 class="subtitoloListview">ZONA 2 - Via Vittorio Veneto 24/B1</h6>
-                    <h6 class="subtitoloListview">Stanza Singola</h6>
-                    <h5 class="prezzoListview">350€</h5>
-                    </a>
-                  </li>
-                     
-                    <li class="elementListview" data-icon="false">
-                    <a class="linkListview" href="#">
-                    <img class="imageListview" src="http://www.salentosalento.it/Camere/upload/_28-Affitto_Appartamento_economico_Torre_dell_Orso__Affitto_appartamento_per_vacanze_costa_adriatica_salento_1.jpg">
-                    <h5 class="titoloListview">123456789 1234 678 0 234 67890 2345 7890</h5>
-                    <h6 class="subtitoloListview">ZONA 2 - Via Vittorio Veneto 24/B1</h6>
-                    <h6 class="subtitoloListview">Stanza Singola</h6>
-                    <h5 class="prezzoListview">350€</h5>
-                    </a>
-                  </li>
-                    
-                    <li class="elementListview" data-icon="false">
-                    <a class="linkListview" href="#">
-                    <img class="imageListview" src="http://www.salentosalento.it/Camere/upload/_28-Affitto_Appartamento_economico_Torre_dell_Orso__Affitto_appartamento_per_vacanze_costa_adriatica_salento_1.jpg">
-                    <h5 class="titoloListview">123456789 1234 678 0 234 67890 2345 7890</h5>
-                    <h6 class="subtitoloListview">ZONA 2 - Via Vittorio Veneto 24/B1</h6>
-                    <h6 class="subtitoloListview">Stanza Singola</h6>
-                    <h5 class="prezzoListview">350€</h5>
-                    </a>
-                  </li>
-                    
-                    <li class="elementListview" data-icon="false">
-                    <a class="linkListview" href="#">
-                    <img class="imageListview" src="http://www.salentosalento.it/Camere/upload/_28-Affitto_Appartamento_economico_Torre_dell_Orso__Affitto_appartamento_per_vacanze_costa_adriatica_salento_1.jpg">
-                    <h5 class="titoloListview">123456789 1234 678 0 234 67890 2345 7890</h5>
-                    <h6 class="subtitoloListview">ZONA 2 - Via Vittorio Veneto 24/B1</h6>
-                    <h6 class="subtitoloListview">Stanza Singola</h6>
-                    <h5 class="prezzoListview">350€</h5>
-                    </a>
-                  </li>
-                     
-                
-                </ul>
-                
-                <div style="height:2em;"></div>
-            </div> 
+             
            
        </div>
        
