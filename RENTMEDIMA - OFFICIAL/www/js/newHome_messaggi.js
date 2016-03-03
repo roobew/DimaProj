@@ -6,6 +6,7 @@ var elementDragged = false;
 var sortActive=false;
 var firstSorting=true;
 
+var messaggioID_toDelete;
 
 $(document).ready(function (){
     console.log("Nel JS di MESSAGGI");
@@ -57,6 +58,16 @@ $(document).ready(function (){
     
     $("#deleteMessageMenuEliminaButton").on("tap", function (){
         console.log("Premuto ELIMINA");
+        
+        $("#"+messaggioID_toDelete).addClass("remove");
+            
+        setTimeout(function(){ 
+            $("#"+messaggioID_toDelete).prev().remove();
+            $("#"+messaggioID_toDelete).remove();   
+            
+        }, 150);
+        
+         
     });
     
     
@@ -64,17 +75,15 @@ $(document).ready(function (){
         console.log("Premuto ANNULLA");
         closeDraggableElement();
     });
-    /*
+    
     $(".messageSecondDiv").on("tap", function (){
-        var parentElement= $(this).parent();
         
-        parentElement.prev().remove();
-        
-        parentElement.remove();
-        
+        console.log("Apro menu messaggi");
+        messaggioID_toDelete=$(this).parent().attr("id");
+        console.log("id da cancellare è: "+messaggioID_toDelete);
         
     });
-    */
+    
     /*
     $(".messageFirstDiv").on("tap", function (){
         if(elementDragged==true){  

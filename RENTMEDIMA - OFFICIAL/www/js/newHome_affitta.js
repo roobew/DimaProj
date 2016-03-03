@@ -27,7 +27,9 @@ $(document).ready(function (){
     });
     
     
-    $("#btnNuovoAnnuncio").on("tap", function (){
+    $("#btnNuovoAnnuncio").click(function (){
+        
+        getData();
         
         $("#homeTopRow").hide();
         $("#nuovoAnnuncioTopRow").show();
@@ -93,6 +95,8 @@ $(document).ready(function (){
         console.log("ID VALE: "+annuncioID_toDelete);
     });
     
+    
+    // devo dare l'id al nuovo annuncio bozza, altrimenti non lo cancella
     $("#deleteAnnuncioMenuCancella").on("tap", function(){
         
         console.log("TO DELETE VALE_ "+annuncioID_toDelete);
@@ -128,6 +132,8 @@ $(document).ready(function (){
         $("#homeTopRow").toggle(); 
         
         mostraBottomBar();
+        
+        aggiungiBozza();
         
         $("#affittaContent_creaAnnuncio").toggle();
         $("#affittaContent").toggle();
@@ -255,7 +261,7 @@ $(document).ready(function (){
             $("#fotoCheckedIcon").removeClass("glyphicon-unchecked");
             
             $("#fotoCheckedIcon").addClass("glyphicon-check");
-            
+            $("#nuovoAnnuncioContent").show();
         }
         else if(boxDetailId=="nuovoAnnuncioDescrizioneDetail"){
             var newValue=$("#descrizioneInput").val();  
@@ -300,8 +306,6 @@ $(document).ready(function (){
         else if(boxDetailId=="nuovoAnnuncioZonaDetail"){
             var newValue=$("#zonaInput :radio:checked").val(); 
             
-            console.log("SCROLL è: "+$("#nuovoAnnuncioZonaDetail").scrollTop());
-            $("#nuovoAnnuncioZonaDetail").scrollTop(50);
             backToNuovoAnnuncioFunction(newValue, $("#zonaPreview"), $("#zonaCheckedIcon"));
             
         }
@@ -315,7 +319,8 @@ $(document).ready(function (){
            var newValue = $('input[name="elencoMetro"]:checked').map(function() {
                 return this.value;
             }).get();
-                        
+             
+            console.log("NEW VALUE: "+newValue);
             backToNuovoAnnuncioFunction(newValue, $("#metroPreview"), $("#metroCheckedIcon"));
             
         }
@@ -350,7 +355,7 @@ $(document).ready(function (){
             
             $("#altreFotoCheckedIcon").addClass("glyphicon-check");
            
-            
+             $("#nuovoAnnuncioContent").show();
         }
         
     });
@@ -817,6 +822,17 @@ function premiTastoModifica(){
             $("#modificaAnnuncioHome").text("Modifica");
     }
     $(".annuncioListElement").toggleClass("go");
+}
+
+function aggiungiBozza(){
+
+    var clonedElement=$(".annuncioListElement:first").clone(true); //.appendTo("#bozzeDiv");
+    console.log("ID prima: "+clonedElement.attr("id"));
+    clonedElement.removeAttr("id");
+    console.log("ID dopo: "+clonedElement.attr("id"));
+    
+    clonedElement.appendTo("#bozzeDiv");
+    
 }
 
 

@@ -1,5 +1,7 @@
 var preferitiMapInit=false, dettaglioMapInit=false;
 
+var dettaglioAnnuncio_DAPREFERITI=false;
+var dettaglioAnnuncio_DAAFFITTA=false;
 
 $(document).ready(setField);
 
@@ -273,32 +275,6 @@ function swipeDetection(){
 
 }
 
-function showModificaDatiPersonali(){
-    
-    nascondiBottomBar();
-    
-    $("#homeTopRow").hide();
-    $("#datiPersonaliModificaTopRow").show();
-    
-    // NASCONDI TUTTI I CONTENTPAGEDIV
-    $(".contentPageDiv").hide();
-    $("#modificaDatiPersonaliContent").show();
-}
-
-function confermaModificaDatiPersonali(){
-    mostraBottomBar();
-    
-    $(".myColumn").find("p").removeClass("selectedTab"); 
-    //$(this).find("p").addClass("selectedTab");
-    $("#homeIcon").addClass("selectedTab");
-    $("#homeText").addClass("selectedTab");
-
-    $("#datiPersonaliModificaTopRow").hide();
-    $("#homeTopRow").show();
-
-    $("#modificaDatiPersonaliContent").hide();
-    $("#homeContent").show();
-}
 
 /*
 function drawMap(mapID, addMark){

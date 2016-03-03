@@ -192,3 +192,46 @@ function showTextField(myInput, myText, myIcon){
     myInput.hide();
     myText.show();
 }
+
+
+function showModificaDatiPersonali(){
+    
+    nascondiBottomBar();
+    
+    $("#homeTopRow").hide();
+    $("#datiPersonaliModificaTopRow").show();
+    
+    // NASCONDI TUTTI I CONTENTPAGEDIV
+    $(".contentPageDiv").hide();
+    $("#modificaDatiPersonaliContent").show();
+}
+
+function confermaModificaDatiPersonali(){
+    mostraBottomBar();
+    
+    $(".myColumn").find("p").removeClass("selectedTab"); 
+    //$(this).find("p").addClass("selectedTab");
+    $("#homeIcon").addClass("selectedTab");
+    $("#homeText").addClass("selectedTab");
+
+    $("#datiPersonaliModificaTopRow").hide();
+    $("#homeTopRow").show();
+
+    $("#modificaDatiPersonaliContent").hide();
+    $("#homeContent").show();
+}
+
+function annullaModificaDatiPersonali(){
+    mostraBottomBar();
+    
+    $(".myColumn").find("p").removeClass("selectedTab"); 
+
+    $("#homeIcon").addClass("selectedTab");
+    $("#homeText").addClass("selectedTab");
+
+    $("#datiPersonaliModificaTopRow").hide();
+    $("#homeTopRow").show();
+
+    $("#modificaDatiPersonaliContent").hide();
+    $("#homeContent").show();
+}

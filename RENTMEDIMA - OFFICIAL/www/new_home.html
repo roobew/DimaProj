@@ -9,7 +9,7 @@
         
         
         
-<!--    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *">-->
+<!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *">-->
         
 <!--       <meta http-equiv="Content-Security-Policy" content="script-src 'self' http://code.jquery.com/ https://apis.google.com http://maps.googleapis.com https://ajax.googleapis.com">-->
         
@@ -40,7 +40,7 @@
         <link href="jQuery.mmenu/dist/core/css/jquery.mmenu.all.css" type="text/css" rel="stylesheet"/>
         
         
-        <link href="jQuery-UI-1.11.4/jquery-ui.min.css" type="text/css" rel="stylesheet"/>
+        <link href="jQuery-UI-1.11.4.custom/jquery-ui.min.css" type="text/css" rel="stylesheet"/>
         
         <link href="css/commonLayout.css" rel="stylesheet" type="text/css"/>
         
@@ -56,7 +56,7 @@
 <link href="http://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css" />
 
      
-     
+      
     <!-- ***** IMPORT JS  *****-->    
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -69,10 +69,11 @@
         <!-- UI JS file -->
         <script src="PhotoSwipe/dist/photoswipe-ui-default.min.js"></script>
         
+<!--        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>-->
         
         <script src="jQuery.mmenu/dist/core/js/jquery.mmenu.min.js"></script>
-                                
-        <script src="jQuery-UI-1.11.4/jquery-ui.min.js"></script>
+                                 
+        <script src="jQuery-UI-1.11.4.custom/jquery-ui.min.js"></script>
         
         <script src="js/touch_punch_min.js"></script>
         
@@ -88,6 +89,9 @@
         
         <script src="js/newHome_modificaDati.js"></script>
                 
+        
+        <script src="js/server.js"></script>
+        
     <!-- ***** END JS  *****-->   
                 
     
@@ -300,10 +304,35 @@
                 </div>
             </div>
            
+            <div id="dettaglioAnnuncioTopRow_daPreferiti" class="row">
+                <div class="row nuovoAnnuncioIntestazione">
+                    <div class="col-xs-3">
+                        <a href="#" id="backLink_fromPreferiti" class="paddingElement" style="color:white; text-shadow: 1px 1px 1px black;">
+                            <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    
+                    <div class="col-xs-2 col-xs-offset-4" style="padding: 0;
+    text-align: center; margin-top:-0.2em;">
+                        <a href="#" style="color:white; text-shadow: 1px 1px 1px black;">
+                            <span class="glyphicon glyphicon-envelope" aria-hidden="true" style="font-size:1.3em;"></span>
+                        </a>
+                    </div>
+                    
+                    
+                    <div class="col-xs-2" style="padding: 0;
+    text-align: center; margin-left:0.5em; margin-top:-0.2em;">
+                        <a href="#" style="color:white; text-shadow: 1px 1px 1px black;">
+                            <span class="glyphicon glyphicon-heart" aria-hidden="true" style="font-size:1.3em;"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+           
             <div id="datiPersonaliModificaTopRow" class="row">
                 <div class="row nuovoAnnuncioIntestazione">
                         <div class="col-xs-4">
-                            <a href="#" class="paddingElement" style="color:white; text-shadow: 1px 1px 1px black;">
+                            <a href="#" id="annullaModificaDatiPersonali" onclick="annullaModificaDatiPersonali()" style="color:white; text-shadow: 1px 1px 1px black;padding-left:1em;">
                                 Annulla
                             </a>
                         </div>
@@ -452,10 +481,9 @@
                 </div>
                     
                 
-                       
                                      
                 <div class="pillDivClass" id="bozzeDiv">
-                     <div class="row annuncioListElement">
+                    <div class="row annuncioListElement" id="bozzeUno_CAZZO">
                         <div class="annuncioParteUno">
                             <h5 class="titoloAffittaAnnuncio">123 5678 012 45678 01234 678 0123 567 90</h5>
                             
@@ -463,12 +491,13 @@
                         <div class="annuncioParteDue">
                             <span class="glyphicon glyphicon-pencil iconaOpzioneAnnuncio modificaAffittaAnnuncio" aria-hidden="true"></span>
                             
+                         <a href="#deleteAnnuncio-mmenu">        
                             <span class="glyphicon glyphicon-trash iconaOpzioneAnnuncio eliminaAffittaAnnuncio" aria-hidden="true"></span>
+                         </a>
                             
                         </div>
                     </div>
-                    
-                    <div style="height:2em;"></div>
+<!--                    <div style="height:2em;"></div>-->
                 </div>
                 
             </div> 
@@ -476,7 +505,7 @@
            
             <!-- *** PAGINA PER CREARE UN NUOVO ANNUNCIO *** -->
             <div class="contentPageDiv contentOverflowY NOcontentOverflowX" id="affittaContent_creaAnnuncio">
-                <div id="nuovoAnnuncioContent" class="contentOverflowY" style="height:100%;">
+                <div id="nuovoAnnuncioContent" class="contentOverflowY NOcontentOverflowX" style="height:100%;">
 
                     <div class="row nuovoAnnuncioBox" id="titoloBox" style="margin-top:2em;">
                         
@@ -1276,21 +1305,39 @@
                         </div>
                     </div>
                     
-                    <div class="row nuovoAnnuncioDetailSecondRow">
-                        <div class="col-xs-10 col-xs-offset-1">
+                    <!--<div class="row nuovoAnnuncioDetailSecondRow" id="divMetro" ng-app="Metro" ng-controller="MetroCtrl">
+                        <div class="col-xs-10 col-xs-offset-1" ng-repeat="m in metro">
                             <fieldset data-role="controlgroup" data-mini="true" id="metroInput">
-                                  <label for="metroM1">M1 - Linea Rossa</label>
-                                  <input type="checkbox" name="elencoMetro" id="metroM1" value="M1">
-                                  <label for="metroM2">M2 - Linea Verde</label>
+                                  
+                
+                                <input type="checkbox" name="elencoMetro" id="{{m.metro}}">
+                                {{m.metro}}       -->        
+                                    
+                                    <!--<label for="metroM2">M2 - Linea Verde</label>
                                   <input type="checkbox" name="elencoMetro" id="metroM2" value="M2">
                                   <label for="metroM3">M3 - Linea Gialla</label>
                                   <input type="checkbox" name="elencoMetro" id="metroM3" value="M3">	
                                   <label for="metroM5">M5 - Linea Lilla</label>
-                                  <input type="checkbox" name="elencoMetro" id="metroM5" value="M5">	
+                                  <input type="checkbox" name="elencoMetro" id="metroM5" value="M5">	-->
+                         <!--   </fieldset> 
+                        </div>
+                    </div>   -->
+                        
+                    <div class="row nuovoAnnuncioDetailSecondRow" id="divMetro">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <fieldset data-role="controlgroup" data-mini="true" id="metroInput">
+                        
+                                  <!--<label for="metroM2">M2 - Linea Verde</label>
+                                  <input type="checkbox" name="elencoMetro" id="metroM2" value="M2">
+                                  <label for="metroM3">M3 - Linea Gialla</label>
+                                  <input type="checkbox" name="elencoMetro" id="metroM3" value="M3">	
+                                  <label for="metroM5">M5 - Linea Lilla</label>
+                                  <input type="checkbox" name="elencoMetro" id="metroM5" value="M5">	-->
                             </fieldset> 
                         </div>
-                    </div>   
-                        
+                    </div>  
+                    
+                    
                 </div>
                 
                 <div class="nuovoAnnuncioDetailContent" id="nuovoAnnuncioTramDetail">
@@ -2392,7 +2439,7 @@
                     
                         <div class="row" id="preferitiInfoFifthRows">
                             <div class="col-xs-6">
-                                <a href="#">Vedi dettaglio </a>
+                                <a href="#" onclick="vediDettaglioAnnuncio()">Vedi dettaglio </a>
                             </div>
                             
                             <div class="col-xs-2 col-xs-offset-3">
@@ -2540,7 +2587,7 @@
                 <div id="messaggiContainerDiv" data-filter="true" data-input="#myFilter">
                     <div class="separatoreDiv"></div>
                 
-                    <div class="messageDivParent">
+                    <div class="messageDivParent" id="pinco">
                         <div class="messageFirstDiv">
                             <div class="messageProfilePicture">
                                 <img class="img-responsive" src="http://www.dagospia.com/img/foto/08-2012/mattia-destro-185288.jpg" style="height:100%; width:100%; border-radius:50%">
@@ -2567,7 +2614,7 @@
 
                     <div class="separatoreDiv"></div>
 
-                    <div class="messageDivParent">
+                    <div class="messageDivParent" id="pallino">
                         <div class="messageFirstDiv">
                             <div class="messageProfilePicture">
                                 <img class="img-responsive" src="http://www.wakeupnews.eu/wp-content/uploads/2013/06/montolivo-www.tifomilan.it_.jpg" style="height:100%; width:100%; border-radius:50%">
@@ -2586,13 +2633,15 @@
                             </div>
                         </div>
                         <div class="messageSecondDiv">
-                            <span id="eliminaIcon" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                            <a href="#deleteMessage-mmenu">
+                                <span id="eliminaIcon" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                            </a>
                         </div>
 </div>    
 
                     <div class="separatoreDiv"></div>
 
-                    <div class="messageDivParent">
+                    <div class="messageDivParent" id="pluto">
 
                         <div class="messageFirstDiv">
                             <div class="messageProfilePicture">
@@ -2612,7 +2661,9 @@
                             </div>
                         </div>
                         <div class="messageSecondDiv">
-                            <span id="eliminaIcon" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                            <a href="#deleteMessage-mmenu">
+                                <span id="eliminaIcon" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                            </a>
                         </div>
 </div>      
 
@@ -3341,6 +3392,8 @@
        <script src="js/openGoogle.js"></script>
        <script src="js/commonJavascript.js"></script>
        <!-- Swiper JS  -->
-       <script src="swiper/dist/js/swiper.min.js"></script>       
+       <script src="swiper/dist/js/swiper.min.js"></script>   
+       
+       
     </body>
 </html>

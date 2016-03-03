@@ -151,3 +151,10 @@ function removeMarker(index){
     markersArray[index].setMap(null);
 }
 
+
+function vediDettaglioAnnuncio(){
+    
+    console.log("Mostra Dettaglio");
+    
+    
+}
