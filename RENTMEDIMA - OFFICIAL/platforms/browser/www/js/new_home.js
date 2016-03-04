@@ -161,7 +161,7 @@ function setField(){
 
                 if(preferitiMapInit==false){    
                     //drawMap("preferitiMap",true);
-                    //drawMapPreferiti();
+                    drawMapPreferiti();
                     preferitiMapInit=true;
                 }
                 
@@ -184,7 +184,7 @@ function setField(){
     $(".swiper-slide").click(function (){
         if(dettaglioMapInit==false){
             //drawMap("dettaglioMap", false);
-            //drawMapDettaglio();
+            drawMapDettaglio();
             dettaglioMapInit=true;
         }
             
