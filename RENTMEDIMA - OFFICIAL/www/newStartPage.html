@@ -20,21 +20,50 @@
     </head>
     
     <script>
-    
+        var recuperoOpen=false;
         $(document).ready(function (){
              console.log("READY");
             $(".bottomDiv").click(function (){
                 console.log("SPOSTO");
-                $("#divEsterno").toggleClass("changePage");      
+                $("#divEsterno").toggleClass("changePage"); 
+                
+                if(recuperoOpen==true){
+                    chiudiRecuperaPassword();   
+                }
             }); 
             
             $("#pwDimenticataText").click(function(){
-                $("#recuperaPasswordDiv").fadeIn();      
-                
+                apriRecuperaPassword();
+            });
+            
+            $("#chiudiRecuperaPasswordButton").click(function(){
+                chiudiRecuperaPassword();
             });
           
             
         });
+        
+        function apriRecuperaPassword(){
+                recuperoOpen=true;
+                
+                $("#recuperaPasswordDiv").fadeIn();      
+                $("#loginForm").animate({opacity: "0.2"}, function(){
+                    $( "#userEmailLogin" ).prop( "disabled", true );   
+                    $( "#userPasswordLogin" ).prop( "disabled", true );   
+                    $( "#loginButton" ).prop( "disabled", true );   
+                });       
+        }
+        
+        function chiudiRecuperaPassword(){
+            recuperoOpen=false;
+                
+            $("#recuperaPasswordDiv").fadeOut();      
+            $("#loginForm").animate({opacity: "1"}, function(){
+                $( "#userEmailLogin" ).prop( "disabled", false );   
+                $( "#userPasswordLogin" ).prop( "disabled", false );   
+                $( "#loginButton" ).prop( "disabled", false );   
+            });   
+        }
     </script>
     
     
@@ -83,7 +112,7 @@
                     </div>
 
                     <div class="col-xs-6 col-xs-offset-3 inputColumnDiv" style="text-align:center;">
-                        <button type="submit" class="btn btn-default">Registrati</button>
+                        <button type="submit" class="btn btn-primary">Registrati</button>
                     </div>
                 </form>
 
@@ -109,7 +138,7 @@
                     </div>
 
                     <div class="col-xs-6 col-xs-offset-3 inputColumnDiv" style="text-align:center;">
-                        <button type="submit" class="btn btn-default">Accedi</button>
+                        <button id="loginButton" type="submit" class="btn btn-primary">Accedi</button>
                     </div>
                 </form>
                 
@@ -123,8 +152,10 @@
                         <input type="email" class="form-control" id="recuperaPasswordInput" placeholder="Email">
                     </div>
 
-                    <div class="col-xs-6 col-xs-offset-3 inputColumnDiv" style="text-align:center;">
-                        <button id="recuperaPasswordButton" class="btn btn-default">Recupera</button>
+                    <div class="col-xs-12 inputColumnDiv" style="text-align:center; margin-top:1.5em;">
+                        <button id="chiudiRecuperaPasswordButton" class="btn btn-primary pull-left" style="width:5em;">Chiudi</button>
+                        
+                        <button id="recuperaPasswordButton" class="btn btn-success pull-right" style="width:6em;">Recupera</button>
                     </div>
                   </div>  
 
