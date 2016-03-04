@@ -49,9 +49,10 @@ function facebookLogin() {
                             setTimeout(function(){
                                         window.location.href="new_home.html";
                             },50);                          
-                        }else{                                   
-                            navigator.notification.alert(JSON.parse(jUser).message, reload, JSON.parse(jUser).title);    
-                            
+                        }else{  
+                            console.log("!!! ERRORE !!! ");
+                            //navigator.notification.alert(JSON.parse(jUser).message, reload, JSON.parse(jUser).title);    
+                            alert(JSON.parse(jUser).message);
                         }
                     },
                     error:function(result){ 
