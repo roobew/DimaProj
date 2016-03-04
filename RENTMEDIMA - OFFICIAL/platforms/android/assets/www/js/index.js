@@ -71,10 +71,10 @@ function next(){
                                 console.log("GOOGLE: nessun login trovato");
                                 //console.log("renteme check login");
                                 var myUser= JSON.parse(localStorage.getItem("userData"));
-                                console.log(myUser);
-                               
-                                window.location="new_home.html";
-                                /*if(myUser!=null){
+                                //console.log(myUser);
+                                //console.log("ELEM: "+myUser.name);
+                                //window.location="new_home.html";
+                                if(myUser!=null){
                                     console.log("MyUser notNull!!!");
                                 myUrl=  "http://rentme.altervista.org/login.php?"       +
                                         "id="           +   myUser.id                     +
@@ -103,9 +103,9 @@ function next(){
                                         window.location="startPage.html";
                                     },100); 
                                  }
-                                }else{
+                               }else{
                                     window.location="startPage.html";   
-                                }*/
+                             }
                             });                                           
                         }
                     }),1500);

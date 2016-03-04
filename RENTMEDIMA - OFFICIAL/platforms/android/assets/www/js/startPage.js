@@ -50,7 +50,8 @@ function facebookLogin() {
                                         window.location.href="new_home.html";
                             },50);                          
                         }else{                                   
-                            navigator.notification.alert(JSON.parse(jUser).message, reload, JSON.parse(jUser).title);      
+                            navigator.notification.alert(JSON.parse(jUser).message, reload, JSON.parse(jUser).title);    
+                            
                         }
                     },
                     error:function(result){ 
