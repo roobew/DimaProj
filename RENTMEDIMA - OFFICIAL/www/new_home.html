@@ -278,7 +278,7 @@
                         </div>
                         
                         <div class="col-xs-5 nuovoAnnuncioTestoIntestazione">
-                            <h4 class="searchTextTitle"> Search Result </h4>
+                            <h4 class="searchTextTitle"> Risultati Ricerca</h4>
                         </div>
                     <div class="col-xs-1">
                             <a href="#" class="paddingElement" id="backSearchResultBtn" style="color:white; text-shadow: 1px 1px 1px black;">
@@ -2806,7 +2806,7 @@
                         <div class="col-xs-6 left">
                             Tipo? 
                         </div>
-                        <div class="col-xs-6 right">
+                        <div class="col-xs-6 right dropdownContent">
                             <select class="styled-select"
                                     data-corners="false"
                                     data-iconshadow="false"
@@ -2824,13 +2824,13 @@
                 </div>
                 <div class="row input ">
                     <a href="#"> 
-                        <div class="col-xs-2 left">
+                        <div class="col-xs-7 left">
                             Prezzo? 
                         </div>
                        <div class="col-xs-1 ">
                             DA:
                         </div>
-                        <div class="col-xs-4 right" >                            
+                        <div class="col-xs-1 right dropdownContent" >                            
                             <select class="styled-select"
                                     data-corners="false"
                                     data-iconshadow="false"
@@ -2864,7 +2864,7 @@
                         <div class="col-xs-1 left">
                            A: 
                         </div>
-                        <div class="col-xs-4 right" >                            
+                        <div class="col-xs-1 right dropdownContent" >                            
                             <select class="styled-select"
                                     data-corners="false"
                                     data-iconshadow="false"
@@ -2915,14 +2915,19 @@
             <div class="contentPageDiv" id="cercaDove" hidden>  
                     <form class="validateDontSubmit">
                         <fieldset>
-                            <div class="row center input">
-                                <div class="col-xs-12">
-                                    <button id="curPos" type="submit">Near You</button>
+                            <div class="row center input divDove">
+                                <div class="col-xs-12" style="height:100% !important;">
+                                    <button id="curPos" type="submit">Vicino a Te</button>
                                 </div>
                             </div>
-                            <div class="row center input">
-                                <div class="col-xs-12">
-                                    <select class="form-control target" id="selectZone">                                        
+                            <div class="row center input divDove">
+                                <div class="col-xs-12 dropdownContent black">
+                                    <select class="styled-select"
+                                    data-corners="false"
+                                    data-iconshadow="false"
+                                    data-inline="true"
+                                    data-mini="true"
+                                    data-shadow="false" id="selectZone">                                        
                                         <option value="-1" selected>Select a Zone</option>
                                         <option value="0">Zero</option>
                                         <option value="1">uno</option>
@@ -2931,7 +2936,7 @@
 
                                 </div>
                             </div>
-                            <div class="row center input">
+                            <div class="row center input divDove">
                                 <div class="col-xs-12">                            
                                     <input type="text" id="cercaVia">
                                 </div>

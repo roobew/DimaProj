@@ -114,9 +114,46 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
    
     color: dimgray;
     font-weight: 100;
+    font-size: 1em;
     text-align: right;
 }
-
+.dropdownContent > div > div{
+    border: 0;
+    background-color:  white;
+    color: dimgray !important;
+    font-weight: 100;
+    font-size: 1em;   
+    text-align: right;
+    padding:0;
+    
+    
+}
+.center >div >div{
+    text-align: center;
+    padding: inherit;
+}
+.dropdownContent > div {
+    margin:0;
+    font-weight: 100;
+    font-size: 1em;
+    color: dimgray;
+    
+}
+.center>div{
+     font-size: 1.5em;
+    font-weight: 100;
+    margin: auto;
+}
+.black>div>div{
+    color:black !important;
+}
+.dropdownContent {
+    margin:0;
+    font-weight: 100;
+    font-size: 1em;
+    color: dimgray;
+    
+}
 .input{
     padding: 0.5em;
     line-height: 2.5em;
@@ -145,3 +182,20 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
    height: 34px;
    -webkit-appearance: none;
    }
+
+.divDove{
+    height: 10em;
+    margin-top: 2.5em;
+    margin-bottom: 2.5em;
+}
+
+#curPos{
+    height: 100%;
+    width: 100%;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    font-weight: 200;
+    color: black;
+}

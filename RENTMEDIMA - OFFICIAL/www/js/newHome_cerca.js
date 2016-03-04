@@ -197,7 +197,7 @@ $(document).on('submit','.validateDontSubmit',function (e) {
     //alert(sceltaZonaIndex);
     if(sceltaVia=="")
         if(sceltaZonaIndex=="-1" )
-            $("#scelta").text("Current Position");
+            $("#scelta").text("Posizione Attuale");
         else
             $("#scelta").text(sceltaZonaText);        
     else
