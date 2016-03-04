@@ -189,10 +189,12 @@ function inviaMessaggio(){
      console.log("INVIO: "+testoMessaggio);
      console.log("Alle ore: "+timeInvioMessaggio);
     
+     $("#messageInputText").blur();
+    
      messaggioHTMLcontent="<div class='bubbleDivContainer'><div class='bubbleRight rightMessage'><h6>"+testoMessaggio+"</h6></div></div>";
     
      $("#messageFlowDiv").append(messaggioHTMLcontent);
-     $("#messageInputText").val("");
+     $("#messageInputText").val("");                                                                             
 }
 
 function scrollToBottom(){

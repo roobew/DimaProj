@@ -16,8 +16,10 @@ p {margin: 0;padding: 0;}
     height: 10vh;
     width: 100vw;
     position: fixed;
+    top:0;
     background-color: #125688; 
-    z-index: 1;
+    :z-index: 1;
+    z-index: 9999;
 }
 
 #contentDiv{
@@ -49,7 +51,7 @@ p {margin: 0;padding: 0;}
 /**** FINE ****/
 
 /**** INTESTAZIONE APP: NAVBAR + NOME APP ****/
-#homeTopRow{
+#homeTopRow, #nuovoAnnuncioTopRow, #dettaglioAnnuncioTopRow, #modificaAnnuncioTopRow, #dettaglioAnnuncioTopRow_daAffitta, #datiPersonaliModificaTopRow, #dettaglioAnnuncioTopRow_daPreferiti, #messaggiHomeTopRow,#searchTopRow,#risultatiRicercaTopRow{
     width: 96vw;
     height: 3.5vh;
     margin-left: 2vw;

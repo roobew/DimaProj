@@ -1,0 +1,165 @@
+<html lang="en">
+
+    <head>
+        <title>RENT ME</title>
+        <meta charset="utf-8"/>
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, target-densityDpi=device-dpi" />
+        
+        
+        <link href="bootstrap_all/css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+               
+    
+        <style>
+            
+            body{
+                background-image: url('img/background.png');
+                background-size: cover;
+            }
+            
+            #headerDiv{
+                text-align:center; 
+                margin-top:15vh;
+            }
+            
+            #imageDiv{
+                margin-top:8vh;
+            }
+            
+            .socialLoginImage{
+                display:block; 
+                height:30px; 
+                width: 146px;
+                margin-left: auto;
+                margin-right: auto;
+                
+            }
+            
+            .bottomDiv{
+                display:block; 
+                height:6vh; 
+                width:100vw; 
+                opacity:0.8; 
+                border-top:1px solid gray; 
+                padding:0.6em; 
+                position:fixed; 
+                bottom:0; 
+                text-align:center; 
+                background-color: #a8bece;
+                
+            }
+            
+            .bottomText{
+                height:5vh; 
+                font-size:0.9em;  
+            }
+            
+            .orDiv{
+                display:block; 
+                width:90vw; 
+                height:5vh; 
+                :border: 1px solid black; 
+                margin-left:auto; 
+                margin-right:auto; 
+                margin-top:6vh;
+                
+            }
+            
+            .leftOrDiv, .rightOrDiv{
+                display:inline-block; 
+                width:30vw; 
+                height:1vh; 
+                background-color:yellowgreen;      
+            }
+            
+            .rightOrDiv{
+                background-color:green;    
+            }
+            
+            .orText{
+                display:inline-block; 
+                width:20vw; 
+                height:4vh; 
+                line-height: 5.5vh; 
+                margin-left: 2vw; 
+                margin-right: 2vw; 
+                text-align:center;     
+            }
+            
+            #registraForm{
+                background-color:red;
+                
+            }
+            
+            ::-webkit-input-placeholder {
+               color: red;
+            }
+        </style>
+        
+    </head>
+    
+    
+    
+    <body>
+        <div id="schermataUno" style="display:inline-block; width:100vw; height:100vh;">
+            
+            <div id="headerDiv">
+                <h2>RentMe </h2>
+                <small> <b>Iscriviti per trovare subito casa</b></small>
+            </div>
+            
+            <div id="imageDiv">
+                <img class="socialLoginImage" src="img/fb_accedi.png"/>
+
+                <img class="socialLoginImage" src="img/google_accedi.png" style="margin-top:2vh"/>
+            </div>
+            
+            <div class="orDiv">
+          
+                <div class="leftOrDiv">
+                </div>
+                
+                <p class="orText">OPPURE</p>
+                
+                <div class="rightOrDiv">
+                </div>
+            </div>
+            
+            
+            <form class="form-horizontal" id="registraForm">
+
+                <div class="col-xs-8 col-xs-offset-2">
+                    <input type="text" class="form-control" id="userNome" placeholder="Nome">
+                </div>
+                
+                <div class="col-xs-8 col-xs-offset-2">
+                    <input type="text" class="form-control" id="userCognome" placeholder="Cognome">
+                </div>
+                
+                <div class="col-xs-8 col-xs-offset-2">
+                  <input type="email" class="form-control" id="userEmail" placeholder="Email">
+                </div>
+
+                <div class="col-xs-8 col-xs-offset-2">
+                    <input type="password" class="form-control" id="userPassword" placeholder="Password">
+                </div>
+
+                <div class="col-xs-8 col-xs-offset-2" style="text-align:center;">
+                    <button type="submit" class="btn btn-default">Registrati</button>
+                </div>
+            </form>
+            
+            <div class="bottomDiv">
+                <p class="bottomText">Hai gia un account? <b>Accedi</b></p>
+            </div>
+        </div>
+    
+        <div id="schermataDue" style="display:inline-block; width:100vw; height:100vh; position:absolute; right:0; background-color:red;">
+        
+        
+        </div>
+    </body>
+
+</html>
