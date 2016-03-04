@@ -26,10 +26,13 @@ $(function() {
 function facebookLogin() {
     openFB.login(
         function(response) {
-            if(response.status === 'connected') {               
+            console.log("11111");
+            if(response.status === 'connected') {    
+                console.log("22222");
                 openFB.api({
                     path: '/me',
-                    success: function(user) {                                    
+                    success: function(user) {    
+                        console.log("33333");
                         myUrl=  "http://rentme.altervista.org/login.php?"       +
                                 "id="           +   user.id                     +
                                 "&name="        +   user.first_name             +
@@ -50,7 +53,7 @@ function facebookLogin() {
                                         window.location.href="new_home.html";
                             },50);                          
                         }else{  
-                            console.log("!!! ERRORE !!! ");
+                            console.log("!!! ERRORE !!!");
                             //navigator.notification.alert(JSON.parse(jUser).message, reload, JSON.parse(jUser).title);    
                             alert(JSON.parse(jUser).message);
                         }
@@ -61,7 +64,7 @@ function facebookLogin() {
                     }                                
                 });
             } else {
-                //alert('Facebook login failed: ' + response.error);
+                console.log('Facebook login failed: ' + response.error);
             }
         }, {scope: 'email'});
                         
