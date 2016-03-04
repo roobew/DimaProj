@@ -24,13 +24,13 @@ function next(){
                             jUser=xhttp.response;                     
                             if(JSON.parse(jUser).id!=null){                                
                                 localStorage.setItem("userData",jUser);
-                                setTimeout(function(){
+                               // setTimeout(function(){
                                             window.location.href="new_home.html";
-                                },50);                          
+                                //},50);                          
                             }else{                                                                 
-                                setTimeout(function(){
+                                //setTimeout(function(){
                                     window.location="startPage.html";
-                                },100);    
+                                //},100);    
                             }                        
                         },
                         error: function(data) { 
@@ -56,14 +56,14 @@ function next(){
                                 jUser=xhttp.response;
                                 if(JSON.parse(jUser).id!=null){
                                     localStorage.setItem("userData",jUser);
-                                    setTimeout(function(){
+                                    //setTimeout(function(){
                                                 window.location.href="new_home.html";
-                                    },50);                          
+                                    //},50);                          
                                 }else{                                                              
-                                    setTimeout(function(){
+                                    //setTimeout(function(){
                                         //window.location="login.html";
                                         window.location="startPage.html";
-                                    },100);                                      
+                                    //},100);                                      
                                 }                             
                             })
                                  
@@ -93,15 +93,15 @@ function next(){
                                 if(JSON.parse(jUser).id!=null){
                                     console.log("VADO a Home");
                                     localStorage.setItem("userData",jUser);
-                                    setTimeout(function(){
+                                    //setTimeout(function(){
                                                 window.location="new_home.html";
-                                    },50);                          
+                                    //},50);                          
                                 }else{    
                                     console.log("VADO a STart Page");
-                                    setTimeout(function(){
+                                    //setTimeout(function(){
                                         //window.location="login.html";
                                         window.location="startPage.html";
-                                    },100); 
+                                    //},100); 
                                  }
                                }else{
                                     window.location="startPage.html";   

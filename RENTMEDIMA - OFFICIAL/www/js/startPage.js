@@ -1,4 +1,4 @@
-$(function() {
+$(document).ready(function() {
     console.log("START PAGE");
     openFB.init({appId: '867006893383189', tokenStore: window.localStorage}); 
     
@@ -53,9 +53,12 @@ function facebookLogin() {
                                         window.location.href="new_home.html";
                             },50);                          
                         }else{  
+                            navigator.notification.alert(JSON.parse(jUser).message, reload, JSON.parse(jUser).title);    
                             console.log("!!! ERRORE !!!");
-                            //navigator.notification.alert(JSON.parse(jUser).message, reload, JSON.parse(jUser).title);    
-                            alert(JSON.parse(jUser).message);
+                            //navigator.notification.alert(JSON.parse(jUser).message, reload, JSON.parse(jUser).title);
+                            //navigator.notification.alert("ciao",null,"titolo");
+                            //alert("ops");
+                            //alert(JSON.parse(jUser).message);
                         }
                     },
                     error:function(result){ 

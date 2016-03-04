@@ -49,6 +49,9 @@
 		BDD5D7F199C043D6849C3388 /* UIImage+CropScaleOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5183EAF7024DF8BD0D7F76 /* UIImage+CropScaleOrientation.m */; };
 		2C3641FB1DC740DCAD019061 /* CDVCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 832C82861B4746E090CE93F4 /* CDVCamera.m */; };
 		476A7F4A59FD44B5A7EDFB61 /* CDVJpegHeaderWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A7F616C9F5469BB0F46DCA /* CDVJpegHeaderWriter.m */; };
+		129AE0A1BCAA417FB6659BC3 /* CDVNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 32113FE87A01405EB8031A92 /* CDVNotification.m */; };
+		13925E384AE941C4B6F12966 /* CDVNotification.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1905DFF456BC404384A06A07 /* CDVNotification.bundle */; };
+		6B2EEB72C1124FF7AB3DC13E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 771EACC9C7FB466BABCC9F6A /* AudioToolbox.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +133,10 @@
 		4104CF25209548D5A4E60CC1 /* CDVCamera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVCamera.h"; path = "cordova-plugin-camera/CDVCamera.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		96CCF4DD2A6B45A7A932EFF9 /* CDVJpegHeaderWriter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVJpegHeaderWriter.h"; path = "cordova-plugin-camera/CDVJpegHeaderWriter.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		B1D45EB1F762404AAD807714 /* CDVExif.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVExif.h"; path = "cordova-plugin-camera/CDVExif.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		32113FE87A01405EB8031A92 /* CDVNotification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVNotification.m"; path = "cordova-plugin-dialogs/CDVNotification.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		7D9A441703CB4D68BE8A3867 /* CDVNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVNotification.h"; path = "cordova-plugin-dialogs/CDVNotification.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		1905DFF456BC404384A06A07 /* CDVNotification.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = "CDVNotification.bundle"; path = "CDVNotification.bundle"; sourceTree = "<group>"; };
+		771EACC9C7FB466BABCC9F6A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AudioToolbox.framework"; path = "System/Library/Frameworks/AudioToolbox.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +153,7 @@
 				1439E9121B4843A1B5D300DD /* Social.framework in Frameworks */,
 				09AC42F4FB4A455A8F92AC46 /* Accounts.framework in Frameworks */,
 				8DECC731ACCF49C1A4B94CF4 /* Security.framework in Frameworks */,
+				6B2EEB72C1124FF7AB3DC13E /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +215,7 @@
 				308D052D1370CCF300D202BF /* icons */,
 				308D05311370CCF300D202BF /* splash */,
 				8D1107310486CEB800E47090 /* Hello World-Info.plist */,
+				1905DFF456BC404384A06A07 /* CDVNotification.bundle */,
 			);
 			name = Resources;
 			path = "Hello World/Resources";
@@ -223,6 +232,7 @@
 				23B8B064435545DABC2DEE57 /* Social.framework */,
 				AC30527AB03F4CFE8519EED1 /* Accounts.framework */,
 				70D05787104E44CD9E1ACEF4 /* Security.framework */,
+				771EACC9C7FB466BABCC9F6A /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -249,6 +259,8 @@
 				4104CF25209548D5A4E60CC1 /* CDVCamera.h */,
 				96CCF4DD2A6B45A7A932EFF9 /* CDVJpegHeaderWriter.h */,
 				B1D45EB1F762404AAD807714 /* CDVExif.h */,
+				32113FE87A01405EB8031A92 /* CDVNotification.m */,
+				7D9A441703CB4D68BE8A3867 /* CDVNotification.h */,
 			);
 			name = Plugins;
 			path = "Hello World/Plugins";
@@ -402,6 +414,7 @@
 				7E7966E11810823500FA85AD /* icon-50@2x.png in Resources */,
 				7E7966E51810823500FA85AD /* icon-76@2x.png in Resources */,
 				30FC414916E50CA1004E6F35 /* icon-72@2x.png in Resources */,
+				13925E384AE941C4B6F12966 /* CDVNotification.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +451,7 @@
 				BDD5D7F199C043D6849C3388 /* UIImage+CropScaleOrientation.m in Sources */,
 				2C3641FB1DC740DCAD019061 /* CDVCamera.m in Sources */,
 				476A7F4A59FD44B5A7EDFB61 /* CDVJpegHeaderWriter.m in Sources */,
+				129AE0A1BCAA417FB6659BC3 /* CDVNotification.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
