@@ -1,37 +1,52 @@
-<!DOCTYPE html>
 <html>
+
     <head>
-        <meta charset="utf-8" />
+        <title>RENT ME - INDEX</title>
+        <meta charset="utf-8"/>
         <meta name="format-detection" content="telephone=no" />
         <meta name="msapplication-tap-highlight" content="no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />    
-     
-<!--        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, target-densityDpi=device-dpi" />
         
-        <!-- Include the jQuery library -->
+        <style>
+            
+            body{
+                background-image: url("img/background.png"); 
+                background-size: cover;
+                margin:0;
+            }
+            
+            .indexContentDiv{
+                display:block; 
+                height:100%; 
+                width:100%; 
+                overflow: hidden; 
+                text-align:center;
+            }
+            
+            #myLogo{
+               margin-top:25vh; 
+            }
+        
+        </style>
+        
+         <!-- Include the jQuery library -->
         <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-        
-        <link href="bootstrap_all/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        
-        <link href="css/index.css" rel="stylesheet" type="text/css"/>
-        
-        <title>RENT ME - INDEX</title>
     </head>
-    <body style="margin:0">
-        
-        <div style="display: block; background-color: red; height: 100vh; width: 100vh;">
-            
-            
-            <img class="myLogo" src="img/logo.png">
-        
 
+    
+    <body>
+        <div class="indexContentDiv">
+             <img id="myLogo" src="img/logo.png">
         </div>
-            
+    
+        <!--   *** SCRIPT DA INCLUDERE ***  -->
         <script type="text/javascript" src="cordova.js"></script>
         
         <script type="text/javascript" src="js/openFB.js"></script>
         <script type="text/javascript" src="js/openGoogle.js"></script>
         
         <script type="text/javascript" src="js/index.js"></script>
+        
     </body>
 </html>

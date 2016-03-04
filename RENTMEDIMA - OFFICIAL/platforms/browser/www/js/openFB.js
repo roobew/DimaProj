@@ -20,7 +20,11 @@ var openFB = (function () {
     // Default OAuth redirect URL. Can be overriden in init()
         oauthRedirectURL = baseURL + '/oauthcallback.html',
     // Default Cordova OAuth redirect URL. Can be overriden in init()
-        cordovaOAuthRedirectURL ="http://rentme.altervista.org/success.php ",//"https://www.facebook.com/connect/login_success.html",
+        //cordovaOAuthRedirectURL ="http://rentme.altervista.org/success.php ",
+        //cordovaOAuthRedirectURL ="http://rentme.altervista.org/login.php ",
+        cordovaOAuthRedirectURL ="",
+        
+        //"https://www.facebook.com/connect/login_success.html",
     // Default Logout redirect URL. Can be overriden in init()
         logoutRedirectURL = baseURL + '/logoutcallback.html',
     // Because the OAuth login spans multiple processes, we need to keep the login callback function as a variable
