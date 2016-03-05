@@ -117,14 +117,16 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
     font-size: 1em;
     text-align: right;
 }
+
 .dropdownContent > div > div{
-    border: 0;
+    :border: 0;
     background-color:  white;
     color: dimgray !important;
     font-weight: 100;
     font-size: 1em;   
     text-align: right;
-    padding:0;
+    padding-left:1em;
+    padding-right:1em;
     
     
 }
@@ -132,6 +134,7 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
     text-align: center;
     padding: inherit;
 }
+
 .dropdownContent > div {
     margin:0;
     font-weight: 100;
@@ -165,12 +168,13 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
     :border-radius: 0.5em;
     
 }
-
+/*
 .searchTextTitle{
     color:white;
     font-size:1em ;
     font-style: normal;
-}
+}*/
+
 .styled-select select {
    background: transparent;
    width: 26px;
@@ -198,4 +202,34 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
     background-color: white;
     font-weight: 200;
     color: black;
+}
+
+#imageIndirizzo{
+    display:block; 
+    height:60px; 
+    width:80px; 
+    margin-top: 2vh; 
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+#colIndirizzo{
+    text-align:center; 
+    padding-left:0;   
+}
+
+#titleCercaIndirizzo{
+    font-size:1.5em; 
+    color:black; 
+    font-weight: 100;
+}
+
+#cercaVia{
+    width:100%; 
+    font-size:1em; 
+    height:5vh;  
+}
+
+.paddingLeftClass{
+    padding-left: 0.5em;   
 }

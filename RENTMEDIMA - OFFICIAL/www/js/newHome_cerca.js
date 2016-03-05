@@ -151,6 +151,7 @@ function doStuff(){
         //$("#selectZone").text("Select a Zone");  
         nascondiBottomBar();
     });
+    
     $("#backSearchBtn").click(function(){
         $("#cercaContent").toggle();
         $("#cercaDove").toggle();
@@ -158,6 +159,7 @@ function doStuff(){
         $("#searchTopRow").toggle();
         mostraBottomBar();
     });
+    
     $("#backSearchResultBtn").click(function(){
         $("#cercaContent").toggle();
         $("#risultatiRicercaContent").toggle();
@@ -165,9 +167,11 @@ function doStuff(){
         $("#risultatiRicercaTopRow").toggle();
         mostraBottomBar();
     });
+    
     $('#selectZone').on('change',function(){
         $(".validateDontSubmit").submit();
     });
+    
     $("#searchBtn").click(function(){
         $("#risultatiRicercaContent").toggle();
         $("#cercaContent").toggle();
@@ -184,6 +188,7 @@ function doStuff(){
 $(document).on('submit','.validateDontSubmit',function (e) {
     //prevent the form from doing a submit
     e.preventDefault();
+    
     $("#cercaContent").toggle();
     $("#cercaDove").toggle();
     $("#homeTopRow").toggle();
@@ -216,6 +221,7 @@ function drawSearchResultMap(){
     }
     var map = new google.maps.Map(document.getElementById('risultatiRicercaMap'), mapOptions);
 } 
+
 /*
 function drawCercaVicinanzeMap(){
      console.log("Disegno mappa risultati ricerca");
