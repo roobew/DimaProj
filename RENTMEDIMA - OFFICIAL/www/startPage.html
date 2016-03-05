@@ -1,150 +1,186 @@
 <html lang="en">
+
+    <head>
+        <title>RENT ME</title>
+        <meta charset="utf-8"/>
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+        
+        
+        <link href="bootstrap_all/css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+        
+        <link href="css/startPage.css" type="text/css" rel="stylesheet"/>     
+        
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        
+        <script src="bootstrap_all/js/bootstrap.min.js"></script>
+        
+    </head>
     
-<head>
-    <meta charset="utf-8"/>
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-tap-highlight" content="no" />
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-   
-<!--
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *">
-    
--->
-    <!-- Include jQuery Mobile stylesheets -->
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <body>
+        <div id="divEsterno">
+            <div id="schermataUno">
 
-    <!-- Include the jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+                <div class="headerDiv">
+                    <h2>RentMe </h2>
+                    <small> <b>Iscriviti per trovare subito casa</b></small>
+                </div>
 
-    <!-- Include the jQuery Mobile library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
-    
-    <link href="bootstrap_all/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-    <link href="css/startPage.css" rel="stylesheet" type="text/css"/>
-    
-    
-    
-    <title>LOGIN PAGE</title>
-</head>
- 
-<body>
-    <br> <br>
-    <div class="row">
-            <div class="col-xs-6">
-               <img id="login" class="img-responsive pull-left" src="img/fb_accedi.png" onclick="facebookLogin();">
-            </div>
- 
-            <div class="col-xs-6">
-              <img id="login" class="img-responsive pull-right" src="img/google_accedi.png" onclick="googleLogin();">
-            </div>
-        </div>
-    
-    <div class="container" id="contentDiv">
-    
-        <div>
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3"> 
-                    <div class="panel panel-login" style="background-color:transparent">
-                        <div class="panel-heading" style="background-color:transparent">
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <a href="#" class="active" id="login-form-link">Login</a>
-                                </div>
-                                <div class="col-xs-6">
-                                    <a href="#" id="register-form-link">Registrazione</a>
-                                </div>
-                            </div>
-                            <hr>
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-12">
+                <div id="imageDiv">
+                    <img class="socialLoginImage" src="img/fb_accedi.png" onclick="facebookLogin();"/>
 
-                                    <!-- LOGIN FORM STARTS HERE -->
-                                    <form id="login-form" role="form">
-                                        <div class="form-group">
-                                            <input type="text" name="username" id="emailLogin" tabindex="1" class="form-control" placeholder="Email" value="">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" name="password" id="passwordLogin" tabindex="2" class="form-control" placeholder="Password">
-                                        </div>
+                    <img class="socialLoginImage" src="img/google_accedi.png" style="margin-top:2vh" onclick="googleLogin();"/>
+                </div>
 
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-sm-6 col-sm-offset-3">
-                                                    <input type="submit" id="LogIn" name="login-submit" tabindex="3" class="form-control btn btn-login" value="Login" onclick="login();">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <div class="text-center">
-                                                        <a href="#" tabindex="4" class="forgot-password">Hai dimenticato la password?</a>
-                                                    </div>
-                                                <form id="forgottenPassword">
-                                                    <input type="text" name="emailForgotten" id="emailForgotten" tabindex="1" class="form-control" placeholder="Email" value="">
-                                                    
-                                                    <input type="submit" id="recoverButton" value="Recupera" onclick="recoverPassword();">
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
+                <div class="orDiv">
+                    <div class="leftOrDiv">
+                    </div>
 
-                                    <!-- REGISTER FORM STARTS HERE -->
-                                    <form id="register-form" role="form">
+                    <p class="orText">OPPURE</p>
 
-                                        <div class="form-group">
-                                            <input type="text" name="myName" id="nameReg" tabindex="1" class="form-control" placeholder="Nome" value="">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input type="text" name="mySurname" id="surnameReg" tabindex="2" class="form-control" placeholder="Cognome" value="">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input type="email" name="myEmail" id="emailReg" tabindex="3" class="form-control" placeholder="Email" value="">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input type="password" name="myPassword" id="passwordReg" tabindex="3" class="form-control" placeholder="Password">
-                                        </div>
-
-    <!--
-                                        <div class="form-group">
-                                            <input type="password" name="confirmPassword" id="confirmPasswordReg" tabindex="4" class="form-control" placeholder="Confirm Password">
-                                        </div>
-    -->
-
-                                        <div class="form-group">
-                                            <div class="row">
-
-                                                <div class="col-sm-6 col-sm-offset-3">
-                                                    <input type="submit" name="myRegister" id="Register" tabindex="4" class="form-control btn btn-register" value="Registrati" onclick="register();">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="rightOrDiv">
                     </div>
                 </div>
+
+ 
+                <div id="registraForm">
+ 
+                    <div class="col-xs-10 col-xs-offset-1 inputColumnDiv">
+                        <input type="text" class="form-control" id="nameReg" placeholder="Nome">
+                    </div>
+
+                    <div class="col-xs-10 col-xs-offset-1 inputColumnDiv">
+                        <input type="text" class="form-control" id="surnameReg" placeholder="Cognome">
+                    </div>
+
+                    <div class="col-xs-10 col-xs-offset-1 inputColumnDiv">
+                      <input type="email" class="form-control" id="emailReg" placeholder="Email">
+                    </div>
+
+                    <div class="col-xs-10 col-xs-offset-1 inputColumnDiv">
+                        <input type="password" class="form-control" id="passwordReg" placeholder="Password">
+                    </div>
+
+                    <div class="col-xs-6 col-xs-offset-3 inputColumnDiv" style="text-align:center;">
+                        <button type="submit" class="btn btn-primary" onclick="register();">Registrati</button>
+                    </div>
+                </div>
+
+                <div class="bottomDiv">
+                    <p class="bottomText">Hai già un account? <b>Accedi</b></p>
+                </div>
+        </div>
+
+            <div id="schermataDue">
+                <div class="headerDiv">
+                    <h2>RentMe </h2>
+                    <small> <b>Accedi per trovare subito casa</b></small>
+                </div>
+                
+                <div id="loginForm">
+
+                    <div class="col-xs-10 col-xs-offset-1 inputColumnDiv">
+                      <input type="email" class="form-control" id="emailLogin" placeholder="Email">
+                    </div>
+
+                    <div class="col-xs-10 col-xs-offset-1 inputColumnDiv">
+                        <input type="password" class="form-control" id="passwordLogin" placeholder="Password">
+                    </div>
+
+                    <div class="col-xs-6 col-xs-offset-3 inputColumnDiv" style="text-align:center;">
+                        <button id="loginButton" class="btn btn-primary"  onclick="login();">Accedi</button>
+                    </div>
+                </div>
+                
+                <div class="col-xs-10 col-xs-offset-1" id="pwDimenticataDiv">
+                        <a href="#" id="pwDimenticataText"> <u>Hai dimenticato la password?</u></a>
+                    </div>  
+                
+                <div id="recuperaPasswordDiv">                    
+                    
+                    <div class="col-xs-10 col-xs-offset-1 inputColumnDiv">
+                        <input type="email" class="form-control" id="emailForgotten" placeholder="Email">
+                    </div>
+
+                    <div class="col-xs-12 inputColumnDiv" style="text-align:center; margin-top:1.5em;">
+                        <button id="chiudiRecuperaPasswordButton" class="btn btn-primary pull-left" style="width:5em;">Chiudi</button>
+                        
+                        <button id="recuperaPasswordButton" class="btn btn-success pull-right" style="width:6em;" data-toggle="modal" data-target="#myModal" onclick="recoverPassword();">Recupera</button>
+<!--                    onclick="recoverPassword();"-->
+                        
+                    
+                    </div>
+                  </div>  
+
+                <div class="bottomDiv">
+                    <p class="bottomText">Non hai un account? <b>Iscriviti</b></p>
+                </div>
+                
+            </div>
+        </div>
+         
+        
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-sm">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title" style="text-align:center">RentMe</h4>
+                </div>
+                <div class="modal-body">
+                  <p id="recuperoPasswordText" style="text-align:center"></p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal" id="modalButton">Chiudi</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        
+        <div class="modal fade" id="modalLogin" role="dialog">
+            <div class="modal-dialog modal-sm">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title" style="text-align:center">RentMe</h4>
+                </div>
+                <div class="modal-body">
+                  <p id="loginText" style="text-align:center"></p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal" id="loginModalButton">Chiudi</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        
+        <div class="modal fade" id="modalReg" role="dialog">
+            <div class="modal-dialog modal-sm">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title" style="text-align:center">RentMe</h4>
+                </div>
+                <div class="modal-body">
+                  <p id="regText" style="text-align:center"></p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal" id="regModalButton">Chiudi</button>
+                </div>
+              </div>
             </div>
         </div>
         
         
-    </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/startPage.js"></script>
+        <script type="text/javascript" src="js/openFB.js"></script>
+        <script type="text/javascript" src="js/openGoogle.js"></script>
     
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/startPage.js"></script>
-    <script type="text/javascript" src="js/openFB.js"></script>
-    <script type="text/javascript" src="js/openGoogle.js"></script>
-    
-    
-    
-</body>
-        
+    </body>
+
 </html>
