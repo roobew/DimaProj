@@ -294,3 +294,36 @@ a:link, a:hover, a:visited, a:active{
     text-decoration: none;
     color: #127ebf;
 }
+
+
+.modal { 
+    top: 20vh !important; 
+}
+
+
+/*
+.modal-backdrop
+{
+    opacity:0.5 !important;
+}
+
+.modal { 
+    position: fixed; 
+    top: 5vh; 
+    left: 100vw; 
+    width: 50vw; 
+    margin: 0; 
+    opacity: 1;
+    z-index: 2000;
+}
+.modal-body { 
+    height: 10vh; 
+}
+
+.modal-body { 
+    max-height: 350px; 
+    padding: 15px; 
+    overflow-y: auto; 
+    -webkit-overflow-scrolling: touch; 
+ }
+
