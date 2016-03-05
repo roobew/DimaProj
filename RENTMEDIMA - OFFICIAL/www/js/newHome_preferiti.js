@@ -10,7 +10,7 @@ var imgURL1="http://www.ansa.it/webimages/img_457x/2014/2/14/1392379654131_donal
 var imgURL2="http://www.cartoni-animati.com/wp-content/uploads/topolino_4.jpg";
    
 var markersArray=[];
-var tempCount=0;
+var tempCount=0, aggiuntoPreferitiCount=false;;
 
 $(document).ready(function (){
     
@@ -34,6 +34,23 @@ $(document).ready(function (){
         
         removeMarker(tempCount);
         tempCount++;
+    });
+    
+    $("#aggiungiPreferitiButton").on("tap", function(){
+        if(aggiuntoPreferitiCount==true){
+             $(this).css("color", "white");
+             aggiuntoPreferitiCount=false;
+            
+         }
+        else{
+            //$(this).addClass("aggiuntoPreferiti");  
+            aggiuntoPreferitiCount=true;
+            
+            $(this).animate({
+                    color:"#b5322b"   
+                }, 1000);
+        }
+              
     });
 });
 

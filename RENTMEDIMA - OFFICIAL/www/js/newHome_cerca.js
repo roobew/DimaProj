@@ -1,3 +1,5 @@
+var mappaRisultatiDisegnata=false;
+
 
 var GoogleMap = (function(){
     var mapOptions,
@@ -134,6 +136,8 @@ var GoogleMap = (function(){
     }
 });
 
+
+
 $(document).ready(doStuff);
 
 function doStuff(){
@@ -161,6 +165,7 @@ function doStuff(){
     });
     
     $("#backSearchResultBtn").click(function(){
+        
         $("#cercaContent").toggle();
         $("#risultatiRicercaContent").toggle();
         $("#homeTopRow").toggle();
@@ -168,13 +173,45 @@ function doStuff(){
         mostraBottomBar();
     });
     
+    $("#mappaRisultatiButton").click(function (){
+        
+        if(mappaRisultatiDisegnata==false){
+            disegnaMappaRisultati();
+            mappaRisultatiDisegnata=true;   
+        }
+        
+        $("#listaRisultatiColumn").toggle();
+        $("#mappaRisultatiColumn").toggle();
+        
+        $("#risultatiRicercaContent").fadeOut();
+        $("#risultatiRicercaMap").fadeIn();
+    });
+    
+    $("#listaRisultatiButton").click(function (){
+        
+        $("#listaRisultatiColumn").toggle();
+        $("#mappaRisultatiColumn").toggle();
+        
+        $("#risultatiRicercaMap").fadeOut();
+        $("#risultatiRicercaContent").fadeIn();
+           
+    });
+    
     $('#selectZone').on('change',function(){
         $(".validateDontSubmit").submit();
     });
     
     $("#searchBtn").click(function(){
-        $("#risultatiRicercaContent").toggle();
-        $("#cercaContent").toggle();
+        
+        $("#risultatiRicercaMap").hide();
+        $("#cercaContent").hide();
+        
+        $("#mappaRisultatiColumn").hide();
+        $("#listaRisultatiColumn").show();
+        
+        $("#risultatiRicercaContent").show();
+        
+        
         $("#homeTopRow").toggle();
         $("#risultatiRicercaTopRow").toggle();
         nascondiBottomBar();
@@ -211,8 +248,7 @@ $(document).on('submit','.validateDontSubmit',function (e) {
     return false;
 });
 
-
-function drawSearchResultMap(){
+function disegnaMappaRisultati(){
     console.log("Disegno mappa risultati ricerca");
     var myLatlng;
     var mapOptions = {
@@ -220,15 +256,16 @@ function drawSearchResultMap(){
         center: new google.maps.LatLng(45.4642200,9.1905600)
     }
     var map = new google.maps.Map(document.getElementById('risultatiRicercaMap'), mapOptions);
+
+    drawMyMarker(map);
+    
+    google.maps.event.addListenerOnce(map, 'idle', function() {
+        console.log("Resize event");
+        google.maps.event.trigger(map, 'resize');
+    });
+    
+    
+    
+
 } 
 
-/*
-function drawCercaVicinanzeMap(){
-     console.log("Disegno mappa risultati ricerca");
-    var myLatlng;
-    var mapOptions = {
-        zoom: 12,
-        center: new google.maps.LatLng(45.4642200,9.1905600)
-    }
-    var map = new google.maps.Map(document.getElementById('cercaVicinanzeMap'), mapOptions);
-}*/

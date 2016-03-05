@@ -55,7 +55,7 @@ $(document).ready(function (){
         
         if(dettaglioMapInit==false){
             //drawMap("dettaglioMap", false);
-           // drawMapDettaglio();
+            drawMapDettaglio();
             dettaglioMapInit=true;
         }
         

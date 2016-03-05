@@ -146,6 +146,10 @@
     margin-top: 3vw
 }
 
+.bubbleDivContainer > div > h6{
+    word-wrap: break-word !important;   
+}
+
 .bubbleRight, .bubbleLeft 
 {
     display: inline-block;
@@ -212,18 +216,21 @@
 }
 
 #messageInputText{
-    display: inline-block;
+    display: block;
+    float:left;
     height: 6vh;
+    min-height: 6vh;
+    max-height: 6vh;
     width: 70vw;
     padding-left: 0.4em;
     border-radius: 0.4em;   
 }
 
 #inviaMessaggioButton{
-    display: inline-block;
-    height: 4.5vh;
+    display: block;
+    float: right;
     width:13vw;
     font-size: 0.85em;
-    :background-color:red;
-    margin-left: 4vw;
+    line-height: 2.5em;
+    margin-right: 4vw;
 }

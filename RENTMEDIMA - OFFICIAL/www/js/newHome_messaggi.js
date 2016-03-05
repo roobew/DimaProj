@@ -183,18 +183,20 @@ function closeDraggableElement(){
 }
 
 function inviaMessaggio(){
-     testoMessaggio=$("#messageInputText").val();
-     timeInvioMessaggio=currentDate.getHours()+":"+currentDate.getMinutes();
+    testoMessaggio=$("#messageInputText").val();
     
-     console.log("INVIO: "+testoMessaggio);
-     console.log("Alle ore: "+timeInvioMessaggio);
+    if(testoMessaggio!=""){
+        timeInvioMessaggio=currentDate.getHours()+":"+currentDate.getMinutes();
     
-     $("#messageInputText").blur();
-    
-     messaggioHTMLcontent="<div class='bubbleDivContainer'><div class='bubbleRight rightMessage'><h6>"+testoMessaggio+"</h6></div></div>";
-    
-     $("#messageFlowDiv").append(messaggioHTMLcontent);
-     $("#messageInputText").val("");                                                                             
+         console.log("INVIO: "+testoMessaggio);
+         console.log("Alle ore: "+timeInvioMessaggio);
+
+         $("#messageInputText").blur();
+
+         messaggioHTMLcontent="<div class='bubbleDivContainer'><div class='bubbleRight rightMessage'><h6>"+testoMessaggio+"</h6></div></div>";
+
+         $("#messageFlowDiv").append(messaggioHTMLcontent);
+         $("#messageInputText").val("");                                                                }           
 }
 
 function scrollToBottom(){

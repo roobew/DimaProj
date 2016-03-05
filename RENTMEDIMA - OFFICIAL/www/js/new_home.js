@@ -137,6 +137,7 @@ function setField(){
             case "cercaTab":
                 $("#cercaContent").show();
                 console.log("Premuto cerca");             
+                
                 var map = new GoogleMap();
                 map.initialize();
                 
@@ -160,7 +161,7 @@ function setField(){
                 console.log("Premuto preferiti"); 
 
                 if(preferitiMapInit==false){    
-                    //drawMap("preferitiMap",true);
+
                     drawMapPreferiti();
                     preferitiMapInit=true;
                 }
@@ -183,7 +184,7 @@ function setField(){
     
     $(".swiper-slide").click(function (){
         if(dettaglioMapInit==false){
-            //drawMap("dettaglioMap", false);
+
             drawMapDettaglio();
             dettaglioMapInit=true;
         }
@@ -298,6 +299,7 @@ function drawMap(mapID, addMark){
 }
 
 */
+
 function drawMapPreferiti(){
     console.log("DISEGNO mappa di preferiti");
     
