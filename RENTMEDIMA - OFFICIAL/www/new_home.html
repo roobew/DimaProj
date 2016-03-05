@@ -310,7 +310,7 @@
                     
                     <div class="col-xs-2 col-xs-offset-4" style="padding: 0;
     text-align: center; margin-top:-0.2em;">
-                        <a href="#" style="color:white; text-shadow: 1px 1px 1px black;">
+                        <a href="#" id="apriMessaggioButton_daHome" style="color:white; text-shadow: 1px 1px 1px black;">
                             <span class="glyphicon glyphicon-envelope" aria-hidden="true" style="font-size:1.3em;"></span>
                         </a>
                     </div>
@@ -343,20 +343,13 @@
                         </a>
                     </div>
                     
-                    <div class="col-xs-2 col-xs-offset-4" style="padding: 0;
+                    <div class="col-xs-2 col-xs-offset-6" style="padding: 0;
     text-align: center; margin-top:-0.2em;">
-                        <a href="#" style="color:white; text-shadow: 1px 1px 1px black;">
+                        <a href="#" id="apriMessaggioButton_daPreferiti" style="color:white; text-shadow: 1px 1px 1px black;">
                             <span class="glyphicon glyphicon-envelope" aria-hidden="true" style="font-size:1.3em;"></span>
                         </a>
                     </div>
-                    
-                    
-                    <div class="col-xs-2" style="padding: 0;
-    text-align: center; margin-left:0.5em; margin-top:-0.2em;">
-                        <a href="#" style="color:white; text-shadow: 1px 1px 1px black;">
-                            <span class="glyphicon glyphicon-heart" aria-hidden="true" style="font-size:1.3em;"></span>
-                        </a>
-                    </div>
+                
                 </div>
             </div>
            
@@ -389,6 +382,43 @@
                 </div>
            
             </div>
+           
+<!--            Questa viene da HOME-->
+            <div id="messaggiHomeTopRow_daDettaglioAnnuncio" class="row">
+                 <div class="row nuovoAnnuncioIntestazione">
+                        <div class="col-xs-2">
+                            <a href="#" class="paddingElement" id="backToPaginaDettaglioAnnuncio_PerHome" style="color:white; text-shadow: 1px 1px 1px black;">
+                                <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                        
+                        <div class="col-xs-8 nuovoAnnuncioTestoIntestazione messaggiTitoloRiga">
+                            <h4 class="annuncioTextTitle"> Filippo Verdi </h4>
+                        </div>
+                     
+                        <div class="col-xs-2"></div>
+                </div>
+           
+            </div>
+           
+<!--           Questa viene da PREFERITI-->
+            <div id="messaggiHomeTopRow_daDettaglioAnnuncio_daPreferiti" class="row">
+                 <div class="row nuovoAnnuncioIntestazione">
+                        <div class="col-xs-2">
+                            <a href="#" class="paddingElement" id="backToPaginaDettaglioAnnuncio_PerPreferiti" style="color:white; text-shadow: 1px 1px 1px black;">
+                                <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                        
+                        <div class="col-xs-8 nuovoAnnuncioTestoIntestazione messaggiTitoloRiga">
+                            <h4 class="annuncioTextTitle"> Filippo Verdi </h4>
+                        </div>
+                     
+                        <div class="col-xs-2"></div>
+                </div>
+           
+            </div>
+           
        </div>
        
        <!-- CONTENUTO PAGINA  -->
@@ -2484,11 +2514,11 @@
                         </div>
                     
                         <div class="row" id="preferitiInfoFifthRows">
-                            <div class="col-xs-6">
-                                <a href="#" onclick="vediDettaglioAnnuncio()">Vedi dettaglio </a>
+                            <div class="col-xs-8">
+                                <a href="#" onclick="vediDettaglioAnnuncio()" style="font-size:0.9em;">Mostra dettaglio </a>
                             </div>
                             
-                            <div class="col-xs-2 col-xs-offset-3">
+                            <div class="col-xs-2 col-xs-offset-1">
                                 <span class="glyphicon glyphicon-trash eliminaPreferitoIcon" aria-hidden="true"></span>
                             </div>
                         
@@ -2514,7 +2544,7 @@
                           
                         <div class="row">
                             <div class="col-xs-12">
-                                <h5 class="preferitiTextInfo"> Via Archimede Morleo 15/C1</h5>
+                                <h5 class="preferitiTextInfo preferitiViaText"> Via Archimede Morleo 15/C1</h5>
                             </div>
                         </div>
                         
@@ -2525,11 +2555,11 @@
                         </div>
                     
                         <div class="row" id="preferitiInfoFifthRows">
-                            <div class="col-xs-6">
-                                <a href="#">Vedi dettaglio </a>
+                            <div class="col-xs-8">
+                                <a href="#" onclick="vediDettaglioAnnuncio()" style="font-size:0.9em;">Mostra dettaglio </a>
                             </div>
                             
-                            <div class="col-xs-2 col-xs-offset-3">
+                            <div class="col-xs-2 col-xs-offset-1">
                                 <span class="glyphicon glyphicon-trash eliminaPreferitoIcon" aria-hidden="true"></span>
                             </div>
                         
@@ -2555,7 +2585,7 @@
                           
                         <div class="row">
                             <div class="col-xs-12">
-                                <h5 class="preferitiTextInfo"> Via Archimede Morleo 15/C1</h5>
+                                <h5 class="preferitiTextInfo preferitiViaText"> Via Archimede Morleo 15/C1</h5>
                             </div>
                         </div>
                         
@@ -2566,11 +2596,11 @@
                         </div>
                     
                         <div class="row" id="preferitiInfoFifthRows">
-                            <div class="col-xs-6">
-                                <a href="#">Vedi dettaglio </a>
+                            <div class="col-xs-8">
+                                <a href="#" onclick="vediDettaglioAnnuncio()" style="font-size:0.9em;">Mostra dettaglio </a>
                             </div>
                             
-                            <div class="col-xs-2 col-xs-offset-3">
+                            <div class="col-xs-2 col-xs-offset-1">
                                 <span class="glyphicon glyphicon-trash eliminaPreferitoIcon" aria-hidden="true"></span>
                             </div>
                         
@@ -2579,48 +2609,7 @@
            
                     </div>
                     
-                    <h2  class="accordionTitle"> 123456 8901 34567 90 234 678 0 2345 7890 </h2>
-                    <div class="accordionContent divChild">
-                           
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h5 class="preferitiTextInfo"> Stanza Condivisa - Posti letto stanza: 2</h5>
-                            </div>
-                        </div>
-                        
-                        <div class="row" id="preferitiInfoSecondRow">
-                            <div class="col-xs-12">
-                                <h5 class="preferitiTextInfo"> Zona Navigli</h5>
-                            </div>
-                        </div>
-                          
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h5 class="preferitiTextInfo"> Via Archimede Morleo 15/C1</h5>
-                            </div>
-                        </div>
-                        
-                        <div class="row" id="preferitiInfoFourthRows">
-                            <div class="col-xs-12">
-                                <h5 class="preferitiTextInfo preferitiPezzoText"> 347€</h5>
-                            </div>
-                        </div>
-                    
-                        <div class="row" id="preferitiInfoFifthRows">
-                            <div class="col-xs-6">
-                                <a href="#">Vedi dettaglio </a>
-                            </div>
-                            
-                            <div class="col-xs-2 col-xs-offset-3">
-                                <span class="glyphicon glyphicon-trash eliminaPreferitoIcon" aria-hidden="true"></span>
-                            </div>
-                        
-                        </div>
-                            
-           
-                    </div>
-                    
-                    
+                   
                 </div>
                 <div id="emptyFinalDiv"></div>
             </div>

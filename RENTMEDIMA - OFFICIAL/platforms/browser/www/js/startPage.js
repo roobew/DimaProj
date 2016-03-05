@@ -1,7 +1,29 @@
-$(function() {
+var recuperoOpen=false;
+
+$(document).ready(function() {
     console.log("START PAGE");
-    openFB.init({appId: '867006893383189', tokenStore: window.localStorage}); 
     
+    
+    $(".bottomDiv").click(function (){
+        console.log("SPOSTO");
+        $("#divEsterno").toggleClass("changePage"); 
+
+        if(recuperoOpen==true){
+            chiudiRecuperaPassword();   
+        }
+    }); 
+            
+    $("#pwDimenticataText").click(function(){
+        apriRecuperaPassword();
+    });
+            
+    $("#chiudiRecuperaPasswordButton").click(function(){
+        chiudiRecuperaPassword();
+    });
+    
+    
+    openFB.init({appId: '867006893383189', tokenStore: window.localStorage}); 
+    /*
     $('#login-form-link').on("tap", function(e) {
 		$("#login-form").delay(100).fadeIn(100);
  		$("#register-form").fadeOut(100);
@@ -20,8 +42,33 @@ $(function() {
     $("#recoverButton").on("tap", function(e) {
         e.preventDefault();
     });
-    
+    */
 });
+            
+       
+        
+function apriRecuperaPassword(){
+                recuperoOpen=true;
+                
+                $("#recuperaPasswordDiv").fadeIn();      
+                $("#loginForm").animate({opacity: "0.2"}, function(){
+                    $( "#userEmailLogin" ).prop( "disabled", true );   
+                    $( "#userPasswordLogin" ).prop( "disabled", true );   
+                    $( "#loginButton" ).prop( "disabled", true );   
+                });       
+        }
+        
+function chiudiRecuperaPassword(){
+            recuperoOpen=false;
+                
+            $("#recuperaPasswordDiv").fadeOut();      
+            $("#loginForm").animate({opacity: "1"}, function(){
+                $( "#userEmailLogin" ).prop( "disabled", false );   
+                $( "#userPasswordLogin" ).prop( "disabled", false );   
+                $( "#loginButton" ).prop( "disabled", false );   
+            });   
+        }
+
 
 function facebookLogin() {
     openFB.login(
@@ -56,8 +103,8 @@ function facebookLogin() {
                             navigator.notification.alert(JSON.parse(jUser).message, reload, JSON.parse(jUser).title);    
                             console.log("!!! ERRORE !!!");
                             //navigator.notification.alert(JSON.parse(jUser).message, reload, JSON.parse(jUser).title);
-                            navigator.notification.alert("ciao");
-                            
+                            //navigator.notification.alert("ciao",null,"titolo");
+                            //alert("ops");
                             //alert(JSON.parse(jUser).message);
                         }
                     },
