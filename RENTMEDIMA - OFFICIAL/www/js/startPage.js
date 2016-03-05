@@ -1,28 +1,73 @@
+var recuperoOpen=false;
+var schermataUno=true;
+
 $(document).ready(function() {
     console.log("START PAGE");
+    
+    
+    $(".bottomDiv").click(function (){
+        console.log("SPOSTO");
+        $("#divEsterno").toggleClass("changePage"); 
+
+        if(schermataUno==true){
+            //SOno il registrazione, vado in login   
+            $("#nameReg").val("");
+            $("#surnameReg").val("");
+            $("#emailReg").val("");
+            $("#passwordReg").val("");
+            
+            schermataUno=false;
+        }
+        else{
+            //Sono in login, vado in registrazione   
+            $("#emailLogin").val("");
+            $("#passwordLogin").val("");
+        
+        }
+        
+        if(recuperoOpen==true){
+            chiudiRecuperaPassword();   
+        }
+    }); 
+            
+    $("#pwDimenticataText").click(function(){
+        apriRecuperaPassword();
+    });
+            
+    $("#chiudiRecuperaPasswordButton").click(function(){
+        chiudiRecuperaPassword();
+    });
+
     openFB.init({appId: '867006893383189', tokenStore: window.localStorage}); 
     
-    $('#login-form-link').on("tap", function(e) {
-		$("#login-form").delay(100).fadeIn(100);
- 		$("#register-form").fadeOut(100);
-		$('#register-form-link').removeClass('active');
-		$(this).addClass('active');
-		e.preventDefault();
-	});
-	$('#register-form-link').on("tap", function(e) {
-		$("#register-form").delay(100).fadeIn(100);
- 		$("#login-form").fadeOut(100);
-		$('#login-form-link').removeClass('active');
-		$(this).addClass('active');
-		e.preventDefault();
-	});
-
-    $("#recoverButton").on("tap", function(e) {
-        e.preventDefault();
-    });
-    
 });
+            
+      
+function apriRecuperaPassword(){
+                recuperoOpen=true;
+                
+                $("#recuperaPasswordDiv").fadeIn();      
+                $("#loginForm").animate({opacity: "0.2"}, function(){
+                    $( "#userEmailLogin" ).prop( "disabled", true );   
+                    $( "#userPasswordLogin" ).prop( "disabled", true );   
+                    $( "#loginButton" ).prop( "disabled", true );   
+                });       
+        }
+        
+function chiudiRecuperaPassword(){
+            recuperoOpen=false;
+     
+    
+            $("#recuperaPasswordDiv").fadeOut();      
+            $("#loginForm").animate({opacity: "1"}, function(){
+                $( "#userEmailLogin" ).prop( "disabled", false );   
+                $( "#userPasswordLogin" ).prop( "disabled", false );   
+                $( "#loginButton" ).prop( "disabled", false );   
+                $("#emailForgotten").val("");
+            });   
+        }
 
+ 
 function facebookLogin() {
     openFB.login(
         function(response) {
@@ -118,50 +163,105 @@ function googleLogin(){
 // Funziona, a parte il messaggio di errore che si intravede
 function login(){
     //console.log("Dentro login function");
-  myUrl=  "http://rentme.altervista.org/login.php?" +                
-            "email="       +   document.getElementById('emailLogin').value      +
-            "&loginType="   +   'rentMe'                                    +
-            "&password="    +   document.getElementById('passwordLogin').value   ;                        
-    xhttp = new XMLHttpRequest;
-    xhttp.open("GET", myUrl, false);
-    xhttp.send();
-    jUser=xhttp.response;
-    if(JSON.parse(jUser).id!=null){
-        console.log("dentro");
-        localStorage.setItem("userData",jUser);
-        setTimeout(function(){
-                    window.location.href="new_home.html";
-        },50);                          
-    }else{                   
-        navigator.notification.alert(JSON.parse(jUser).message, reload, JSON.parse(jUser).title);    
+    
+    if(correctLoginValue()==false){
+        
+        $('#modalLogin').modal({
+            show: 'true'
+        }); 
+        
+        $("#loginText").text("Inserisci dei valori validi");
+        //alert("Inserisci i valori");  
     }
+    else{
+        console.log("tutto ok");
+
+        myUrl=  "http://rentme.altervista.org/login.php?" +                
+                "email="       +   document.getElementById('emailLogin').value      +
+                "&loginType="   +   'rentMe'                                    +
+                "&password="    +   document.getElementById('passwordLogin').value   ;                        
+        xhttp = new XMLHttpRequest;
+        xhttp.open("GET", myUrl, false);
+        xhttp.send();
+        jUser=xhttp.response;
+        if(JSON.parse(jUser).id!=null){
+            console.log("dentro");
+            localStorage.setItem("userData",jUser);
+            setTimeout(function(){
+                        window.location.href="new_home.html";
+            },50);                          
+        }else{                   
+            navigator.notification.alert(JSON.parse(jUser).message, reload, JSON.parse(jUser).title);    
+        }
+    }
+}
+
+function correctLoginValue(){
+    var emailValue=$("#emailLogin").val();   
+    var passwordValue=$("#passwordLogin").val();   
+    
+    console.log("Email: "+emailValue+ " e Password: "+passwordValue);
+    
+    if(emailValue=="" || passwordValue==""){
+       return false; 
+    }
+    
+    return true;
 }
 
 function register(){   
     console.log("dentro register");
-    myUrl=  "http://rentme.altervista.org/registration.php?" +                
-            "name="        +   document.getElementById('nameReg').value       +
-            "&surname="     +   document.getElementById('surnameReg').value    +
-            "&email="       +   document.getElementById('emailReg').value      +
-            "&loginType="   +   'rentMe'                                    +
-            "&password="    +   document.getElementById('passwordReg').value   ;                       
-    console.log("ciaaaaaooo!!11!!");
+    
+    if(correctRegistrationValue()==false){
+        
+        $('#modalReg').modal({
+            show: 'true'
+        }); 
+        
+        $("#regText").text("Inserisci dei valori validi");
+        
+        //alert("Campi registrazione vuoti");   
+    }
+    else{
+        
+        console.log("Campi registrazione pieni");
 
-    xhttp = new XMLHttpRequest;
-    xhttp.open("GET", myUrl, false);
-    xhttp.send();
-    jUser=xhttp.response;
-    if(JSON.parse(jUser).id!=null){        
-        localStorage.setItem("userData",jUser);  
-        setTimeout(function(){
-                    window.location.href="new_home.html";            
-        },50);    
-    }else{     
-        console.log("ERROR");
-        console.log(jUser);  
-        navigator.notification.alert(JSON.parse(jUser).message, reload, JSON.parse(jUser).title);    
+        myUrl=  "http://rentme.altervista.org/registration.php?" +                
+                "name="        +   document.getElementById('nameReg').value       +
+                "&surname="     +   document.getElementById('surnameReg').value    +
+                "&email="       +   document.getElementById('emailReg').value      +
+                "&loginType="   +   'rentMe'                                    +
+                "&password="    +   document.getElementById('passwordReg').value   ;                       
+        console.log("ciaaaaaooo!!11!!");
+
+        xhttp = new XMLHttpRequest;
+        xhttp.open("GET", myUrl, false);
+        xhttp.send();
+        jUser=xhttp.response;
+        if(JSON.parse(jUser).id!=null){        
+            localStorage.setItem("userData",jUser);  
+            setTimeout(function(){
+                        window.location.href="new_home.html";            
+            },50);    
+        }else{     
+            console.log("ERROR");
+            console.log(jUser);  
+            navigator.notification.alert(JSON.parse(jUser).message, reload, JSON.parse(jUser).title);    
+        }
+    }
+}
+
+function correctRegistrationValue(){
+    var nomeValue=$("#nameReg").val();   
+    var cognomeValue=$("#surnameReg").val();   
+    var emailValue=$("#emailReg").val();   
+    var passwordValue=$("#passwordReg").val();  
+    
+    if(nomeValue=="" || cognomeValue=="" || emailValue=="" || passwordValue==""){
+        return false;   
     }
     
+    return true;
 }
 
 function reload(){
@@ -177,7 +277,7 @@ function recoverPassword(){
     //console.log(miaEmail);
     
     if(miaEmail==""){
-        alert("campo vuoto");
+        $("#recuperoPasswordText").text("Inserisci una email valida.");
     }
     else{
         
@@ -189,8 +289,7 @@ function recoverPassword(){
         myRequest.open("GET", myUrl);
         myRequest.send();                    
         
-
-        //window.location.href="startPage.html";
+        $("#recuperoPasswordText").text("Ti abbiamo inviato una email per il recupero della password.");        
         
         /*
         $.ajax({
@@ -239,12 +338,4 @@ function transferFailed(evt) {
 function transferComplete () {
     var myResult=this.responseText;       
     console.log(myResult);
-    
-    alert("Ti abbiamo inviato una mail per recupero della password. \n Controlla la tua casella di posta.");
-    //window.location="startPage.html";
-    setTimeout(function(){
-           window.location="startPage.html";
-        },100); 
-    
-    //window.location="new_home.html";
 }
