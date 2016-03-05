@@ -17,6 +17,7 @@ $(document).ready(function (){
     });*/
   
     // **** EVENTI DI ANNUNCIO_HOME PAGE
+    pickAnnunci();
     
     $("#pillUno").on("tap", function(){
         change_tabs(1, true);
@@ -949,3 +950,26 @@ function change_tabs(dest, affittaBool){
 }
 
 
+function pickAnnunci(){
+    console.log("pickannunci");
+    myUser= JSON.parse(localStorage.getItem("userData"));
+    console.log(myUser);
+    myUrl=  "http://rentme.altervista.org/pickAnnunci.php?" +                
+                "idUser="       +  myUser.id ;                        
+        xhttp = new XMLHttpRequest;
+        xhttp.open("GET", myUrl, false);
+        xhttp.send();
+        annunci=xhttp.response;
+    console.log("preIF");
+        if(JSON.parse(annunci)!=null){
+            console.log("presi annunci");
+            localStorage.setItem("annunci",annunci);
+            console.log(annunci);
+            //setTimeout(function(){
+            //            window.location.href="new_home.html";
+            //},50);                          
+        }
+    else{                   
+            navigator.notification.alert(JSON.parse(jUser).message, reload, JSON.parse(jUser).title);    
+        }
+}

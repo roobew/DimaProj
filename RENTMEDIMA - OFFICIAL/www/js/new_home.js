@@ -224,6 +224,8 @@ function setField(){
         
     });
     
+    //pickAnnunci();
+    
 }
 
 function nascondiBottomBar(){
@@ -334,5 +336,6 @@ function drawMapDettaglio(){
         google.maps.event.trigger(map, 'resize');
     });
 }
+
 
 
