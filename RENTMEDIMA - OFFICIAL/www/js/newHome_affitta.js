@@ -29,7 +29,7 @@ $(document).ready(function (){
     
     
     $("#btnNuovoAnnuncio").click(function (){
-        console.log("Perchè non va?");
+        console.log("Nuovo Annuncio");
         getData();
         
         $("#homeTopRow").hide();
@@ -46,7 +46,7 @@ $(document).ready(function (){
         
         });
     
-    $("#modificaAnnuncioHome").on("tap", function(){
+    $("#modificaAnnuncioHome").on("click", function(){
         
         premiTastoModifica(); 
         
@@ -74,19 +74,6 @@ $(document).ready(function (){
     });*/
    
     
-    $(".modificaAffittaAnnuncio").click(function(){
-        console.log("MODIFICA ANNUNCIO");
-        
-        premiTastoModifica();
-        
-        $("#homeTopRow").hide();
-        $("#modificaAnnuncioTopRow").show();
-        
-        nascondiBottomBar();
-        
-        $("#affittaContent").hide();
-        $("#affittaContent_dettaglioAnnuncio").show();
-    });
     
     $(".eliminaAffittaAnnuncio").click(function(){
         console.log("Elimina ANNUNCIO"); 
@@ -112,7 +99,7 @@ $(document).ready(function (){
     
     
     // **** EVENTI DI NUOVO_ANNUNCIO PAGE
-    $("#backMenuRowEliminaButton").on("tap", function (){
+    $("#backMenuRowEliminaButton").on("click", function (){
         
         clearAllField();
         //navigator.camera.cleanup(onSuccess, onFail);
@@ -126,18 +113,19 @@ $(document).ready(function (){
         $("#affittaContent").fadeIn();
     });
     
-    $("#backMenuRowSalvaButton").on("tap", function (){
+    $("#backMenuRowSalvaButton").on("click", function (){
         console.log("SALVA BOZZA");
         
-        $("#nuovoAnnuncioTopRow").toggle();
-        $("#homeTopRow").toggle(); 
+        $("#nuovoAnnuncioTopRow").hide();
+        $("#homeTopRow").show(); 
         
         mostraBottomBar();
         
-        aggiungiBozza();
+        saveBozzaToDB();
+        pickBozze();
         
-        $("#affittaContent_creaAnnuncio").toggle();
-        $("#affittaContent").toggle();
+        $("#affittaContent_creaAnnuncio").fadeOut();
+        $("#affittaContent").fadeIn();
     });
     
     $("#tipologiaInput").change(function (){
@@ -224,6 +212,7 @@ $(document).ready(function (){
         
         
         $("#nuovoAnnuncioContent").hide();
+        
         $("#nuovoAnnuncio"+myElementID+"Detail").show(); 
         
         
@@ -361,14 +350,22 @@ $(document).ready(function (){
         
     });
        
-    /*$("#pubblicaAnnuncioButton").on("tap", function(){
+    $("#pubblicaAnnuncioButton").on("click", function(){
         //if(checkCorrectValue()==true){
-            $("#affittaContent_creaAnnuncio").fadeOut();
-            $("#affittaContent").fadeIn();  
+        //salvo sul db
+        saveAnnuncioToDB()
+        //ricarico pickannunci
+        pickAnnunci();
+        $("#affittaContent_creaAnnuncio").fadeOut();
+        $("#nuovoAnnuncioTopRow").hide();
         
-            $("#affittaContent .annuncioDiv").first().before(divToAdd);
+        $("#affittaContent").fadeIn();  
+        $("#homeTopRow").show();  
+        
+        
+        //$("#affittaContent .annuncioDiv").first().before(divToAdd);
         //}
-    });*/
+    });
     
     
     
@@ -473,7 +470,8 @@ $(document).ready(function (){
         
         $("#modificaAnnuncioContent").hide();
         $("#modificaAnnuncio"+myElementID+"Detail").show();
-         
+        console.log("pippo");
+        $("#modifica_stanzaCondivisaRadio").prop("checked",true);
         
         
     });
@@ -643,7 +641,7 @@ function setAnnuncioValue(annuncioClicked){
     $("#dettaglioAnnuncioTopRow_daAffitta").show();
 
     nascondiBottomBar();
-
+    //console.log("ciao");
     creaPageDettaglioContent(annuncio);
     $("#pageDettaglioContent").fadeIn();
     $("#affittaContent").fadeOut();
@@ -651,16 +649,36 @@ function setAnnuncioValue(annuncioClicked){
     $(".annuncioListElement").removeClass("go");
 }
 
+function setBozzaValue(annuncioClicked){
+    bozza = JSON.parse(localStorage.getItem("bozze"))[annuncioClicked];
+    if(dettaglioMapInit==false){
+        //drawMap("dettaglioMap", false);
+       // drawMapDettaglio();
+        dettaglioMapInit=true;
+    }
+
+    //Mostra top bar corretta
+    $("#homeTopRow").hide();
+    $("#dettaglioAnnuncioTopRow_daAffitta").show();
+
+    nascondiBottomBar();
+    //console.log("ciao");
+    creaPageDettaglioContent(bozza);
+    $("#pageDettaglioContent").fadeIn();
+    $("#affittaContent").fadeOut();
+
+    $(".annuncioListElement").removeClass("go");
+}
+
 function creaPageDettaglioContent(an){
-    console.log(an);
+    //console.log(an);
     $("#pageDettaglioContent").html("");
     $("#pageDettaglioContent").append(
         
         "<div id='dettaglioMap' style='height:8em; width:100%;'></div>"+
 "                <div class='row pageDettaglioTitleRow'>"+
 "                    <div class='col-xs-12' id='pageDettaglioTitleColumn'>"+
-"                        <h5 class='annuncioTextTitle'> 1234567890 12345 7890 1234 67890 234567 90 "+
-"                        </h5>"+
+"                        <h5 class='annuncioTextTitle'> "+an.titolo+"</h5>"+
 "                    </div>"+
 "                </div> "+
 "                <div class='row pageDettaglioTitleRow'>"+
@@ -673,12 +691,12 @@ function creaPageDettaglioContent(an){
 "                <div class='row pageDettaglioBox' id='pageDettaglioZonaRow'>"+
 "                    <div class='row'>"+
 "                        <div class='col-xs-12'>"+
-"                           <h6> <span id='dettaglioZonaText'>Zona Navigli - </span>  </h6>"+
+"                           <h6> <span id='dettaglioZonaText'>"+an.zona+"</span>  </h6>"+
 "                        </div>"+
 "                    </div>"+
 "                    <div class='row pageDettaglioTitleRow'>"+
 "                        <div class='col-xs-12'>"+
-"                            <h6> Via Vittorio veneto 24/B1</h6> "+
+"                            <h6>"+an.indirizzo+"</h6> "+
 "                        </div>"+
 "                    </div>"+
 "                </div>"+
@@ -696,7 +714,7 @@ function creaPageDettaglioContent(an){
 "                        <h5 class='pageDettaglioTextLineHeight'> <b> Locali: </b></h5>"+
 "                    </div>"+
 "                    <div class='col-xs-3 col-xs-offset-4'>"+
-"                        <h6 class='pageDettaglioTextLineHeight'> 4 </h6>"+
+"                        <h6 class='pageDettaglioTextLineHeight'> " +an.num_locali+ " </h6>"+
 "                    </div>"+
 "                </div>"+
 "                <div class='row pageDettaglioInfoRow' >"+
@@ -704,7 +722,7 @@ function creaPageDettaglioContent(an){
 "                        <h5 class='pageDettaglioTextLineHeight'> <b> Superficie: </b></h5>"+
 "                    </div>"+
 "                    <div class='col-xs-3 col-xs-offset-4'>"+
-"                        <h6 class='pageDettaglioTextLineHeight'> 55 mq </h6>"+
+"                        <h6 class='pageDettaglioTextLineHeight'> "+an.superficie+" mq </h6>"+
 "                    </div>"+
 "                </div>"+
 "                <div class='row pageDettaglioInfoRow'>"+
@@ -712,7 +730,7 @@ function creaPageDettaglioContent(an){
 "                        <h5 class='pageDettaglioTextLineHeight'> <b> Piano: </b></h5>"+
 "                    </div>"+
 "                    <div class='col-xs-3 col-xs-offset-4'>"+
-"                        <h6 class='pageDettaglioTextLineHeight'> 2 </h6>"+
+"                        <h6 class='pageDettaglioTextLineHeight'> "+an.piano+" </h6>"+
 "                    </div>"+
 "                </div>"+
 "                <div class='row pageDettaglioInfoRow'>"+
@@ -720,7 +738,7 @@ function creaPageDettaglioContent(an){
 "                        <h5 class='pageDettaglioTextLineHeight'> <b> Tipo: </b></h5>"+
 "                    </div>"+
 "                    <div class='col-xs-5 col-xs-offset-3'>"+
-"                        <h6 class='pageDettaglioTextLineHeight'> Stanza Condivisa </h6>"+
+"                        <h6 class='pageDettaglioTextLineHeight'>"+an.tipo+"</h6>"+
 "                    </div>"+
 "                </div>"+
 "                 <div class='row pageDettaglioInfoRow'>"+
@@ -728,7 +746,7 @@ function creaPageDettaglioContent(an){
 "                        <h5 class='pageDettaglioTextLineHeight'> <b> Posti Letto Stanza: </b></h5>"+
 "                    </div>"+
 "                    <div class='col-xs-3'>"+
-"                        <h6 class='pageDettaglioTextLineHeight'> 3 </h6>"+
+"                        <h6 class='pageDettaglioTextLineHeight'> "+an.posti_letto+" </h6>"+
 "                    </div>"+
 "                </div>"+
 "                <div class='row pageDettaglioInfoRow'>"+
@@ -736,7 +754,7 @@ function creaPageDettaglioContent(an){
 "                        <h5 class='pageDettaglioTextLineHeight'> <b> Posti Letto Totali: </b></h5>"+
 "                    </div>"+
 "                    <div class='col-xs-3'>"+
-"                        <h6 class='pageDettaglioTextLineHeight'> 7 </h6>"+
+"                        <h6 class='pageDettaglioTextLineHeight'> "+an.posti_letto_tot+" </h6>"+
 "                    </div>"+
 "                </div>"+
 "                <div class='row pageDettaglioMezziRow marginFirstMezziRow'>"+
@@ -744,7 +762,7 @@ function creaPageDettaglioContent(an){
 "                        <img src='img/bus.png' class='iconImage'/>"+
 "                    </div>"+
 "                    <div class='col-xs-9 col-xs-offset-1'>"+
-"                        <h6 style='line-height:2em;'> 90, 145, 375 </h6>"+
+"                        <h6 style='line-height:2em;'> "+an.autobus+"</h6>"+
 "                    </div>"+
 "                </div>"+
 "                <div class='row pageDettaglioMezziRow'>"+
@@ -752,7 +770,7 @@ function creaPageDettaglioContent(an){
 "                        <img src='img/metro.png' class='iconImage'/>"+
 "                    </div>"+
 "                    <div class='col-xs-9 col-xs-offset-1'>"+
-"                        <h6 style='line-height:2em;'> M1, M2, M3 </h6>"+
+"                        <h6 style='line-height:2em;'>"+an.metro+"</h6>"+
 "                    </div>"+
 "                </div>"+
 "                <div class='row pageDettaglioMezziRow'>"+
@@ -760,7 +778,7 @@ function creaPageDettaglioContent(an){
 "                        <img src='img/treno.png' class='iconImage'/>"+
 "                    </div>"+
 "                    <div class='col-xs-9 col-xs-offset-1'>"+
-"                        <h6 style='line-height:2em;'> S1, S2, S9 </h6>"+
+"                        <h6 style='line-height:2em;'> "+an.treno+"</h6>"+
 "                    </div>"+
 "                </div>"+
 "                <div class='row pageDettaglioMezziRow'>"+
@@ -768,15 +786,13 @@ function creaPageDettaglioContent(an){
 "                        <img src='img/tram.png' class='iconImage'/>"+
 "                    </div>"+
 "                    <div class='col-xs-9 col-xs-offset-1'>"+
-"                        <h6 style='line-height:2em;'> 4, 18, 45, 97 </h6>"+
+"                        <h6 style='line-height:2em;'> "+an.tram+" </h6>"+
 "                    </div>"+
 "                </div>"+
 "                <div class='row' id='pageDettaglioDEscrizioneRow'>"+
 "                    <div class='col-xs-12'>"+
 "                       <h6 id='pageDettaglioDescrizioneText'>"+
-"                            <i>"+
-"                            1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890"+
-"                            </i>"+
+"                            <i>"+an.descrizione+"</i>"+
 "                        </h6>   "+
 "                    </div>"+
 "                </div>"+
@@ -785,11 +801,10 @@ function creaPageDettaglioContent(an){
 "                        <h5 class='pageDettaglioTextLineHeight'> <b> Prezzo </b><small>(mensile, a persona): </small></h5>"+
 "                    </div>"+
 "                    <div class='col-xs-2 col-xs-offset-1'>"+
-"                        <h6 class='pageDettaglioTextLineHeight'> 315€ </h6>"+
+"                        <h6 class='pageDettaglioTextLineHeight'> "+an.prezzo+"€ </h6>"+
 "                    </div>"+
 "                </div>   "+
 "                <div style='height:2em;'></div>"
-
     );
     
 }
@@ -970,18 +985,6 @@ function premiTastoModifica(){
     $(".annuncioListElement").toggleClass("go");
 }
 
-function aggiungiBozza(){
-
-    var clonedElement=$(".annuncioListElement:first").clone(true); //.appendTo("#bozzeDiv");
-    console.log("ID prima: "+clonedElement.attr("id"));
-    clonedElement.removeAttr("id");
-    console.log("ID dopo: "+clonedElement.attr("id"));
-    
-    clonedElement.appendTo("#bozzeDiv");
-    
-}
-
-
 
 //Riceve in ingresso il div ".annuncioDiv" e un bool per l'animazione
 function rimuoviAnnuncio(elementToRemove, animation){
@@ -1040,28 +1043,14 @@ function change_tabs(dest, affittaBool){
     
     if(affittaBool){    
         if(dest==1){
-            $("#pillDue").removeClass("myActiveClass");
-            $("#pillDue").children().removeClass("myActiveClassColor");
-            $("#pillDue").children().addClass("myActiveClassColorStandard");
-
-            $("#pillUno").addClass("myActiveClass");
-            $("#pillUno").children().addClass("myActiveClassColor");
-            $("#pillUno").children().removeClass("myActiveClassColorStandard");
-
-            $("#bozzeDiv").hide();
-            $("#pubblicatiDiv").show();
+            console.log("pubblicati");
+            pickAnnunci();
+            
         }
         else if(dest==2){
-            $("#pillUno").removeClass("myActiveClass");
-            $("#pillUno").children().removeClass("myActiveClassColor");
-            $("#pillUno").children().addClass("myActiveClassColorStandard");
-
-            $("#pillDue").addClass("myActiveClass");
-            $("#pillDue").children().addClass("myActiveClassColor");
-            $("#pillDue").children().removeClass("myActiveClassColorStandard");
-
-            $("#pubblicatiDiv").hide();
-            $("#bozzeDiv").show();        
+            console.log("bozze");
+            pickBozze();
+          
         }
         
     }
@@ -1096,6 +1085,258 @@ function change_tabs(dest, affittaBool){
 
 
 
+function pickAnnunci(){
+    console.log("pickannunci");
+    myUser= JSON.parse(localStorage.getItem("userData"));
+    console.log(myUser);
+    myUrl=  "http://rentme.altervista.org/pickAnnunci.php?" +                
+                "idUser="       +  myUser.uRentMe ;
+    console.log("--------------------------");
+    console.log("url:" + myUrl);
+        xhttp = new XMLHttpRequest;
+        xhttp.open("GET", myUrl, false);
+        xhttp.send();   
+        annunci=xhttp.response;
+        if(JSON.parse(annunci)!=null){
+            console.log("presi annunci");
+            localStorage.setItem("annunci",annunci);
+            jAnnunci=JSON.parse(annunci);
+            $("#pubblicatiDiv").html("");
+            
+            for(i=0;i<jAnnunci.length;i++)
+                $("#pubblicatiDiv").append(
+                            "<div class='row annuncioListElement'>"+
+                            "<div class='annuncioParteUno' onclick='setAnnuncioValue(" + i+ ");'>"+
+                            "    <h5 class='titoloAffittaAnnuncio'>"+jAnnunci[i].titolo+"</h5>"+
+                            "</div>"+
+                            "<div class='annuncioParteDue'>"+
+                            "    <span class='glyphicon glyphicon-pencil iconaOpzioneAnnuncio' onclick='modificaAffittaAnnuncio(1," + i+ ");' aria-hidden='true'></span>"+         
+                            "     <a href='#deleteAnnuncio-mmenu'>        "+
+                            "        <span class='glyphicon glyphicon-trash iconaOpzioneAnnuncio' onclick='eliminaAffittaAnnuncio(1," + i+ ");' aria-hidden='true'>"+
+                            "        </span>"+
+                            "     </a>   "+
+                            "</div>"+
+                            "</div>"
+                );
+
+            //console.log(JSON.parse(annunci).length)
+            //console.log(JSON.parse(annunci));
+            
+            //setTimeout(function(){
+            //            window.location.href="new_home.html";
+            //},50);                          
+        }
+    $("#pillDue").removeClass("myActiveClass");
+    $("#pillDue").children().removeClass("myActiveClassColor");
+    $("#pillDue").children().addClass("myActiveClassColorStandard");
+
+    $("#pillUno").addClass("myActiveClass");
+    $("#pillUno").children().addClass("myActiveClassColor");
+    $("#pillUno").children().removeClass("myActiveClassColorStandard");
+
+    $("#bozzeDiv").hide();
+    $("#pubblicatiDiv").show();
+} 
+
+function pickBozze(){
+    console.log("pickBozze");
+    myUser= JSON.parse(localStorage.getItem("userData"));
+    console.log(myUser);
+    myUrl=  "http://rentme.altervista.org/pickBozze.php?" +                
+                "idUser="       +  myUser.uRentMe ;
+    console.log("--------------------------");
+    console.log("url:" + myUrl);
+        xhttp = new XMLHttpRequest;
+        xhttp.open("GET", myUrl, false);
+        xhttp.send();   
+        bozze=xhttp.response;
+    console.log("provo bzz");
+    console.log("bzz: "+JSON.parse(bozze));
+        if(JSON.parse(bozze)!=null){
+            console.log("presi bozze");
+            localStorage.setItem("bozze",bozze);
+            jBozze=JSON.parse(bozze);
+            $("#bozzeDiv").html("");
+            for(i=0;i<jBozze.length;i++)
+                $("#bozzeDiv").append(
+                            "<div class='row annuncioListElement'>"+
+                            "<div class='annuncioParteUno' onclick='setBozzaValue(" + i+ ");'>"+
+                            "    <h5 class='titoloAffittaAnnuncio'>"+jBozze[i].titolo+"</h5>"+
+                            "</div>"+
+                            "<div class='annuncioParteDue'>"+
+                            "    <span class='glyphicon glyphicon-pencil iconaOpzioneAnnuncio modificaAffittaAnnuncio' aria-hidden='true'></span>"+         
+                            "     <a href='#deleteAnnuncio-mmenu'>        "+
+                            "        <span class='glyphicon glyphicon-trash iconaOpzioneAnnuncio eliminaAffittaAnnuncio' aria-hidden='true'>"+
+                            "        </span>"+
+                            "     </a>   "+
+                            "</div>"+
+                            "</div>"
+                );
+
+            //console.log(JSON.parse(annunci).length)
+            //console.log(JSON.parse(annunci));
+            
+            //setTimeout(function(){
+            //            window.location.href="new_home.html";
+            //},50);                          
+        }
+    $("#pillUno").removeClass("myActiveClass");
+    $("#pillUno").children().removeClass("myActiveClassColor");
+    $("#pillUno").children().addClass("myActiveClassColorStandard");
+
+    $("#pillDue").addClass("myActiveClass");
+    $("#pillDue").children().addClass("myActiveClassColor");
+    $("#pillDue").children().removeClass("myActiveClassColorStandard");
+
+    $("#pubblicatiDiv").hide();
+    $("#bozzeDiv").show();  
+} 
+
+function saveAnnuncioToDB(){
+    console.log("saveAnnuncioToDB");
+    console.log($("#titoloPreview").text());
+    myUser= JSON.parse(localStorage.getItem("userData"));
+    //console.log(myUser);
+    myUrl=  "http://rentme.altervista.org/saveAnnuncio.php?" +                
+                "titolo="       + $("#titoloPreview").text() +   
+                "&descrizione="       +  $("#descrizionePreview").text()  + 
+                "&tipo="       +  $("#tipologiaPreview").text() + 
+                "&indirizzo="       + $("#indirizzoPreview").text()  + 
+                "&num_locali="       +   $("#numLocaliPreview").text()+ 
+                "&piano="       +  $("#pianoPreview").text() + 
+                "&posti_letto="      +  $("#postiLettoStanzaInput").val()  + 
+                "&posti_letto_tot="       +  $("#postiLettoPreview").text() +
+                "&superficie="       +  $("#superficiePreview").text() + 
+                "&zona="       +   $("#zonaPreview").text() + 
+                "&autobus="       +   $("#busPreview").text() + 
+                "&metro="       +   $("#metroPreview").text()+ 
+                "&treno="       + $("#passantePreview").text()  + 
+                "&tram="       + $("#tramPreview").text()  + 
+                "&prezzo="       + $("#prezzoPreview").text()  + 
+                "&id_utente="       + myUser.uRentMe ;
+    console.log(myUrl);
+    xhttp = new XMLHttpRequest;
+    xhttp.open("GET", myUrl, false);
+    xhttp.send();
+}
+
+function saveBozzaToDB(){
+    console.log("saveBozzaToDB");
+    console.log($("#titoloPreview").text());
+    myUser= JSON.parse(localStorage.getItem("userData"));
+    //console.log(myUser);
+    myUrl=  "http://rentme.altervista.org/saveBozza.php?" +                
+                "titolo="       + $("#titoloPreview").text() +   
+                "&descrizione="       +  $("#descrizionePreview").text()  + 
+                "&tipo="       +  $("#tipologiaPreview").text() + 
+                "&indirizzo="       + $("#indirizzoPreview").text()  + 
+                "&num_locali="       +   $("#numLocaliPreview").text()+ 
+                "&piano="       +  $("#pianoPreview").text() + 
+                "&posti_letto="      +  $("#postiLettoStanzaInput").val()  + 
+                "&posti_letto_tot="       +  $("#postiLettoPreview").text() +
+                "&superficie="       +  $("#superficiePreview").text() + 
+                "&zona="       +   $("#zonaPreview").text() + 
+                "&autobus="       +   $("#busPreview").text() + 
+                "&metro="       +   $("#metroPreview").text()+ 
+                "&treno="       + $("#passantePreview").text()  + 
+                "&tram="       + $("#tramPreview").text()  + 
+                "&prezzo="       + $("#prezzoPreview").text()  + 
+                "&id_utente="       + myUser.uRentMe ;
+    console.log(myUrl);
+    xhttp = new XMLHttpRequest;
+    xhttp.open("GET", myUrl, false);
+    xhttp.send();
+}
+
+function modificaAffittaAnnuncio(type,clicked){
+    console.log("MODIFICA ANNUNCIO");
+        
+        premiTastoModifica();
+        
+        $("#homeTopRow").hide();
+        $("#modificaAnnuncioTopRow").show();
+        
+        nascondiBottomBar();
+    
+             
+        $("#affittaContent").hide();
+        $("#affittaContent_dettaglioAnnuncio").show();
+        inserisciDatiModificaAnnuncio(type,clicked);   
+}
+
+function inserisciDatiModificaAnnuncio(type,clicked){
+        if(type==1)
+            str="annunci";
+        else
+            str="bozze";
+        console.log(str);
+        tmp=JSON.parse(localStorage.getItem(str))[clicked];
+        console.log(tmp);
+       ///*
+    
+        //console.log("--------------------"+$("#titoloPreview").text());
+        $("#modifica_titoloPreview").text(tmp.titolo);
+        $("#modifica_descrizionePreview").text(tmp.descrizione);
+        $("#modifica_tipologiaPreview").text(tmp.tipo);
+        $("#modifica_indirizzoPreview").text(tmp.indirizzo);
+        $("#modifica_numLocaliPreview").text(tmp.num_locali);
+        $("#modifica_pianoPreview").text(tmp.piano);
+        $("#postiLettoStanzaInput").val(tmp.posti_letto);
+        $("#modifica_postiLettoPreview").text(tmp.posti_letto_tot);
+        $("#modifica_superficiePreview").text(tmp.superficie);
+        $("#modifica_zonaPreview").text(tmp.zona); 
+        $("#modifica_busPreview").text(tmp.autobus); 
+        $("#modifica_metroPreview").text(tmp.metro);
+        $("#modifica_passantePreview").text(tmp.treno);
+        $("#modifica_tramPreview").text(tmp.tram); 
+        $("#modifica_prezzoPreview").text(tmp.prezzo); 
+        
+        $("#modifica_titoloInput").val(tmp.titolo); 
+        $("#modifica_descrizioneInput").val(tmp.descrizione);
+        
+        switch(tmp.tipo){
+            case "Appartamento":
+                console.log("app");
+                $("#modifica_appartamentoRadio").prop("checked",false);
+                $("#modifica_stanzaSingolaRadio").prop("checked",true);
+                $("#modifica_stanzaCondivisaRadio").prop("checked",false);
+                break;
+            case "Stanza Singola":
+                console.log("sts");
+                $("#modifica_appartamentoRadio").prop("checked",false);
+                $("#modifica_stanzaSingolaRadio").prop("checked",true);
+                $("#modifica_stanzaCondivisaRadio").prop("checked",false);
+                break;
+            case "Stanza Condivisa":
+                console.log("stc");
+               //$("#modifica_appartamentoRadio").prop("checked",false);
+            //    $("#modifica_stanzaSingolaRadio").prop("checked",false);
+              //  $("#modifica_stanzaCondivisaRadio").prop("checked",true);
+                $('input:radio[name=modifica_tipologia]')[2].checked = true;
+                break;
+            default:
+                console.log(tmp.tipo);
+                break;
+
+        }
+    
+    
+        $("#modifica_indirizzoInput").val(tmp.indirizzo);
+        $("#modifica_numLocaliInput").val(tmp.num_locali);
+        $("#modifica_pianoInput").val(tmp.piano);
+        $("#postiLettoStanzaInput").val(tmp.posti_letto);
+        $("#modifica_postiLettoInput").val(tmp.posti_letto_tot);
+        $("#modifica_superficieInput").val(tmp.superficie);
+        $("#modifica_zonaInput").val(tmp.zona); 
+        $("#modifica_busInput").val(tmp.autobus); 
+        $("#modifica_metroInput").val(tmp.metro);
+        $("#modifica_passanteInput").val(tmp.treno);
+        $("#modifica_tramInput").val(tmp.tram); 
+        $("#modifica_prezzoInput").val(tmp.prezzo);
+        //*/
+
+    
+}
 
 
 
