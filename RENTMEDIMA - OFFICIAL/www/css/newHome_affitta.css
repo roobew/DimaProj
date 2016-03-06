@@ -84,10 +84,9 @@ a:link, a:hover, a:visited, a:active{
 
 .annuncioListElement{
     display: block;
-    height:2.5em; 
+    height:3.5em; 
     width:130vw; 
-    :background-color:greenyellow; 
-    :border:1px solid black;
+    text-align: center;
     margin-top: 0.1em;
     margin-left: 0;
     position: relative;

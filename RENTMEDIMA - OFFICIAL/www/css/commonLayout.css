@@ -51,7 +51,7 @@ p {margin: 0;padding: 0;}
 /**** FINE ****/
 
 /**** INTESTAZIONE APP: NAVBAR + NOME APP ****/
-#homeTopRow, #nuovoAnnuncioTopRow, #dettaglioAnnuncioTopRow, #modificaAnnuncioTopRow, #dettaglioAnnuncioTopRow_daAffitta, #datiPersonaliModificaTopRow, #dettaglioAnnuncioTopRow_daPreferiti, #messaggiHomeTopRow,#searchTopRow,#risultatiRicercaTopRow{
+#homeTopRow, #nuovoAnnuncioTopRow, #dettaglioAnnuncioTopRow, #modificaAnnuncioTopRow, #dettaglioAnnuncioTopRow_daAffitta, #datiPersonaliModificaTopRow, #dettaglioAnnuncioTopRow_daPreferiti, #messaggiHomeTopRow,#searchTopRow,#risultatiRicercaTopRow, #messaggiHomeTopRow_daDettaglioAnnuncio, #messaggiHomeTopRow_daDettaglioAnnuncio_daPreferiti{
     width: 96vw;
     height: 3.5vh;
     margin-left: 2vw;
@@ -60,7 +60,7 @@ p {margin: 0;padding: 0;}
     margin-bottom: 1vh;
 }
 
-#nuovoAnnuncioTopRow, #dettaglioAnnuncioTopRow, #modificaAnnuncioTopRow, #dettaglioAnnuncioTopRow_daAffitta, #datiPersonaliModificaTopRow, #dettaglioAnnuncioTopRow_daPreferiti, #messaggiHomeTopRow,#searchTopRow,#risultatiRicercaTopRow{
+#nuovoAnnuncioTopRow, #dettaglioAnnuncioTopRow, #modificaAnnuncioTopRow, #dettaglioAnnuncioTopRow_daAffitta, #datiPersonaliModificaTopRow, #dettaglioAnnuncioTopRow_daPreferiti, #messaggiHomeTopRow,#searchTopRow,#risultatiRicercaTopRow, #messaggiHomeTopRow_daDettaglioAnnuncio, #messaggiHomeTopRow_daDettaglioAnnuncio_daPreferiti{
     display: none;
     color: white;
     margin:0;

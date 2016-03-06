@@ -137,6 +137,7 @@ function setField(){
             case "cercaTab":
                 $("#cercaContent").show();
                 console.log("Premuto cerca");             
+                
                 var map = new GoogleMap();
                 map.initialize();
                 
@@ -161,7 +162,7 @@ function setField(){
                 console.log("Premuto preferiti"); 
 
                 if(preferitiMapInit==false){    
-                    //drawMap("preferitiMap",true);
+
                     drawMapPreferiti();
                     preferitiMapInit=true;
                 }
@@ -184,7 +185,7 @@ function setField(){
     
     $(".swiper-slide").click(function (){
         if(dettaglioMapInit==false){
-            //drawMap("dettaglioMap", false);
+
             drawMapDettaglio();
             dettaglioMapInit=true;
         }
@@ -301,6 +302,7 @@ function drawMap(mapID, addMark){
 }
 
 */
+
 function drawMapPreferiti(){
     console.log("DISEGNO mappa di preferiti");
     
@@ -351,16 +353,32 @@ function pickAnnunci(){
         xhttp.open("GET", myUrl, false);
         xhttp.send();   
         annunci=xhttp.response;
-    console.log("preIF");
         if(JSON.parse(annunci)!=null){
             console.log("presi annunci");
             localStorage.setItem("annunci",annunci);
-            console.log(JSON.parse(annunci));
+            jAnnunci=JSON.parse(annunci);
+            $("#pubblicatiDiv").html("");
+            for(i=0;i<jAnnunci.length;i++)
+                $("#pubblicatiDiv").append(
+                            "<div class='row annuncioListElement'>"+
+                            "<div class='annuncioParteUno' onclick='setAnnuncioValue(" + i+ ");'>"+
+                            "    <h5 class='titoloAffittaAnnuncio'>"+jAnnunci[i].titolo+"</h5>"+
+                            "</div>"+
+                            "<div class='annuncioParteDue'>"+
+                            "    <span class='glyphicon glyphicon-pencil iconaOpzioneAnnuncio modificaAffittaAnnuncio' aria-hidden='true'></span>"+         
+                            "     <a href='#deleteAnnuncio-mmenu'>        "+
+                            "        <span class='glyphicon glyphicon-trash iconaOpzioneAnnuncio eliminaAffittaAnnuncio' aria-hidden='true'>"+
+                            "        </span>"+
+                            "     </a>   "+
+                            "</div>"+
+                            "</div>"
+                );
+
+            //console.log(JSON.parse(annunci).length)
+            //console.log(JSON.parse(annunci));
+            
             //setTimeout(function(){
             //            window.location.href="new_home.html";
             //},50);                          
         }
-    else{                   
-            navigator.notification.alert(JSON.parse(jUser).message, reload, JSON.parse(jUser).title);    
-        }
-}
+} 

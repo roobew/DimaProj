@@ -14,8 +14,10 @@ $(document).ready(function (){
         }
         countDeleteClick++;
     });*/
-  
+    console.log("DEntro affit.js");
     // **** EVENTI DI ANNUNCIO_HOME PAGE
+;
+
     
     $("#pillUno").on("tap", function(){
         change_tabs(1, true);
@@ -27,7 +29,7 @@ $(document).ready(function (){
     
     
     $("#btnNuovoAnnuncio").click(function (){
-        
+        console.log("Perchè non va?");
         getData();
         
         $("#homeTopRow").hide();
@@ -54,7 +56,7 @@ $(document).ready(function (){
         console.log("clickato annuncio");
         if(dettaglioMapInit==false){
             //drawMap("dettaglioMap", false);
-           // drawMapDettaglio();
+            drawMapDettaglio();
             dettaglioMapInit=true;
         }
         
@@ -621,7 +623,7 @@ $(document).ready(function (){
         change_tabs(1,false);
     });
     
-    $("#cercaPillDue").on("tap", function(){
+     $("#cercaPillDue").on("tap", function(){
         change_tabs(2, false);
     });
     
@@ -650,6 +652,7 @@ function setAnnuncioValue(annuncioClicked){
 }
 
 function creaPageDettaglioContent(an){
+    console.log(an);
     $("#pageDettaglioContent").html("");
     $("#pageDettaglioContent").append(
         
@@ -1090,5 +1093,9 @@ function change_tabs(dest, affittaBool){
     }
     
 }
+
+
+
+
 
 

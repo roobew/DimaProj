@@ -231,5 +231,10 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
 }
 
 .paddingLeftClass{
-    padding-left: 0.5em;   
+    padding: 0;   
+}
+
+#risultatiRicercaMap{
+    height: 90vh;
+    width:100vw;
 }

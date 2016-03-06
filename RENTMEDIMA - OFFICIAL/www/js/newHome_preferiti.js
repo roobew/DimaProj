@@ -10,7 +10,7 @@ var imgURL1="http://www.ansa.it/webimages/img_457x/2014/2/14/1392379654131_donal
 var imgURL2="http://www.cartoni-animati.com/wp-content/uploads/topolino_4.jpg";
    
 var markersArray=[];
-var tempCount=0;
+var tempCount=0, aggiuntoPreferitiCount=false;;
 
 $(document).ready(function (){
     
@@ -35,11 +35,119 @@ $(document).ready(function (){
         removeMarker(tempCount);
         tempCount++;
     });
+    
+    $("#aggiungiPreferitiButton").on("tap", function(){
+        if(aggiuntoPreferitiCount==true){
+             $(this).css("color", "white");
+             aggiuntoPreferitiCount=false;
+             rimuoviPreferito();
+            
+         }
+        else{
+            //$(this).addClass("aggiuntoPreferiti");  
+            aggiuntoPreferitiCount=true;
+            
+            $(this).animate({
+                    color:"#b5322b"   
+                }, 200, function(){
+                aggiungiPreferito();   
+            });
+        }
+              
+    });
+    
+    $("#apriMessaggioButton_daHome").on("tap", function(){
+        // TRUE= DA HOME
+        apriPaginaMessaggio(true); 
+    });
+    
+    $("#apriMessaggioButton_daPreferiti").on("tap", function(){
+        // FALSE = DA PREFERITI
+        apriPaginaMessaggio(false); 
+    });
+    
+    $("#backToPaginaDettaglioAnnuncio_PerHome").click(function(){
+        // TRUE = VERS HOME
+        tornaAlDettaglioAnnuncio(true);         
+    }); 
+    
+    $("#backToPaginaDettaglioAnnuncio_PerPreferiti").click(function(){
+        // FALSE = VERSO PREFERITI
+        tornaAlDettaglioAnnuncio(false);         
+    });
+    
+    
+    
+    $("#backLink_fromPreferiti").click(function (){
+       
+        mostraBottomBar();
+        
+        $("#dettaglioAnnuncioTopRow_daPreferiti").hide();
+        $("#homeTopRow").show();
+        
+
+        $("#pageDettaglioContent").hide();
+        $("#preferitiContent").show();
+        
+        
+    });
 });
 
 
+function tornaAlDettaglioAnnuncio(tornaHome){
+    if(tornaHome==true){
+        $("#messaggiHomeTopRow_daDettaglioAnnuncio").hide();
+        $("#dettaglioAnnuncioTopRow").show();
+    }
+    else{
+        $("#messaggiHomeTopRow_daDettaglioAnnuncio_daPreferiti").hide();
+        $("#dettaglioAnnuncioTopRow_daPreferiti").show();
+    }    
+    
+    $("#messaggiDetailContent").hide();
+    $("#pageDettaglioContent").show(); 
+}
 
+function apriPaginaMessaggio(daHome){
+    console.log("APRO PAgina messaggi");   
+    
+    nascondiBottomBar();
+    if(daHome==true){
+        $("#dettaglioAnnuncioTopRow").hide();
 
+        $("#messaggiHomeTopRow_daDettaglioAnnuncio").show();
+
+        $("#pageDettaglioContent").hide();
+        $("#messaggiDetailContent").show();
+    }
+    else{
+        $("#dettaglioAnnuncioTopRow_daPreferiti").hide();
+
+        $("#messaggiHomeTopRow_daDettaglioAnnuncio_daPreferiti").show();
+
+        $("#pageDettaglioContent").hide();
+        $("#messaggiDetailContent").show();  
+    }
+    
+}
+
+function rimuoviPreferito(){
+    // In base all'id dell'annuncio, rimuove il preferito   
+}
+
+function aggiungiPreferito(){
+
+    var cloneTitolo=$(".accordionTitle:first").clone(true); //.appendTo("#bozzeDiv");
+    var cloneContent=$(".accordionContent:first").clone(true); //.appendTo("#bozzeDiv");
+    
+    //console.log("ID prima: "+cloneTitolo.attr("id"));
+    //clonedElement.removeAttr("id");
+    //console.log("ID dopo: "+cloneTitolo.attr("id"));
+    
+    cloneTitolo.appendTo("#accordionPreferiti");
+    cloneContent.appendTo("#accordionPreferiti");
+    
+}
 
 function setImageURL(){
     $(".previewImage:nth-child(1)").attr("src", imgURL1);
@@ -156,5 +264,18 @@ function vediDettaglioAnnuncio(){
     
     console.log("Mostra Dettaglio");
     
+    nascondiBottomBar();
+    
+    if(dettaglioMapInit==false){
+
+        drawMapDettaglio();
+        dettaglioMapInit=true;
+    }
+    
+    $("#homeTopRow").hide();
+    $("#dettaglioAnnuncioTopRow_daPreferiti").show();
+    
+    $("#preferitiContent").hide();
+    $("#pageDettaglioContent").show();
     
 }
