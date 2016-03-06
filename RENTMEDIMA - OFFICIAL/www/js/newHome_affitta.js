@@ -142,6 +142,20 @@ $(document).ready(function (){
             $("#postiLettoStanzaInput").prop("disabled",true);
         }   
     });
+    $("#tipologiaInput").click(function (){
+        
+        var yourChoice=$("#tipologiaInput :radio:checked").val();  
+    
+        console.log("Your choice is: "+yourChoice);
+        if(yourChoice=="Stanza Condivisa"){
+            console.log("*** ABILITO");
+            $("#postiLettoStanzaInput").prop("disabled",false);   
+        }
+        else{
+            console.log("*** DISABILITO");
+            $("#postiLettoStanzaInput").prop("disabled",true);
+        }   
+    });
     
     $(".nuovoAnnuncioBox").click(function (){
             
@@ -470,8 +484,6 @@ $(document).ready(function (){
         
         $("#modificaAnnuncioContent").hide();
         $("#modificaAnnuncio"+myElementID+"Detail").show();
-        console.log("pippo");
-        $("#modifica_stanzaCondivisaRadio").prop("checked",true);
         
         
     });
@@ -607,6 +619,7 @@ $(document).ready(function (){
         console.log("La tua scelta è: "+yourChoice);
         if(yourChoice=="Stanza Condivisa"){
             console.log("*** ABILITO");
+            $("#modifica_postiLettoStanzaInput").prop("disabled",false);   
             $("#modifica_postiLettoStanzaInput").prop("disabled",false);   
         }
         else{
@@ -1257,11 +1270,13 @@ function modificaAffittaAnnuncio(type,clicked){
         $("#modificaAnnuncioTopRow").show();
         
         nascondiBottomBar();
-    
+        inserisciDatiModificaAnnuncio(type,clicked); 
              
         $("#affittaContent").hide();
         $("#affittaContent_dettaglioAnnuncio").show();
-        inserisciDatiModificaAnnuncio(type,clicked);   
+        
+    
+          
 }
 
 function inserisciDatiModificaAnnuncio(type,clicked){
@@ -1271,7 +1286,7 @@ function inserisciDatiModificaAnnuncio(type,clicked){
             str="bozze";
         console.log(str);
         tmp=JSON.parse(localStorage.getItem(str))[clicked];
-        console.log(tmp);
+        //console.log(tmp);
        ///*
     
         //console.log("--------------------"+$("#titoloPreview").text());
@@ -1281,7 +1296,7 @@ function inserisciDatiModificaAnnuncio(type,clicked){
         $("#modifica_indirizzoPreview").text(tmp.indirizzo);
         $("#modifica_numLocaliPreview").text(tmp.num_locali);
         $("#modifica_pianoPreview").text(tmp.piano);
-        $("#postiLettoStanzaInput").val(tmp.posti_letto);
+        //$("#postiLettoStanzaInput").val(tmp.posti_letto);
         $("#modifica_postiLettoPreview").text(tmp.posti_letto_tot);
         $("#modifica_superficiePreview").text(tmp.superficie);
         $("#modifica_zonaPreview").text(tmp.zona); 
@@ -1296,24 +1311,24 @@ function inserisciDatiModificaAnnuncio(type,clicked){
         
         switch(tmp.tipo){
             case "Appartamento":
-                console.log("app");
-                $("#modifica_appartamentoRadio").prop("checked",false);
-                $("#modifica_stanzaSingolaRadio").prop("checked",true);
-                $("#modifica_stanzaCondivisaRadio").prop("checked",false);
+                $("#modifica_postiLettoStanzaInput").val("");
+                $("#modifica_appartamentoRadio").click();                
+                $("#modifica_appartamentoRadio").click();                
                 break;
-            case "Stanza Singola":
-                console.log("sts");
-                $("#modifica_appartamentoRadio").prop("checked",false);
-                $("#modifica_stanzaSingolaRadio").prop("checked",true);
-                $("#modifica_stanzaCondivisaRadio").prop("checked",false);
+            case "Stanza Singola": 
+                $("#modifica_postiLettoStanzaInput").val("");
+                $("#modifica_stanzaSingolaRadio").click();
+                $("#modifica_stanzaSingolaRadio").click();
                 break;
             case "Stanza Condivisa":
-                console.log("stc");
-               //$("#modifica_appartamentoRadio").prop("checked",false);
-            //    $("#modifica_stanzaSingolaRadio").prop("checked",false);
-              //  $("#modifica_stanzaCondivisaRadio").prop("checked",true);
-                $('input:radio[name=modifica_tipologia]')[2].checked = true;
-                break;
+                console.log("dio porco");
+                $("#modifica_tipologiaPreview").text(tmp.tipo +" - Posti Letto: "+tmp.posti_letto);
+                $("#modifica_postiLettoStanzaInput").val(tmp.posti_letto);
+                $("#modifica_postiLettoStanzaInput").disabled=false;  
+                $("#modifica_postiLettoStanzaInput").prop("disabled",false);   
+                $("#modifica_stanzaCondivisaRadio").click();
+                $("#modifica_stanzaCondivisaRadio").click();
+                break; 
             default:
                 console.log(tmp.tipo);
                 break;
@@ -1323,8 +1338,9 @@ function inserisciDatiModificaAnnuncio(type,clicked){
     
         $("#modifica_indirizzoInput").val(tmp.indirizzo);
         $("#modifica_numLocaliInput").val(tmp.num_locali);
-        $("#modifica_pianoInput").val(tmp.piano);
-        $("#postiLettoStanzaInput").val(tmp.posti_letto);
+        $("#modifica_pianoInput").val(tmp.piano);        
+        //$("#modifica_pianoInput :selected").removeAttr("selected");
+        //$("#modifica_pianoInput").find("option[value="+ tmp.piano+"]").attr("selected",true);
         $("#modifica_postiLettoInput").val(tmp.posti_letto_tot);
         $("#modifica_superficieInput").val(tmp.superficie);
         $("#modifica_zonaInput").val(tmp.zona); 

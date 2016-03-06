@@ -145,7 +145,7 @@ function setField(){
                 
             case "affittaTab":
                 pickAnnunci();
-                pickBozze();
+                //pickBozze();
                 $("#affittaContent").show();
                 console.log("Premuto affitta");
                 break;
