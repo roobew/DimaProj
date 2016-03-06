@@ -17,7 +17,7 @@ $(document).ready(function (){
     });*/
     console.log("DEntro affit.js");
     // **** EVENTI DI ANNUNCIO_HOME PAGE
-    pickAnnunci();
+    //pickAnnunci();
     
     $("#pillUno").on("tap", function(){
         change_tabs(1, true);
