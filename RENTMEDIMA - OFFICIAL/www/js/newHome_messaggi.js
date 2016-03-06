@@ -63,6 +63,8 @@ $(document).ready(function (){
        }
     });
     */
+    caricaCronologiaMessaggi();
+    
     
     
     $("#deleteMessageMenuEliminaButton").on("tap", function (){
@@ -131,17 +133,21 @@ $(document).ready(function (){
         
         console.log("GO TO message Detail"); 
 
+        
         myDivToScrollBottom = document.getElementById("messageFlowDiv");
 
-        scrollToBottom();
+        
 
         nascondiBottomBar();
 
         $("#homeTopRow").hide();
         $("#messaggiHomeTopRow").show();
 
+
+
         $("#messaggiContent").hide();
         $("#messaggiDetailContent").show(); 
+        scrollToBottom();
             
         
     });
@@ -150,7 +156,9 @@ $(document).ready(function (){
     $("#backToMessageList").click(function(){
         mostraBottomBar();
         
-        updatePreviewElement();
+       // updatePreviewElement();
+        
+        setMessaggiPreview();
         
         $(".previewText").text(testoMessaggio);
         $(".time").text(timeInvioMessaggio);
@@ -166,11 +174,34 @@ $(document).ready(function (){
     $("#inviaMessaggioButton").on("tap", function(){
         inviaMessaggio(); 
         
-        scrollToBottom();
+        
         
     });
     
+    setTimeout(function (){
+        setMessaggiPreview();
+    },200);
+        
+    
 });
+
+function setMessaggiPreview(){
+    
+    var anteprimaMessaggio = $(".bubbleDivContainer").last().find(".contenutoTestoMessaggio").text();
+    var anteprimaData = $(".bubbleDivContainer").last().find(".contenutoDataMessaggio").text();
+    
+    
+    console.log("ANTEPRIMA TEXT: "+anteprimaMessaggio);
+    console.log("ANTEPRIMA DATA: "+anteprimaData);
+    if(anteprimaMessaggio!=""){
+        $(".previewText").text(anteprimaMessaggio);
+        $(".time").text(anteprimaData);
+    }
+    else{
+        $(".previewText").text("-");
+        $(".time").text("-");
+    }
+}
 
 function closeDraggableElement(){
     console.log("Chiudo il dragged element!");
@@ -182,21 +213,104 @@ function closeDraggableElement(){
     //$("#accordion").accordion("enable");
 }
 
+function caricaCronologiaMessaggi(){
+    var xhttp;
+
+    if (window.XMLHttpRequest) {
+        // code for modern browsers
+        xhttp = new XMLHttpRequest();
+    } else {
+        // code for IE6, IE5
+        xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xhttp.onreadystatechange = function() {
+        if (xhttp.readyState == 4 && xhttp.status == 200) {
+            //console.log("Risposta: "+xhttp.responseText);
+            var arrayResponse=JSON.parse(xhttp.response);
+            stampaCronologia(arrayResponse);
+            
+        }
+    };
+
+    xhttp.open("POST", "http://rentme.altervista.org/serverFile/getCronologiaChat.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");  
+    xhttp.send("id_mitt=2&id_dest=15");
+}
+
+function stampaCronologia(myArray){
+    
+    var textHTMLcontent, bubbleClassChoice, bubbleLeftType="bubbleLeft leftMessage", bubbleRightType="bubbleRight rightMessage", dataInvio, divTrovati;
+    
+    myArray.forEach(function(elem) {
+        divtrovati=$("#messageFlowDiv").children("#"+elem.id_messaggio).length; 
+        
+        if(divtrovati==0){
+        // DA CAMBIARE CON LA VARIABILE ID_MITTENTE 
+            if(elem.id_mittente==2){
+                bubbleClassChoice=bubbleRightType;   
+            }
+            else{
+                bubbleClassChoice=bubbleLeftType;   
+            }
+
+           // console.log("Trovati: "+$("#messageFlowDiv").children("#c").length);
+
+
+            dataInvio=elem.d.substring(11, 16);
+
+
+            textHTMLcontent="<div id='"+elem.id_messaggio+"' class='bubbleDivContainer'><div class='"+bubbleClassChoice+"'><h6 class='contenutoTestoMessaggio'>"+elem.testo+"</h6><p class='contenutoDataMessaggio'><i>"+dataInvio+"</i></p></div></div>";
+
+
+            $("#messageFlowDiv").append(textHTMLcontent);  
+        }
+    });
+
+}
+
 function inviaMessaggio(){
     testoMessaggio=$("#messageInputText").val();
     
     if(testoMessaggio!=""){
-        timeInvioMessaggio=currentDate.getHours()+":"+currentDate.getMinutes();
+        
+        var xhttp;
     
-         console.log("INVIO: "+testoMessaggio);
-         console.log("Alle ore: "+timeInvioMessaggio);
+        if (window.XMLHttpRequest) {
+            // code for modern browsers
+            xhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xhttp.onreadystatechange = function() {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                //console.log("Risposta: "+xhttp.responseText);
+                
+                var messageID=JSON.parse(xhttp.response)
+               // console.log("____"+messageID.id);
+                stampaMessaggio(messageID);
+            }
+        };
+    
+        xhttp.open("POST", "http://rentme.altervista.org/serverFile/inviaMessaggio.php", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");  
+        xhttp.send("id_mitt=2&id_dest=15&testo="+testoMessaggio);
+        
+    }           
+}
 
-         $("#messageInputText").blur();
+function stampaMessaggio(messageID){
+    timeInvioMessaggio=currentDate.getHours()+":"+currentDate.getMinutes();
 
-         messaggioHTMLcontent="<div class='bubbleDivContainer'><div class='bubbleRight rightMessage'><h6>"+testoMessaggio+"</h6></div></div>";
+    $("#messageInputText").blur();
 
-         $("#messageFlowDiv").append(messaggioHTMLcontent);
-         $("#messageInputText").val("");                                                                }           
+    messaggioHTMLcontent="<div id='"+messageID.id+"' class='bubbleDivContainer'><div class='bubbleRight rightMessage'><h6 class='contenutoTestoMessaggio'>"+testoMessaggio+"</h6><p class='contenutoDataMessaggio'><i>"+timeInvioMessaggio+"</i></p></div></div>";
+
+    $("#messageFlowDiv").append(messaggioHTMLcontent);
+    $("#messageInputText").val("");    
+    
+    scrollToBottom();
+    
 }
 
 function scrollToBottom(){
@@ -207,7 +321,7 @@ function scrollToBottom(){
 
 
 function updatePreviewElement(){
-    
+    /*
     var adesso=new Date().getTime();
     //var diff = new Date().getTime() - currentDate.getTime();
     var last=currentDate.getTime();
@@ -220,7 +334,7 @@ function updatePreviewElement(){
     
     var days = diff / 1000 / 60 / 60 / 24;
     console.log("giorni_ "+days);
-    
+    */
 }
 
 $(function() {

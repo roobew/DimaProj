@@ -234,3 +234,17 @@
     line-height: 2.5em;
     margin-right: 4vw;
 }
+
+.contenutoTestoMessaggio{
+    display: block;   
+    vertical-align: top;
+    margin-right: 2.5em;
+}
+
+.contenutoDataMessaggio{
+    display: block;
+    font-size:0.7em; 
+    color:gray;   
+    font-size: 0.6em;
+    text-align: right;
+}

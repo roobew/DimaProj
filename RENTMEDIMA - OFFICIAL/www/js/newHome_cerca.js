@@ -203,6 +203,9 @@ function doStuff(){
     
     $("#searchBtn").click(function(){
         
+        
+        inviaValoriRicerca();
+        /*
         $("#risultatiRicercaMap").hide();
         $("#cercaContent").hide();
         
@@ -215,12 +218,10 @@ function doStuff(){
         $("#homeTopRow").toggle();
         $("#risultatiRicercaTopRow").toggle();
         nascondiBottomBar();
-        
+        */
     });
     
 }
-
-
 
 $(document).on('submit','.validateDontSubmit',function (e) {
     //prevent the form from doing a submit
@@ -247,6 +248,40 @@ $(document).on('submit','.validateDontSubmit',function (e) {
      mostraBottomBar();
     return false;
 });
+
+function inviaValoriRicerca(){
+    var miaScelta=$("#scelta").text();
+    var mioTipo=$("#tipoSelect").val();
+    var mioPrezzoMin=$("#prezzoMin").val();
+    var mioPrezzoMax=$("#prezzoMax").val();
+    
+    console.log("Scelta: "+miaScelta+" Tipo: "+mioTipo+" Min: "+mioPrezzoMin+" Max: "+mioPrezzoMax);
+    
+    
+    var xhttp;
+    
+        if (window.XMLHttpRequest) {
+            // code for modern browsers
+            xhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xhttp.onreadystatechange = function() {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                //console.log("Risposta: "+xhttp.responseText);
+                
+                var risultatiRicerca=JSON.parse(xhttp.response)
+                console.log("Risultati ricerca: "+risultatiRicerca);
+                riempiRisultatiRicerca();
+            }
+        };
+    
+        xhttp.open("POST", "http://rentme.altervista.org/serverFile/ricerca.php", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");  
+        xhttp.send("mia_scelta="+miaScelta+"&mio_tipo="+mioTipo+"&mio_minPrezzo="+mioPrezzoMin+"&mio_maxPrezzo="+mioPrezzoMax);   
+        
+}
 
 function disegnaMappaRisultati(){
     console.log("Disegno mappa risultati ricerca");

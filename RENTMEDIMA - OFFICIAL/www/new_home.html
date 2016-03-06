@@ -78,7 +78,6 @@
         
         <script src="js/newHome_modificaDati.js"></script>
                 
-        
         <script src="js/server.js"></script>
         
     <!-- ***** END JS  *****-->   
@@ -2721,64 +2720,20 @@
            
             <div class="contentPageDiv" id="messaggiDetailContent">
                 <div id="messageFlowDiv">
-                        <div class="bubbleDivContainer">    
+                        <!--<div class="bubbleDivContainer" id="a">    
                             <div class="bubbleRight rightMessage">
-                                <h6>Si</h6>
+                                <h6 class="contenutoTestoMessaggio" id="prova">Si</h6>
+                                <p class="contenutoDataMessaggio"><i>13.02</i></p>
                             </div>
                         </div>
+                    
+                        <div class="bubbleDivContainer" id="b">    
+                            <div class="bubbleRight rightMessage">
+                                <h6 class="contenutoTestoMessaggio" id="prova2">Si</h6>
+                                <p class="contenutoDataMessaggio"><i>13.02</i></p>
+                            </div>
+                        </div>-->
                         
-                        <div class="bubbleDivContainer">
-                             <div class="bubbleLeft leftMessage">
-                                <h6>Testo messaggio</h6>
-                            </div>
-                        </div>
-                        <div class="bubbleDivContainer">    
-                            <div class="bubbleRight rightMessage">
-                                <h6>Si</h6>
-                            </div>
-                        </div>
-                        
-                        <div class="bubbleDivContainer">    
-                            <div class="bubbleRight rightMessage">
-                                <h6>Si</h6>
-                            </div>
-                        </div>
-                    
-                        <div class="bubbleDivContainer">    
-                            <div class="bubbleRight rightMessage">
-                                <h6>Si</h6>
-                            </div>
-                        </div>
-                    
-                        <div class="bubbleDivContainer">    
-                            <div class="bubbleRight rightMessage">
-                                <h6>Si</h6>
-                            </div>
-                        </div>
-                    
-                        <div class="bubbleDivContainer">    
-                            <div class="bubbleRight rightMessage">
-                                <h6>ciao</h6>
-                            </div>
-                        </div>
-                    
-                        <div class="bubbleDivContainer">    
-                            <div class="bubbleRight rightMessage">
-                                <h6>Si</h6>
-                            </div>
-                        </div>
-                    
-                        <div class="bubbleDivContainer">    
-                            <div class="bubbleRight rightMessage">
-                                <h6>Si</h6>
-                            </div>
-                        </div>
-                    
-                        <div class="bubbleDivContainer">    
-                            <div class="bubbleRight rightMessage">
-                                <h6>ciao</h6>
-                            </div>
-                        </div>
                     
                     
                 </div>
@@ -2808,7 +2763,7 @@
                             Tipo? 
                         </div>
                         <div class="col-xs-6 right dropdownContent">
-                            <select class="styled-select"
+                            <select class="styled-select" id="tipoSelect"
                                     data-corners="false"
                                     data-iconshadow="false"
                                     data-inline="true"
@@ -2833,7 +2788,7 @@
                             DA:
                         </div>
                         <div class="col-xs-2 paddingLeftClass dropdownContent" >                            
-                            <select class="styled-select"
+                            <select class="styled-select" id="prezzoMin"
                                     data-corners="false"
                                     data-iconshadow="false"
                                     data-inline="true"
@@ -2867,7 +2822,7 @@
                            A: 
                         </div>
                         <div class="col-xs-2 paddingLeftClass dropdownContent" style="margin-left: -3vw;">                            
-                            <select class="styled-select"
+                            <select class="styled-select" id="prezzoMax"
                                     data-corners="false"
                                     data-iconshadow="false"
                                     data-inline="true"
@@ -2945,9 +2900,14 @@
                                     data-mini="true"
                                     data-shadow="false" id="selectZone">                                        
                                         <option value="-1" selected>Scegli una zona</option>
-                                        <option value="0">Zero</option>
-                                        <option value="1">uno</option>
-                                        <option value="2">due</option>                    
+                                        <option value="0">Centro</option>
+                                        <option value="1">Citta' Studi</option>
+                                        <option value="2">Corso Buenos Aires</option>                
+                                        <option value="3">Porta Garibaldi</option>                 
+                                        <option value="4">Fiera - San Siro</option>
+                                        <option value="5">Navigli</option>                    
+                                        <option value="6">Porta Romana</option>                    
+                                        <option value="7">Porta Vittoria</option>                    
                                     </select> 
 
                                 </div>
@@ -3486,7 +3446,8 @@
     
         $(document).on('deviceready', function() {
             pictureSource=navigator.camera.PictureSourceType;
-        destinationType=navigator.camera.DestinationType;
+            destinationType=navigator.camera.DestinationType;
+            
         });
     
 

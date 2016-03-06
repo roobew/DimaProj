@@ -15,7 +15,7 @@ metroList.controller("MetroCtrl", function($scope, $http) {
 });
 
 angular.bootstrap(document.getElementById("divMetro"),['Metro']);*/
-
+/*
 function getData(){
 
      $.ajax({
@@ -48,7 +48,7 @@ function getData(){
               */
                 
                 //console.log(JSON.parse(response));
-                var elem=JSON.parse(response);
+         /*/       var elem=JSON.parse(response);
                 
                 $.each(elem, function( index, value ) {
                     console.log( index + ": " + value.metro );
@@ -56,7 +56,7 @@ function getData(){
                    /* var metroToAppend="<label for='"+value.metro+"'></label>"+value.metro+"<input type='checkbox' name='elencoMetro' id='"+value.metro+"' value='"+value.metro+"'>";
                     
                     $("#metroInput").append(metroToAppend);*/
-                });
+           //     });
                 /*
                 console.log("elem :"+elem);
                 console.log("elem di 0 :"+elem[0]);
@@ -64,7 +64,7 @@ function getData(){
                 console.log("elem di zero punto metro :"+elem[0].metro);*/
                // var metroToAppend="<label for=''></label><input type='checkbox' name='elencoMetro' id='' value=''>
                // $("")
-            },
+          /*  },
             error: function(request,error)
             {
                 console.log("Error");
@@ -72,3 +72,8 @@ function getData(){
         });
 }
 
+/*
+function startPushNotification(){
+    console.log("PUSH TIME");
+    
+}*/
