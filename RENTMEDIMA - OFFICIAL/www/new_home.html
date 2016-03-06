@@ -122,7 +122,7 @@
            </ul>
         </div>
        
-       <div id="back-mmenu">
+       <div id="back-mmenu"> 
             <ul>
                 <li class="menuRow menuRowTitle">
                    <h6 class="menuRowTitleText">Scegli cosa fare con il nuovo annuncio.</h6>
@@ -471,21 +471,21 @@
                 <br>
                 
                 <div class="pillDivClass" id="pubblicatiDiv">
-                    <div class="row annuncioListElement" id="UNO_CAZZO">
-                        <div class="annuncioParteUno">
+                    <!--<div class="row annuncioListElement" id="UNO_CAZZO">
+                        <div class="annuncioParteUno" onclick="setAnnuncioValue(1);">
                             <h5 class="titoloAffittaAnnuncio">123 5678 012 45678 01234 678 0123 567 90</h5>
                             
                         </div>
                         <div class="annuncioParteDue">
                             <span class="glyphicon glyphicon-pencil iconaOpzioneAnnuncio modificaAffittaAnnuncio" aria-hidden="true"></span>
                             
-                         <a href="#deleteAnnuncio-mmenu">        
-                            <span class="glyphicon glyphicon-trash iconaOpzioneAnnuncio eliminaAffittaAnnuncio" aria-hidden="true"></span>
-                         </a>
+                             <a href="#deleteAnnuncio-mmenu">        
+                                <span class="glyphicon glyphicon-trash iconaOpzioneAnnuncio eliminaAffittaAnnuncio" aria-hidden="true">
+                                </span>
+                             </a>
                             
                         </div>
                     </div>
-                    
                     
                     <div class="row annuncioListElement" id="UNO_CAZZO">
                         <div class="annuncioParteUno">
@@ -514,8 +514,8 @@
                                 <span class="glyphicon glyphicon-trash iconaOpzioneAnnuncio eliminaAffittaAnnuncio" aria-hidden="true"></span>
                             </a>
                         </div>
-                    </div>
-                   <!-- <div class="row annuncioListElement" id="TRE_CAZZO">
+                    </div>-->
+                    <!-- <div class="row annuncioListElement" id="TRE_CAZZO">
                         <div class="annuncioParteUno">
                             <h5 class="titoloAffittaAnnuncio">annuncio 3</h5>
                             
@@ -527,9 +527,9 @@
                             
                         </div>
                     </div>-->
-                    
-                    
-                    <div style="height:2em;"></div>
+                    <!--
+<div style="height:2em;"></div>
+-->
                 </div>
                     
                 
@@ -3235,187 +3235,7 @@
            
             <div class="contentPageDiv contentOverflowY" id="pageDettaglioContent">
                 
-                <div id="dettaglioMap" style="height:8em; width:100%;"></div>
                 
-                <div class="row pageDettaglioTitleRow">
-                    <div class="col-xs-12" id="pageDettaglioTitleColumn">
-                    
-                        <h5 class="annuncioTextTitle"> 1234567890 12345 7890 1234 67890 234567 90 
-                        </h5>
-                    </div>
-                </div> 
-                
-                <div class="row pageDettaglioTitleRow">
-                    <div class="col-xs-12 dettaglioStarColumn">
-                        <span class="glyphicon glyphicon-star starElement" aria-hidden="true"></span>  
-                        <span class="glyphicon glyphicon-star starElement" aria-hidden="true"></span>  
-                        <span class="glyphicon glyphicon-star starElement" aria-hidden="true"></span>  
-                    </div>
-                </div>
-                
-                <div class="row pageDettaglioBox" id="pageDettaglioZonaRow">
-                    <div class="row">
-                        <div class="col-xs-12">
-                           <h6> <span id="dettaglioZonaText">Zona Navigli - </span>  </h6>
-                        </div>
-                    </div>
-                    
-                    <div class="row pageDettaglioTitleRow">
-                        <div class="col-xs-12">
-                            <h6> Via Vittorio veneto 24/B1</h6> 
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="row photoswipe" id="pageDettaglioPhotoswipeRow">
-                    <img class="img-responsive previewImage foto"/>
-                    <img class="img-responsive previewImage foto" />
-                    <img class="img-responsive previewImage foto"/>
-                    <img class="img-responsive previewImage foto"/>
-                    <img class="img-responsive previewImage foto"/>
-                    <img class="img-responsive previewImage foto"/>
-                </div>
-                
-                <br>
-                
-                <div class="row pageDettaglioInfoRow marginFirstRow">
-                    <div class="col-xs-3">
-                        <h5 class="pageDettaglioTextLineHeight"> <b> Locali: </b></h5>
-                    </div>
-                    
-                    <div class="col-xs-3 col-xs-offset-4">
-                        <h6 class="pageDettaglioTextLineHeight"> 4 </h6>
-                    </div>
-                    
-                    
-                </div>
-                
-                <div class="row pageDettaglioInfoRow" >
-                    <div class="col-xs-3">
-                        <h5 class="pageDettaglioTextLineHeight"> <b> Superficie: </b></h5>
-                    </div>
-                    
-                    <div class="col-xs-3 col-xs-offset-4">
-                        <h6 class="pageDettaglioTextLineHeight"> 55 mq </h6>
-                    </div>
-                    
-                </div>
-                
-                
-                <div class="row pageDettaglioInfoRow">
-                    <div class="col-xs-3">
-                        <h5 class="pageDettaglioTextLineHeight"> <b> Piano: </b></h5>
-                    </div>
-                    
-                    <div class="col-xs-3 col-xs-offset-4">
-                        <h6 class="pageDettaglioTextLineHeight"> 2 </h6>
-                    </div>
-                    
-                </div>
-                   
-                <div class="row pageDettaglioInfoRow">
-                    <div class="col-xs-3">
-                        <h5 class="pageDettaglioTextLineHeight"> <b> Tipo: </b></h5>
-                    </div>
-                    
-                    <div class="col-xs-5 col-xs-offset-3">
-                        <h6 class="pageDettaglioTextLineHeight"> Stanza Condivisa </h6>
-                    </div>
-                    
-                </div>
-                   
-                 <div class="row pageDettaglioInfoRow">
-                    <div class="col-xs-7">
-                        <h5 class="pageDettaglioTextLineHeight"> <b> Posti Letto Stanza: </b></h5>
-                    </div>
-                    
-                    <div class="col-xs-3">
-                        <h6 class="pageDettaglioTextLineHeight"> 3 </h6>
-                    </div>
-                    
-                </div>
-                
-                
-                <div class="row pageDettaglioInfoRow">
-                    <div class="col-xs-7">
-                        <h5 class="pageDettaglioTextLineHeight"> <b> Posti Letto Totali: </b></h5>
-                    </div>
-                    
-                    <div class="col-xs-3">
-                        <h6 class="pageDettaglioTextLineHeight"> 7 </h6>
-                    </div>
-                    
-                </div>
-                
-                <div class="row pageDettaglioMezziRow marginFirstMezziRow">
-                    <div class="col-xs-2">
-                        <img src="img/bus.png" class="iconImage"/>
-                    </div>
-                    
-                    <div class="col-xs-9 col-xs-offset-1">
-                        <h6 style="line-height:2em;"> 90, 145, 375 </h6>
-                    </div>
-                    
-                </div>
-                
-                <div class="row pageDettaglioMezziRow">
-                    <div class="col-xs-2">
-                        <img src="img/metro.png" class="iconImage"/>
-                    </div>
-                    
-                    <div class="col-xs-9 col-xs-offset-1">
-                        <h6 style="line-height:2em;"> M1, M2, M3 </h6>
-                    </div>
-                    
-                </div>
-                
-                <div class="row pageDettaglioMezziRow">
-                    <div class="col-xs-2">
-                        <img src="img/treno.png" class="iconImage"/>
-                    </div>
-                    
-                    <div class="col-xs-9 col-xs-offset-1">
-                        <h6 style="line-height:2em;"> S1, S2, S9 </h6>
-                    </div>
-                    
-                </div>
-                
-                
-                <div class="row pageDettaglioMezziRow">
-                    <div class="col-xs-2">
-                        <img src="img/tram.png" class="iconImage"/>
-                    </div>
-                    
-                    <div class="col-xs-9 col-xs-offset-1">
-                        <h6 style="line-height:2em;"> 4, 18, 45, 97 </h6>
-                    </div>
-                    
-                </div>
-                
-                <div class="row" id="pageDettaglioDEscrizioneRow">
-                    <div class="col-xs-12">
-                       <h6 id="pageDettaglioDescrizioneText">
-                            <i>
-                            1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890
-                            </i>
-                        </h6>   
-                    </div>
-                    
-                </div>
-  
-                 <div class="row pageDettaglioPrezzoRow">
-                    <div class="col-xs-8">
-                        <h5 class="pageDettaglioTextLineHeight"> <b> Prezzo </b><small>(mensile, a persona): </small></h5>
-                    </div>
-                    
-                    <div class="col-xs-2 col-xs-offset-1">
-                        <h6 class="pageDettaglioTextLineHeight"> 315€ </h6>
-                    </div>
-                    
-                </div>   
-                
-                
-                <div style="height:2em;"></div>
                
                
            </div>

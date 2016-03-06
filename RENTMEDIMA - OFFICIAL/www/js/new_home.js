@@ -143,9 +143,10 @@ function setField(){
                 break;
                 
             case "affittaTab":
+                
                 $("#affittaContent").show();
                 console.log("Premuto affitta");
-                
+                pickAnnunci();
                 break;
                 
             case "homeTab":
@@ -338,4 +339,44 @@ function drawMapDettaglio(){
 }
 
 
+function pickAnnunci(){
+    console.log("pickannunci");
+    myUser= JSON.parse(localStorage.getItem("userData"));
+    console.log(myUser);
+    myUrl=  "http://rentme.altervista.org/pickAnnunci.php?" +                
+                "idUser="       +  myUser.uRentMe ;
+    console.log("--------------------------");
+    console.log("url:" + myUrl);
+        xhttp = new XMLHttpRequest;
+        xhttp.open("GET", myUrl, false);
+        xhttp.send();   
+        annunci=xhttp.response;
+        if(JSON.parse(annunci)!=null){
+            console.log("presi annunci");
+            localStorage.setItem("annunci",annunci);
+            jAnnunci=JSON.parse(annunci);
+            $("#pubblicatiDiv").html("");
+            for(i=0;i<jAnnunci.length;i++)
+                $("#pubblicatiDiv").append(
+                            "<div class='row annuncioListElement'>"+
+                            "<div class='annuncioParteUno' onclick='setAnnuncioValue(" + i+ ");'>"+
+                            "    <h5 class='titoloAffittaAnnuncio'>"+jAnnunci[i].titolo+"</h5>"+
+                            "</div>"+
+                            "<div class='annuncioParteDue'>"+
+                            "    <span class='glyphicon glyphicon-pencil iconaOpzioneAnnuncio modificaAffittaAnnuncio' aria-hidden='true'></span>"+         
+                            "     <a href='#deleteAnnuncio-mmenu'>        "+
+                            "        <span class='glyphicon glyphicon-trash iconaOpzioneAnnuncio eliminaAffittaAnnuncio' aria-hidden='true'>"+
+                            "        </span>"+
+                            "     </a>   "+
+                            "</div>"+
+                            "</div>"
+                );
 
+            //console.log(JSON.parse(annunci).length)
+            //console.log(JSON.parse(annunci));
+            
+            //setTimeout(function(){
+            //            window.location.href="new_home.html";
+            //},50);                          
+        }
+} 

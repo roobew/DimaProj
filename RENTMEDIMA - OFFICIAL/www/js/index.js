@@ -22,7 +22,7 @@ function next(){
                             xhttp.open("GET", myUrl, false);
                             xhttp.send();                    
                             jUser=xhttp.response;                     
-                            if(JSON.parse(jUser).id!=null){                                
+                            if(JSON.parse(jUser).uRentMe!=null){                                
                                 localStorage.setItem("userData",jUser);
                                // setTimeout(function(){
                                             window.location.href="new_home.html";
@@ -54,7 +54,7 @@ function next(){
                                 xhttp.open("GET", myUrl, false);
                                 xhttp.send();
                                 jUser=xhttp.response;
-                                if(JSON.parse(jUser).id!=null){
+                                if(JSON.parse(jUser).uRentMe!=null){
                                     localStorage.setItem("userData",jUser);
                                     //setTimeout(function(){
                                                 window.location.href="new_home.html";
@@ -90,7 +90,7 @@ function next(){
                                 jUser=xhttp.response;
                                 console.log("result:");
                                 console.log(jUser);
-                                if(JSON.parse(jUser).id!=null){
+                                if(JSON.parse(jUser).uRentMe!=null){
                                     console.log("VADO a Home");
                                     localStorage.setItem("userData",jUser);
                                     //setTimeout(function(){

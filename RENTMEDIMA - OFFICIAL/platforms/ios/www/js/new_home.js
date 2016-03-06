@@ -143,9 +143,10 @@ function setField(){
                 break;
                 
             case "affittaTab":
+                
                 $("#affittaContent").show();
                 console.log("Premuto affitta");
-                
+                pickAnnunci();
                 break;
                 
             case "homeTab":
@@ -224,7 +225,7 @@ function setField(){
         
     });
     
-    pickAnnunci();
+    //pickAnnunci();
     
 }
 
@@ -338,4 +339,28 @@ function drawMapDettaglio(){
 }
 
 
-
+function pickAnnunci(){
+    console.log("pickannunci");
+    myUser= JSON.parse(localStorage.getItem("userData"));
+    console.log(myUser);
+    myUrl=  "http://rentme.altervista.org/pickAnnunci.php?" +                
+                "idUser="       +  myUser.uRentMe ;
+    console.log("--------------------------");
+    console.log("url:" + myUrl);
+        xhttp = new XMLHttpRequest;
+        xhttp.open("GET", myUrl, false);
+        xhttp.send();   
+        annunci=xhttp.response;
+    console.log("preIF");
+        if(JSON.parse(annunci)!=null){
+            console.log("presi annunci");
+            localStorage.setItem("annunci",annunci);
+            console.log(JSON.parse(annunci));
+            //setTimeout(function(){
+            //            window.location.href="new_home.html";
+            //},50);                          
+        }
+    else{                   
+            navigator.notification.alert(JSON.parse(jUser).message, reload, JSON.parse(jUser).title);    
+        }
+}

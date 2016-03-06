@@ -1,7 +1,6 @@
 var annuncioID_toDelete, modificaCliccato=false;;
 
 $(document).ready(function (){
-   
    /* $("#btnDeleteAnnuncio").on("tap", function (){
         
         $(".annuncioContentDiv").css("display","inline-block");
@@ -17,7 +16,6 @@ $(document).ready(function (){
     });*/
   
     // **** EVENTI DI ANNUNCIO_HOME PAGE
-    pickAnnunci();
     
     $("#pillUno").on("tap", function(){
         change_tabs(1, true);
@@ -52,8 +50,8 @@ $(document).ready(function (){
         
     });    
       
-    $(".annuncioParteUno").on("tap", function(){
-        
+    /*$(".annuncioParteUno").on("tap", function(){
+        console.log("clickato annuncio");
         if(dettaglioMapInit==false){
             //drawMap("dettaglioMap", false);
            // drawMapDettaglio();
@@ -71,7 +69,7 @@ $(document).ready(function (){
         
         $(".annuncioListElement").removeClass("go");
          
-    });
+    });*/
    
     
     $(".modificaAffittaAnnuncio").click(function(){
@@ -631,22 +629,166 @@ $(document).ready(function (){
 });
 
 function setAnnuncioValue(annuncioClicked){
-    var titolo=annuncioClicked.find(".annuncioDivTitolo").text();
-    var zona=annuncioClicked.find(".annuncioDivZona").text();
-    var indirizzo=annuncioClicked.find(".annuncioDivIndirizzo").text();
+    annuncio = JSON.parse(localStorage.getItem("annunci"))[annuncioClicked];
+    if(dettaglioMapInit==false){
+        //drawMap("dettaglioMap", false);
+       // drawMapDettaglio();
+        dettaglioMapInit=true;
+    }
+
+    //Mostra top bar corretta
+    $("#homeTopRow").hide();
+    $("#dettaglioAnnuncioTopRow_daAffitta").show();
+
+    nascondiBottomBar();
+
+    creaPageDettaglioContent(annuncio);
+    $("#pageDettaglioContent").fadeIn();
+    $("#affittaContent").fadeOut();
+
+    $(".annuncioListElement").removeClass("go");
+}
+
+function creaPageDettaglioContent(an){
+    $("#pageDettaglioContent").html("");
+    $("#pageDettaglioContent").append(
+        
+        "<div id='dettaglioMap' style='height:8em; width:100%;'></div>"+
+"                <div class='row pageDettaglioTitleRow'>"+
+"                    <div class='col-xs-12' id='pageDettaglioTitleColumn'>"+
+"                        <h5 class='annuncioTextTitle'> 1234567890 12345 7890 1234 67890 234567 90 "+
+"                        </h5>"+
+"                    </div>"+
+"                </div> "+
+"                <div class='row pageDettaglioTitleRow'>"+
+"                    <div class='col-xs-12 dettaglioStarColumn'>"+
+"                        <span class='glyphicon glyphicon-star starElement' aria-hidden='true'></span>  "+
+"                        <span class='glyphicon glyphicon-star starElement' aria-hidden='true'></span>  "+
+"                        <span class='glyphicon glyphicon-star starElement' aria-hidden='true'></span>  "+
+"                    </div>"+
+"                </div>"+
+"                <div class='row pageDettaglioBox' id='pageDettaglioZonaRow'>"+
+"                    <div class='row'>"+
+"                        <div class='col-xs-12'>"+
+"                           <h6> <span id='dettaglioZonaText'>Zona Navigli - </span>  </h6>"+
+"                        </div>"+
+"                    </div>"+
+"                    <div class='row pageDettaglioTitleRow'>"+
+"                        <div class='col-xs-12'>"+
+"                            <h6> Via Vittorio veneto 24/B1</h6> "+
+"                        </div>"+
+"                    </div>"+
+"                </div>"+
+"                <div class='row photoswipe' id='pageDettaglioPhotoswipeRow'>"+
+"                    <img class='img-responsive previewImage foto'/>"+
+"                    <img class='img-responsive previewImage foto' />"+
+"                    <img class='img-responsive previewImage foto'/>"+
+"                    <img class='img-responsive previewImage foto'/>"+
+"                    <img class='img-responsive previewImage foto'/>"+
+"                    <img class='img-responsive previewImage foto'/>"+
+"                </div>"+
+"                <br>"+
+"                <div class='row pageDettaglioInfoRow marginFirstRow'>"+
+"                    <div class='col-xs-3'>"+
+"                        <h5 class='pageDettaglioTextLineHeight'> <b> Locali: </b></h5>"+
+"                    </div>"+
+"                    <div class='col-xs-3 col-xs-offset-4'>"+
+"                        <h6 class='pageDettaglioTextLineHeight'> 4 </h6>"+
+"                    </div>"+
+"                </div>"+
+"                <div class='row pageDettaglioInfoRow' >"+
+"                    <div class='col-xs-3'>"+
+"                        <h5 class='pageDettaglioTextLineHeight'> <b> Superficie: </b></h5>"+
+"                    </div>"+
+"                    <div class='col-xs-3 col-xs-offset-4'>"+
+"                        <h6 class='pageDettaglioTextLineHeight'> 55 mq </h6>"+
+"                    </div>"+
+"                </div>"+
+"                <div class='row pageDettaglioInfoRow'>"+
+"                    <div class='col-xs-3'>"+
+"                        <h5 class='pageDettaglioTextLineHeight'> <b> Piano: </b></h5>"+
+"                    </div>"+
+"                    <div class='col-xs-3 col-xs-offset-4'>"+
+"                        <h6 class='pageDettaglioTextLineHeight'> 2 </h6>"+
+"                    </div>"+
+"                </div>"+
+"                <div class='row pageDettaglioInfoRow'>"+
+"                    <div class='col-xs-3'>"+
+"                        <h5 class='pageDettaglioTextLineHeight'> <b> Tipo: </b></h5>"+
+"                    </div>"+
+"                    <div class='col-xs-5 col-xs-offset-3'>"+
+"                        <h6 class='pageDettaglioTextLineHeight'> Stanza Condivisa </h6>"+
+"                    </div>"+
+"                </div>"+
+"                 <div class='row pageDettaglioInfoRow'>"+
+"                    <div class='col-xs-7'>"+
+"                        <h5 class='pageDettaglioTextLineHeight'> <b> Posti Letto Stanza: </b></h5>"+
+"                    </div>"+
+"                    <div class='col-xs-3'>"+
+"                        <h6 class='pageDettaglioTextLineHeight'> 3 </h6>"+
+"                    </div>"+
+"                </div>"+
+"                <div class='row pageDettaglioInfoRow'>"+
+"                    <div class='col-xs-7'>"+
+"                        <h5 class='pageDettaglioTextLineHeight'> <b> Posti Letto Totali: </b></h5>"+
+"                    </div>"+
+"                    <div class='col-xs-3'>"+
+"                        <h6 class='pageDettaglioTextLineHeight'> 7 </h6>"+
+"                    </div>"+
+"                </div>"+
+"                <div class='row pageDettaglioMezziRow marginFirstMezziRow'>"+
+"                    <div class='col-xs-2'>"+
+"                        <img src='img/bus.png' class='iconImage'/>"+
+"                    </div>"+
+"                    <div class='col-xs-9 col-xs-offset-1'>"+
+"                        <h6 style='line-height:2em;'> 90, 145, 375 </h6>"+
+"                    </div>"+
+"                </div>"+
+"                <div class='row pageDettaglioMezziRow'>"+
+"                    <div class='col-xs-2'>"+
+"                        <img src='img/metro.png' class='iconImage'/>"+
+"                    </div>"+
+"                    <div class='col-xs-9 col-xs-offset-1'>"+
+"                        <h6 style='line-height:2em;'> M1, M2, M3 </h6>"+
+"                    </div>"+
+"                </div>"+
+"                <div class='row pageDettaglioMezziRow'>"+
+"                    <div class='col-xs-2'>"+
+"                        <img src='img/treno.png' class='iconImage'/>"+
+"                    </div>"+
+"                    <div class='col-xs-9 col-xs-offset-1'>"+
+"                        <h6 style='line-height:2em;'> S1, S2, S9 </h6>"+
+"                    </div>"+
+"                </div>"+
+"                <div class='row pageDettaglioMezziRow'>"+
+"                    <div class='col-xs-2'>"+
+"                        <img src='img/tram.png' class='iconImage'/>"+
+"                    </div>"+
+"                    <div class='col-xs-9 col-xs-offset-1'>"+
+"                        <h6 style='line-height:2em;'> 4, 18, 45, 97 </h6>"+
+"                    </div>"+
+"                </div>"+
+"                <div class='row' id='pageDettaglioDEscrizioneRow'>"+
+"                    <div class='col-xs-12'>"+
+"                       <h6 id='pageDettaglioDescrizioneText'>"+
+"                            <i>"+
+"                            1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890"+
+"                            </i>"+
+"                        </h6>   "+
+"                    </div>"+
+"                </div>"+
+"                 <div class='row pageDettaglioPrezzoRow'>"+
+"                    <div class='col-xs-8'>"+
+"                        <h5 class='pageDettaglioTextLineHeight'> <b> Prezzo </b><small>(mensile, a persona): </small></h5>"+
+"                    </div>"+
+"                    <div class='col-xs-2 col-xs-offset-1'>"+
+"                        <h6 class='pageDettaglioTextLineHeight'> 315€ </h6>"+
+"                    </div>"+
+"                </div>   "+
+"                <div style='height:2em;'></div>"
+
+    );
     
-    console.log("Titolo è: "+titolo);
-    console.log("Zona è: "+zona);
-    console.log("Indirizzo è: "+indirizzo);
-    
-    $("#modifica_titoloPreview").text(titolo);
-    $("#modifica_titoloInput").val(titolo);
-    
-    $("#modifica_indirizzoPreview").text(indirizzo);
-    $("#modifica_indirizzoInput").val(indirizzo);
-    
-    $("#modifica_zonaPreview").text(zona);
-    //$("#modifica_zonaInput").text(zona);
 }
 
 function checkValue(){
@@ -950,26 +1092,3 @@ function change_tabs(dest, affittaBool){
 }
 
 
-function pickAnnunci(){
-    console.log("pickannunci");
-    myUser= JSON.parse(localStorage.getItem("userData"));
-    console.log(myUser);
-    myUrl=  "http://rentme.altervista.org/pickAnnunci.php?" +                
-                "idUser="       +  myUser.id ;                        
-        xhttp = new XMLHttpRequest;
-        xhttp.open("GET", myUrl, false);
-        xhttp.send();
-        annunci=xhttp.response;
-    console.log("preIF");
-        if(JSON.parse(annunci)!=null){
-            console.log("presi annunci");
-            localStorage.setItem("annunci",annunci);
-            console.log(annunci);
-            //setTimeout(function(){
-            //            window.location.href="new_home.html";
-            //},50);                          
-        }
-    else{                   
-            navigator.notification.alert(JSON.parse(jUser).message, reload, JSON.parse(jUser).title);    
-        }
-}

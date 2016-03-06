@@ -78,6 +78,7 @@ function facebookLogin() {
                     path: '/me',
                     success: function(user) {    
                         console.log("33333");
+                        console.log(user);
                         myUrl=  "http://rentme.altervista.org/login.php?"       +
                                 "id="           +   user.id                     +
                                 "&name="        +   user.first_name             +
@@ -86,12 +87,12 @@ function facebookLogin() {
                                 "&loginType="   +   'Facebook'                  +
                                 "&token="       +   localStorage.fbAccessToken  +
                                 "&picture="     +   String(user.picture.data.url).replace(/&/gi,'%26')      ; 
-                        
+                        console.log("url:"+myUrl);
                         xhttp = new XMLHttpRequest;
                         xhttp.open("GET", myUrl, false);
                         xhttp.send();                    
                         jUser=xhttp.response;  
-                        if(JSON.parse(jUser).id!=null){
+                        if(JSON.parse(jUser).uRentMe!=null){
                             console.log("dentro");
                             localStorage.setItem("userData",jUser);
                             setTimeout(function(){
@@ -143,7 +144,7 @@ function googleLogin(){
                 xhttp.open("GET", myUrl, false);
                 xhttp.send();
                 jUser=xhttp.response;
-                if(JSON.parse(jUser).id!=null){
+                if(JSON.parse(jUser).uRentMe!=null){
                     console.log("dentro");
                     localStorage.setItem("userData",jUser);
                     setTimeout(function(){
@@ -184,7 +185,7 @@ function login(){
         xhttp.open("GET", myUrl, false);
         xhttp.send();
         jUser=xhttp.response;
-        if(JSON.parse(jUser).id!=null){
+        if(JSON.parse(jUser).uRentMe!=null){
             console.log("dentro");
             localStorage.setItem("userData",jUser);
             setTimeout(function(){
@@ -238,7 +239,7 @@ function register(){
         xhttp.open("GET", myUrl, false);
         xhttp.send();
         jUser=xhttp.response;
-        if(JSON.parse(jUser).id!=null){        
+        if(JSON.parse(jUser).uRentMe!=null){        
             localStorage.setItem("userData",jUser);  
             setTimeout(function(){
                         window.location.href="new_home.html";            
@@ -316,7 +317,7 @@ function recoverPassword(){
     }
     
     /*
-    if(JSON.parse(jUser).id!=null){                                
+    if(JSON.parse(jUser).uRentMe!=null){                                
         localStorage.setItem("userData",jUser);
         setTimeout(function(){
                     window.location.href="new_home.html";
