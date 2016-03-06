@@ -49,6 +49,7 @@ function getData(){
                 
                 //console.log(JSON.parse(response));
                 var elem=JSON.parse(response);
+                console.log(elem);
                 
                 $.each(elem, function( index, value ) {
                     console.log( index + ": " + value.metro );
