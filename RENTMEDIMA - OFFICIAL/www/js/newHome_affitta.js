@@ -15,7 +15,7 @@ $(document).ready(function (){
         }
         countDeleteClick++;
     });*/
-  
+    console.log("DEntro affit.js");
     // **** EVENTI DI ANNUNCIO_HOME PAGE
     pickAnnunci();
     
@@ -29,7 +29,7 @@ $(document).ready(function (){
     
     
     $("#btnNuovoAnnuncio").click(function (){
-        
+        console.log("Perchè non va?");
         getData();
         
         $("#homeTopRow").hide();
@@ -623,7 +623,7 @@ $(document).ready(function (){
         change_tabs(1,false);
     });
     
-    $("#cercaPillDue").on("tap", function(){
+     $("#cercaPillDue").on("tap", function(){
         change_tabs(2, false);
     });
     
@@ -973,3 +973,6 @@ function pickAnnunci(){
             navigator.notification.alert(JSON.parse(jUser).message, reload, JSON.parse(jUser).title);    
         }
 }
+
+
+
